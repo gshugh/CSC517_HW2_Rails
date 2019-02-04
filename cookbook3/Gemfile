@@ -53,6 +53,13 @@ group :test do
   # Manually changed to older version
   # See https://stackoverflow.com/questions/52630480/rails-seleniumwebdrivererrorwebdrivererror-not-executable-chromedriver
   gem 'chromedriver-helper', '1.2.0'
+  # See https://github.com/rails/rails-perftest/issues/43
+  gem 'minitest', '5.8.5'
+  # See https://stackoverflow.com/questions/28518783/running-rake-test-and-rails-cannot-load-such-file-rails-performance-test-hel
+  gem 'rails-perftest'
+  # See https://github.com/rails/rails-perftest
+  # See https://github.com/rails/rails-perftest/issues/38
+  gem 'ruby-prof', '0.15.9'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
