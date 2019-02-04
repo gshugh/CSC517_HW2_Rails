@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# Added 'category' to default fixtures
+
 one:
   title: MyString
   description: MyString
   instructions: MyText
+  category: one
 
 two:
   title: MyString
   description: MyString
   instructions: MyText
+  category: two

@@ -17,7 +17,12 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create recipe" do
     assert_difference('Recipe.count') do
-      post recipes_url, params: { recipe: { description: @recipe.description, instructions: @recipe.instructions, title: @recipe.title } }
+      post recipes_url, params: { recipe: {
+        description: @recipe.description,
+        instructions: @recipe.instructions,
+        title: @recipe.title,
+        category_id: @recipe.category_id
+      } }
     end
 
     assert_redirected_to recipe_url(Recipe.last)
@@ -34,7 +39,12 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update recipe" do
-    patch recipe_url(@recipe), params: { recipe: { description: @recipe.description, instructions: @recipe.instructions, title: @recipe.title } }
+    patch recipe_url(@recipe), params: { recipe: {
+      description: @recipe.description,
+      instructions: @recipe.instructions,
+      title: @recipe.title,
+      category_id: @recipe.category_id
+    } }
     assert_redirected_to recipe_url(@recipe)
   end
 
