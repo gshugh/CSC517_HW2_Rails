@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Num seats:</strong>
+  <%= @waitlist.num_seats %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @waitlist.user %>
+</p>
+
+<p>
+  <strong>Tour:</strong>
+  <%= @waitlist.tour %>
+</p>
+
+<%= link_to 'Edit', edit_waitlist_path(@waitlist) %> |
+<%= link_to 'Back', waitlists_path %>
