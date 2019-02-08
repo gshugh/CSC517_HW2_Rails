@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  price_in_cents: 1
+  deadline: 2019-02-05
+  start_date: 2019-02-05
+  end_date: 2019-02-05
+  operator_contact: MyString
+  status: MyString
+  num_seats: 1
+
+two:
+  name: MyString
+  description: MyString
+  price_in_cents: 1
+  deadline: 2019-02-05
+  start_date: 2019-02-05
+  end_date: 2019-02-05
+  operator_contact: MyString
+  status: MyString
+  num_seats: 1

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Starts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tour</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @starts.each do |start| %>
+      <tr>
+        <td><%= start.tour %></td>
+        <td><%= start.location %></td>
+        <td><%= link_to 'Show', start %></td>
+        <td><%= link_to 'Edit', edit_start_path(start) %></td>
+        <td><%= link_to 'Destroy', start, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Start', new_start_path %>

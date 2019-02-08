@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TourManagement</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <h1>Tour Management System</h1>
+    <%= yield %>
+    <br><br>
+    <br><br>
+    <%= link_to "Users", users_url %> <%= link_to "Tours", tours_url %> <%= link_to "Reviews", reviews_url %> <%= link_to "Locations", locations_url %>
+  </body>
+</html>

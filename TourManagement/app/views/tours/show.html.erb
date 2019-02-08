@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tour.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tour.description %>
+</p>
+
+<p>
+  <strong>Price in cents:</strong>
+  <%= @tour.price_in_cents %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @tour.deadline %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @tour.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @tour.end_date %>
+</p>
+
+<p>
+  <strong>Operator contact:</strong>
+  <%= @tour.operator_contact %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @tour.status %>
+</p>
+
+<p>
+  <strong>Num seats:</strong>
+  <%= @tour.num_seats %>
+</p>
+
+<%= link_to 'Edit', edit_tour_path(@tour) %> |
+<%= link_to 'Back', tours_path %>

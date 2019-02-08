@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: fake@fake.com
+  password: MyString
+  name: MyString
+  admin: false
+  agent: false
+  customer: false
+
+two:
+  email: dummy@dummy.com
+  password: MyString
+  name: MyString
+  admin: false
+  agent: false
+  customer: false
