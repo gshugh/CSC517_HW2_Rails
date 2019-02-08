@@ -17,7 +17,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { admin: @user.admin, agent: @user.agent, customer: @user.customer, email: @user.email, name: @user.name, password: @user.password } }
+      post users_url, params: { user: {
+        admin: @user.admin,
+        agent: @user.agent,
+        customer: @user.customer,
+        # Change from auto-generated test: user email has uniqueness constraint
+        # so cannot just use name from fixture user
+        email: "my_unique_email@whatever.com",
+        name: @user.name,
+        password: @user.password
+      } }
     end
 
     assert_redirected_to user_url(User.last)
@@ -34,7 +43,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { admin: @user.admin, agent: @user.agent, customer: @user.customer, email: @user.email, name: @user.name, password: @user.password } }
+    patch user_url(@user), params: { user: {
+      admin: @user.admin,
+      agent: @user.agent,
+      customer: @user.customer,
+      # Change from auto-generated test: user email has uniqueness constraint
+      # so cannot just use name from fixture user
+      email: "my_new_unique_email@whatever.com",
+      name: @user.name,
+      password: @user.password
+    } }
     assert_redirected_to user_url(@user)
   end
 

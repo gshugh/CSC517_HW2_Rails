@@ -21,7 +21,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
         deadline: @tour.deadline,
         description: @tour.description,
         end_date: @tour.end_date,
-        name: @tour.name,
+        # Change from auto-generated test: tour name has uniqueness constraint
+        # so cannot just use name from fixture tour
+        name: "MyUniqueName",
         num_seats: @tour.num_seats,
         operator_contact: @tour.operator_contact,
         price_in_cents: @tour.price_in_cents,
@@ -48,7 +50,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
       deadline: @tour.deadline,
       description: @tour.description,
       end_date: @tour.end_date,
-      name: @tour.name,
+      # Change from auto-generated test: tour name has uniqueness constraint
+      # so cannot just use name from fixture tour
+      name: "MyNewUniqueName",
       num_seats: @tour.num_seats,
       operator_contact: @tour.operator_contact,
       price_in_cents: @tour.price_in_cents,

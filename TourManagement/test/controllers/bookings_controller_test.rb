@@ -17,7 +17,11 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create booking" do
     assert_difference('Booking.count') do
-      post bookings_url, params: { booking: { num_seats: @booking.num_seats, tour_id: @booking.tour_id, user_id: @booking.user_id } }
+      post bookings_url, params: { booking: {
+        num_seats: @booking.num_seats,
+        tour_id: @booking.tour_id,
+        user_id: @booking.user_id
+      } }
     end
 
     assert_redirected_to booking_url(Booking.last)
