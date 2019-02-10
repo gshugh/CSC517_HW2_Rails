@@ -8,4 +8,15 @@
 
 # Seed the database with one admin role
 # Every team member will need to run db:seed command to get this admin in their DB
-User.create(email: "admin@admin.com", name: "Admin", password: "password_1234")
+# Modified to support user login
+# All team members now must remove any existing users and re-seed, or they may get problems like:
+# https://stackoverflow.com/questions/11037864/bcrypterrorsinvalidhash-when-trying-to-sign-in
+User.create(
+  email: "admin@admin.com",
+  name: "Admin",
+  password: "password_1234",
+  password_confirmation: "password_1234",
+  admin: true,
+  agent: false,
+  customer: false
+)

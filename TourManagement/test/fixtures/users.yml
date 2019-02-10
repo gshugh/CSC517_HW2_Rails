@@ -7,6 +7,8 @@ one:
   admin: false
   agent: false
   customer: false
+  # Add confirmation of password per https://www.railstutorial.org/book/modeling_users#sec-creating_and_authenticating_a_user
+  password_confirmation: MyString
 
 two:
   email: dummy@dummy.com
@@ -15,3 +17,5 @@ two:
   admin: false
   agent: false
   customer: false
+  # Add confirmation of password per https://www.railstutorial.org/book/modeling_users#sec-creating_and_authenticating_a_user
+  password_confirmation: MyString

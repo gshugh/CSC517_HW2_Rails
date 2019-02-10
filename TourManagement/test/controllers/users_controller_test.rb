@@ -25,7 +25,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         # so cannot just use name from fixture user
         email: "my_unique_email@whatever.com",
         name: @user.name,
-        password: @user.password
+        password: @user.password,
+        password_confirmation: @user.password_confirmation
       } }
     end
 
@@ -51,7 +52,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       # so cannot just use name from fixture user
       email: "my_new_unique_email@whatever.com",
       name: @user.name,
-      password: @user.password
+      password: @user.password,
+      password_confirmation: @user.password_confirmation
     } }
     assert_redirected_to user_url(@user)
   end
