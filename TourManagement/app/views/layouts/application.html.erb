@@ -12,6 +12,10 @@
   <body>
     <!-- Application Title -->
     <h1>Tour Management System</h1>
+    <!-- Note current user's name -->
+    <% if logged_in? %>
+      Welcome <%= current_user.name %>
+    <% end %>
     <!-- https://stackoverflow.com/questions/9390778/best-practice-method-of-displaying-flash-messages -->
     <% flash.each do |key, value| %>
       <%= content_tag :div, value, class: "flash #{key}" %>
@@ -21,8 +25,16 @@
     <!-- Links to other views -->
     <br><br>
     <br><br>
-    <h2>Menu</h2>
-    <%= link_to "Users", users_url %> <%= link_to "Tours", tours_url %> <%= link_to "Reviews", reviews_url %> <%= link_to "Locations", locations_url %>
+    <h2>Links</h2>
+    <%= link_to "Users", users_url %>
+    <%= link_to "Tours", tours_url %>
+    <%= link_to "Reviews", reviews_url %>
+    <%= link_to "Locations", locations_url %>
+    <% if logged_in? %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Log in", login_path %>
+    <% end %>
     <!-- Debug per https://www.railstutorial.org/book/sign_up -->
     <%= debug(params) if Rails.env.development? %>
   </body>
