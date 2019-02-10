@@ -10,8 +10,15 @@
   </head>
 
   <body>
+    <!-- Application Title -->
     <h1>Tour Management System</h1>
+    <!-- https://stackoverflow.com/questions/9390778/best-practice-method-of-displaying-flash-messages -->
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
+    <!-- Specific view content -->
     <%= yield %>
+    <!-- Links to other views -->
     <br><br>
     <br><br>
     <h2>Menu</h2>

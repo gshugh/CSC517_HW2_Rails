@@ -24,4 +24,8 @@ class User < ApplicationRecord
   # We should make sure that unless a user has admin TRUE it cannot act as admin
   # That is, lack of value should be interpreted as FALSE by our application logic
 
+  # Include ability to authenticate password
+  # https://www.railstutorial.org/book/modeling_users#sec-creating_and_authenticating_a_user
+  has_secure_password
+
 end
