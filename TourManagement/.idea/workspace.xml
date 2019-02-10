@@ -2,289 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb85f8e-0971-404e-a15f-4046ca50b6a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/TourManagement.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ruby-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/config/manifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/bookings.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/bookmarks.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/cable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/channels/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/listings.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/locations.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/photos.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/reviews.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/starts.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/tours.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/users.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/visits.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/waitlists.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/bookings.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/bookmarks.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/listings.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/locations.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/photos.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/reviews.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/starts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/tours.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/users.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/visits.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/waitlists.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/bookmarks_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/concerns/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/listings_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/locations_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/photos_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/reviews_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/starts_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/tours_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/visits_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/waitlists_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/bookings_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/bookmarks_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/listings_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/locations_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/photos_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/reviews_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/starts_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/tours_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/users_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/visits_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/waitlists_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/booking.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/bookmark.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/concerns/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/listing.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/location.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/photo.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/review.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/start.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/tour.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/visit.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/waitlist.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/_booking.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookings/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/_bookmark.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/bookmarks/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/_listing.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/listings/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/_location.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/locations/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/_photo.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/photos/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/_review.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/_start.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/starts/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/_tour.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/tours/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_user.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/_visit.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/visits/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/_waitlist.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/waitlists/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/bundle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/rails" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/rake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/setup" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/update" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/yarn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/boot.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/cable.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environment.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/assets.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/content_security_policy.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/puma.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/storage.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205172946_create_users.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205185719_create_tours.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205190223_create_listings.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205190547_create_bookmarks.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205190718_create_bookings.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205190918_create_waitlists.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205191127_create_reviews.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205191654_create_photos.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205191856_create_locations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205191954_create_starts.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20190205192132_create_visits.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/assets/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/tasks/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/422.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/500.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/application_system_test_case.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/bookings_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/bookmarks_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/listings_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/locations_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/photos_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/reviews_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/starts_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/tours_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/users_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/visits_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/waitlists_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/bookings.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/bookmarks.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/files/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/listings.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/locations.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/photos.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/reviews.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/starts.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/tours.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/users.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/visits.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/waitlists.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/helpers/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/mailers/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/booking_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/bookmark_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/listing_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/location_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/photo_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/review_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/start_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/tour_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/user_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/visit_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/waitlist_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/bookings_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/bookmarks_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/listings_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/locations_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/photos_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/reviews_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/starts_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/tours_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/users_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/visits_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/waitlists_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cookbook3/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/../cookbook3/.idea/.rakeTasks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cookbook3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cookbook3/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -309,26 +32,72 @@
     <SUITE FILE_PATH="coverage/TourManagement@test_should_create_user__TourManagement.rcov" NAME="test_should_create_user: TourManagement Coverage Results" MODIFIED="1549640381468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__starts_controller_test___TourManagement.rcov" NAME="Run test 'starts_controller_test': TourManagement Coverage Results" MODIFIED="1549488468011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__users_controller_test___TourManagement.rcov" NAME="Run test 'users_controller_test': TourManagement Coverage Results" MODIFIED="1549488931769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@db_migrate__TourManagement.rcov" NAME="db:migrate: TourManagement Coverage Results" MODIFIED="1549641693656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@db_migrate__TourManagement.rcov" NAME="db:migrate: TourManagement Coverage Results" MODIFIED="1549812301010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__bookmarks_controller_test___TourManagement.rcov" NAME="Run test 'bookmarks_controller_test': TourManagement Coverage Results" MODIFIED="1549487978655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__visits_controller_test___TourManagement.rcov" NAME="Run test 'visits_controller_test': TourManagement Coverage Results" MODIFIED="1549489284523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Development__TourManagement.rcov" NAME="Development: TourManagement Coverage Results" MODIFIED="1549640219735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@test_should_update_user__TourManagement.rcov" NAME="test_should_update_user: TourManagement Coverage Results" MODIFIED="1549640565433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Development__TourManagement.rcov" NAME="Development: TourManagement Coverage Results" MODIFIED="1549812152787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__bookings_controller_test___TourManagement.rcov" NAME="Run test 'bookings_controller_test': TourManagement Coverage Results" MODIFIED="1549641789746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_controllers__TourManagement.rcov" NAME="All tests in controllers: TourManagement Coverage Results" MODIFIED="1549642833474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_controllers__TourManagement.rcov" NAME="All tests in controllers: TourManagement Coverage Results" MODIFIED="1549812240490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__booking_test___TourManagement.rcov" NAME="Run test 'booking_test': TourManagement Coverage Results" MODIFIED="1549489351800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__tours_controller_test___TourManagement.rcov" NAME="Run test 'tours_controller_test': TourManagement Coverage Results" MODIFIED="1549488500430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__waitlists_controller_test___TourManagement.rcov" NAME="Run test 'waitlists_controller_test': TourManagement Coverage Results" MODIFIED="1549489315275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__tours_controller_test___TourManagement.rcov" NAME="Run test 'tours_controller_test': TourManagement Coverage Results" MODIFIED="1549812329607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@test_should_create_booking__TourManagement.rcov" NAME="test_should_create_booking: TourManagement Coverage Results" MODIFIED="1549642527380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@user.rcov" NAME="user Coverage Results" MODIFIED="1549488914746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/models" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@test_should_destroy_tour__TourManagement.rcov" NAME="test_should_destroy_tour: TourManagement Coverage Results" MODIFIED="1549639823865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_models__TourManagement.rcov" NAME="All tests in models: TourManagement Coverage Results" MODIFIED="1549643026235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@test_should_destroy_tour__TourManagement.rcov" NAME="test_should_destroy_tour: TourManagement Coverage Results" MODIFIED="1549812315356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_MoveToPostgresQL.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/controllers/tours_controller_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_ProjectCreationInstructions.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="88" selection-start-line="88" selection-end-line="91" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/database.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -348,6 +117,10 @@
         <option value="$PROJECT_DIR$/test/fixtures/listings.yml" />
         <option value="$PROJECT_DIR$/test/fixtures/bookmarks.yml" />
         <option value="$PROJECT_DIR$/test/fixtures/bookings.yml" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/doc/CSC517_HW02_MoveToPostgresQL.txt" />
       </list>
     </option>
   </component>
@@ -359,9 +132,12 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="width" value="1074" />
-    <option name="height" value="1050" />
+    <option name="x" value="621" />
+    <option name="width" value="654" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -369,7 +145,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -385,8 +160,17 @@
             <path>
               <item name="TourManagement" type="b2602c69:ProjectViewProjectNode" />
               <item name="TourManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TourManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TourManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TourManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TourManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TourManagement" type="b2602c69:ProjectViewProjectNode" />
@@ -404,28 +188,19 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="TourManagement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TourManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TourManagement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TourManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cookbook3" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ruby" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -441,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.All tests in models: TourManagement">
+  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.Run test 'tours_controller_test': TourManagement">
     <configuration name="Development: TourManagement" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="TourManagement" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
@@ -542,6 +317,18 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method v="2" />
     </configuration>
+    <configuration name="scratch_2" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$APPLICATION_CONFIG_DIR$/scratches" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method v="2" />
+    </configuration>
     <configuration name="All tests in controllers: TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <module name="TourManagement" />
       <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
@@ -568,33 +355,7 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method v="2" />
     </configuration>
-    <configuration name="All tests in models: TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
-      <module name="TourManagement" />
-      <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-Itest" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="RAILS_ENV" value="test" />
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/test/models" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/{*_test,test_*,*_spec}.rb" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="ALL_IN_FOLDER" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Run test 'bookings_controller_test': TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
+    <configuration name="Run test 'tours_controller_test': TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <module name="TourManagement" />
       <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-Itest" />
@@ -610,7 +371,7 @@
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/controllers/bookings_controller_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/controllers/tours_controller_test.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -620,7 +381,7 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_should_create_booking: TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
+    <configuration name="test_should_destroy_tour: TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <module name="TourManagement" />
       <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-Itest" />
@@ -636,9 +397,9 @@
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/controllers/bookings_controller_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/controllers/tours_controller_test.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="test_should_create_booking" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="test_should_destroy_tour" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_METHOD" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
@@ -648,11 +409,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Test::Unit/Shoulda/Minitest.All tests in models: TourManagement" />
-        <item itemvalue="Test::Unit/Shoulda/Minitest.All tests in controllers: TourManagement" />
-        <item itemvalue="Test::Unit/Shoulda/Minitest.test_should_create_booking: TourManagement" />
-        <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'bookings_controller_test': TourManagement" />
+        <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'tours_controller_test': TourManagement" />
+        <item itemvalue="Test::Unit/Shoulda/Minitest.test_should_destroy_tour: TourManagement" />
         <item itemvalue="Rake.db:migrate: TourManagement" />
+        <item itemvalue="Test::Unit/Shoulda/Minitest.All tests in controllers: TourManagement" />
+        <item itemvalue="Ruby.scratch_2" />
       </list>
     </recent_temporary>
   </component>
@@ -672,22 +433,15 @@
       <workItem from="1549566404761" duration="1803000" />
       <workItem from="1549629427295" duration="1378000" />
       <workItem from="1549637275659" duration="5643000" />
+      <workItem from="1549647946350" duration="4753000" />
+      <workItem from="1549657057384" duration="2581000" />
+      <workItem from="1549717898036" duration="124000" />
+      <workItem from="1549718074380" duration="666000" />
+      <workItem from="1549810470384" duration="2024000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_tests_in_controllers__TourManagement - 2019.02.08 at 10h 58m 20s.xml">
-      <configuration name="All tests in controllers: TourManagement" configurationId="TestUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Run_test_'bookings_controller_test'__TourManagement - 2019.02.08 at 10h 59m 27s.xml">
-      <configuration name="Run test 'bookings_controller_test': TourManagement" configurationId="TestUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Run_test_'bookings_controller_test'__TourManagement - 2019.02.08 at 11h 02m 44s.xml">
-      <configuration name="Run test 'bookings_controller_test': TourManagement" configurationId="TestUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Run_test_'bookings_controller_test'__TourManagement - 2019.02.08 at 11h 03m 33s.xml">
-      <configuration name="Run test 'bookings_controller_test': TourManagement" configurationId="TestUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="test_should_create_booking__TourManagement - 2019.02.08 at 11h 05m 49s.xml">
       <configuration name="test_should_create_booking: TourManagement" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
@@ -706,19 +460,32 @@
     <history-entry file="All_tests_in_models__TourManagement - 2019.02.08 at 11h 23m 55s.xml">
       <configuration name="All tests in models: TourManagement" configurationId="TestUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="All_tests_in_controllers__TourManagement - 2019.02.10 at 10h 24m 08s.xml">
+      <configuration name="All tests in controllers: TourManagement" configurationId="TestUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Run_test_'tours_controller_test'__TourManagement - 2019.02.10 at 10h 24m 47s.xml">
+      <configuration name="Run test 'tours_controller_test': TourManagement" configurationId="TestUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="test_should_destroy_tour__TourManagement - 2019.02.10 at 10h 25m 23s.xml">
+      <configuration name="test_should_destroy_tour: TourManagement" configurationId="TestUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Run_test_'tours_controller_test'__TourManagement - 2019.02.10 at 10h 26m 06s.xml">
+      <configuration name="Run test 'tours_controller_test': TourManagement" configurationId="TestUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11702000" />
+    <option name="totallyTimeSpent" value="21850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22168285" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.35194173" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5346359" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4689165" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -726,7 +493,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -738,11 +505,7 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/log/development.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8987" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/log/development.log" />
     <entry file="file://$PROJECT_DIR$/test/controllers/starts_controller_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-561" />
@@ -778,30 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/tour.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="80" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/models/booking_test.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/controllers/tours_controller_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/controllers/users_controller_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-415">
@@ -812,20 +551,7 @@
     <entry file="file://$PROJECT_DIR$/app/models/booking.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/test.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-875">
-          <caret line="9738" column="66" selection-start-line="9738" selection-start-column="57" selection-end-line="9738" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/controllers/bookings_controller_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/log/test.log" />
     <entry file="file://$PROJECT_DIR$/test/fixtures/waitlists.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -900,6 +626,82 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/bookings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="56" column="20" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controllers/bookmarks_controller_test.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controllers/bookings_controller_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/tour.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/models/booking_test.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_ProjectCreationInstructions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="88" selection-start-line="88" selection-end-line="91" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controllers/tours_controller_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_MoveToPostgresQL.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
         </state>
       </provider>
     </entry>
