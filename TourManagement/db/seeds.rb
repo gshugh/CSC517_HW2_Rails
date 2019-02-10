@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Seed the database with one admin role
+# Every team member will need to run db:seed command to get this admin in their DB
+User.create(email: "admin@admin.com", name: "Admin", password: "password_1234")
