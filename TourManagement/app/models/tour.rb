@@ -1,17 +1,21 @@
 class Tour < ApplicationRecord
 
+  # Support all of the "through" relationships
+  # Destroy dependents if a tour is destroyed to avoid foreign key exceptions
   has_many :reviews, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :visits, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :waitlists, dependent: :destroy
+  has_many :listings, dependent: :destroy
+  has_many :starts, dependent: :destroy
 
+  # Establish "through" relationships
   has_many :locations, through: :visits, dependent: :destroy
   has_many :users, through: :bookmarks, dependent: :destroy
   has_many :users, through: :bookings, dependent: :destroy
   has_many :users, through: :waitlists, dependent: :destroy
-
   has_one :user, through: :listings, dependent: :destroy
   has_one :location, through: :starts, dependent: :destroy
 
