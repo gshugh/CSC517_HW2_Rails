@@ -15,7 +15,8 @@ class Tour < ApplicationRecord
   has_one :user, through: :listings, dependent: :destroy
   has_one :location, through: :starts, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  # Remove uniqueness validation for name, uniqueness is from the ID
+  validates :name, presence: true
   validates :description, presence: true
   validates :price_in_cents, presence: true
   validates :deadline, presence: true
