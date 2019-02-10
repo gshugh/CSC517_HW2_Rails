@@ -15,10 +15,10 @@ class User < ApplicationRecord
   has_many :tours, through: :bookings, dependent: :destroy
   has_many :tours, through: :waitlists, dependent: :destroy
 
-  # Define validations
+  # Define validations, name does not need to be present
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true
-  validates :name, presence: true
+#  validates :name, presence: true
   # Do NOT validate presence of boolean fields (admin / agent / customer)
   # Seems to see false as not-present
   # We should make sure that unless a user has admin TRUE it cannot act as admin
