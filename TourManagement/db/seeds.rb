@@ -14,8 +14,7 @@
 User.create(
   email: "admin@admin.com",
   name: "Admin",
-  password: "password_1234",
-  password_confirmation: "password_1234",
+  password_digest: User.digest('password_1234'),
   admin: true,
   agent: false,
   customer: false
