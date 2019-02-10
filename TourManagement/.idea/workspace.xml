@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eb85f8e-0971-404e-a15f-4046ca50b6a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-    </list>
+    <list default="true" id="7eb85f8e-0971-404e-a15f-4046ca50b6a6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/log/" />
@@ -19,37 +16,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TourManagement@Development__TourManagement.rcov" NAME="Development: TourManagement Coverage Results" MODIFIED="1549815453057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__users_controller_test___TourManagement.rcov" NAME="Run test 'users_controller_test': TourManagement Coverage Results" MODIFIED="1549488931769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__bookings_controller_test___TourManagement.rcov" NAME="Run test 'bookings_controller_test': TourManagement Coverage Results" MODIFIED="1549641789746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__booking_test___TourManagement.rcov" NAME="Run test 'booking_test': TourManagement Coverage Results" MODIFIED="1549489351800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@test_should_create_tour__TourManagement.rcov" NAME="test_should_create_tour: TourManagement Coverage Results" MODIFIED="1549639221920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@test_should_create_booking__TourManagement.rcov" NAME="test_should_create_booking: TourManagement Coverage Results" MODIFIED="1549642527380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__bookmarks_controller_test___TourManagement.rcov" NAME="Run test 'bookmarks_controller_test': TourManagement Coverage Results" MODIFIED="1549487978655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@test_should_update_user__TourManagement.rcov" NAME="test_should_update_user: TourManagement Coverage Results" MODIFIED="1549640565433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@db_migrate__TourManagement.rcov" NAME="db:migrate: TourManagement Coverage Results" MODIFIED="1549816487407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__waitlists_controller_test___TourManagement.rcov" NAME="Run test 'waitlists_controller_test': TourManagement Coverage Results" MODIFIED="1549489315275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_models__TourManagement.rcov" NAME="All tests in models: TourManagement Coverage Results" MODIFIED="1549643026235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__photos_controller_test___TourManagement.rcov" NAME="Run test 'photos_controller_test': TourManagement Coverage Results" MODIFIED="1549488368703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@user.rcov" NAME="user Coverage Results" MODIFIED="1549488914746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/models" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__visits_controller_test___TourManagement.rcov" NAME="Run test 'visits_controller_test': TourManagement Coverage Results" MODIFIED="1549489284523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@test_should_update_tour__TourManagement.rcov" NAME="test_should_update_tour: TourManagement Coverage Results" MODIFIED="1549639580158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__tours_controller_test___TourManagement.rcov" NAME="Run test 'tours_controller_test': TourManagement Coverage Results" MODIFIED="1549812329607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__locations_controller_test___TourManagement.rcov" NAME="Run test 'locations_controller_test': TourManagement Coverage Results" MODIFIED="1549638934494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_controllers__TourManagement.rcov" NAME="All tests in controllers: TourManagement Coverage Results" MODIFIED="1549812240490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__starts_controller_test___TourManagement.rcov" NAME="Run test 'starts_controller_test': TourManagement Coverage Results" MODIFIED="1549488468011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@Run_test__listings_controller_test___TourManagement.rcov" NAME="Run test 'listings_controller_test': TourManagement Coverage Results" MODIFIED="1549488019445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@Run_test__reviews_controller_test___TourManagement.rcov" NAME="Run test 'reviews_controller_test': TourManagement Coverage Results" MODIFIED="1549488398616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
-    <SUITE FILE_PATH="coverage/TourManagement@test_should_destroy_tour__TourManagement.rcov" NAME="test_should_destroy_tour: TourManagement Coverage Results" MODIFIED="1549812315356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__listings_controller_test___TourManagement.rcov" NAME="Run test 'listings_controller_test': TourManagement Coverage Results" MODIFIED="1549488019445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@test_should_update_tour__TourManagement.rcov" NAME="test_should_update_tour: TourManagement Coverage Results" MODIFIED="1549639580158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__locations_controller_test___TourManagement.rcov" NAME="Run test 'locations_controller_test': TourManagement Coverage Results" MODIFIED="1549638934494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
     <SUITE FILE_PATH="coverage/TourManagement@test_should_create_user__TourManagement.rcov" NAME="test_should_create_user: TourManagement Coverage Results" MODIFIED="1549640381468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__users_controller_test___TourManagement.rcov" NAME="Run test 'users_controller_test': TourManagement Coverage Results" MODIFIED="1549488931769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__starts_controller_test___TourManagement.rcov" NAME="Run test 'starts_controller_test': TourManagement Coverage Results" MODIFIED="1549488468011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@db_migrate__TourManagement.rcov" NAME="db:migrate: TourManagement Coverage Results" MODIFIED="1549816487407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__bookmarks_controller_test___TourManagement.rcov" NAME="Run test 'bookmarks_controller_test': TourManagement Coverage Results" MODIFIED="1549487978655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__visits_controller_test___TourManagement.rcov" NAME="Run test 'visits_controller_test': TourManagement Coverage Results" MODIFIED="1549489284523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@test_should_update_user__TourManagement.rcov" NAME="test_should_update_user: TourManagement Coverage Results" MODIFIED="1549640565433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Development__TourManagement.rcov" NAME="Development: TourManagement Coverage Results" MODIFIED="1549823586951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_controllers__TourManagement.rcov" NAME="All tests in controllers: TourManagement Coverage Results" MODIFIED="1549812240490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__bookings_controller_test___TourManagement.rcov" NAME="Run test 'bookings_controller_test': TourManagement Coverage Results" MODIFIED="1549823683876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__booking_test___TourManagement.rcov" NAME="Run test 'booking_test': TourManagement Coverage Results" MODIFIED="1549489351800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__waitlists_controller_test___TourManagement.rcov" NAME="Run test 'waitlists_controller_test': TourManagement Coverage Results" MODIFIED="1549489315275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@Run_test__tours_controller_test___TourManagement.rcov" NAME="Run test 'tours_controller_test': TourManagement Coverage Results" MODIFIED="1549812329607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@test_should_create_booking__TourManagement.rcov" NAME="test_should_create_booking: TourManagement Coverage Results" MODIFIED="1549642527380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@user.rcov" NAME="user Coverage Results" MODIFIED="1549488914746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/models" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@All_tests_in_models__TourManagement.rcov" NAME="All tests in models: TourManagement Coverage Results" MODIFIED="1549643026235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
+    <SUITE FILE_PATH="coverage/TourManagement@test_should_destroy_tour__TourManagement.rcov" NAME="test_should_destroy_tour: TourManagement Coverage Results" MODIFIED="1549812315356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="TourManagement" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+            <state relative-caret-position="99">
+              <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -57,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_MoveToPostgresQL.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="374">
               <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
             </state>
           </provider>
@@ -66,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
+            <state relative-caret-position="238">
               <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
             </state>
           </provider>
@@ -80,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/controllers/tours_controller_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1220">
+            <state relative-caret-position="1037">
               <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
             </state>
           </provider>
@@ -89,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_ProjectCreationInstructions.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1760">
+            <state relative-caret-position="1496">
               <caret line="88" selection-start-line="88" selection-end-line="91" selection-end-column="33" />
             </state>
           </provider>
@@ -98,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="153">
               <caret line="9" column="20" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="20" />
             </state>
           </provider>
@@ -150,9 +147,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="127" />
-    <option name="width" value="1432" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="126" />
+    <option name="width" value="1433" />
     <option name="height" value="891" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -163,8 +160,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -176,6 +171,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,6 +184,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -200,7 +198,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Rake.db:migrate: TourManagement">
+  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.Run test 'bookings_controller_test': TourManagement">
     <configuration name="Development: TourManagement" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="TourManagement" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
@@ -301,19 +299,6 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch_2" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$APPLICATION_CONFIG_DIR$/scratches" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <method v="2" />
-    </configuration>
     <configuration name="All tests in controllers: TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <module name="TourManagement" />
       <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
@@ -334,6 +319,32 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/{*_test,test_*,*_spec}.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="ALL_IN_FOLDER" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Run test 'bookings_controller_test': TourManagement" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
+      <module name="TourManagement" />
+      <predefined_log_file enabled="true" id="RUBY_TESTUNIT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-Itest" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="test" />
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/test/controllers/bookings_controller_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
@@ -394,11 +405,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'bookings_controller_test': TourManagement" />
         <item itemvalue="Rake.db:migrate: TourManagement" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.Run test 'tours_controller_test': TourManagement" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.test_should_destroy_tour: TourManagement" />
         <item itemvalue="Test::Unit/Shoulda/Minitest.All tests in controllers: TourManagement" />
-        <item itemvalue="Ruby.scratch_2" />
       </list>
     </recent_temporary>
   </component>
@@ -425,6 +436,7 @@
       <workItem from="1549810470384" duration="2743000" />
       <workItem from="1549813876381" duration="2040000" />
       <workItem from="1549816322725" duration="423000" />
+      <workItem from="1549823564178" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="Change Gemfile to allow Ruby versions &gt;= 2.3.3.">
       <created>1549816402770</created>
@@ -469,15 +481,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25032000" />
+    <option name="totallyTimeSpent" value="25049000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="127" y="0" width="1432" height="891" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.15233237" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.11255061" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28326747" />
@@ -663,16 +674,26 @@
     <entry file="file://$PROJECT_DIR$/test/models/booking_test.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_MoveToPostgresQL.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
+        <state relative-caret-position="374">
           <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="238">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
         </state>
       </provider>
@@ -682,32 +703,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/controllers/tours_controller_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1220">
+        <state relative-caret-position="1037">
           <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/doc/CSC517_HW02_ProjectCreationInstructions.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1760">
+        <state relative-caret-position="1496">
           <caret line="88" selection-start-line="88" selection-end-line="91" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="153">
           <caret line="9" column="20" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
         </state>
       </provider>
     </entry>
