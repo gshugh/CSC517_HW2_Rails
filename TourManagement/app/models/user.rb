@@ -17,7 +17,6 @@ class User < ApplicationRecord
 
   # Define validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, presence: true
   validates :name, presence: true
   # Do NOT validate presence of boolean fields (admin / agent / customer)
   # Seems to see false as not-present
@@ -28,4 +27,11 @@ class User < ApplicationRecord
   # https://www.railstutorial.org/book/modeling_users#sec-creating_and_authenticating_a_user
   has_secure_password
 
+  # Include ability to create password digests (to support test fixtures)
+  # https://www.railstutorial.org/book/basic_login
+  # Returns the hash digest of the given string.
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
