@@ -2,7 +2,7 @@
 
 one:
   email: fake@fake.com
-  name: MyString
+  name: James Bond
   admin: false
   agent: false
   customer: false
@@ -12,7 +12,7 @@ one:
 
 two:
   email: dummy@dummy.com
-  name: MyString
+  name: Jason Bourne
   admin: false
   agent: false
   customer: false

@@ -25,4 +25,10 @@ module SessionsHelper
     @current_user = nil
   end
 
+  # Method to determine if the given tour was listed by the currently logged in user
+  def tour_listed_by_current_user?(tour)
+    matching_user_id = Listing.get_agent_id_for_tour(tour)
+    return matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
+  end
+
 end
