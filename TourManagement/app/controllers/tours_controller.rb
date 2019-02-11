@@ -76,27 +76,43 @@ class ToursController < ApplicationController
   # PATCH/PUT /tours/1
   # PATCH/PUT /tours/1.json
   def update
-    respond_to do |format|
-      if @tour.update(params_without_locations)
 
-        # Update visits relationship between the new tour and every location
-        link_to_locations
+    # Handle the update in a transaction so that any problems can be rolled back
+    # and it will be like the update never happened
+    # http://vaidehijoshi.github.io/blog/2015/08/18/safer-sql-using-activerecord-transactions/
+    # https://stackoverflow.com/questions/51959746/how-to-know-why-a-transaction-was-rolled-back
+    transaction_success = false
+    Tour.transaction do
 
-        # Everything still okay?
-        if @tour.errors.empty?
-          format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
-          format.json { render :show, status: :ok, location: @tour }
-        else
-          @tour.destroy
-          format.html { render :edit }
-          format.json { render json: @tour.errors, status: :unprocessable_entity }
-        end
+      # Attempt all of the actions that belong together in a transaction
+      @tour.update!(params_without_locations)
+      link_to_locations
+      unless @tour.errors.empty?
+        raise ActiveRecord::Rollback
+      end
 
-      else
+      # Need ruby 2.5 or greater to rescue error inside do block
+      # so we have a bit of extra code to tell, outside of the transaction, if it was rolled back
+      # We will only get here if an exception was NOT raised
+      transaction_success = true
+
+    end
+
+    # React based on whether or not the transaction succeeded
+    if transaction_success
+      # This code only runs if the transaction succeeded
+      respond_to do |format|
+        format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
+        format.json { render :show, status: :ok, location: @tour }
+      end
+    else
+      # This code only runs if the transaction was rolled back
+      respond_to do |format|
         format.html { render :edit }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /tours/1
