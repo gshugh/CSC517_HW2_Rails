@@ -55,9 +55,15 @@ class ToursController < ApplicationController
         # Create a visits relationship between the new tour and every location
         link_to_locations
 
-        # Actual response
-        format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
-        format.json { render :show, status: :created, location: @tour }
+        # Everything still okay?
+        if @tour.errors.empty?
+          format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
+          format.json { render :show, status: :created, location: @tour }
+        else
+          @tour.destroy
+          format.html { render :new }
+          format.json { render json: @tour.errors, status: :unprocessable_entity }
+        end
 
       else
         format.html { render :new }
@@ -76,9 +82,15 @@ class ToursController < ApplicationController
         # Update visits relationship between the new tour and every location
         link_to_locations
 
-        # Respond
-        format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tour }
+        # Everything still okay?
+        if @tour.errors.empty?
+          format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
+          format.json { render :show, status: :ok, location: @tour }
+        else
+          @tour.destroy
+          format.html { render :edit }
+          format.json { render json: @tour.errors, status: :unprocessable_entity }
+        end
 
       else
         format.html { render :edit }
@@ -188,6 +200,12 @@ class ToursController < ApplicationController
         new_start_at_rel.save
         got_start_location = true
 
+      end
+
+      # Gotta have at least one location in the itinerary
+      # https://stackoverflow.com/questions/5320934/how-to-add-custom-errors-to-the-user-errors-collection
+      unless got_start_location
+        @tour.errors[:base] << "A tour must have at least one location"
       end
 
     end
