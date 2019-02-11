@@ -1,6 +1,7 @@
-# This is a skeleton for testing models including examples of validations, callbacks,
-# scopes, instance & class methods, associations, and more.
-# Pick and choose what you want, as all models don't NEED to be tested at this depth.
+################################################################################
+# This is a skeleton for testing models including examples of validations,
+# callbacks, scopes, instance & class methods, associations, and more. Pick and
+# choose what you want, as all models don't NEED to be tested at this depth.
 #
 # I'm always eager to hear new tips & suggestions as I'm still new to testing,
 # so if you have any, please share!
@@ -65,60 +66,63 @@ describe Model do
   end
 
   describe "ActiveRecord associations" do
-    # http://guides.rubyonrails.org/association_basics.html
-    # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames
-    # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord
+#     # http://guides.rubyonrails.org/association_basics.html
+#     # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames
+#     # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda
+# /Matchers/ActiveRecord
+#
+#     # Performance tip: stub out as many on create methods as you can when you're testing validations
+#     # since the test suite will slow down due to having to run them all for each validation check.
+#     #
+#     # For example, assume a User has three methods that fire after one is created, stub them like this:
+#     #
+#     # before(:each) do
+#     #   User.any_instance.stub(:send_welcome_email)
+#     #   User.any_instance.stub(:track_new_user_signup)
+#     #   User.any_instance.stub(:method_that_takes_ten_seconds_to_complete)
+#     # end
+#     #
+#     # If you performed 5-10 validation checks against a User, that would save a ton of time.
+#
+    context "associations" do
+      it { expect(profile).to belong_to(:user) }
+      it { expect(wishlist_item).to belong_to(:wishlist).counter_cache }
+      it { expect(metric).to belong_to(:analytics_dashboard).touch }
+      it { expect(user).to have_one(:profile) }
+      it { expect(classroom).to have_many(:students) }
+      it { expect(initech_corporation).to have_many(:employees).with_foreign_key(:worker_drone_id) }
+      it { expect(article).to have_many(:comments).order(:created_at) }
+      it { expect(user).to have_many(:wishlist_items).through(:wishlist) }
+      it { expect(todo_list).to have_many(:todos).dependent(:destroy) }
+      it { expect(account).to have_many(:billings).dependent(:nullify) }
+      it { expect(product).to have_and_belong_to_many(:descriptors) }
+      it { expect(gallery).to accept_nested_attributes_for(:paintings) }
 
-    # Performance tip: stub out as many on create methods as you can when you're testing validations
-    # since the test suite will slow down due to having to run them all for each validation check.
-    #
-    # For example, assume a User has three methods that fire after one is created, stub them like this:
-    #
-    # before(:each) do
-    #   User.any_instance.stub(:send_welcome_email)
-    #   User.any_instance.stub(:track_new_user_signup)
-    #   User.any_instance.stub(:method_that_takes_ten_seconds_to_complete)
-    # end
-    #
-    # If you performed 5-10 validation checks against a User, that would save a ton of time.
+#     # Read-only matcher
+#     # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord/HaveReadonlyAttributeMatcher
+      it { expect(asset).to have_readonly_attribute(:uuid) }
 
-    # Associations
-    it { expect(profile).to belong_to(:user) }
-    it { expect(wishlist_item).to belong_to(:wishlist).counter_cache }
-    it { expect(metric).to belong_to(:analytics_dashboard).touch }
-    it { expect(user).to have_one(:profile }
-    it { expect(classroom).to have_many(:students) }
-    it { expect(initech_corporation).to have_many(:employees).with_foreign_key(:worker_drone_id) }
-    it { expect(article).to have_many(:comments).order(:created_at) }
-    it { expect(user).to have_many(:wishlist_items).through(:wishlist) }
-    it { expect(todo_list).to have_many(:todos).dependent(:destroy) }
-    it { expect(account).to have_many(:billings).dependent(:nullify) }
-    it { expect(product).to have_and_belong_to_many(:descriptors) }
-    it { expect(gallery).to accept_nested_attributes_for(:paintings) }
+#     # Databse columns/indexes
+#     # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord/HaveDbColumnMatcher
+      it { expect(user).to have_db_column(:political_stance).of_type(:string)
+                               .with_options(default: 'undecided', null: false) }
+#     # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord:have_db_index
+      it { expect(user).to have_db_index(:email).unique(:true) }
+    end
 
-    # Read-only matcher
-    # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord/HaveReadonlyAttributeMatcher
-    it { expect(asset).to have_readonly_attribute(:uuid) }
+    context "callbacks" do
+      # http://guides.rubyonrails.org/active_record_callbacks.html
+      # https://github.com/beatrichartz/shoulda-callback-matchers/wiki
 
-    # Databse columns/indexes
-    # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord/HaveDbColumnMatcher
-    it { expect(user).to have_db_column(:political_stance).of_type(:string).with_options(default: 'undecided', null: false)
-    # http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda/Matchers/ActiveRecord:have_db_index
-    it { expect(user).to have_db_index(:email).unique(:true)
-  end
+      let(:user) { create(:user) }
 
-  context "callbacks" do
-    # http://guides.rubyonrails.org/active_record_callbacks.html
-    # https://github.com/beatrichartz/shoulda-callback-matchers/wiki
-
-    let(:user) { create(:user) }
-
-    it { expect(user).to callback(:send_welcome_email).after(:create) }
-    it { expect(user).to callback(:track_new_user_signup).after(:create) }
-    it { expect(user).to callback(:make_email_validation_ready!).before(:validation).on(:create) }
-    it { expect(user).to callback(:calculate_some_metrics).after(:save) }
-    it { expect(user).to callback(:update_user_count).before(:destroy) }
-    it { expect(user).to callback(:send_goodbye_email).before(:destroy) }
+      it { expect(user).to callback(:send_welcome_email).after(:create) }
+      it { expect(user).to callback(:track_new_user_signup).after(:create) }
+      it { expect(user).to callback(:make_email_validation_ready!).before(:validation).on(:create) }
+      it { expect(user).to callback(:calculate_some_metrics).after(:save) }
+      it { expect(user).to callback(:update_user_count).before(:destroy) }
+      it { expect(user).to callback(:send_goodbye_email).before(:destroy) }
+    end
   end
 
   describe "scopes" do
@@ -142,11 +146,11 @@ describe Model do
 
     context "executes methods correctly" do
       context "#method name" do
-        it "does what it's supposed to..."
+        it "does what it's supposed to..." do
           expect(factory_instance.method_to_test).to eq(value_you_expect)
         end
 
-        it "does what it's supposed to..."
+        it "does what it's supposed to..." do
           expect(factory_instance.method_to_test).to eq(value_you_expect)
         end
       end
@@ -161,7 +165,7 @@ describe Model do
 
     context "executes methods correctly" do
       context "self.method name" do
-        it "does what it's supposed to..."
+        it "does what it's supposed to..." do
           expect(factory_instance.method_to_test).to eq(value_you_expect)
         end
       end
