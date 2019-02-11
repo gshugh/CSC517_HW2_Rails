@@ -33,8 +33,16 @@
         <td><%= tour.num_seats %></td>
         <td><%= Listing.get_agent_name_for_tour(tour) %></td>
         <td><%= link_to 'Show', tour %></td>
-        <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
-        <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if tour_listed_by_current_user?(tour) %>
+            <%= link_to 'Edit', edit_tour_path(tour) %>
+          <% end %>
+        </td>
+        <td>
+          <% if tour_listed_by_current_user?(tour) %>
+            <%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
