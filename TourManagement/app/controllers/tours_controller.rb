@@ -34,38 +34,55 @@ class ToursController < ApplicationController
   # POST /tours.json
   def create
 
-    # Create the tour
+    # Create the tour (not yet saved to DB)
     @tour = Tour.new(params_without_locations)
 
-    # Respond
-    respond_to do |format|
-      if @tour.save
+    # Handle the creation in a transaction
+    # so that any problems can be rolled back and it will be like the creation never happened
+    # http://vaidehijoshi.github.io/blog/2015/08/18/safer-sql-using-activerecord-transactions/
+    # https://stackoverflow.com/questions/51959746/how-to-know-why-a-transaction-was-rolled-back
+    transaction_success = false
+    Tour.transaction do
 
-        # Create a listing relationship between the new tour and the agent
-        # The assumption here is that the current user is an agent
-        # If not, they should not have been allowed to create a tour
-        # Do not complain if we have a nil current user
-        # This could happen during test (when nobody is logged in)
-        # Do this after the tour is saved (otherwise the listing is no good)
-        if current_user
-          new_listing = Listing.new(tour_id: @tour.id, user_id: current_user.id)
-          new_listing.save
-        end
+      # Attempt save
+      @tour.save!(params_without_locations)
 
-        # Create a visits relationship between the new tour and every location
-        link_to_locations
+      # Attempt to create a listing relationship between the new tour and the agent
+      # The assumption here is that the current user is an agent
+      # If not, they should not have been allowed to create a tour
+      # Do not complain if we have a nil current user
+      # This could happen during test (when nobody is logged in)
+      # Do this after the tour is saved (otherwise the listing is no good)
+      if current_user
+        new_listing = Listing.new(tour_id: @tour.id, user_id: current_user.id)
+        new_listing.save!
+      end
 
-        # Everything still okay?
-        if @tour.errors.empty?
-          format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
-          format.json { render :show, status: :created, location: @tour }
-        else
-          @tour.destroy
-          format.html { render :new }
-          format.json { render json: @tour.errors, status: :unprocessable_entity }
-        end
+      # Attempt to create relationships between the tour and its locations
+      link_to_locations
 
-      else
+      # Everything still okay?
+      unless @tour.errors.empty?
+        raise ActiveRecord::Rollback
+      end
+
+      # Need ruby 2.5 or greater to rescue error inside do block
+      # so we have a bit of extra code to tell, outside of the transaction, if it was rolled back
+      # We will only get here if an exception was NOT raised
+      transaction_success = true
+
+    end
+
+    # React based on whether or not the transaction succeeded
+    if transaction_success
+      # This code only runs if the transaction succeeded
+      respond_to do |format|
+        format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
+        format.json { render :show, status: :created, location: @tour }
+      end
+    else
+      # This code only runs if the transaction was rolled back
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
       end
@@ -77,8 +94,8 @@ class ToursController < ApplicationController
   # PATCH/PUT /tours/1.json
   def update
 
-    # Handle the update in a transaction so that any problems can be rolled back
-    # and it will be like the update never happened
+    # Handle the update in a transaction
+    # so that any problems can be rolled back and it will be like the update never happened
     # http://vaidehijoshi.github.io/blog/2015/08/18/safer-sql-using-activerecord-transactions/
     # https://stackoverflow.com/questions/51959746/how-to-know-why-a-transaction-was-rolled-back
     transaction_success = false
@@ -187,6 +204,7 @@ class ToursController < ApplicationController
     # Create / Update relationship between a tour and the locations that it visits
     # The view presents 10 slots for the itinerary
     # Anything the user didn't select will default to a location ID of -1
+    # Use save! instead of save so that exceptions will be raised if something doesn't work
     def link_to_locations
 
       # Remove any existing links
@@ -205,7 +223,7 @@ class ToursController < ApplicationController
           tour_id: @tour.id,
           location_id: selected_location_id
         )
-        new_visits_rel.save
+        new_visits_rel.save!
 
         next if got_start_location
 
@@ -213,7 +231,7 @@ class ToursController < ApplicationController
           tour_id: @tour.id,
           location_id: selected_location_id
         )
-        new_start_at_rel.save
+        new_start_at_rel.save!
         got_start_location = true
 
       end
