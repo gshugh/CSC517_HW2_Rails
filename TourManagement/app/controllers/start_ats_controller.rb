@@ -28,7 +28,8 @@ class StartAtsController < ApplicationController
 
     respond_to do |format|
       if @start_at.save
-        format.html { redirect_to @start, notice: 'StartAt was successfully created.' }
+        format.html { redirect_to @start_at, notice: 'StartAt was successfully
+created.' }
         format.json { render :show, status: :created, location: @start_at }
       else
         format.html { render :new }
