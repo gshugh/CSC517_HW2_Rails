@@ -57,12 +57,17 @@
   </div>
 
   <div class="field">
-    <%= form.label "Starting Location" %>
-    <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
-    <%= form.select(:starting_location) do %>
-      <% Location.all.each do |loc| -%>
-        <%= content_tag(:option, loc.user_friendly_description, value: loc.id) %>
+    <%= form.label "Itinerary" %>
+    <% (1..10).each do |i| %>
+      <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
+      <%= form.select("location" + i.to_s, prompt: "Select something") do %>
+        <!-- The first option has a special value so that we can see which locations were not selected -->
+        <%= content_tag(:option, "", value: -1) %>
+        <% Location.all.each do |loc| -%>
+          <%= content_tag(:option, loc.user_friendly_description, value: loc.id) %>
+        <% end %>
       <% end %>
+      <br>
     <% end %>
   </div>
 
