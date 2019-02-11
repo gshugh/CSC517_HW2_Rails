@@ -9,7 +9,7 @@ class Tour < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :waitlists, dependent: :destroy
   has_many :listings, dependent: :destroy
-  has_many :starts, dependent: :destroy
+  has_many :start_ats, dependent: :destroy
 
   # Establish "through" relationships
   has_many :locations, through: :visits, dependent: :destroy
@@ -17,7 +17,7 @@ class Tour < ApplicationRecord
   has_many :users, through: :bookings, dependent: :destroy
   has_many :users, through: :waitlists, dependent: :destroy
   has_one :user, through: :listings, dependent: :destroy
-  has_one :location, through: :starts, dependent: :destroy
+  has_one :location, through: :start_ats, dependent: :destroy
 
   # Remove uniqueness validation for name, uniqueness is from the ID
   validates :name, presence: true
