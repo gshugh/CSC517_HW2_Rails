@@ -69,4 +69,5 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to tours_url
   end
+
 end
