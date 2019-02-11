@@ -56,6 +56,16 @@
     <%= form.number_field :num_seats %>
   </div>
 
+  <div class="field">
+    <%= form.label "Starting Location" %>
+    <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
+    <%= form.select(:starting_location) do %>
+      <% Location.all.each do |loc| -%>
+        <%= content_tag(:option, loc.user_friendly_description, value: loc.id) %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
