@@ -18,8 +18,8 @@
       <tr>
         <td><%= review.subject %></td>
         <td><%= review.content %></td>
-        <td><%= review.user %></td>
-        <td><%= review.tour %></td>
+        <td><%= review.get_user_name %></td>
+        <td><%= review.get_tour_name %></td>
         <td><%= link_to 'Show', review %></td>
         <td><%= link_to 'Edit', edit_review_path(review) %></td>
         <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>

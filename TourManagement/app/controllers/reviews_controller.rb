@@ -24,8 +24,12 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
 
+    # Associate the currently logged in user with this review
+    # This way, the view is not cluttered with the user (they already know who they are)
+    @review = Review.new(review_params.merge(:user_id => current_user.id))
+
+    # Respond
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
@@ -35,6 +39,7 @@ class ReviewsController < ApplicationController
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /reviews/1
