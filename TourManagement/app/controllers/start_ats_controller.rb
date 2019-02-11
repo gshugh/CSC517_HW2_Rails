@@ -1,10 +1,10 @@
-class StartsController < ApplicationController
+class StartAtsController < ApplicationController
   before_action :set_start, only: [:show, :edit, :update, :destroy]
 
   # GET /starts
   # GET /starts.json
   def index
-    @starts = Start.all
+    @start_ats = StartAt.all
   end
 
   # GET /starts/1
@@ -14,7 +14,7 @@ class StartsController < ApplicationController
 
   # GET /starts/new
   def new
-    @start = Start.new
+    @start_at = StartAt.new
   end
 
   # GET /starts/1/edit
@@ -24,15 +24,16 @@ class StartsController < ApplicationController
   # POST /starts
   # POST /starts.json
   def create
-    @start = Start.new(start_params)
+    @start_at = StartAt.new(start_params)
 
     respond_to do |format|
-      if @start.save
-        format.html { redirect_to @start, notice: 'Start was successfully created.' }
-        format.json { render :show, status: :created, location: @start }
+      if @start_at.save
+        format.html { redirect_to @start, notice: 'StartAt was successfully created.' }
+        format.json { render :show, status: :created, location: @start_at }
       else
         format.html { render :new }
-        format.json { render json: @start.errors, status: :unprocessable_entity }
+        format.json { render json: @start_at.errors, status:
+            :unprocessable_entity }
       end
     end
   end
@@ -41,12 +42,14 @@ class StartsController < ApplicationController
   # PATCH/PUT /starts/1.json
   def update
     respond_to do |format|
-      if @start.update(start_params)
-        format.html { redirect_to @start, notice: 'Start was successfully updated.' }
-        format.json { render :show, status: :ok, location: @start }
+      if @start_at.update(start_params)
+        format.html { redirect_to @start_at, notice: 'StartAt was successfully
+updated.' }
+        format.json { render :show, status: :ok, location: @start_at }
       else
         format.html { render :edit }
-        format.json { render json: @start.errors, status: :unprocessable_entity }
+        format.json { render json: @start_at.errors, status:
+            :unprocessable_entity }
       end
     end
   end
@@ -54,9 +57,9 @@ class StartsController < ApplicationController
   # DELETE /starts/1
   # DELETE /starts/1.json
   def destroy
-    @start.destroy
+    @start_at.destroy
     respond_to do |format|
-      format.html { redirect_to starts_url, notice: 'Start was successfully destroyed.' }
+      format.html { redirect_to starts_url, notice: 'StartAt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +67,7 @@ class StartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_start
-      @start = Start.find(params[:id])
+      @start_at = StartAt.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
