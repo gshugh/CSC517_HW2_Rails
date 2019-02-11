@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # Auto-generated from scaffolding
   resources :visits
-  resources :starts
+  resources :start_ats
   resources :locations
   resources :photos
   resources :reviews

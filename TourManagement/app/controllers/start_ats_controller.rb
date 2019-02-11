@@ -72,6 +72,6 @@ updated.' }
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def start_params
-      params.require(:start).permit(:tour_id, :location_id)
+      params.require(:start_at).permit(:tour_id, :location_id)
     end
 end
