@@ -14,10 +14,10 @@
   <tbody>
     <% @starts.each do |start| %>
       <tr>
-        <td><%= start.tour %></td>
-        <td><%= start.location %></td>
+        <td><%= start_at.tour %></td>
+        <td><%= start_at.location %></td>
         <td><%= link_to 'Show', start %></td>
-        <td><%= link_to 'Edit', edit_start_path(start) %></td>
+        <td><%= link_to 'Edit', edit_start_at_path(start) %></td>
         <td><%= link_to 'Destroy', start, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Start', new_start_path %>
+<%= link_to 'New Start At', new_start_path %>

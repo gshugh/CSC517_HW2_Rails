@@ -59,7 +59,8 @@ updated.' }
   def destroy
     @start_at.destroy
     respond_to do |format|
-      format.html { redirect_to starts_url, notice: 'StartAt was successfully destroyed.' }
+      format.html { redirect_to start_ats_url, notice: 'StartAt was
+successfully destroyed.' }
       format.json { head :no_content }
     end
   end
