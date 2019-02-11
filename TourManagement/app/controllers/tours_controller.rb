@@ -10,8 +10,15 @@ class ToursController < ApplicationController
   # GET /tours/1
   # GET /tours/1.json
   def show
+
     # Get all reviews associated with this tour so that the View may show them
     @reviews = Review.where(tour_id: @tour.id)
+
+    # Get all locations associated with this tour so that the View may show them
+    @locations = Visit.where(tour_id: @tour.id).map do |matching_visit|
+      Location.find(matching_visit.location_id)
+    end
+
   end
 
   # GET /tours/new
