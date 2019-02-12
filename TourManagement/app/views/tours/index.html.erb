@@ -5,7 +5,7 @@
 <!-- Provide search filters -->
 <!-- https://guides.rubyonrails.org/form_helpers.html -->
 <!-- https://m.patrikonrails.com/rails-5-1s-form-with-vs-old-form-helpers-3a5f72a8c78a -->
-<%= form_with url: tours_path, method: "get" do |form| %>
+<%= form_with model: @tour, method: "get" do |form| %>
   <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
   <%= form.label "Desired Location" %>
   <%= form.select("desired_location") do %>

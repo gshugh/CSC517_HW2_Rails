@@ -12,6 +12,13 @@ class ToursController < ApplicationController
       @tours = @tours.public_send(key, value) if value.present?
     end
 
+    # TODO remove debug
+    puts params
+    puts filtering_params(params)
+    @tours.each do |t|
+      puts t.name
+    end
+
   end
 
   # GET /tours/1
@@ -158,10 +165,9 @@ class ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.permit(
+      params.require(:tour).permit(
         # Support searching
-        # Don't make tour required, because it won't come through in a search post
-        # Permit the other things that will come through in a search post
+        # Permit things that will come through in a search post
         # Implemented per...
         # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
         :tour,
