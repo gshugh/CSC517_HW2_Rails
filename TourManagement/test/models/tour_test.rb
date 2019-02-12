@@ -14,4 +14,9 @@ class TourTest < ActiveSupport::TestCase
     assert_equal "Cancelled", @tour_3.status_description
   end
 
+  test "test check for past tour" do
+    assert @tour_1.in_the_past
+    assert_not @tour_2.in_the_past
+  end
+
 end

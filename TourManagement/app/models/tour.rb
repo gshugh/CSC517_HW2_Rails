@@ -44,11 +44,17 @@ class Tour < ApplicationRecord
   def status_description
     if cancelled
       return "Cancelled"
-    elsif Date.current >= end_date
+    elsif in_the_past
       return "Completed"
     else
       return "In Future"
     end
+  end
+
+  # Calculate whether the tour is in the past
+  # If it is not a cancelled tour, this should make the status "Completed"
+  def in_the_past
+    return Date.current >= end_date
   end
 
 end
