@@ -2,6 +2,28 @@
 
 <h1>Tours</h1>
 
+<!-- Provide search filters -->
+<!-- https://guides.rubyonrails.org/form_helpers.html -->
+<!-- https://m.patrikonrails.com/rails-5-1s-form-with-vs-old-form-helpers-3a5f72a8c78a -->
+<%= form_with model: @tour, method: "get" do |form| %>
+  <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
+  <%= form.label "Desired Location" %>
+  <%= form.select("desired_location") do %>
+    <!-- The first option has a special value so that we can see if there is no desired location -->
+    <%= content_tag(:option, "", value: -1) %>
+    <% Location.all.each do |loc| -%>
+      <%= content_tag(
+        :option,
+        loc.user_friendly_description,
+        value: loc.id
+      ) %>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= form.submit "Search" %>
+  </div>
+<%end %>
+
 <!-- Show the basics - not enough room to show everything here -->
 <table>
   <thead>
