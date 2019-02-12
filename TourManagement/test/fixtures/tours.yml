@@ -8,7 +8,7 @@ one:
   start_date: 2019-02-05
   end_date: 2019-02-05
   operator_contact: MyString
-  status: MyString
+  cancelled: false
   num_seats: 1
   # Tours need at least 1 location id
   # But this is not stored in the tour model
@@ -24,7 +24,7 @@ two:
   start_date: 2019-02-05
   end_date: 2019-02-05
   operator_contact: MyString
-  status: MyString
+  cancelled: false
   num_seats: 1
   # Tours need at least 1 location id
   # But this is not stored in the tour model
