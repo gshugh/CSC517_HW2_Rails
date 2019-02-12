@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: My Exciting Tour
   description: MyString
   price_in_cents: 1
   deadline: 2019-02-05
@@ -10,9 +10,14 @@ one:
   operator_contact: MyString
   status: MyString
   num_seats: 1
+  # Tours need at least 1 location id
+  # But this is not stored in the tour model
+  # So cannot add this to the fixture
+  # Minitest::UnexpectedError: ActiveRecord::Fixture::FixtureError: table "tours" has no columns named "location1".
+  # Instead, location injected in the test code itself
 
 two:
-  name: MyString
+  name: My Boring Tour
   description: MyString
   price_in_cents: 1
   deadline: 2019-02-05
@@ -21,3 +26,8 @@ two:
   operator_contact: MyString
   status: MyString
   num_seats: 1
+  # Tours need at least 1 location id
+  # But this is not stored in the tour model
+  # So cannot add this to the fixture
+  # Minitest::UnexpectedError: ActiveRecord::Fixture::FixtureError: table "tours" has no columns named "location1".
+  # Instead, location injected in the test code itself

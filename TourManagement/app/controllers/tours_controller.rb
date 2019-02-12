@@ -10,8 +10,15 @@ class ToursController < ApplicationController
   # GET /tours/1
   # GET /tours/1.json
   def show
+
     # Get all reviews associated with this tour so that the View may show them
     @reviews = Review.where(tour_id: @tour.id)
+
+    # Get all locations associated with this tour so that the View may show them
+    @locations = Visit.where(tour_id: @tour.id).map do |matching_visit|
+      Location.find(matching_visit.location_id)
+    end
+
   end
 
   # GET /tours/new
@@ -27,26 +34,55 @@ class ToursController < ApplicationController
   # POST /tours.json
   def create
 
-    # Create the tour
-    @tour = Tour.new(tour_params)
+    # Create the tour (not yet saved to DB)
+    @tour = Tour.new(params_without_locations)
 
-    # Respond
-    respond_to do |format|
-      if @tour.save
-        # Before responding, create a listing relationship between the new tour and the agent
-        # The assumption here is that the current user is an agent
-        # If not, they should not have been allowed to create a tour
-        # Do not complain if we have a nil current user
-        # This could happen during test (when nobody is logged in)
-        # Do this after the tour is saved (otherwise the listing is no good)
-        if current_user
-          new_listing = Listing.new(tour_id: @tour.id, user_id: current_user.id)
-          new_listing.save
-        end
-        # Actual response
+    # Handle the creation in a transaction
+    # so that any problems can be rolled back and it will be like the creation never happened
+    # http://vaidehijoshi.github.io/blog/2015/08/18/safer-sql-using-activerecord-transactions/
+    # https://stackoverflow.com/questions/51959746/how-to-know-why-a-transaction-was-rolled-back
+    transaction_success = false
+    Tour.transaction do
+
+      # Attempt save
+      @tour.save(params_without_locations)
+
+      # Attempt to create a listing relationship between the new tour and the agent
+      # The assumption here is that the current user is an agent
+      # If not, they should not have been allowed to create a tour
+      # Do not complain if we have a nil current user
+      # This could happen during test (when nobody is logged in)
+      # Do this after the tour is saved (otherwise the listing is no good)
+      if current_user
+        new_listing = Listing.new(tour_id: @tour.id, user_id: current_user.id)
+        new_listing.save
+      end
+
+      # Attempt to create relationships between the tour and its locations
+      link_to_locations
+
+      # Everything still okay?
+      unless @tour.errors.empty?
+        raise ActiveRecord::Rollback
+      end
+
+      # Need ruby 2.5 or greater to rescue error inside do block
+      # so we have a bit of extra code to tell, outside of the transaction, if it was rolled back
+      # We will only get here if an exception was NOT raised
+      transaction_success = true
+
+    end
+
+    # React based on whether or not the transaction succeeded
+    if transaction_success
+      # This code only runs if the transaction succeeded
+      respond_to do |format|
         format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
         format.json { render :show, status: :created, location: @tour }
-      else
+      end
+    else
+      # This code only runs if the transaction was rolled back
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
       end
@@ -57,15 +93,43 @@ class ToursController < ApplicationController
   # PATCH/PUT /tours/1
   # PATCH/PUT /tours/1.json
   def update
-    respond_to do |format|
-      if @tour.update(tour_params)
+
+    # Handle the update in a transaction
+    # so that any problems can be rolled back and it will be like the update never happened
+    # http://vaidehijoshi.github.io/blog/2015/08/18/safer-sql-using-activerecord-transactions/
+    # https://stackoverflow.com/questions/51959746/how-to-know-why-a-transaction-was-rolled-back
+    transaction_success = false
+    Tour.transaction do
+
+      # Attempt all of the actions that belong together in a transaction
+      @tour.update(params_without_locations)
+      link_to_locations
+      unless @tour.errors.empty?
+        raise ActiveRecord::Rollback
+      end
+
+      # Need ruby 2.5 or greater to rescue error inside do block
+      # so we have a bit of extra code to tell, outside of the transaction, if it was rolled back
+      # We will only get here if an exception was NOT raised
+      transaction_success = true
+
+    end
+
+    # React based on whether or not the transaction succeeded
+    if transaction_success
+      # This code only runs if the transaction succeeded
+      respond_to do |format|
         format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
         format.json { render :show, status: :ok, location: @tour }
-      else
+      end
+    else
+      # This code only runs if the transaction was rolled back
+      respond_to do |format|
         format.html { render :edit }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /tours/1
@@ -79,6 +143,7 @@ class ToursController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_tour
       @tour = Tour.find(params[:id])
@@ -95,7 +160,93 @@ class ToursController < ApplicationController
         :end_date,
         :operator_contact,
         :status,
-        :num_seats
+        :num_seats,
+        # Also permit up to 10 locations in the itinerary
+        # Any un-selected locations will still come through
+        # (just with a special value that we can use to ignore them later)
+        :location1,
+        :location2,
+        :location3,
+        :location4,
+        :location5,
+        :location6,
+        :location7,
+        :location8,
+        :location9,
+        :location10
       )
     end
+
+    # Get a copy of the tour parameters that does NOT include the locations
+    # Locations in the itinerary are not stored in the tour itself
+    # But rather in explicit relationships
+    # This way, if we change the number of possible locations in the tour
+    # we do not need to change anything about our models
+    def params_without_locations
+      return tour_params.except(
+        # Locations in the itinerary are not stored in the tour itself
+        # But rather in explicit relationships
+        # This way, if we change the number of possible locations in the tour
+        # we do not need to change anything about our models
+        :location1,
+        :location2,
+        :location3,
+        :location4,
+        :location5,
+        :location6,
+        :location7,
+        :location8,
+        :location9,
+        :location10
+      )
+    end
+
+    # Create / Update relationship between a tour and the locations that it visits
+    # The view presents 10 slots for the itinerary
+    # Anything the user didn't select will default to a location ID of -1
+    def link_to_locations
+
+      # Remove any existing links
+      # (this method is used in both create and update)
+      Visit.where(tour_id: @tour.id).each(&:destroy)
+
+      # Create new links
+      got_start_location = false
+      (1..10).each do |i|
+
+        # Grab a location id from the parameters
+        # Be forgiving
+        # No such key?  Okay, set to -1 (flag for no location in this itinerary slot)
+        selected_location_id =
+          tour_params["location" + i.to_s] ?
+          tour_params["location" + i.to_s].to_i :
+          -1
+
+        # Create visits relationship (or skip to next iteration)
+        next unless selected_location_id.positive?
+        new_visits_rel = Visit.new(
+          tour_id: @tour.id,
+          location_id: selected_location_id
+        )
+        new_visits_rel.save
+
+        # Create starts at relationship (or skip to next iteration)
+        next if got_start_location
+        new_start_at_rel = StartAt.new(
+          tour_id: @tour.id,
+          location_id: selected_location_id
+        )
+        new_start_at_rel.save
+        got_start_location = true
+
+      end
+
+      # Gotta have at least one location in the itinerary
+      # https://stackoverflow.com/questions/5320934/how-to-add-custom-errors-to-the-user-errors-collection
+      unless got_start_location
+        @tour.errors[:base] << "A tour must have at least one location"
+      end
+
+    end
+
 end

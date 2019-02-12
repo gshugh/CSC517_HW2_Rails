@@ -56,6 +56,27 @@
     <%= form.number_field :num_seats %>
   </div>
 
+  <div class="field">
+    <%= form.label "Itinerary" %>
+    <% (1..10).each do |i| %>
+      <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
+      <%= form.select("location" + i.to_s) do %>
+        <!-- The first option has a special value so that we can see which itinerary slots have no location -->
+        <%= content_tag(:option, "", value: -1) %>
+        <% Location.all.each do |loc| -%>
+          <!-- Set existing locations: https://api.rubyonrails.org/v5.1/classes/ActionView/Helpers/TagHelper.html -->
+          <%= content_tag(
+            :option,
+            loc.user_friendly_description,
+            value: loc.id,
+            selected: Visit.get_ith_location_id_for_tour(@tour, i-1) == loc.id
+          ) %>
+        <% end %>
+      <% end %>
+      <br>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

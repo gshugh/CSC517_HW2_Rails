@@ -28,7 +28,13 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
         operator_contact: @tour.operator_contact,
         price_in_cents: @tour.price_in_cents,
         start_date: @tour.start_date,
-        status: @tour.status
+        status: @tour.status,
+        # Tours need at least 1 location id
+        # But this is not stored in the tour model
+        # So cannot add this to the fixture
+        # Minitest::UnexpectedError: ActiveRecord::Fixture::FixtureError: table "tours" has no columns named "location1".
+        # Instead, location injected in the test code itself
+        location1: 1
       } }
     end
 
@@ -57,7 +63,13 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
       operator_contact: @tour.operator_contact,
       price_in_cents: @tour.price_in_cents,
       start_date: @tour.start_date,
-      status: @tour.status
+      status: @tour.status,
+      # Tours need at least 1 location id
+      # But this is not stored in the tour model
+      # So cannot add this to the fixture
+      # Minitest::UnexpectedError: ActiveRecord::Fixture::FixtureError: table "tours" has no columns named "location1".
+      # Instead, location injected in the test code itself
+      location1: 1
     } }
     assert_redirected_to tour_url(@tour)
   end
@@ -69,4 +81,5 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to tours_url
   end
+
 end
