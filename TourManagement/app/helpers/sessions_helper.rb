@@ -1,6 +1,7 @@
 module SessionsHelper
 
-  # Content from https://www.railstutorial.org/book/basic_login
+  # Some content from https://www.railstutorial.org/book/basic_login
+  # Then added more methods as needed
 
   # Logs in the given user.
   def log_in(user)
