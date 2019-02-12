@@ -47,6 +47,11 @@
 <% end %>
 <br>
 
+<% if current_user_can_modify_given_tour?(@tour) %>
+  <%= link_to 'Edit', edit_tour_path(@tour) %> |
+<% end %>
+<%= link_to 'Back', tours_path %>
+
 <!-- Also display any reviews that exist for this tour -->
 <% unless @reviews.empty? %>
 
@@ -79,6 +84,3 @@
   </table>
 
 <% end %>
-
-<%= link_to 'Edit', edit_tour_path(@tour) %> |
-<%= link_to 'Back', tours_path %>

@@ -51,4 +51,9 @@ module SessionsHelper
     return current_user_admin? || current_user_agent?
   end
 
+  # Method to determine if the current user is allowed to edit / delete / cancel the given tour
+  def current_user_can_modify_given_tour?(tour)
+    return current_user_admin? || tour_listed_by_current_user?(tour)
+  end
+
 end
