@@ -26,7 +26,10 @@ class ReviewsController < ApplicationController
   def create
 
     # Associate the currently logged in user with this review
-    # This way, the view is not cluttered with the user (they already know who they are)
+    #   This way, the view is not cluttered with the user (they already know who they are)
+    # The assumption is that there IS a logged in user
+    #   If not then this review creation should fail
+    raise "A review cannot be created if there is no logged-in user" unless current_user
     @review = Review.new(review_params.merge(:user_id => current_user.id))
 
     # Respond

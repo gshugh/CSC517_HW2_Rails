@@ -214,18 +214,24 @@ class ToursController < ApplicationController
       got_start_location = false
       (1..10).each do |i|
 
-        selected_location_id = tour_params["location" + i.to_s].to_i
+        # Grab a location id from the parameters
+        # Be forgiving
+        # No such key?  Okay, set to -1 (flag for no location in this itinerary slot)
+        selected_location_id =
+          tour_params["location" + i.to_s] ?
+          tour_params["location" + i.to_s].to_i :
+          -1
 
+        # Create visits relationship (or skip to next iteration)
         next unless selected_location_id.positive?
-
         new_visits_rel = Visit.new(
           tour_id: @tour.id,
           location_id: selected_location_id
         )
         new_visits_rel.save
 
+        # Create starts at relationship (or skip to next iteration)
         next if got_start_location
-
         new_start_at_rel = StartAt.new(
           tour_id: @tour.id,
           location_id: selected_location_id
