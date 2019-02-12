@@ -1,14 +1,9 @@
 ################################################################################
-# This is a skeleton for testing models including examples of validations,
-# callbacks, scopes, instance & class methods, associations, and more. Pick and
-# choose what you want, as all models don't NEED to be tested at this depth.
+# This is an RSpec for testing the booking model. It tests that a booking can
+# be created, that the number of seats is a non-negative number, and that the
+# table belongs to a user and/or a tour.
 #
-# I'm always eager to hear new tips & suggestions as I'm still new to testing,
-# so if you have any, please share!
-#
-# @kyletcarlson
-#
-# This skeleton also assumes you're using the following gems:
+# This spec assumes that the following gems are installed.
 #
 # rspec-rails: https://github.com/rspec/rspec-rails
 # Shoulda-matchers: https://github.com/thoughtbot/shoulda-matchers
@@ -24,8 +19,6 @@ RSpec.describe Booking, type: :model do
   describe "model" do
 
     it "has a valid factory" do
-      # Using the shortened version of FactoryGirl syntax.
-      # Add:  "config.include FactoryGirl::Syntax::Methods" (no quotes) to your spec_helper.rb
       expect(build(:booking)).to be_valid
     end
 
@@ -39,12 +32,11 @@ RSpec.describe Booking, type: :model do
       it { expect(build(:booking, :zero_seats)).to(
           validate_numericality_of(:num_seats).is_greater_than_or_equal_to(0)) }
       it { expect(build(:booking, :negative_seats)).not_to be_valid }
+      it { expect(build(:booking, :float_seats)).not_to be_valid }
     end
 
-    describe "table associations" do
-      it { expect(:booking).to belong_to(:user) }
-      it { expect(:booking).to belong_to(:tour) }
-    end
+    it { should belong_to :user }
+    it { should belong_to :tour }
 
   end
 end
