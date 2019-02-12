@@ -36,11 +36,11 @@ RSpec.describe Booking, type: :model do
     describe "validations" do
 
       # Basic validations
-      it { expect(build(:booking, :one_seat)).to validate_numericality_of(:num_seats).is_greater_than_or_equal_to(0)}
-      # it { expect(one).to validate_numericality_of(:num_seats)
-      #                       .is_greater_than_or_equal_to(0) }
-      # it { expect(two).to validate_numericality_of(:num_seats)
-      #                       .is_greater_than_or_equal_to(0) }
+      it { expect(build(:booking, :one_seat)).to(
+          validate_numericality_of(:num_seats).is_greater_than_or_equal_to(0)) }
+      it { expect(build(:booking, :zero_seats)).to(
+          validate_numericality_of(:num_seats).is_greater_than_or_equal_to(0)) }
+      it { expect(build(:booking, :negative_seats)).not_to be_valid }
 
       # Format validations
       # it { expect(user).to allow_value("JSON Vorhees").for(:name) }

@@ -12,7 +12,7 @@ FactoryBot.define do
       num_seats {0}
     end
     trait :negative_seats do
-      num_seats{-1}
+      num_seats {-1}
     end
 
   end
