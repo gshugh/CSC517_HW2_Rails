@@ -48,7 +48,12 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <!-- Drop down for selecting tour status: https://guides.rubyonrails.org/form_helpers.html -->
+    <%= form.select(:status, options_for_select([
+      ['In Future', 'In Future'],
+      ['Completed', 'Completed'],
+      ['Cancelled', 'Cancelled']
+    ], :status)) %>
   </div>
 
   <div class="field">
