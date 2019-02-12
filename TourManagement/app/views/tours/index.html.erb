@@ -27,12 +27,12 @@
         <td><%= Listing.get_agent_name_for_tour(tour) %></td>
         <td><%= link_to 'Show', tour %></td>
         <td>
-          <% if tour_listed_by_current_user?(tour) %>
+          <% if current_user_can_modify_given_tour?(tour) %>
             <%= link_to 'Edit', edit_tour_path(tour) %>
           <% end %>
         </td>
         <td>
-          <% if tour_listed_by_current_user?(tour) %>
+          <% if current_user_can_modify_given_tour?(tour) %>
             <%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </td>
@@ -43,4 +43,6 @@
 
 <br>
 
-<%= link_to 'New Tour', new_tour_path %>
+<% if current_user_can_create_tour? %>
+  <%= link_to 'New Tour', new_tour_path %>
+<% end %>
