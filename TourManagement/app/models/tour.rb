@@ -41,11 +41,10 @@ class Tour < ApplicationRecord
   scope :desired_location, -> (desired_loc_id) { joins "INNER JOIN visits ON visits.tour_id = tours.id AND visits.location_id = #{desired_loc_id}" }
 
   # Calculate a description of the tour status
-  # TODO create a unit test for this
   def status_description
     if cancelled
       return "Cancelled"
-    elsif end_date > Date.today
+    elsif Date.current >= end_date
       return "Completed"
     else
       return "In Future"
