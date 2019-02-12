@@ -4,7 +4,14 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = Tour.all
+
+    # Support filtering tours according to user desires
+    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+    @tours = Tour.where(nil)
+    filtering_params(params).each do |key, value|
+      @tours = @tours.public_send(key, value) if value.present?
+    end
+
   end
 
   # GET /tours/1
@@ -151,7 +158,17 @@ class ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(
+      params.permit(
+        # Support searching
+        # Don't make tour required, because it won't come through in a search post
+        # Permit the other things that will come through in a search post
+        # Implemented per...
+        # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+        :tour,
+        :utf8,
+        :authenticity_token,
+        :commit,
+        # Permit the normal stuff
         :name,
         :description,
         :price_in_cents,
@@ -173,7 +190,9 @@ class ToursController < ApplicationController
         :location7,
         :location8,
         :location9,
-        :location10
+        :location10,
+        # Also permit filtering
+        :desired_location
       )
     end
 
@@ -247,6 +266,12 @@ class ToursController < ApplicationController
         @tour.errors[:base] << "A tour must have at least one location"
       end
 
+    end
+
+    # A list of the param names that can be used for filtering the Product list
+    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+    def filtering_params(params)
+      params.slice(:desired_location)
     end
 
 end
