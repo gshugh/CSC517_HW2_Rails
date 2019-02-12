@@ -27,15 +27,34 @@ class Tour < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :operator_contact, presence: true
-  validates :status, presence: true
   validates :num_seats,
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  # Do NOT validate presence of boolean fields (cancelled)
+  # Seems to see false as not-present
 
   # Support filtering tours
   # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
   # https://guides.rubyonrails.org/active_record_querying.html#scopes
   # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
   scope :desired_location, -> (desired_loc_id) { joins "INNER JOIN visits ON visits.tour_id = tours.id AND visits.location_id = #{desired_loc_id}" }
+
+  # Calculate a description of the tour status
+  def status_description
+    if cancelled
+      return "Cancelled"
+    elsif in_the_past
+      return "Completed"
+    else
+      return "In Future"
+    end
+  end
+
+  # Calculate whether the tour is in the past
+  # If it is not a cancelled tour, this should make the status "Completed"
+  def in_the_past
+    return Date.current >= end_date
+  end
 
 end

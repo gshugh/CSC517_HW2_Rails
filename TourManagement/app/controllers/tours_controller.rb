@@ -182,7 +182,7 @@ class ToursController < ApplicationController
         :start_date,
         :end_date,
         :operator_contact,
-        :status,
+        :cancelled,
         :num_seats,
         # Also permit up to 10 locations in the itinerary
         # Any un-selected locations will still come through

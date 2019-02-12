@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_203712) do
+ActiveRecord::Schema.define(version: 2019_02_12_225758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2019_02_10_203712) do
     t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_starts_on_location_id"
-    t.index ["tour_id"], name: "index_starts_on_tour_id"
+    t.index ["location_id"], name: "index_start_ats_on_location_id"
+    t.index ["tour_id"], name: "index_start_ats_on_tour_id"
   end
 
   create_table "tours", force: :cascade do |t|
@@ -86,10 +86,10 @@ ActiveRecord::Schema.define(version: 2019_02_10_203712) do
     t.date "start_date"
     t.date "end_date"
     t.string "operator_contact"
-    t.string "status"
     t.integer "num_seats"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "cancelled"
   end
 
   create_table "users", force: :cascade do |t|
