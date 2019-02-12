@@ -45,7 +45,7 @@ class ToursController < ApplicationController
     Tour.transaction do
 
       # Attempt save
-      @tour.save!(params_without_locations)
+      @tour.save(params_without_locations)
 
       # Attempt to create a listing relationship between the new tour and the agent
       # The assumption here is that the current user is an agent
@@ -55,7 +55,7 @@ class ToursController < ApplicationController
       # Do this after the tour is saved (otherwise the listing is no good)
       if current_user
         new_listing = Listing.new(tour_id: @tour.id, user_id: current_user.id)
-        new_listing.save!
+        new_listing.save
       end
 
       # Attempt to create relationships between the tour and its locations
@@ -102,7 +102,7 @@ class ToursController < ApplicationController
     Tour.transaction do
 
       # Attempt all of the actions that belong together in a transaction
-      @tour.update!(params_without_locations)
+      @tour.update(params_without_locations)
       link_to_locations
       unless @tour.errors.empty?
         raise ActiveRecord::Rollback
@@ -204,7 +204,6 @@ class ToursController < ApplicationController
     # Create / Update relationship between a tour and the locations that it visits
     # The view presents 10 slots for the itinerary
     # Anything the user didn't select will default to a location ID of -1
-    # Use save! instead of save so that exceptions will be raised if something doesn't work
     def link_to_locations
 
       # Remove any existing links
@@ -223,7 +222,7 @@ class ToursController < ApplicationController
           tour_id: @tour.id,
           location_id: selected_location_id
         )
-        new_visits_rel.save!
+        new_visits_rel.save
 
         next if got_start_location
 
@@ -231,7 +230,7 @@ class ToursController < ApplicationController
           tour_id: @tour.id,
           location_id: selected_location_id
         )
-        new_start_at_rel.save!
+        new_start_at_rel.save
         got_start_location = true
 
       end
