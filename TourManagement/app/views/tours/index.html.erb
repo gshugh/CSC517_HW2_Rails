@@ -43,4 +43,6 @@
 
 <br>
 
-<%= link_to 'New Tour', new_tour_path %>
+<% if current_user_can_create_tour? %>
+  <%= link_to 'New Tour', new_tour_path %>
+<% end %>

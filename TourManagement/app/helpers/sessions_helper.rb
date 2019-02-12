@@ -31,4 +31,24 @@ module SessionsHelper
     return matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
   end
 
+  # Method to determine if the current user is an admin
+  def current_user_admin?
+    return current_user && current_user.read_attribute("admin")
+  end
+
+  # Method to determine if the current user is an agent
+  def current_user_agent?
+    return current_user && current_user.read_attribute("agent")
+  end
+
+  # Method to determine if the current user is a customer
+  def current_user_customer?
+    return current_user && current_user.read_attribute("customer")
+  end
+
+  # Method to determine if the current user is allowed to create a tour
+  def current_user_can_create_tour?
+    return current_user_admin? || current_user_agent?
+  end
+
 end
