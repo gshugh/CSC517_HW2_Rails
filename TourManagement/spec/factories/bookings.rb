@@ -26,7 +26,7 @@ FactoryBot.define do
       num_seats {-1}
     end
     trait :float_seats do
-      num_seats {-1}
+      num_seats {1.2}
     end
 
   end

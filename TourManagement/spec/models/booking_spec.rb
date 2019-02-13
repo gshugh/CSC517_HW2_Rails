@@ -14,8 +14,6 @@ require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
 
-  require 'spec_helper'
-
   describe "model" do
 
     it "has a valid factory" do
