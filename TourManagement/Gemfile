@@ -37,7 +37,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+# Kunal altered the Gemfile.lock to bootsnap 1.4.0 and I only had 1.3.2, resulting in an error
+# This change is intended to spur all teammates to get the correct version with bundle install
+gem 'bootsnap', '>= 1.4.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
