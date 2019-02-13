@@ -1,6 +1,7 @@
 module SessionsHelper
 
-  # Content from https://www.railstutorial.org/book/basic_login
+  # Some content from https://www.railstutorial.org/book/basic_login
+  # Then added more methods as needed
 
   # Logs in the given user.
   def log_in(user)
@@ -52,8 +53,16 @@ module SessionsHelper
   end
 
   # Method to determine if the current user is allowed to edit / delete / cancel the given tour
+  # Nobody can modify a tour that is completed
+  # A tour in the future can always be modified by an admin
+  # A tour in the future can be modified by an agent who has created the tour
   def current_user_can_modify_given_tour?(tour)
-    return current_user_admin? || tour_listed_by_current_user?(tour)
+    can_modify =
+      !tour.in_the_past &&
+      (
+        current_user_admin? ||
+        (current_user_agent? && tour_listed_by_current_user?(tour))
+      )
   end
 
 end

@@ -1,5 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<h2 style="color: blue">Welcome <%= @user.name %>! </h2>
+
+<% if @user.admin? %>
+  <p><b> > <%= link_to 'Show users', users_url %></b></p>
+  <p><b> > <%= link_to 'Show tours', tours_url %></b></p>
+  <p><b> > <%= link_to 'Show reviews', reviews_url %></b></p>
+<% elsif @user.agent? %>
+  <p><b> > <%= link_to 'Show reviews', reviews_path %></b></p>
+  <p><b> > <%= link_to 'Show customers', user_path %></b></p>
+  <p><b> > <%= link_to 'Show tours', tours_path %></b></p>
+  <p><b> > <%= link_to 'Show customer bookmarked tours', bookmarks_path %></b></p>
+<% else %>
+  <p><b> > <%= link_to 'Show available tours', tours_path %></b></p>
+  <p><b> > <%= link_to 'Show my reviews', review_path %></b></p>
+  <p><b> > <%= link_to 'Show my bookmarks', bookmarks_path %></b></p>
+<% end %>>
+
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
@@ -15,20 +32,20 @@
   <%= @user.name %>
 </p>
 
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
+<!--<p>-->
+<!--  <strong>Admin:</strong>-->
+  <%#= @user.admin %>
+<!--</p>-->
 
-<p>
-  <strong>Agent:</strong>
-  <%= @user.agent %>
-</p>
+<!--<p>-->
+<!--  <strong>Agent:</strong>-->
+  <%#= @user.agent %>
+<!--</p>-->
 
-<p>
-  <strong>Customer:</strong>
-  <%= @user.customer %>
-</p>
+<!--<p>-->
+<!--  <strong>Customer:</strong>-->
+  <%#= @user.customer %>
+<!--</p>-->
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

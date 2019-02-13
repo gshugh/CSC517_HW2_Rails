@@ -31,11 +31,15 @@
 </p>
 <p>
   <strong>Status:</strong>
-  <%= @tour.status %>
+  <%= @tour.status_description %>
 </p>
 <p>
   <strong>Num seats:</strong>
   <%= @tour.num_seats %>
+</p>
+<p>
+  <strong>Agent:</strong>
+  <%= Listing.get_agent_name_for_tour(@tour) %>
 </p>
 
 <!-- Also display the itinerary -->
