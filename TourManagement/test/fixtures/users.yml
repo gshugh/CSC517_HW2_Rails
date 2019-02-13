@@ -13,11 +13,31 @@ one:
   customer: false
 
 two:
-  email: dummy@dummy.com
-  name: Jason Bourne
+  email: dummy_2@dummy.com
+  name: Jason Bourne Two
+  admin: false
+  agent: true
+  customer: false
+  # Create password digest
+  # https://www.railstutorial.org/book/basic_login
+  password_digest: <%= User.digest('password') %>
+
+three:
+  email: dummy_3@dummy.com
+  name: Jason Bourne Three
   admin: false
   agent: false
-  customer: false
+  customer: true
+  # Create password digest
+  # https://www.railstutorial.org/book/basic_login
+  password_digest: <%= User.digest('password') %>
+
+four:
+  email: dummy_4@dummy.com
+  name: Jason Bourne Four
+  admin: false
+  agent: true
+  customer: true
   # Create password digest
   # https://www.railstutorial.org/book/basic_login
   password_digest: <%= User.digest('password') %>
