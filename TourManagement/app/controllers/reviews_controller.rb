@@ -4,12 +4,18 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    if params['reviews_user']
+      @reviews = Review.where(user_id: params['reviews_user'])
+      else
+
+      @reviews = Review.all
+      end
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+
   end
 
   # GET /reviews/new

@@ -18,6 +18,8 @@ class User < ApplicationRecord
   # Define validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, presence: true
+
+
   # Do NOT validate presence of boolean fields (admin / agent / customer)
   # Seems to see false as not-present
   # We should make sure that unless a user has admin TRUE it cannot act as admin
