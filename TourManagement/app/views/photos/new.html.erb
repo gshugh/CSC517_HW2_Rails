@@ -2,4 +2,7 @@
 
 <%= render 'form', photo: @photo %>
 
-<%= link_to 'Back', photos_path %>
+<!-- Make sure to pass along the tour ID in EVERY link that brings you to the photos index -->
+<!-- Here, we are creating a new photo (it doesn't actually exist yet) so we can't get the tour from it -->
+<!-- Instead, we must trust the app/controllers/photos_controller.rb "new" method to provide the tour -->
+<%= link_to 'Back', photos_path(tour_id: @tour.id) %>

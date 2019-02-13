@@ -27,7 +27,7 @@ module SessionsHelper
   end
 
   # Method to determine if the given tour was listed by the currently logged in user
-  def tour_listed_by_current_user?(tour)
+  def current_user_listed_given_tour?(tour)
     matching_user_id = Listing.get_agent_id_for_tour(tour)
     return matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
   end
@@ -61,8 +61,9 @@ module SessionsHelper
       !tour.in_the_past &&
       (
         current_user_admin? ||
-        (current_user_agent? && tour_listed_by_current_user?(tour))
+        (current_user_agent? && current_user_listed_given_tour?(tour))
       )
+    return can_modify
   end
 
 end

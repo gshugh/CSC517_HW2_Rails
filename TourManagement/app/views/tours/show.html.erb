@@ -51,12 +51,24 @@
 <% end %>
 <br>
 
+<!-- Also display any photos that exist for this tour -->
+<% unless @photos.empty? %>
+  <p>
+    <strong>Photos:</strong>
+  </p>
+  <% @photos.each do |photo| %>
+    <li><%= photo.name %></li>
+  <% end %>
+<% end %>
+
+<!-- Offer the opportunity to edit the tour -->
 <% if current_user_can_modify_given_tour?(@tour) %>
   <%= link_to 'Edit', edit_tour_path(@tour) %> |
 <% end %>
 <%= link_to 'Back', tours_path %>
 
 <!-- Also display any reviews that exist for this tour -->
+<!-- This comes after the edit link because you edit reviews elsewhere -->
 <% unless @reviews.empty? %>
 
   <p>
