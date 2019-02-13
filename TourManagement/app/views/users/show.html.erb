@@ -13,7 +13,7 @@
   <p><b> > <%= link_to 'Show customer bookmarked tours', bookmarks_path %></b></p>
 <% else %>
   <p><b> > <%= link_to 'Show available tours', tours_path %></b></p>
-  <p><b> > <%= link_to 'Show my reviews', review_path %></b></p>
+  <p><b> > <%= link_to 'Show my reviews', reviews_path(reviews_user: @user.id) %></b></p>
   <p><b> > <%= link_to 'Show my bookmarks', bookmarks_path %></b></p>
 <% end %>>
 

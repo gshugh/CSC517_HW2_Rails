@@ -1,3 +1,4 @@
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -40,6 +41,7 @@
     <%= form.label :customer %>
     <%= form.check_box :customer %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>
