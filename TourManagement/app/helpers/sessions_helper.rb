@@ -66,4 +66,29 @@ module SessionsHelper
     return can_modify
   end
 
+  # Method to determine if the current user is allowed to look at users
+  # Only the admin of a site should be able to see a list of the registered users
+  def current_user_can_see_users?
+    return current_user_admin?
+  end
+
+  # Method to determine if the current user is allowed to look at tours
+  # Even a casual visitor with no account should be allowed to do this
+  def current_user_can_see_tours?
+    return true
+  end
+
+  # Method to determine if the current user is allowed to look at reviews
+  # Even a casual visitor with no account should be allowed to do this
+  def current_user_can_see_reviews?
+    return true
+  end
+
+  # Method to determine if the current user is allowed to look at locations
+  # Agents need this so they can plan tours
+  # Admins get it too
+  def current_user_can_see_locations?
+    return current_user_admin? || current_user_agent?
+  end
+
 end
