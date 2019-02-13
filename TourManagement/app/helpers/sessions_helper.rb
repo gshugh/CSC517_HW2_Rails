@@ -26,6 +26,25 @@ module SessionsHelper
     @current_user = nil
   end
 
+  # Method to determine if the given user should be logged in
+  # If we are NOT in test mode, the user should be logged in if they exist and they authenticate
+  # If we ARE in test mode, it's messier.
+  # During testing, we need to have a logged in user for some things (e.g. creating a new review)
+  # But cannot use session helper from outside of the controller
+  # https://stackoverflow.com/questions/39465941/how-to-use-session-in-the-test-controller-in-rails-5?rq=1
+  # So, we post to the log in URL with a user's parameters so that we can get to the session controller
+  # Once there, we have to decide whether or not to log in the user
+  # That brings us to this method: if we are in test mode, just say, yeah, sure, log in
+  # The reason we have this dumb approach is that the password is secure
+  #   so there's really no good way to pass it around within the application
+  def log_in_user_with_password?(user, password)
+    if Rails.env == "test"
+      return true
+    else
+      return user && user.authenticate(password)
+    end
+  end
+
   # Method to determine if the current user is an admin
   def current_user_admin?
     return current_user && current_user.read_attribute("admin")

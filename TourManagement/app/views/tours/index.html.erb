@@ -5,9 +5,11 @@
 <% unless @tours.empty? %>
 
   <!-- Provide search filters -->
+  <!-- Make sure to submit the form "local" so that it actually returns the updated HTML -->
   <!-- https://guides.rubyonrails.org/form_helpers.html -->
   <!-- https://m.patrikonrails.com/rails-5-1s-form-with-vs-old-form-helpers-3a5f72a8c78a -->
-  <%= form_with model: @tour, method: "get" do |form| %>
+  <!-- https://www.engineyard.com/blog/using_form_with-vs-form_for-vs-form_tag -->
+  <%= form_with model: @tour, local: true, method: "get" do |form| %>
     <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
     <%= form.label "Desired Location" %>
     <%= form.select("desired_location") do %>

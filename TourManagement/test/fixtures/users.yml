@@ -7,7 +7,7 @@ one:
   email: <%= User.find_by(admin: true).read_attribute("email") %>
   password_digest: <%= User.find_by(admin: true).read_attribute("password_digest") %>
   # Also include password itself to be able to fake a log-in with this user
-  password: password_1234
+  password: <%= User.find_by(admin: true).read_attribute("password") %>
   admin: true
   agent: false
   customer: false

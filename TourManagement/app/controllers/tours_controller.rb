@@ -12,13 +12,6 @@ class ToursController < ApplicationController
       @tours = @tours.public_send(key, value) if value.present?
     end
 
-    # TODO remove debug
-    puts params
-    puts filtering_params(params)
-    @tours.each do |t|
-      puts t.name
-    end
-
   end
 
   # GET /tours/1
