@@ -4,7 +4,18 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+
+    # Show only photos for the tour indicated in the params populated by the link to this action
+    # Unless the tour was not indicated in the params (in which case show all photos)
+    if params['tour_id']
+      @photos = Photo.where(tour_id: params['tour_id'])
+      # Remember what tour we are working with and make this available to the view
+      # This way the view can pass the tour info along in links as needed
+      @tour = Tour.find(params['tour_id'])
+    else
+      @photos = Photo.all
+    end
+
   end
 
   # GET /photos/1
@@ -14,11 +25,25 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
+
+    # Create an empty photo object
     @photo = Photo.new
+
+    # Remember what tour we are working with and make this available to the view
+    # This way the view can pass the tour info along in links as needed
+    @tour = Tour.find(params['tour_id'])
+
   end
 
   # GET /photos/1/edit
   def edit
+
+    # Remember what tour we are working with and make this available to the view
+    # This way the view can pass the tour info along in links / form fields as needed
+    # This is to avoid bothering the user to enter the tour
+    #
+    @tour = @photo.tour
+
   end
 
   # POST /photos
@@ -56,7 +81,8 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      # Make sure to pass along the tour ID in EVERY link that brings you to the photos index
+      format.html { redirect_to photos_path(tour_id: @photo.tour.id), notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

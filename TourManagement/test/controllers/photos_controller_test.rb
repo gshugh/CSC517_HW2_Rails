@@ -1,17 +1,23 @@
 require 'test_helper'
 
 class PhotosControllerTest < ActionDispatch::IntegrationTest
+
   setup do
     @photo = photos(:one)
+    @tour = tours(:one)
   end
 
   test "should get index" do
-    get photos_url
+    # The photos index view is never used to show ALL photos,
+    #   only to show photos for a specific tour
+    get photos_url(tour_id: @tour.id)
     assert_response :success
   end
 
   test "should get new" do
-    get new_photo_url
+    # The photos new view expects to be passed the tour we're currently working with,
+    #   so that the user doesn't have to select a tour
+    get new_photo_url(tour_id: @tour.id)
     assert_response :success
   end
 
@@ -39,10 +45,19 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy photo" do
+
+    # Destroy the photo
     assert_difference('Photo.count', -1) do
       delete photo_url(@photo)
     end
 
-    assert_redirected_to photos_url
+    # After a photo is destroyed, we should redirect to the photos index view
+    #   with an extra parameter for which tour we are currently dealing with
+    # The photos index view is never used to show ALL photos,
+    #   only to show photos for a specific tour
+    # So here, we use a regex to describe where we expect to be redirected to
+    # https://api.rubyonrails.org/v5.2.2/classes/ActionDispatch/Assertions/ResponseAssertions.html
+    assert_redirected_to /http.*photos\?tour_id\=.*/
+
   end
 end

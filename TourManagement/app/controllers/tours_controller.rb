@@ -28,6 +28,9 @@ class ToursController < ApplicationController
     # Get all reviews associated with this tour so that the View may show them
     @reviews = Review.where(tour_id: @tour.id)
 
+    # Get all photos associated with this tour so that the View may show them
+    @photos = Photo.where(tour_id: @tour.id)
+
     # Get all locations associated with this tour so that the View may show them
     @locations = Visit.where(tour_id: @tour.id).map do |matching_visit|
       Location.find(matching_visit.location_id)

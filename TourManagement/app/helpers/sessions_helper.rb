@@ -26,12 +26,6 @@ module SessionsHelper
     @current_user = nil
   end
 
-  # Method to determine if the given tour was listed by the currently logged in user
-  def tour_listed_by_current_user?(tour)
-    matching_user_id = Listing.get_agent_id_for_tour(tour)
-    return matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
-  end
-
   # Method to determine if the current user is an admin
   def current_user_admin?
     return current_user && current_user.read_attribute("admin")
@@ -47,9 +41,35 @@ module SessionsHelper
     return current_user && current_user.read_attribute("customer")
   end
 
+  # Method to determine if the current user is allowed to create a review
+  def current_user_can_create_review?
+    return current_user_admin? || current_user_customer?
+  end
+
+  # Method to determine if the given review was created by the currently logged in user
+  def current_user_created_given_review?(review)
+    return review.user_id == current_user.read_attribute("id")
+  end
+
+  # Method to determine if the current user is allowed to edit / delete / cancel the given review
+  # A review can always be modified by an admin
+  # A review can be modified by a customer who has created the review
+  def current_user_can_modify_given_review?(review)
+    can_modify =
+      current_user_admin? ||
+      (current_user_customer? && current_user_created_given_review?(review))
+    return can_modify
+  end
+
   # Method to determine if the current user is allowed to create a tour
   def current_user_can_create_tour?
     return current_user_admin? || current_user_agent?
+  end
+
+  # Method to determine if the given tour was listed by the currently logged in user
+  def current_user_listed_given_tour?(tour)
+    matching_user_id = Listing.get_agent_id_for_tour(tour)
+    return matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
   end
 
   # Method to determine if the current user is allowed to edit / delete / cancel the given tour
@@ -61,8 +81,34 @@ module SessionsHelper
       !tour.in_the_past &&
       (
         current_user_admin? ||
-        (current_user_agent? && tour_listed_by_current_user?(tour))
+        (current_user_agent? && current_user_listed_given_tour?(tour))
       )
+    return can_modify
+  end
+
+  # Method to determine if the current user is allowed to look at users
+  # Only the admin of a site should be able to see a list of the registered users
+  def current_user_can_see_users?
+    return current_user_admin?
+  end
+
+  # Method to determine if the current user is allowed to look at tours
+  # Even a casual visitor with no account should be allowed to do this
+  def current_user_can_see_tours?
+    return true
+  end
+
+  # Method to determine if the current user is allowed to look at reviews
+  # Even a casual visitor with no account should be allowed to do this
+  def current_user_can_see_reviews?
+    return true
+  end
+
+  # Method to determine if the current user is allowed to look at locations
+  # Agents need this so they can plan tours
+  # Admins get it too
+  def current_user_can_see_locations?
+    return current_user_admin? || current_user_agent?
   end
 
 end

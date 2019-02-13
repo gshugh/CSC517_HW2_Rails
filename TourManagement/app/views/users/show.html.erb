@@ -32,20 +32,10 @@
   <%= @user.name %>
 </p>
 
-<!--<p>-->
-<!--  <strong>Admin:</strong>-->
-  <%#= @user.admin %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>Agent:</strong>-->
-  <%#= @user.agent %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>Customer:</strong>-->
-  <%#= @user.customer %>
-<!--</p>-->
+<p>
+  <strong>Type:</strong>
+  <%= @user.user_type %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
