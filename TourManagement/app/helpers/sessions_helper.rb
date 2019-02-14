@@ -1,3 +1,8 @@
+################################################################################
+# This module contains a number of helper functions used by the views.
+#
+# Remove unnecessary return statements.
+
 module SessionsHelper
 
   # Some content from https://www.railstutorial.org/book/basic_login
@@ -47,27 +52,27 @@ module SessionsHelper
 
   # Method to determine if the current user is an admin
   def current_user_admin?
-    return current_user && current_user.read_attribute("admin")
+    current_user && current_user.read_attribute("admin")
   end
 
   # Method to determine if the current user is an agent
   def current_user_agent?
-    return current_user && current_user.read_attribute("agent")
+    current_user && current_user.read_attribute("agent")
   end
 
   # Method to determine if the current user is a customer
   def current_user_customer?
-    return current_user && current_user.read_attribute("customer")
+    current_user && current_user.read_attribute("customer")
   end
 
   # Method to determine if the current user is allowed to create a review
   def current_user_can_create_review?
-    return current_user_admin? || current_user_customer?
+    current_user_admin? || current_user_customer?
   end
 
   # Method to determine if the given review was created by the currently logged in user
   def current_user_created_given_review?(review)
-    return review.user_id == current_user.read_attribute("id")
+    review.user_id == current_user.read_attribute("id")
   end
 
   # Method to determine if the current user is allowed to edit / delete / cancel the given review
@@ -77,18 +82,17 @@ module SessionsHelper
     can_modify =
       current_user_admin? ||
       (current_user_customer? && current_user_created_given_review?(review))
-    return can_modify
   end
 
   # Method to determine if the current user is allowed to create a tour
   def current_user_can_create_tour?
-    return current_user_admin? || current_user_agent?
+    current_user_admin? || current_user_agent?
   end
 
   # Method to determine if the given tour was listed by the currently logged in user
   def current_user_listed_given_tour?(tour)
     matching_user_id = Listing.get_agent_id_for_tour(tour)
-    return matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
+    matching_user_id && current_user && matching_user_id == current_user.read_attribute("id")
   end
 
   # Method to determine if the current user is allowed to edit / delete / cancel the given tour
@@ -102,32 +106,31 @@ module SessionsHelper
         current_user_admin? ||
         (current_user_agent? && current_user_listed_given_tour?(tour))
       )
-    return can_modify
   end
 
   # Method to determine if the current user is allowed to look at users
   # Only the admin of a site should be able to see a list of the registered users
   def current_user_can_see_users?
-    return current_user_admin?
+    current_user_admin?
   end
 
   # Method to determine if the current user is allowed to look at tours
   # Even a casual visitor with no account should be allowed to do this
   def current_user_can_see_tours?
-    return true
+    true
   end
 
   # Method to determine if the current user is allowed to look at reviews
   # Even a casual visitor with no account should be allowed to do this
   def current_user_can_see_reviews?
-    return true
+    true
   end
 
   # Method to determine if the current user is allowed to look at locations
   # Agents need this so they can plan tours
   # Admins get it too
   def current_user_can_see_locations?
-    return current_user_admin? || current_user_agent?
+    current_user_admin? || current_user_agent?
   end
 
 end
