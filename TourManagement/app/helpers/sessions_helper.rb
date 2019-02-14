@@ -43,11 +43,8 @@ module SessionsHelper
   # The reason we have this dumb approach is that the password is secure
   #   so there's really no good way to pass it around within the application
   def log_in_user_with_password?(user, password)
-    if Rails.env == "test"
-      return true
-    else
-      return user && user.authenticate(password)
-    end
+    return true if Rails.env == "test"
+    user && user.authenticate(password)
   end
 
   # Method to determine if the current user is an admin
@@ -130,7 +127,8 @@ module SessionsHelper
   # Agents need this so they can plan tours
   # Admins get it too
   def current_user_can_see_locations?
-    current_user_admin? || current_user_agent?
+#    current_user_admin? || current_user_agent?
+    true
   end
 
 end
