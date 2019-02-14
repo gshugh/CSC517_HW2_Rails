@@ -57,4 +57,11 @@ class Tour < ApplicationRecord
     return Date.current >= end_date
   end
 
+  def price_in_dollars
+    price_in_cents/100.0
+  end
+  def price_in_cents=(val)
+    self.price_in_cents = val*100
+  end
+
 end

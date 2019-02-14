@@ -31,7 +31,7 @@
     <thead>
     <tr>
       <th>Name</th>
-      <th>Price in cents</th>
+      <th>Price in dollars</th>
       <th>Start date</th>
       <th>Status</th>
       <th>Num seats</th>
@@ -44,7 +44,7 @@
     <% @tours.each do |tour| %>
       <tr>
         <td><%= tour.name %></td>
-        <td><%= tour.price_in_cents %></td>
+        <td><%= tour.price_in_dollars %></td>
         <td><%= tour.start_date %></td>
         <td><%= tour.status_description %></td>
         <td><%= tour.num_seats %></td>
