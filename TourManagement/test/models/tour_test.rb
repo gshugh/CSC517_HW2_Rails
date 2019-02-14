@@ -19,4 +19,19 @@ class TourTest < ActiveSupport::TestCase
     assert_not @tour_2.in_the_past
   end
 
+  test "test tour itinerary" do
+    # First tour has just one location
+    assert_equal "North Carolina, US", @tour_1.itinerary
+    # Second tour has multiple locations
+    # Fixtures do not get sequential IDs by default in Rails
+    # Can give fixtures explicit IDs but this causes downstream headaches
+    # End result it, we don't know how the visits will be ordered, in the test environment
+    # So the best we can do here is to see if the string includes everything that it should
+    assert_match "North Carolina, US", @tour_2.itinerary
+    assert_match " / ", @tour_2.itinerary
+    assert_match "South Carolina, US", @tour_2.itinerary
+    # Third tour has no locations
+    assert_equal "", @tour_3.itinerary
+  end
+
 end

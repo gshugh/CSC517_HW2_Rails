@@ -8,12 +8,10 @@ class ToursController < ApplicationController
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     @tours = Tour.where(nil)
 
-
-
     flash[:filters] = {}
     filtering_params(params).each do |key, value|
       # Filter the tours by this criteria IF a "real" value was provided for the filter
-      if value.length.positive? && value.to_f.positive?
+      if value.length.positive? && (!is_number?(value) || value.to_f.positive?)
         @tours = @tours.public_send(key, value) if value.present?
       end
       # Persist this filter information for one request
@@ -282,7 +280,13 @@ class ToursController < ApplicationController
     # A list of the param names that can be used for filtering the Product list
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     def filtering_params(params)
-      params.slice(:desired_location, :max_price_dollars)
+      params.slice(:desired_location, :max_price_dollars, :tour_name)
+    end
+
+    # Method to determine if a string represents a number
+    # https://stackoverflow.com/questions/5661466/test-if-string-is-a-number-in-ruby-on-rails
+    def is_number?(string)
+      true if Float(string) rescue false
     end
 
 end

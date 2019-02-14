@@ -37,20 +37,34 @@ class Tour < ApplicationRecord
   # Support filtering tours
   # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
   # https://guides.rubyonrails.org/active_record_querying.html#scopes
+
+  # https://www.scimedsolutions.com/articles/74-arel-part-i-case-insensitive-searches-with-partial-matching
+  scope :tour_name, ->(tour_name) { where("name like ?", "%" + tour_name + "%") }
+
   # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
   scope :desired_location, ->(desired_loc_id) {
     joins "INNER JOIN visits ON visits.tour_id = tours.id AND visits.location_id = #{desired_loc_id}"
   }
+
   # https://stackoverflow.com/questions/11317662/rails-using-greater-than-less-than-with-a-where-statement/23936233
   scope :max_price_dollars, ->(max_price_dollars) {
     where("price_in_cents <= ?", (max_price_dollars.to_f * 100).to_i)
   }
 
-  # Calculate a description of the tour status
+  # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled
     return "Completed" if in_the_past
     "In Future"
+  end
+
+  # Produce an itinerary for the tour (to show onscreen)
+  def itinerary
+    itinerary_array = []
+    Visit.get_locations_for_tour(self).each do |location|
+      itinerary_array << location.user_friendly_description
+    end
+    return itinerary_array.join(" / ")
   end
 
   # Calculate whether the tour is in the past
@@ -64,7 +78,7 @@ class Tour < ApplicationRecord
   end
 
   def price_in_dollars=(val)
-    self.price_in_cents = (val.to_f*100).to_int
+    self.price_in_cents = (val.to_f * 100).to_int
   end
 
 

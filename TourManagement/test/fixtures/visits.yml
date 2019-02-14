@@ -6,4 +6,8 @@ one:
 
 two:
   tour: two
+  location: one
+
+three:
+  tour: two
   location: two
