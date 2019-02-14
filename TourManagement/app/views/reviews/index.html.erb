@@ -46,6 +46,5 @@
 
 <br>
 
-<% if current_user_can_create_review? %>
-  <%= link_to 'New Review', new_review_path %>
-<% end %>
+<%= link_to 'New Review', new_review_path if
+          current_user_can_create_review? and logged_in? %>
