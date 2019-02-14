@@ -21,7 +21,10 @@
 
     <!-- https://stackoverflow.com/questions/9390778/best-practice-method-of-displaying-flash-messages -->
     <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "flash #{key}" %>
+      <!-- We use flash to keep track of search filters (don't show that stuff onscreen -->
+      <% if key != "filters" %>
+        <%= content_tag :div, value, class: "flash #{key}" %>
+      <% end %>
     <% end %>
 
     <!-- Specific view content -->

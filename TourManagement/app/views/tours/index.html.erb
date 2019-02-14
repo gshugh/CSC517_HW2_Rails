@@ -17,10 +17,11 @@
       <%= content_tag(:option, "", value: -1) %>
       <% Location.all.each do |loc| -%>
         <%= content_tag(
-                :option,
-                loc.user_friendly_description,
-                value: loc.id
-            ) %>
+          :option,
+          loc.user_friendly_description,
+          value: loc.id,
+          selected: user_selected_location?(loc)
+        ) %>
       <% end %>
     <% end %>
     <div class="actions">
