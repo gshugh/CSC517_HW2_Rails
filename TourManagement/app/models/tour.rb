@@ -54,12 +54,10 @@ class Tour < ApplicationRecord
   end
 
   def price_in_dollars
-    puts "Getter #{price_in_cents}"
     price_in_cents/100.0
   end
 
   def price_in_dollars=(val)
-    puts "Setter #{(val.to_f*100).to_i}"
     self.price_in_cents = (val.to_f*100).to_int
   end
 
