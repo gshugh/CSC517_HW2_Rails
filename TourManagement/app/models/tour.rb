@@ -38,7 +38,13 @@ class Tour < ApplicationRecord
   # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
   # https://guides.rubyonrails.org/active_record_querying.html#scopes
   # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
-  scope :desired_location, -> (desired_loc_id) { joins "INNER JOIN visits ON visits.tour_id = tours.id AND visits.location_id = #{desired_loc_id}" }
+  scope :desired_location, ->(desired_loc_id) {
+    joins "INNER JOIN visits ON visits.tour_id = tours.id AND visits.location_id = #{desired_loc_id}"
+  }
+  # https://stackoverflow.com/questions/11317662/rails-using-greater-than-less-than-with-a-where-statement/23936233
+  scope :max_price_dollars, ->(max_price_dollars) {
+    where("price_in_cents <= ?", (max_price_dollars.to_f * 100).to_i)
+  }
 
   # Calculate a description of the tour status
   def status_description
