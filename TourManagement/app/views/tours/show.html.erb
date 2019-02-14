@@ -10,8 +10,8 @@
   <%= @tour.description %>
 </p>
 <p>
-  <strong>Price in cents:</strong>
-  <%= @tour.price_in_cents %>
+  <strong>Price in dollars:</strong>
+  <%= @tour.price_in_dollars %>
 </p>
 <p>
   <strong>Deadline:</strong>
@@ -65,8 +65,10 @@
 <% if current_user_can_modify_given_tour?(@tour) %>
   <%= link_to 'Edit', edit_tour_path(@tour) %> |
 <% end %>
-<%= link_to 'Back', tours_path %>
-
+<%= link_to 'Back', tours_path %> |
+<% if current_user_can_create_tour? %>
+  <%= link_to 'New', new_tour_path %>
+<% end %>
 <!-- Also display any reviews that exist for this tour -->
 <!-- This comes after the edit link because you edit reviews elsewhere -->
 <% unless @reviews.empty? %>

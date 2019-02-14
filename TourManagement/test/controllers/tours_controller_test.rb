@@ -26,7 +26,7 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
         name: "MyUniqueName",
         num_seats: @tour.num_seats,
         operator_contact: @tour.operator_contact,
-        price_in_cents: @tour.price_in_cents,
+        price_in_dollars: @tour.price_in_dollars,
         start_date: @tour.start_date,
         cancelled: @tour.cancelled,
         # Tours need at least 1 location id
@@ -61,7 +61,7 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
       name: "MyNewUniqueName",
       num_seats: @tour.num_seats,
       operator_contact: @tour.operator_contact,
-      price_in_cents: @tour.price_in_cents,
+      price_in_dollars: @tour.price_in_dollars,
       start_date: @tour.start_date,
       cancelled: @tour.cancelled,
       # Tours need at least 1 location id
