@@ -42,26 +42,25 @@ class Tour < ApplicationRecord
 
   # Calculate a description of the tour status
   def status_description
-    if cancelled
-      return "Cancelled"
-    elsif in_the_past
-      return "Completed"
-    else
-      return "In Future"
-    end
+    return "Cancelled" if cancelled
+    return "Completed" if in_the_past
+    "In Future"
   end
 
   # Calculate whether the tour is in the past
   # If it is not a cancelled tour, this should make the status "Completed"
   def in_the_past
-    return Date.current >= end_date
+    Date.current >= end_date
   end
 
   def price_in_dollars
+    puts "Getter #{price_in_cents}"
     price_in_cents/100.0
   end
-  def price_in_cents=(val)
-    self.price_in_cents = val*100
+
+  def price_in_dollars=(val)
+    puts "Setter #{(val.to_f*100).to_i}"
+    self.price_in_cents = (val.to_f*100).to_int
   end
 
 end

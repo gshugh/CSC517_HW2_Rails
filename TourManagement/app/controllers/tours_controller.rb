@@ -180,7 +180,7 @@ class ToursController < ApplicationController
         # Permit the normal stuff
         :name,
         :description,
-        :price_in_cents,
+        :price_in_dollars,
         :deadline,
         :start_date,
         :end_date,
