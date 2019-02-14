@@ -44,7 +44,14 @@
     <!-- Log In / Log Out -->
 
     <h3>Links</h3>
-    <% if current_user_can_see_users? %>
+
+
+    <!-- Need to show all users to only admin and users who have not logged in.
+    Ability to view users according is subject to some conditions to customers and agent-->
+
+
+    <% if current_user_customer? || current_user_agent? %>
+    <% else %>
       <p><b>Users: </b><%= link_to "View users", users_url %>
       </p>
     <% end %>

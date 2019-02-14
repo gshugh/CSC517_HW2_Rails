@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if @user.agent? %>
-  <p><b> > <%= link_to 'Show reviews', reviews_path %></b></p>
-  <p><b> > <%= link_to 'Show customers', user_path %></b></p>
-  <p><b> > <%= link_to 'Show tours', tours_path %></b></p>
-  <p><b> > <%= link_to 'Show customer bookmarked tours', bookmarks_path %></b></p>
-<% elsif @user.customer? %>
+<% if @user.customer? %>
   <p><b> > <%= link_to 'Show my bookmarks', bookmarks_path %></b></p>
 <% end %>>
 
