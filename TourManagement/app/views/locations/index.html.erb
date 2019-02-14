@@ -23,9 +23,12 @@
       <tr>
         <td><%= location.state %></td>
         <td><%= location.country %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? %>
+          <td><%= link_to 'Show', location %></td>
+          <td><%= link_to 'Edit', edit_location_path(location) %></td>
+          <td><%= link_to 'Destroy', location, method: :delete,
+                                     data: {confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -33,7 +36,4 @@
 
 <br>
 
-<% if logged_in? %>
-  <br>
-  <%= link_to 'New Location', new_location_path %>
-<% end %>
+<%= link_to 'New Location', new_location_path if logged_in?%>
