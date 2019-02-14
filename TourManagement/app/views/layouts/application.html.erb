@@ -20,48 +20,63 @@
     <h1 style="color: #cc0000;">Tour Management System</h1>
 
     <!-- Note current user's name -->
+    <!-- Do this up at the top so that it remains in the same place regardless of the page-specific content -->
     <% if logged_in? %>
-    <h2 style="color: blue"> Welcome <%= current_user.name %></h2>
+      <h2 style="color: blue">
+        Welcome <%= current_user.name %>
+      </h2>
     <% end %>
 
     <!-- https://stackoverflow.com/questions/9390778/best-practice-method-of-displaying-flash-messages -->
     <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "flash #{key}" %>
+      <!-- We use flash to keep track of search filters (don't show that stuff onscreen -->
+      <% if key != "filters" %>
+        <%= content_tag :div, value, class: "flash #{key}" %>
+      <% end %>
     <% end %>
 
     <!-- Specific view content -->
     <%= yield %>
 
+    <!-- Links to other views -->
     <% if logged_in? %>
 
-    <!-- Links to other views -->
-    <h3>Links</h3>
-    <% if current_user_can_see_users? %>
-      <p><b>Users: </b><%= link_to "View users", users_url %>
-      </p>
+      <br>
+      <br>
+
+      <h3>Links</h3>
+
+      <% if current_user_can_see_users? %>
+        <p>
+          <b>Users: </b>
+          <%= link_to "View all users", users_url %>
+        </p>
+      <% end %>
+
+      <% if current_user_can_see_tours? %>
+        <p>
+          <b>Tours: </b>
+          <%= link_to "View all tours", tours_url %>
+        </p>
+      <% end %>
+
+      <% if current_user_can_see_reviews? %>
+        <p>
+          <b>Reviews: </b>
+          <%= link_to "View all reviews", reviews_url %>
+        </p>
+      <% end %>
+
+      <% if current_user_can_see_locations? %>
+        <p>
+          <b>Locations: </b>
+          <%= link_to "View all locations", locations_url %>
+        </p>
+      <% end %>
+
     <% end %>
 
-
-    <% if current_user_can_see_tours? %>
-    <p><b>Tours: </b><%= link_to "Show tours", tours_url %>
-    </p>
-
-    <% end %>
-
-
-    <% if current_user_can_see_reviews? %>
-     <p><b>Reviews: </b><%= link_to "View all reviews", reviews_url %>
-    </p>
-    <% end %>
-
-
-    <% if current_user_can_see_locations? %>
-      <p><b>Locations: </b><%= link_to "View all locations", locations_url %>
-      </p>
-    <% end %>
-  <% end %>
-
-
+    <!-- Log In / Log Out -->
     <% if logged_in? %>
       <%= link_to "Log out", logout_path, method: :delete %>
     <% else %>

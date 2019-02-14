@@ -8,15 +8,13 @@ class ToursController < ApplicationController
     # Support filtering tours according to user desires
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     @tours = Tour.where(nil)
+    flash[:filters] = {}
     filtering_params(params).each do |key, value|
+      # Filter the tours by this criteria
       @tours = @tours.public_send(key, value) if value.present?
-    end
-
-    # TODO remove debug
-    puts params
-    puts filtering_params(params)
-    @tours.each do |t|
-      puts t.name
+      # Persist this filter information for one request
+      # so that we can still show the user what they filtered by
+      flash[:filters][key] = value
     end
 
   end
