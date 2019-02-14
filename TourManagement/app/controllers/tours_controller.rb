@@ -4,10 +4,12 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-
     # Support filtering tours according to user desires
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     @tours = Tour.where(nil)
+
+
+
     flash[:filters] = {}
     filtering_params(params).each do |key, value|
       # Filter the tours by this criteria IF a "real" value was provided for the filter
