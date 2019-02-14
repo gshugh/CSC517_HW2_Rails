@@ -9,6 +9,7 @@
     <thead>
     <tr>
       <th>Name</th>
+      <th>Itinerary</th>
       <th>Price in dollars</th>
       <th>Start date</th>
       <th>Status</th>
@@ -22,6 +23,7 @@
     <% @tours.each do |tour| %>
       <tr>
         <td><%= tour.name %></td>
+        <td><%= tour.itinerary %></td>
         <td><%= tour.price_in_dollars %></td>
         <td><%= tour.start_date %></td>
         <td><%= tour.status_description %></td>
@@ -78,7 +80,7 @@
   <% end %>
 
   <!-- Select maximum price -->
-  <%= form.label "Max Price" %>
+  <%= form.label "Max Price ($)" %>
   <%= form.number_field number_with_precision(:max_price_dollars, precision: 2),
                         step: 0.01,
                         value: user_selected_maximum_price

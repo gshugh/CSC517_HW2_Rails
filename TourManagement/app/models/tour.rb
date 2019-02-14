@@ -51,11 +51,20 @@ class Tour < ApplicationRecord
     where("price_in_cents <= ?", (max_price_dollars.to_f * 100).to_i)
   }
 
-  # Calculate a description of the tour status
+  # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled
     return "Completed" if in_the_past
     "In Future"
+  end
+
+  # Produce an itinerary for the tour (to show onscreen)
+  def itinerary
+    itinerary_array = []
+    Visit.get_locations_for_tour(self).each do |location|
+      itinerary_array << location.user_friendly_description
+    end
+    return itinerary_array.join(" / ")
   end
 
   # Calculate whether the tour is in the past
@@ -69,7 +78,7 @@ class Tour < ApplicationRecord
   end
 
   def price_in_dollars=(val)
-    self.price_in_cents = (val.to_f*100).to_int
+    self.price_in_cents = (val.to_f * 100).to_int
   end
 
 

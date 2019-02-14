@@ -4,9 +4,18 @@ class Visit < ApplicationRecord
   belongs_to :tour
   belongs_to :location
 
-  # Get locations on the given tour's itinerary, in order
+  # Get location IDs on the given tour's itinerary, in order
+  # What order? The order of the VISITS for this tour
+  # That is, the order in which the locations are visited on the tour
   def self.get_location_ids_for_tour(tour)
-    Visit.where(tour_id: tour.id).order("location_id").map(&:location_id)
+    Visit.where(tour_id: tour.id).order("id").map(&:location_id)
+  end
+
+  # Get locations on the given tour's itinerary, in order
+  def self.get_locations_for_tour(tour)
+    get_location_ids_for_tour(tour).map do |id|
+      Location.find(id)
+    end
   end
 
   # Get the ith location id on the given tour's itinerary
