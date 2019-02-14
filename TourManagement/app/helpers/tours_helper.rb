@@ -1,5 +1,14 @@
 module ToursHelper
 
+  # Method to determine the tour name previously selected by the user in search filtering
+  def user_selected_tour_name
+    if flash[:filters].length.positive? && flash[:filters][:tour_name.to_s]
+      return flash[:filters][:tour_name.to_s]
+    else
+      return ""
+    end
+  end
+
   # Method to determine if the given location is one selected by the user in search filtering
   def user_selected_location?(location)
     if flash[:filters].length.positive? && flash[:filters][:desired_location.to_s]

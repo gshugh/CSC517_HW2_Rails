@@ -11,6 +11,10 @@
   <!-- https://www.engineyard.com/blog/using_form_with-vs-form_for-vs-form_tag -->
   <%= form_with model: @tour, local: true, method: "get" do |form| %>
 
+    <!-- Select tour names including given string -->
+    <%= form.label "Tour Name Includes" %>
+    <%= form.text_field :tour_name, value: user_selected_tour_name %>
+
     <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
     <%= form.label "Desired Location" %>
     <%= form.select(:desired_location) do %>
