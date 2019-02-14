@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
     if params['reviews_user']
       @bookmarks = Bookmark.where(user_id: params['bookmarks_user'])
     elsif params['tours_user']
-      @tours = Tour.where(tour_id: params['listing_user'])
+      @tours = Tour.where(tour_id: params['tours_user'])
       @bookmarks = Bookmark.where(tour_id: @tours)
 
       else

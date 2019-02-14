@@ -91,6 +91,7 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
+
   # Method to determine if the given tour was listed by the currently logged in user
   def current_user_listed_given_tour?(tour)
     matching_user_id = Listing.get_agent_id_for_tour(tour)
