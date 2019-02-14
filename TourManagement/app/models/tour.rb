@@ -54,7 +54,7 @@ class Tour < ApplicationRecord
   end
 
   def price_in_dollars
-    price_in_cents/100.0
+    price_in_cents/100.0 if !price_in_cents.nil?
   end
 
   def price_in_dollars=(val)
