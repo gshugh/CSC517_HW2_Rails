@@ -62,6 +62,11 @@ module SessionsHelper
     current_user && current_user.read_attribute("customer")
   end
 
+  # Method to determine if the current user can see their bookmarks
+  def current_user_can_see_their_bookmarks?
+    return current_user && current_user.read_attribute("customer")
+  end
+
   # Method to determine if the current user is allowed to create a review
   def current_user_can_create_review?
     current_user_admin? || current_user_customer?

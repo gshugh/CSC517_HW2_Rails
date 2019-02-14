@@ -61,4 +61,5 @@ class Tour < ApplicationRecord
     self.price_in_cents = (val.to_f*100).to_int
   end
 
+
 end
