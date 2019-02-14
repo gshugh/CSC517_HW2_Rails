@@ -63,8 +63,10 @@ module SessionsHelper
   end
 
   # Method to determine if the current user can see their bookmarks
+  # Customers can do this
+  # Admins also can (because admins can do pretty much anything)
   def current_user_can_see_their_bookmarks?
-    return current_user && current_user.read_attribute("customer")
+    current_user_admin? || current_user_customer?
   end
 
   # Method to determine if the current user is allowed to create a review
@@ -133,8 +135,17 @@ module SessionsHelper
   # Agents need this so they can plan tours
   # Admins get it too
   def current_user_can_see_locations?
-#    current_user_admin? || current_user_agent?
+    #current_user_admin? || current_user_agent?
     true
+  end
+
+  # Method to determine if the current user is allowed to Create / Edit / Destroy locations
+  # Agents need this so they can plan tours
+  # Currently there is no concept of only being able to modify locations that you have entered
+  # Because agents share a pool of possible tour locations
+  # Admins get this privilege too of course
+  def current_user_can_modify_locations?
+    return current_user_admin? || current_user_agent?
   end
 
 end

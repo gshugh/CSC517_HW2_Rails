@@ -12,8 +12,10 @@ class ToursController < ApplicationController
 
     flash[:filters] = {}
     filtering_params(params).each do |key, value|
-      # Filter the tours by this criteria
-      @tours = @tours.public_send(key, value) if value.present?
+      # Filter the tours by this criteria IF a "real" value was provided for the filter
+      if value.length.positive? && value.to_f.positive?
+        @tours = @tours.public_send(key, value) if value.present?
+      end
       # Persist this filter information for one request
       # so that we can still show the user what they filtered by
       flash[:filters][key] = value
@@ -280,7 +282,7 @@ class ToursController < ApplicationController
     # A list of the param names that can be used for filtering the Product list
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     def filtering_params(params)
-      params.slice(:desired_location)
+      params.slice(:desired_location, :max_price_dollars)
     end
 
 end
