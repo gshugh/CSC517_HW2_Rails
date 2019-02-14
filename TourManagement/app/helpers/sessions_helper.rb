@@ -130,4 +130,13 @@ module SessionsHelper
     return current_user_admin? || current_user_agent?
   end
 
+  # Method to determine if the current user is allowed to Create / Edit / Destroy locations
+  # Agents need this so they can plan tours
+  # Currently there is no concept of only being able to modify locations that you have entered
+  # Because agents share a pool of possible tour locations
+  # Admins get this privilege too of course
+  def current_user_can_modify_locations?
+    return current_user_admin? || current_user_agent?
+  end
+
 end
