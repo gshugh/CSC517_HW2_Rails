@@ -1,3 +1,9 @@
+<!--
+################################################################################
+# This file contains application code to help control displays.
+#
+-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -43,10 +49,10 @@
     <% end %>
 
 
-    <% if current_user_can_see_reviews? %>
+    <%# if current_user_can_see_reviews? %>
     <%#= link_to 'Show my reviews', reviews_path(reviews_user: current_user.id) %>
-      <p><b>Reviews: </b><%= link_to "View all reviews", reviews_url %>
-    <% end %>
+<!--      <p><b>Reviews: </b><%#= link_to "View all reviews", reviews_url %>-->
+    <%# end %>
     </p>
 
 
