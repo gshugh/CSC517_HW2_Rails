@@ -100,7 +100,7 @@ module SessionsHelper
 
   # Method to determine if the current user is allowed to look at reviews
   # Even a casual visitor with no account should be allowed to do this
-  def current_user_can_see_reviews?
+  def current_user_can_see_their_reviews?
     return true
   end
 
