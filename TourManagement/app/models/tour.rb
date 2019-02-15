@@ -58,13 +58,14 @@ class Tour < ApplicationRecord
     "In Future"
   end
 
-  # Produce an itinerary for the tour (to show onscreen)
+  # Produce an itinerary for the tour (toshow onscreen)
   def itinerary
     itinerary_array = []
     Visit.get_locations_for_tour(self).each do |location|
       itinerary_array << location.user_friendly_description
     end
-    return itinerary_array.join(" / ")
+    # Join with newlines to conserve horizontal space onscreen
+    return itinerary_array.join("\n")
   end
 
   # Calculate whether the tour is in the past
