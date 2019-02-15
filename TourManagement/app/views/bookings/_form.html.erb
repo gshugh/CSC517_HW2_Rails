@@ -11,22 +11,28 @@
     </div>
   <% end %>
 
+  <!-- Do not allow the user to select the user -->
+  <!-- We should already know who the user is, from the sessions helper -->
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+
+  <!-- Do not allow the user to select the tour -->
+  <!-- We should already know what tour we are booking -->
+  <%= form.hidden_field :tour_id, :value => @tour.id %>
+
+  <!-- Allow the user to attempt to book seats whether or not there are enough seats -->
   <div class="field">
-    <%= form.label :num_seats %>
+    <%= form.label "# Seats to Book" %>
     <%= form.number_field :num_seats %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <!-- TODO add a form drop-down to pick among several options -->
+  <!-- TODO show these options if an attempted booking was rejected due to not enough seats -->
+  <!-- TODO "book available, waitlist remainder" / "waitlist all seats" -->
+  <!-- TODO the default value should be blank to force a choice AND to support the initial submission where this drop-down is not shown -->
 
-  <div class="field">
-    <%= form.label :tour_id %>
-    <%= form.text_field :tour_id %>
-  </div>
-
+  <!-- Submit the form to create a new booking -->
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

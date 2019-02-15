@@ -34,8 +34,13 @@
   <%= @tour.status_description %>
 </p>
 <p>
-  <strong>Num seats:</strong>
+  <strong># Seats:</strong>
   <%= @tour.num_seats %>
+</p>
+<p>
+  <!-- TODO: test this -->
+  <strong># Available Seats:</strong>
+  <%= Booking.get_available_seats_for_tour(@tour) %>
 </p>
 <p>
   <strong>Agent:</strong>
@@ -61,14 +66,18 @@
   <% end %>
 <% end %>
 
-<!-- Offer the opportunity to edit the tour -->
+<!-- Links -->
+<%= link_to 'Back', tours_path %>
+<% if current_user_can_book_tours? %>
+  | <%= link_to 'Book', new_booking_path(tour_id: @tour.id) %>
+<% end %>
 <% if current_user_can_modify_given_tour?(@tour) %>
-  <%= link_to 'Edit', edit_tour_path(@tour) %> |
+  | <%= link_to 'Edit', edit_tour_path(@tour) %>
 <% end %>
-<%= link_to 'Back', tours_path %> |
 <% if current_user_can_create_tour? %>
-  <%= link_to 'New', new_tour_path %>
+  | <%= link_to 'New', new_tour_path %>
 <% end %>
+
 <!-- Also display any reviews that exist for this tour -->
 <!-- This comes after the edit link because you edit reviews elsewhere -->
 <% unless @reviews.empty? %>
