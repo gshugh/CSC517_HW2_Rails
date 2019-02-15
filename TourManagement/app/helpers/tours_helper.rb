@@ -62,4 +62,14 @@ module ToursHelper
     return date_object
   end
 
+  # Method to determine the minimum # available seats previously selected by the user in search filtering
+  # If there is no such user selection, return zero
+  def user_selected_min_seats
+    if flash[:filters].length.positive? && flash[:filters][:min_seats.to_s]
+      return flash[:filters][:min_seats.to_s]
+    else
+      return 0
+    end
+  end
+
 end
