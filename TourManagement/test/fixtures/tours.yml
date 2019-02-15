@@ -9,7 +9,7 @@ one:
   end_date: 2019-02-07
   operator_contact: MyString
   cancelled: false
-  num_seats: 1
+  num_seats: 10
   # Tours need at least 1 location id
   # But this is not stored in the tour model
   # So cannot add this to the fixture
@@ -25,7 +25,7 @@ two:
   end_date: 2019-03-07
   operator_contact: MyString
   cancelled: false
-  num_seats: 1
+  num_seats: 20
   # Tours need at least 1 location id
   # But this is not stored in the tour model
   # So cannot add this to the fixture
@@ -41,7 +41,7 @@ three:
   end_date: 2019-03-07
   operator_contact: MyString
   cancelled: true
-  num_seats: 1
+  num_seats: 30
   # Tours need at least 1 location id
   # But this is not stored in the tour model
   # So cannot add this to the fixture
