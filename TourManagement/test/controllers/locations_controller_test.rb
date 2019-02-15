@@ -15,9 +15,13 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # Use different location to pass uniqueness criteria
   test "should create location" do
     assert_difference('Location.count') do
-      post locations_url, params: { location: { country: @location.country, state: @location.state } }
+      post locations_url, params: {location: {
+          country: "Unique Country",
+          state: "Unique State"
+      } }
     end
 
     assert_redirected_to location_url(Location.last)
