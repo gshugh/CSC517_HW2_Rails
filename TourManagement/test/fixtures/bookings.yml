@@ -6,6 +6,6 @@ one:
   tour: one
 
 two:
-  num_seats: 1
+  num_seats: 2
   user: two
   tour: two
