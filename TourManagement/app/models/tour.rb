@@ -51,6 +51,14 @@ class Tour < ApplicationRecord
     where("price_in_cents <= ?", (max_price_dollars.to_f * 100).to_i)
   }
 
+  # https://stackoverflow.com/questions/4224600/can-you-do-greater-than-comparison-on-a-date-in-a-rails-3-search
+  scope :earliest_start, ->(earliest_start) {
+    where("start_date >= ?", earliest_start)
+  }
+  scope :latest_end, ->(latest_end) {
+    where("end_date <= ?", latest_end)
+  }
+
   # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled
@@ -58,13 +66,14 @@ class Tour < ApplicationRecord
     "In Future"
   end
 
-  # Produce an itinerary for the tour (to show onscreen)
+  # Produce an itinerary for the tour (toshow onscreen)
   def itinerary
     itinerary_array = []
     Visit.get_locations_for_tour(self).each do |location|
       itinerary_array << location.user_friendly_description
     end
-    return itinerary_array.join(" / ")
+    # Join with newlines to conserve horizontal space onscreen
+    return itinerary_array.join("\n")
   end
 
   # Calculate whether the tour is in the past

@@ -19,3 +19,14 @@
     font-weight: bold;
     background-color: #eee;
 }
+/* Do not auto-collapse white space in table cells (tour itineraries have newlines) */
+td {
+    white-space: pre;
+}
+/* Borders are helpful when we might have multi-line content in tables */
+tbody > tr:first-child > td {
+    border-top: 1pt solid #2E2F30;
+}
+tbody > tr > td {
+    border-bottom: 1pt solid #2E2F30;
+}
