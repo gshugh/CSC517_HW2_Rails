@@ -98,6 +98,10 @@
   <%= form.label "Latest End" %>
   <%= form.date_field :latest_end, value: user_selected_latest_end %>
 
+  <!-- Select minimum # available seats -->
+  <%= form.label "Min # Available Seats" %>
+  <%= form.number_field :min_seats, value: user_selected_min_seats %>
+
   <!-- Submit search filters -->
   <div class="actions">
     <%= form.submit "Search" %>

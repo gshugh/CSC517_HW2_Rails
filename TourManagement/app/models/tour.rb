@@ -59,6 +59,15 @@ class Tour < ApplicationRecord
     where("end_date <= ?", latest_end)
   }
 
+  # Using where differently here (take advantage of existing booking model method)
+  # https://guides.rubyonrails.org/active_record_querying.html#scopes
+  # "All scope methods will return an ActiveRecord::Relation object
+  # which will allow for further methods (such as other scopes) to be called on it."
+  # So, we should be able to effectively do Tours.select rather than Tours.where
+  scope :min_seats, ->(min_seats) {
+    select { |tour| Booking.get_available_seats_for_tour(tour) >= min_seats.to_i }
+  }
+
   # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled

@@ -280,7 +280,7 @@ class ToursController < ApplicationController
     # A list of the param names that can be used for filtering the Product list
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     def filtering_params(params)
-      params.slice(:desired_location, :max_price_dollars, :tour_name, :earliest_start, :latest_end)
+      params.slice(:desired_location, :max_price_dollars, :tour_name, :earliest_start, :latest_end, :min_seats)
     end
 
     # Method to determine if a string represents a number
