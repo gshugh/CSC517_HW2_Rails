@@ -27,4 +27,39 @@ module ToursHelper
     end
   end
 
+  # Method to determine the earliest start date previously selected by the user in search filtering
+  # If there is no such user selection, return a very early start date
+  # Dates are stored in YYYY-MM-DD format
+  def user_selected_earliest_start
+    if (
+      flash[:filters].length.positive? &&
+      flash[:filters][:earliest_start.to_s] &&
+      # https://stackoverflow.com/questions/15989329/what-is-good-if-an-empty-string-is-truthy
+      flash[:filters][:earliest_start.to_s].length.positive?
+    )
+      date_object = Date.strptime(flash[:filters][:earliest_start.to_s], "%Y-%m-%d")
+    else
+      date_object = Date.today.prev_month
+    end
+    return date_object
+  end
+
+  # Method to determine the latest end date previously selected by the user in search filtering
+  # If there is no such user selection, return a very late end date
+  # Dates are stored in YYYY-MM-DD format
+  # noinspection RubyParenthesesAroundConditionInspection
+  def user_selected_latest_end
+    if (
+      flash[:filters].length.positive? &&
+      flash[:filters][:latest_end.to_s] &&
+      # https://stackoverflow.com/questions/15989329/what-is-good-if-an-empty-string-is-truthy
+      flash[:filters][:latest_end.to_s].length.positive?
+    )
+      date_object = Date.strptime(flash[:filters][:latest_end.to_s], "%Y-%m-%d")
+    else
+      date_object = Date.today.next_month
+    end
+    return date_object
+  end
+
 end

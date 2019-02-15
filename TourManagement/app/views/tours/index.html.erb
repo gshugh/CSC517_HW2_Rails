@@ -10,8 +10,9 @@
     <tr>
       <th>Name</th>
       <th>Itinerary</th>
-      <th>Price in dollars</th>
+      <th>Price ($)</th>
       <th>Start date</th>
+      <th>End date</th>
       <th>Status</th>
       <th>Num seats</th>
       <th>Agent</th>
@@ -26,6 +27,7 @@
         <td><%= tour.itinerary %></td>
         <td><%= tour.price_in_dollars %></td>
         <td><%= tour.start_date %></td>
+        <td><%= tour.end_date %></td>
         <td><%= tour.status_description %></td>
         <td><%= tour.num_seats %></td>
         <td><%= Listing.get_agent_name_for_tour(tour) %></td>
@@ -85,6 +87,14 @@
                         step: 0.01,
                         value: user_selected_maximum_price
   %>
+
+  <!-- Select earliest start date -->
+  <%= form.label "Earliest Start" %>
+  <%= form.date_field :earliest_start, value: user_selected_earliest_start %>
+
+  <!-- Select latest end date -->
+  <%= form.label "Latest End" %>
+  <%= form.date_field :latest_end, value: user_selected_latest_end %>
 
   <!-- Submit search filters -->
   <div class="actions">

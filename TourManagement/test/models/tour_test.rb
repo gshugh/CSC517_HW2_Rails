@@ -28,7 +28,7 @@ class TourTest < ActiveSupport::TestCase
     # End result it, we don't know how the visits will be ordered, in the test environment
     # So the best we can do here is to see if the string includes everything that it should
     assert_match "North Carolina, US", @tour_2.itinerary
-    assert_match " / ", @tour_2.itinerary
+    assert_match "\n", @tour_2.itinerary
     assert_match "South Carolina, US", @tour_2.itinerary
     # Third tour has no locations
     assert_equal "", @tour_3.itinerary
