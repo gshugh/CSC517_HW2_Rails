@@ -51,6 +51,14 @@ class Tour < ApplicationRecord
     where("price_in_cents <= ?", (max_price_dollars.to_f * 100).to_i)
   }
 
+  # https://stackoverflow.com/questions/4224600/can-you-do-greater-than-comparison-on-a-date-in-a-rails-3-search
+  scope :earliest_start, ->(earliest_start) {
+    where("start_date >= ?", earliest_start)
+  }
+  scope :latest_end, ->(latest_end) {
+    where("end_date <= ?", latest_end)
+  }
+
   # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled
