@@ -21,4 +21,10 @@ class Waitlist < ApplicationRecord
     return Booking.where(user_id: user_id).find_by(tour_id: tour_id)
   end
 
+  # Method to get the # seats booked by this same user on this same tour
+  # If no such booking, will return zero
+  def seats_booked_same_user_same_tour
+    return booking_same_user_same_tour ? booking_same_user_same_tour.num_seats : 0
+  end
+
 end

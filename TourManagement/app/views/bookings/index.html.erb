@@ -4,31 +4,49 @@
 
 <!-- TODO add ability to cancel booking -->
 <!-- TODO restrict ability to cancel booking -->
-<!-- TODO show waitlists as well -->
-<!-- TODO if all waitlist indexing is available here, delete waitlist index and associated links / tests -->
 
 <% unless @bookings.empty? %>
 
   <table>
+
+    <!-- Header Row -->
     <thead>
     <tr>
       <th>Tour</th>
       <th>User</th>
-      <th>Num seats</th>
+      <th># Seats Booked</th>
+      <th># Seats Waitlisted</th>
       <th colspan="3"></th>
     </tr>
     </thead>
 
+    <!-- Data Rows -->
     <tbody>
+    <!-- Bookings & associated waitlists -->
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.tour.name %></td>
         <td><%= booking.user.name %></td>
         <td><%= booking.num_seats %></td>
+        <td><%= booking.seats_waitlisted_same_user_same_tour %></td>
         <td><%= link_to 'Show', booking %></td>
         <% if current_user_can_modify_given_booking?(booking) %>
           <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
           <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    <!-- Waitlists that are not associated with any booking -->
+    <% @lonely_waitlists.each do |waitlist| %>
+      <tr>
+        <td><%= waitlist.tour.name %></td>
+        <td><%= waitlist.user.name %></td>
+        <td>0</td>
+        <td><%= waitlist.num_seats %></td>
+        <td><%= link_to 'Show', waitlist %></td>
+        <% if current_user_can_modify_given_booking?(waitlist) %>
+          <td><%= link_to 'Edit', edit_booking_path(waitlist) %></td>
+          <td><%= link_to 'Destroy', waitlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
