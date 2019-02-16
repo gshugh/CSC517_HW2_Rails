@@ -94,6 +94,7 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:name, :tour_id)
+      # https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond
+      params.require(:photo).permit(:name, :tour_id, :image)
     end
 end

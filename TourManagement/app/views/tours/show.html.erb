@@ -61,7 +61,13 @@
     <strong>Photos:</strong>
   </p>
   <% @photos.each do |photo| %>
-    <li><%= photo.name %></li>
+    <!-- https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond -->
+    <% if photo.image.attached? %>
+      <%= photo.name %>
+      <br>
+      <%= image_tag photo.image, width: '300' %>
+      <br>
+    <% end %>
   <% end %>
 <% end %>
 
