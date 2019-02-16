@@ -16,8 +16,8 @@
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.num_seats %></td>
-        <td><%= booking.user %></td>
-        <td><%= booking.tour %></td>
+        <td><%= booking.user.name %></td>
+        <td><%= booking.tour.name %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,9 +25,6 @@
     <% end %>
   </tbody>
 </table>
-
-
-<!-- TODO user name not ID, ditto tour name not ID -->
 
 <br>
 

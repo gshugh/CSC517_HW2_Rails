@@ -38,7 +38,6 @@
   <%= @tour.num_seats %>
 </p>
 <p>
-  <!-- TODO: test this -->
   <strong># Available Seats:</strong>
   <%= Booking.get_available_seats_for_tour(@tour) %>
 </p>
