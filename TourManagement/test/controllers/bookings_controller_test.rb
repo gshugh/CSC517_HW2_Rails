@@ -2,16 +2,24 @@ require 'test_helper'
 
 class BookingsControllerTest < ActionDispatch::IntegrationTest
   setup do
+
     @booking = bookings(:one)
     @tour = tours(:one)
+    @user = users(:one)
+
+    # Log in a user (gotta have a logged-in user to associate with any new bookings)
+    # But cannot use session helper from outside of the controller
+    # https://stackoverflow.com/questions/39465941/how-to-use-session-in-the-test-controller-in-rails-5?rq=1
+    # So, this is kind of a hack to fake a logged-in user
+    # Mimics params sent when logging in manually on the development application
+    post login_path, params: { session: { email: @user.email, password: @user.password } }
+
   end
 
   test "should get index" do
     get bookings_url
     assert_response :success
   end
-
-  # TODO run all tests after booking stuff is finished
 
   test "should get new" do
     # The bookings new view expects to be passed the tour we're currently working with,
@@ -25,7 +33,9 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
       post bookings_url, params: { booking: {
         num_seats: @booking.num_seats,
         tour_id: @booking.tour_id,
-        user_id: @booking.user_id
+        user_id: @booking.user_id,
+        # Add a booking strategy (1 - Book All Seats)
+        strategy: 1
       } }
     end
 
