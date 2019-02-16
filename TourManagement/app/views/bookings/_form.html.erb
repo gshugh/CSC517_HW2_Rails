@@ -19,16 +19,24 @@
   <!-- We should already know what tour we are booking -->
   <%= form.hidden_field :tour_id, :value => @tour.id %>
 
-  <!-- Allow the user to attempt to book seats whether or not there are enough seats -->
+  <!-- Select # seats to book -->
   <div class="field">
     <%= form.label "# Seats to Book" %>
     <%= form.number_field :num_seats %>
   </div>
 
-  <!-- TODO add a form drop-down to pick among several options -->
-  <!-- TODO show these options if an attempted booking was rejected due to not enough seats -->
-  <!-- TODO "book available, waitlist remainder" / "waitlist all seats" -->
-  <!-- TODO the default value should be blank to force a choice AND to support the initial submission where this drop-down is not shown -->
+  <!-- TODO test ability to reach this form (logged out NO non-customer NO customer YES admin YES) -->
+
+  <!-- Select booking / waitlisting strategy -->
+  <div class="field">
+    <%= form.label "Book or Waitlist?" %>
+    <!-- TODO fix this "undefined method `select_tag'... Did you mean? select" -->
+    <%= form.select_tag(:strategy, options_for_select([
+      ['Book All Seats', 1],
+      ['Book Available Seats, Waitlist Remaining Seats', 2],
+      ['Waitlist All Seats', 3]
+    ])) %>
+  </div>
 
   <!-- Submit the form to create a new booking -->
   <div class="actions">

@@ -41,35 +41,60 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
 
-    # TODO examine not_enough_seats_strategy from the parameters passed in
-    # TODO it should be blank (I think I can book all these) or
-    # TODO should indicate that we want to book available and waitlist remainder or
-    # TODO should indicate that we want to waitlist all seats
+    # Get some basic info we use several places below
+    tour_id = booking_params[:tour_id].to_i
+    num_seats = booking_params[:num_seats].to_i
+    num_seats_available = Booking.get_available_seats_for_tour(Tour.find(tour_id))
+    strategy = booking_params[:strategy].to_i
 
-    # TODO if blank (book all seats), create new booking
-    # TODO if book / waitlist, create new booking AND create new waitlist
-    # TODO if waitlist all, only create new waitlist
+    # Support altered params for booking / waitlisting
+    params_book = booking_params.dup
+    params_waitlist = booking_params.dup
 
-    # TODO redirect according to what we created
-    # TODO booking: booking / booking + waitlist: booking / waitlist: waitlist
+    # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
+    # 1 - Book All Seats
+    # 2 - Book Available Seats, Waitlist Remaining Seats
+    # 3 - Waitlist All Seats
+    # http://ruby-doc.com/docs/ProgrammingRuby/html/tut_expressions.html#S5
+    case strategy
+    # 1 - Book All Seats
+    when 1
+      if num_seats < 1
+        raise "Cannot book #{num_seats} seats"
+      elsif num_seats > num_seats_available
+        raise "Cannot book #{num_seats} seats (only #{num_seats_available} seats available)"
+      else
+        @booking = Booking.new(params_book)
+        # TODO redirect to new booking if successful
+      end
+    # 2 - Book Available Seats, Waitlist Remaining Seats
+    when 2
+      if num_seats < 1
+        raise "Cannot book #{num_seats} seats"
+      elsif num_seats <= num_seats_available
+        raise "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
+      else
+        params_book[:num_seats] = num_seats_available
+        params_waitlist[:num_seats] = num_seats - num_seats_available
+        @booking = Booking.new(params_book)
+        @waitlist = Waitlist.new(params_waitlist)
+        # TODO redirect to new booking if successful
+      end
+    # 3 - Waitlist All Seats
+    when 3
+      if num_seats < 1
+        raise "Cannot waitlist #{num_seats} seats"
+      elsif num_seats <= num_seats_available
+        raise "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
+      else
+        @waitlist = Waitlist.new(params_waitlist)
+        # TODO redirect to new waitlist if successful
+      end
+    else
+      raise "Did not recognize book / waitlist strategy # #{strategy}"
+    end
 
-    # TODO guard against attempted booking or waitlisting of zero seats
-
-    # TODO check this out for inspiration:
-    # TODO raise a similar alarm IF num_seats > available # seats AND
-    # TODO we do not have a waitlisting strategy
-    # TODO this is how we will tell the user "hey I don't have enough seats"
-    # TODO as this message will end up in the flash to be displayed
-    #     # Associate the currently logged in user with this review
-    #     #   This way, the view is not cluttered with the user (they already know who they are)
-    #     # The assumption is that there IS a logged in user
-    #     #   If not then this review creation should fail
-    #     raise "A review cannot be created if there is no logged-in user" unless current_user
-    #     @review = Review.new(review_params.merge(:user_id => current_user.id))
-
-
-    @booking = Booking.new(booking_params)
-
+    # TODO alter the code below based on the comments above
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -113,10 +138,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      # TODO support not_enough_seats_strategy in the NEW booking view
-      # TODO it should be blank (I think I can book all these) or
-      # TODO should indicate that we want to book available and waitlist remainder or
-      # TODO should indicate that we want to waitlist all seats
-      params.require(:booking).permit(:num_seats, :user_id, :tour_id, :not_enough_seats_strategy)
+      params.require(:booking).permit(:num_seats, :user_id, :tour_id, :strategy)
     end
 end
