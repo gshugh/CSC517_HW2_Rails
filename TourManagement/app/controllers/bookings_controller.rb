@@ -1,9 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
-  # TODO test to ensure that there is no way to get to "new" view without a tour being specified
-  # TODO do that same test for waitlist as well
-
   # GET /bookings
   # GET /bookings.json
   def index
@@ -33,8 +30,6 @@ class BookingsController < ApplicationController
     # Remember what tour we are working with and make this available to the view
     # This way the view can pass the tour info along in links / form fields as needed
     # This is to avoid bothering the user to enter the tour
-    # TODO will this work directly??
-    # TODO do this for waitlist as well
     @tour = @booking.tour
 
   end

@@ -34,7 +34,6 @@ class Booking < ApplicationRecord
 
   # Method to get the waitlist created by this same user on this same tour
   # If no such waitlist, will return nil and we'll need to respond appropriately later on
-  # TODO write a model test
   def waitlist_same_user_same_tour
     return Waitlist.where(user_id: user_id).find_by(tour_id: tour_id)
   end
