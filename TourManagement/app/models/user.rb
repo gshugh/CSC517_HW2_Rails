@@ -18,6 +18,8 @@ class User < ApplicationRecord
   # Define validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, presence: true
+
+
   # Do NOT validate presence of boolean fields (admin / agent / customer)
   # Seems to see false as not-present
   # We should make sure that unless a user has admin TRUE it cannot act as admin
@@ -34,4 +36,20 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+  # Method to generate a screen-friendly description of user type
+  def user_type
+    user_types = []
+    if admin
+      user_types << "Admin"
+    end
+    if agent
+      user_types << "Agent"
+    end
+    if customer
+      user_types << "Customer"
+    end
+    return user_types.join(" / ")
+  end
+
 end

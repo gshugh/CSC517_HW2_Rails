@@ -26,9 +26,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
         name: "MyUniqueName",
         num_seats: @tour.num_seats,
         operator_contact: @tour.operator_contact,
-        price_in_cents: @tour.price_in_cents,
+        price_in_dollars: @tour.price_in_dollars,
         start_date: @tour.start_date,
-        status: @tour.status,
+        cancelled: @tour.cancelled,
         # Tours need at least 1 location id
         # But this is not stored in the tour model
         # So cannot add this to the fixture
@@ -61,9 +61,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
       name: "MyNewUniqueName",
       num_seats: @tour.num_seats,
       operator_contact: @tour.operator_contact,
-      price_in_cents: @tour.price_in_cents,
+      price_in_dollars: @tour.price_in_dollars,
       start_date: @tour.start_date,
-      status: @tour.status,
+      cancelled: @tour.cancelled,
       # Tours need at least 1 location id
       # But this is not stored in the tour model
       # So cannot add this to the fixture

@@ -16,18 +16,8 @@
 </p>
 
 <p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Agent:</strong>
-  <%= @user.agent %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @user.customer %>
+  <strong>Type:</strong>
+  <%= @user.user_type %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

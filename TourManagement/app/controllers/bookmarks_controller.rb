@@ -4,9 +4,16 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
+    if params['reviews_user']
+      @bookmarks = Bookmark.where(user_id: params['bookmarks_user'])
+    elsif params['tours_user']
+      @tour = Tour.where(tour_id: params['tours_user'])
+      @bookmarks = Bookmark.where(tour_id: @tour.id)
+
+      else
     @bookmarks = Bookmark.all
   end
-
+  end
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show

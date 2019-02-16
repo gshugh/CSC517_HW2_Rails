@@ -4,7 +4,21 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = Tour.all
+    # Support filtering tours according to user desires
+    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+    @tours = Tour.where(nil)
+
+    flash[:filters] = {}
+    filtering_params(params).each do |key, value|
+      # Filter the tours by this criteria IF a "real" value was provided for the filter
+      if value.length.positive? && (!is_number?(value) || value.to_f.positive?)
+        @tours = @tours.public_send(key, value) if value.present?
+      end
+      # Persist this filter information for one request
+      # so that we can still show the user what they filtered by
+      flash[:filters][key] = value
+    end
+
   end
 
   # GET /tours/1
@@ -13,6 +27,9 @@ class ToursController < ApplicationController
 
     # Get all reviews associated with this tour so that the View may show them
     @reviews = Review.where(tour_id: @tour.id)
+
+    # Get all photos associated with this tour so that the View may show them
+    @photos = Photo.where(tour_id: @tour.id)
 
     # Get all locations associated with this tour so that the View may show them
     @locations = Visit.where(tour_id: @tour.id).map do |matching_visit|
@@ -152,14 +169,23 @@ class ToursController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
       params.require(:tour).permit(
+        # Support searching
+        # Permit things that will come through in a search post
+        # Implemented per...
+        # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+        :tour,
+        :utf8,
+        :authenticity_token,
+        :commit,
+        # Permit the normal stuff
         :name,
         :description,
-        :price_in_cents,
+        :price_in_dollars,
         :deadline,
         :start_date,
         :end_date,
         :operator_contact,
-        :status,
+        :cancelled,
         :num_seats,
         # Also permit up to 10 locations in the itinerary
         # Any un-selected locations will still come through
@@ -173,7 +199,9 @@ class ToursController < ApplicationController
         :location7,
         :location8,
         :location9,
-        :location10
+        :location10,
+        # Also permit filtering
+        :desired_location
       )
     end
 
@@ -247,6 +275,18 @@ class ToursController < ApplicationController
         @tour.errors[:base] << "A tour must have at least one location"
       end
 
+    end
+
+    # A list of the param names that can be used for filtering the Product list
+    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+    def filtering_params(params)
+      params.slice(:desired_location, :max_price_dollars, :tour_name, :earliest_start, :latest_end, :min_seats)
+    end
+
+    # Method to determine if a string represents a number
+    # https://stackoverflow.com/questions/5661466/test-if-string-is-a-number-in-ruby-on-rails
+    def is_number?(string)
+      true if Float(string) rescue false
     end
 
 end

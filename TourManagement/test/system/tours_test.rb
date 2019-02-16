@@ -22,7 +22,7 @@ class ToursTest < ApplicationSystemTestCase
     fill_in "Operator contact", with: @tour.operator_contact
     fill_in "Price in cents", with: @tour.price_in_cents
     fill_in "Start date", with: @tour.start_date
-    fill_in "Status", with: @tour.status
+    fill_in "Cancelled", with: @tour.cancelled
     click_on "Create Tour"
 
     assert_text "Tour was successfully created"
@@ -41,7 +41,7 @@ class ToursTest < ApplicationSystemTestCase
     fill_in "Operator contact", with: @tour.operator_contact
     fill_in "Price in cents", with: @tour.price_in_cents
     fill_in "Start date", with: @tour.start_date
-    fill_in "Status", with: @tour.status
+    fill_in "Cancelled", with: @tour.cancelled
     click_on "Update Tour"
 
     assert_text "Tour was successfully updated"
