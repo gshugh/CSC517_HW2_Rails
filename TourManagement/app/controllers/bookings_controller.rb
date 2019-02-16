@@ -4,7 +4,16 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
+    if params['booking_user_id']
+      @bookings = Booking.where(user_id: params['booking_user_id'].to_i)
+    elsif params['listing_user_id']
+      # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
+      @bookings = Booking.joins(
+        "INNER JOIN listings ON listings.tour_id = bookings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}"
+      )
+    else
+      @bookings = Booking.all
+    end
   end
 
   # GET /bookings/1
@@ -148,6 +157,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:num_seats, :user_id, :tour_id, :strategy)
+      params.require(:booking).permit(:num_seats, :user_id, :tour_id, :strategy, :booking_user_id, :listing_user_id)
     end
 end

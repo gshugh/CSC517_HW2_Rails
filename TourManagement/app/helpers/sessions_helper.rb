@@ -184,6 +184,30 @@ module SessionsHelper
   end
 
   #######################################################################
+  # BOOKING PERMISSIONS
+  #######################################################################
+
+  # Method to determine if the current user is allowed to look at all bookings
+  # Only an admin should be able to do this
+  def current_user_can_see_all_bookings?
+    current_user_admin?
+  end
+
+  # Method to determine if the current user is allowed to look at bookings they have made
+  # Customers need this ability
+  # Admins get it because they are special and can act as customers
+  def current_user_can_see_their_bookings?
+    current_user_admin? || current_user_customer?
+  end
+
+  # Method to determine if the current user is allowed to look at bookings of tours they have listed
+  # Agents need this ability
+  # Admins get it because they are special and can act as agents
+  def current_user_can_see_bookings_for_their_tours?
+    current_user_admin? || current_user_agent?
+  end
+
+  #######################################################################
   # USER PERMISSIONS
   #######################################################################
 
