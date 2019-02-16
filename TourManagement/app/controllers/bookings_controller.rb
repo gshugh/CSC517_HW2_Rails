@@ -6,13 +6,16 @@ class BookingsController < ApplicationController
   def index
     if params['booking_user_id']
       @bookings = Booking.where(user_id: params['booking_user_id'].to_i)
+      @page_title = "My Bookings"
     elsif params['listing_user_id']
       # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
       @bookings = Booking.joins(
         "INNER JOIN listings ON listings.tour_id = bookings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}"
       )
+      @page_title = "Bookings for My Tours"
     else
       @bookings = Booking.all
+      @page_title = "All Bookings"
     end
   end
 

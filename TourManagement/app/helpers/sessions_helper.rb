@@ -207,6 +207,13 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
+  # Method to determine if the current user is allowed to modify the given booking
+  # They can do this if they were the one to create the booking
+  # or if they are an admin
+  def current_user_can_modify_given_booking?(booking)
+    current_user_admin? || (logged_in? && booking.user_id == current_user.id)
+  end
+
   #######################################################################
   # USER PERMISSIONS
   #######################################################################
