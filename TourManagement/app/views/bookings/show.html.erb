@@ -1,19 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Num seats:</strong>
-  <%= @booking.num_seats %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @booking.user %>
-</p>
-
-<p>
-  <strong>Tour:</strong>
-  <%= @booking.tour %>
-</p>
+<%= render 'booking_waitlist', booking: @booking, waitlist: @booking.waitlist_same_user_same_tour %>
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', bookings_path %>

@@ -19,6 +19,12 @@ class WaitlistsController < ApplicationController
 
   # GET /waitlists/1/edit
   def edit
+
+    # Remember what tour we are working with and make this available to the view
+    # This way the view can pass the tour info along in links / form fields as needed
+    # This is to avoid bothering the user to enter the tour
+    @tour = @waitlist.tour
+
   end
 
   # POST /waitlists

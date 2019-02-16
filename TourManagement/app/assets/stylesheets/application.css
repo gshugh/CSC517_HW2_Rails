@@ -19,6 +19,9 @@
     font-weight: bold;
     background-color: #eee;
 }
+.flash.error {
+    background-color: #ff7777;
+}
 /* Do not auto-collapse white space in table cells (tour itineraries have newlines) */
 td {
     white-space: pre;

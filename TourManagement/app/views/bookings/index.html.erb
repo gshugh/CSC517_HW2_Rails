@@ -16,8 +16,8 @@
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.num_seats %></td>
-        <td><%= booking.user %></td>
-        <td><%= booking.tour %></td>
+        <td><%= booking.user.name %></td>
+        <td><%= booking.tour.name %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Booking', new_booking_path %>
+<!-- There is no link to create a new booking because you do that from tours show or index view -->

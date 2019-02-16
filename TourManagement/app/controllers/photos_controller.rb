@@ -41,7 +41,6 @@ class PhotosController < ApplicationController
     # Remember what tour we are working with and make this available to the view
     # This way the view can pass the tour info along in links / form fields as needed
     # This is to avoid bothering the user to enter the tour
-    #
     @tour = @photo.tour
 
   end
