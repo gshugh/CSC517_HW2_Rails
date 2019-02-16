@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<% if @user.customer? %>
-  <p><b> > <%= link_to 'Show my bookmarks', bookmarks_path %></b></p>
-<% end %>
-
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
