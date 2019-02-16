@@ -48,59 +48,72 @@ class BookingsController < ApplicationController
     strategy = booking_params[:strategy].to_i
 
     # Support altered params for booking / waitlisting
+    # We got strategy in params, but not needed (or wanted) by model instantiation
     params_book = booking_params.dup
+    params_book.delete(:strategy)
     params_waitlist = booking_params.dup
+    params_waitlist.delete(:strategy)
 
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
     # 1 - Book All Seats
     # 2 - Book Available Seats, Waitlist Remaining Seats
     # 3 - Waitlist All Seats
     # http://ruby-doc.com/docs/ProgrammingRuby/html/tut_expressions.html#S5
+    # https://stackoverflow.com/questions/8252783/passing-error-messages-through-flash
     case strategy
     # 1 - Book All Seats
     when 1
       if num_seats < 1
-        raise "Cannot book #{num_seats} seats"
+        flash[:error] = "Cannot book #{num_seats} seats"
       elsif num_seats > num_seats_available
-        raise "Cannot book #{num_seats} seats (only #{num_seats_available} seats available)"
+        flash[:error] = "Cannot book #{num_seats} seats (only #{num_seats_available} seats available)"
       else
         @booking = Booking.new(params_book)
-        # TODO redirect to new booking if successful
       end
     # 2 - Book Available Seats, Waitlist Remaining Seats
     when 2
       if num_seats < 1
-        raise "Cannot book #{num_seats} seats"
+        flash[:error] = "Cannot book #{num_seats} seats"
       elsif num_seats <= num_seats_available
-        raise "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
+        flash[:error] = "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
       else
         params_book[:num_seats] = num_seats_available
         params_waitlist[:num_seats] = num_seats - num_seats_available
         @booking = Booking.new(params_book)
         @waitlist = Waitlist.new(params_waitlist)
-        # TODO redirect to new booking if successful
       end
     # 3 - Waitlist All Seats
     when 3
       if num_seats < 1
-        raise "Cannot waitlist #{num_seats} seats"
+        flash[:error] = "Cannot waitlist #{num_seats} seats"
       elsif num_seats <= num_seats_available
-        raise "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
+        flash[:error] = "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
       else
         @waitlist = Waitlist.new(params_waitlist)
-        # TODO redirect to new waitlist if successful
       end
     else
-      raise "Did not recognize book / waitlist strategy # #{strategy}"
+      flash[:error] = "Did not recognize book / waitlist strategy # #{strategy}"
     end
 
-    # TODO alter the code below based on the comments above
+    # Attempt to save booking (if there is one) and waitlist (if there is one)
+    if flash[:error].blank? && @booking
+      booking_saved = @booking.save
+    end
+    if flash[:error].blank? && @waitlist
+      waitlist_saved = @waitlist.save
+    end
+
+    # Redirect based on what happened above
     respond_to do |format|
-      if @booking.save
+      if @booking && booking_saved
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
+      elsif @waitlist && waitlist_saved
+        format.html { redirect_to @waitlist, notice: 'Waitlist was successfully created.' }
+        format.json { render :show, status: :created, location: @booking }
       else
-        format.html { render :new }
+        # Failed - going back to the new view - make sure to pass along what tour we're working with
+        format.html { redirect_to new_booking_path(tour_id: tour_id) }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end

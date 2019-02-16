@@ -30,8 +30,7 @@
   <!-- Select booking / waitlisting strategy -->
   <div class="field">
     <%= form.label "Book or Waitlist?" %>
-    <!-- TODO fix this "undefined method `select_tag'... Did you mean? select" -->
-    <%= form.select_tag(:strategy, options_for_select([
+    <%= form.select(:strategy, options_for_select([
       ['Book All Seats', 1],
       ['Book Available Seats, Waitlist Remaining Seats', 2],
       ['Waitlist All Seats', 3]
