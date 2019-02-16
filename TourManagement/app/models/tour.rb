@@ -88,12 +88,12 @@ class Tour < ApplicationRecord
   # Method to determine whether the tour is in the past
   # If it is not a cancelled tour, this should make the status "Completed"
   def in_the_past
-    Date.current >= end_date
+    Date.current > end_date
   end
 
   # Method to determine whether the tour's booking deadline has passed
   def booking_deadline_has_passed
-    Date.current >= deadline
+    Date.current > deadline
   end
 
   # Methods to deal with currency
