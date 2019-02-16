@@ -1,10 +1,11 @@
-<%= form_with(model: booking, local: true) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+<%= form_with(model: form_model, local: true) do |form| %>
 
+  <!-- Auto generated error handling -->
+  <% if form_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(form_model.errors.count, "error") %> prohibited this booking from being saved:</h2>
       <ul>
-      <% booking.errors.full_messages.each do |message| %>
+      <% form_model.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,9 +21,14 @@
   <%= form.hidden_field :tour_id, :value => @tour.id %>
 
   <!-- Select # seats to book -->
+  <!-- Since this form is used to manage booking AND waitlisting, show total seats as default value -->
   <div class="field">
     <%= form.label "# Seats to Book" %>
-    <%= form.number_field :num_seats %>
+    <% if @booking %>
+      <%= form.number_field :num_seats, :value => @booking.num_seats + @booking.seats_waitlisted_same_user_same_tour %>
+    <% else %>
+      <%= form.number_field :num_seats, :value => @waitlist.num_seats %>
+    <% end %>
   </div>
 
   <!-- Select booking / waitlisting strategy -->

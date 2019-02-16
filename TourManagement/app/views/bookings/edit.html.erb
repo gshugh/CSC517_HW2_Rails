@@ -1,6 +1,24 @@
-<h1>Editing Booking</h1>
+<h1>Editing <%= @tour.name %> Booking</h1>
 
-<%= render 'form', booking: @booking %>
+<!-- TODO Test editing a booking from bookings index view -->
+<!-- TODO Test editing a waitlist from bookings index view -->
+<!-- TODO Test editing a booking from bookings show view -->
+<!-- TODO Test editing a waitlist from waitlist show view -->
+<!-- TODO Test showing a booking from bookings edit view -->
+<!-- TODO Test showing a waitlist from waitlist edit view -->
+<!-- TODO run all automated tests -->
 
-<%= link_to 'Show', @booking %> |
+<!-- This page does double duty between bookings / waitlists -->
+
+<% if @booking %>
+  <%= render 'form', form_model: @booking %>
+<% else %>
+  <%= render 'form', form_model: @waitlist %>
+<% end %>
+
+<% if @booking %>
+  <%= link_to 'Show', @booking %> |
+<% else %>
+  <%= link_to 'Show', @waitlist %> |
+<% end %>
 <%= link_to 'Back', bookings_path %>

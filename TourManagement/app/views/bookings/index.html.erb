@@ -2,9 +2,6 @@
 
 <h1><%= @page_title %></h1>
 
-<!-- TODO add ability to cancel booking -->
-<!-- TODO restrict ability to cancel booking -->
-
 <% unless @bookings.empty? %>
 
   <table>
@@ -45,7 +42,8 @@
         <td><%= waitlist.num_seats %></td>
         <td><%= link_to 'Show', waitlist %></td>
         <% if current_user_can_modify_given_booking?(waitlist) %>
-          <td><%= link_to 'Edit', edit_booking_path(waitlist) %></td>
+          <!-- Send to booking edit page (double-duty page) -->
+          <td><%= link_to 'Edit', edit_booking_path(waitlist, waitlist_override: true) %></td>
           <td><%= link_to 'Destroy', waitlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>

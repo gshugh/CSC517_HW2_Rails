@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     #   these seats are shown in the same table row
     # So for waitlists made available to the view,
     #   we ONLY want to show those that don't have an associated booking
-    @lonely_waitlists.select do |waitlist|
+    @lonely_waitlists = @lonely_waitlists.select do |waitlist|
       waitlist.seats_booked_same_user_same_tour.zero?
     end
   end
@@ -54,10 +54,27 @@ class BookingsController < ApplicationController
   # GET /bookings/1/edit
   def edit
 
+    # Edit page does double-duty (booking / waitlist)
+    # So make sure you know which one you're dealing with
+    # Waitlist override will be true if we are editing a "lonlely" waitlist
+    # Waitlist override will be false if we are editing a booking
+    #   (which may or may not have an associated booking)
+    if params['waitlist_override']
+      # Waitlist is whatever ID was passed in
+      @waitlist = Waitlist.find(params['id'].to_i)
+      # No associcated booking
+      @booking = nil
+    else
+      # Booking is whatever ID was passed in
+      @booking = Booking.find(params['id'].to_i)
+      # There may also be an associated waitlist
+      @waitlist = @booking.waitlist_same_user_same_tour
+    end
+
     # Remember what tour we are working with and make this available to the view
     # This way the view can pass the tour info along in links / form fields as needed
     # This is to avoid bothering the user to enter the tour
-    @tour = @booking.tour
+    @tour = @booking ? @booking.tour : @waitlist.tour
 
   end
 
@@ -175,6 +192,14 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:num_seats, :user_id, :tour_id, :strategy, :booking_user_id, :listing_user_id)
+      params.require(:booking).permit(
+        :num_seats,
+        :user_id,
+        :tour_id,
+        :strategy,
+        :booking_user_id,
+        :listing_user_id,
+        :waitlist_override
+      )
     end
 end
