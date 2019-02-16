@@ -93,7 +93,6 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
-
   # Method to determine if the given tour was listed by the currently logged in user
   def current_user_listed_given_tour?(tour)
     matching_user_id = Listing.get_agent_id_for_tour(tour)
@@ -105,17 +104,25 @@ module SessionsHelper
   # A tour in the future can always be modified by an admin
   # A tour in the future can be modified by an agent who has created the tour
   def current_user_can_modify_given_tour?(tour)
-    can_modify =
-      !tour.in_the_past &&
-      (
-        current_user_admin? ||
-        (current_user_agent? && current_user_listed_given_tour?(tour))
-      )
+    !tour.in_the_past &&
+    (
+      current_user_admin? ||
+      (current_user_agent? && current_user_listed_given_tour?(tour))
+    )
   end
 
   # Method to determine if the current user is allowed to book tours
   def current_user_can_book_tours?
     current_user_admin? || current_user_customer?
+  end
+
+  # Method to determine if the current user is allowed to book the given tour
+  # Nobody can book a tour that is completed
+  # A tour in the future can be booked if:
+  #   the current user is allowed to book tours
+  #   the tour's booking deadline has not elapsed
+  def current_user_can_book_given_tour?(tour)
+      !tour.in_the_past && !tour.booking_deadline_has_passed && current_user_can_book_tours?
   end
 
   # Method to determine if the current user is allowed to look at users

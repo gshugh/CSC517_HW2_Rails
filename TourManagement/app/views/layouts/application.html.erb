@@ -23,7 +23,7 @@
     <!-- Do this up at the top so that it remains in the same place regardless of the page-specific content -->
     <% if logged_in? %>
       <h2 style="color: blue">
-        Welcome <%= current_user.name %>
+        Welcome <%= current_user.user_type %>!  <%= current_user.name %>
       </h2>
     <% end %>
 
