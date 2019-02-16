@@ -85,16 +85,21 @@ class Tour < ApplicationRecord
     return itinerary_array.join("\n")
   end
 
-  # Calculate whether the tour is in the past
+  # Method to determine whether the tour is in the past
   # If it is not a cancelled tour, this should make the status "Completed"
   def in_the_past
-    Date.current >= end_date
+    Date.current > end_date
   end
 
+  # Method to determine whether the tour's booking deadline has passed
+  def booking_deadline_has_passed
+    Date.current > deadline
+  end
+
+  # Methods to deal with currency
   def price_in_dollars
     price_in_cents/100.0 if !price_in_cents.nil?
   end
-
   def price_in_dollars=(val)
     self.price_in_cents = (val.to_f * 100).to_int
   end

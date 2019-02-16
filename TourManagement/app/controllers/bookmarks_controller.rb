@@ -9,10 +9,9 @@ class BookmarksController < ApplicationController
     elsif params['tours_user']
       @tour = Tour.where(tour_id: params['tours_user'])
       @bookmarks = Bookmark.where(tour_id: @tour.id)
-
-      else
-    @bookmarks = Bookmark.all
-  end
+    else
+      @bookmarks = Bookmark.all
+    end
   end
   # GET /bookmarks/1
   # GET /bookmarks/1.json

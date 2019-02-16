@@ -2,17 +2,19 @@
 
 <h1>Bookings</h1>
 
-<table>
-  <thead>
+<% unless @bookings.empty? %>
+
+  <table>
+    <thead>
     <tr>
       <th>Num seats</th>
       <th>User</th>
       <th>Tour</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.num_seats %></td>
@@ -23,8 +25,14 @@
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+<% end %>
+
+<% if @bookings.empty? %>
+  No Results
+<% end %>
 
 <br>
 
