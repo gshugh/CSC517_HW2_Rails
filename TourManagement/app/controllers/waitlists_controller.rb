@@ -1,6 +1,8 @@
 class WaitlistsController < ApplicationController
   before_action :set_waitlist, only: [:show, :edit, :update, :destroy]
 
+  # TODO delete any actions that have no views!
+
   # GET /waitlists
   # GET /waitlists.json
   def index
@@ -46,6 +48,10 @@ class WaitlistsController < ApplicationController
   # PATCH/PUT /waitlists/1
   # PATCH/PUT /waitlists/1.json
   def update
+
+    # TODO can we end up here?
+    # TODO if so keep it dumb and re-route over to bookings edit?
+
     respond_to do |format|
       if @waitlist.update(waitlist_params)
         format.html { redirect_to @waitlist, notice: 'Waitlist was successfully updated.' }
