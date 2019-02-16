@@ -3,6 +3,7 @@ require 'test_helper'
 class BookingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @booking = bookings(:one)
+    @tour = tours(:one)
   end
 
   test "should get index" do
@@ -10,8 +11,12 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # TODO run all tests after booking stuff is finished
+
   test "should get new" do
-    get new_booking_url
+    # The bookings new view expects to be passed the tour we're currently working with,
+    #   so that the user doesn't have to select a tour
+    get new_booking_url(tour_id: @tour.id)
     assert_response :success
   end
 
