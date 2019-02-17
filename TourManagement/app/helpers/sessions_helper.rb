@@ -129,6 +129,15 @@ module SessionsHelper
       (current_user_customer? && current_user_created_given_review?(review))
   end
 
+  # Method to return a collection of the tours taken by the current user
+  def tours_taken_by_current_user
+    Booking.where(user_id: current_user.id).map do |booking|
+      if booking.tour.has_started?
+        return booking.tour
+      end
+    end
+  end
+
   #######################################################################
   # TOUR PERMISSIONS
   #######################################################################

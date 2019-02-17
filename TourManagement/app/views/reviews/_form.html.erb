@@ -24,7 +24,7 @@
   <div class="field">
     <%= form.label :tour_id %>
     <!-- Drop down for selecting tour: https://guides.rubyonrails.org/form_helpers.html -->
-    <%= form.select(:tour_id, options_from_collection_for_select(Tour.all, :id, :name)) %>
+    <%= form.select(:tour_id, options_from_collection_for_select(tours_taken_by_current_user, :id, :name)) %>
   </div>
 
   <div class="actions">
