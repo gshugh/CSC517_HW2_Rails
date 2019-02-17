@@ -12,11 +12,10 @@
 require 'rails_helper'
 
 RSpec.describe Waitlist, type: :model do
+
   describe "model" do
 
-    it "has a valid factory" do
-      expect(Waitlist.new.to be_valid)
-    end
+    it "should have a valid factory"
 
     # Lazily loaded to ensure it's only used when it's needed
     # RSpec tip: Try to avoid @instance_variables if possible. They're slow.
@@ -35,4 +34,5 @@ RSpec.describe Waitlist, type: :model do
     end
 
   end
+
 end

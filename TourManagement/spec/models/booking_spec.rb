@@ -33,9 +33,9 @@ RSpec.describe Booking, type: :model do
       it { should belong_to :tour }
     end
 
-    test "test number of available seats" do
-      assert_equal 9, Booking.get_available_seats_for_tour(@tour_1)
-      assert_equal 18, Booking.get_available_seats_for_tour(@tour_2)
+    context "tour1" do
+      it "should have 9 available seats"
+      it "should have 18 booked seats"
     end
 
   end
