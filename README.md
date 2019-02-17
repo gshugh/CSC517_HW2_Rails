@@ -1,11 +1,11 @@
 # CSC517_HW02
 Homework 2 (Ruby on Rails) <br />
 Tour Management System <br />
-(Add more info as time progresses..) <br />
+
 <br />
 Admin: <br />
 Preconfigured admin username: john@john.com <br />
-Preconfigured admin password: john <br /> <br />
+Preconfigured admin password: john <br />
 We assume that the user lands on the starting page (localhost:3000) where he/she can then login and accomplish the tasks. <br />
 
 Every user has the same login page which is also the landing page. The user can either login and gain more functionality or they can see only the list of all tours and reviews. < br />
