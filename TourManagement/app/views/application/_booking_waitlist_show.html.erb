@@ -1,18 +1,20 @@
 <!-- This partial can be rendered from any view -->
 <!-- https://richonrails.com/articles/partials-in-ruby-on-rails -->
 
-<!-- Tour description -->
+<!-- Tour name -->
+<h1>
+  <% if booking %>
+    <%= booking.tour.name %>
+  <% else %>
+    <%= waitlist.tour.name %>
+  <% end %>
+   Booking
+</h1>
+
+<!-- Total seats on tour -->
 <p>
 
-    <!-- Tour name -->
-    <% if booking %>
-      <%= booking.tour.name %>
-    <% else %>
-      <%= waitlist.tour.name %>
-    <% end %>
-
-    <!-- Total seats on tour -->
-    has
+    The tour has
     <% if booking %>
       <%= booking.tour.num_seats %>
     <% else %>

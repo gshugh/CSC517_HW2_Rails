@@ -1,6 +1,16 @@
-<h1>Editing Booking</h1>
+<h1>Editing <%= @tour.name %> Booking</h1>
 
-<%= render 'form', booking: @booking %>
+<!-- This page does double duty between bookings / waitlists -->
 
-<%= link_to 'Show', @booking %> |
+<% if @booking %>
+  <%= render 'form', form_model: @booking %>
+<% else %>
+  <%= render 'form', form_model: @waitlist %>
+<% end %>
+
+<% if @booking %>
+  <%= link_to 'Show', @booking %> |
+<% else %>
+  <%= link_to 'Show', @waitlist %> |
+<% end %>
 <%= link_to 'Back', bookings_path %>
