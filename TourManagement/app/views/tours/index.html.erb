@@ -10,7 +10,7 @@
     <tr>
       <th>Name</th>
       <th>Itinerary</th>
-      <th>Price ($)</th>
+      <th>Price</th>
       <th>Booking Deadline</th>
       <th>Start date</th>
       <th>End date</th>
@@ -27,7 +27,7 @@
       <tr>
         <td><%= tour.name %></td>
         <td><%= tour.itinerary %></td>
-        <td><%= tour.price_in_dollars %></td>
+        <td><%= number_to_currency(tour.price_in_dollars) %></td>
         <td><%= tour.deadline %></td>
         <td><%= tour.start_date %></td>
         <td><%= tour.end_date %></td>
