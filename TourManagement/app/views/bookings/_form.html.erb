@@ -49,6 +49,12 @@
     ])) %>
   </div>
 
+  <!-- If this is a waitlist edit, form will be submitted to waitlist controller -->
+  <!-- Make sure that the controller gets the waitlist override parameter from the outset -->
+  <% unless @booking %>
+    <%= form.hidden_field :waitlist_override, :value => true %>
+  <% end %>
+
   <!-- Submit the form to create a new booking -->
   <div class="actions">
     <%= form.submit %>

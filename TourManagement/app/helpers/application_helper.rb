@@ -8,7 +8,18 @@ module ApplicationHelper
   # Waitlist override will be false if we are editing a booking
   #   (which may or may not have an associated booking)
   def get_booking_and_waitlist_from_params(parameters)
-    if parameters['waitlist_override']
+
+    # TODO remove debug
+    puts "**************************"
+    puts "get_booking_and_waitlist_from_params"
+    puts "parameters"
+    puts parameters
+    puts "parameters[booking]"
+    puts parameters["booking"]
+    puts "parameters[waitlist]"
+    puts parameters["waitlist"]
+
+    if parameters['waitlist_override'] || (parameters['waitlist'] && parameters['waitlist']['waitlist_override'])
       # Waitlist is whatever ID was passed in
       waitlist = Waitlist.find(parameters['id'].to_i)
       # No associated booking
@@ -19,6 +30,13 @@ module ApplicationHelper
       # There may also be an associated waitlist
       waitlist = booking.waitlist_same_user_same_tour
     end
+
+    # TODO remove debug
+    puts "booking"
+    puts booking ? booking.id : "nil"
+    puts "waitlist"
+    puts waitlist ? waitlist.id : "nil"
+
     return booking, waitlist
   end
 
@@ -77,23 +95,26 @@ module ApplicationHelper
 
   # A method to call from bookings#update or from waitlists#update
   # This keeps all the smarts in one place
-  def update_booking_waitlist(booking, waitlist, parameters, booking_parameters)
+  def update_booking_waitlist(booking, waitlist, record_parameters)
 
     # TODO run all automated tests before merging back to master
 
     # Get some basic info we use several places below
-    tour_id = booking.tour.id
+    tour_id = record_parameters[:tour_id].to_i
     num_seats_already_booked = booking ? booking.num_seats : 0
-    num_seats_requested = booking_parameters[:num_seats].to_i
+    num_seats_requested = record_parameters[:num_seats].to_i
     num_seats_available = Booking.get_available_seats_for_tour(Tour.find(tour_id)) + num_seats_already_booked
-    booking_strategy = booking_parameters[:strategy].to_i
+    booking_strategy = record_parameters[:strategy].to_i
 
     # Support altered params for booking / waitlisting
-    # We got strategy in params, but not needed (or wanted) by model instantiation
-    params_book = booking_parameters.dup
+    # We have strategy in params, but not needed (or wanted) by model instantiation
+    # We may have waitlist_override in params, but not needed (or wanted) by model instantiation
+    params_book = record_parameters.dup
     params_book.delete(:strategy)
-    params_waitlist = booking_parameters.dup
+    params_book.delete(:waitlist_override)
+    params_waitlist = record_parameters.dup
     params_waitlist.delete(:strategy)
+    params_waitlist.delete(:waitlist_override)
 
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
     if booking_strategy_okay?(booking_strategy, num_seats_requested, num_seats_available)
@@ -130,14 +151,10 @@ module ApplicationHelper
           booking = Booking.new(params_book)
         end
         if waitlist
-          # TODO test this path
-          # TODO SPECIFIC case where this is not working correctly
-          # TODO waitlist ALL seats then edit to book ALL seats with a very low number
-          # TODO result is that you get the booking but keep the waitlist
-          # TODO but then if you go and do that same edit action again
-          # TODO it works so something funky is going on
-          # TODO and the difference is whether you have a booking at the start of edit (no = bug, yes = good behavior)
-          waitlist.destroy
+          # Destroy the record
+          waitlist.destroy!
+          # Make sure the variable is nil so you don't try to use it later
+          waitlist = nil
         end
         # 2 - Book Available Seats, Waitlist Remaining Seats
       when 2
@@ -174,7 +191,10 @@ module ApplicationHelper
         #   If there was not a waitlist already, create it
         if booking
           # TODO test this path
-          booking.destroy
+          # Destroy the record
+          booking.destroy!
+          # Make sure the variable is nil so you don't try to use it later
+          booking = nil
         end
         if waitlist
           # TODO test this path
@@ -189,10 +209,12 @@ module ApplicationHelper
     # Attempt to save booking (if there is one) and waitlist (if there is one)
     if flash[:error].blank? && booking
       # TODO test this path
+      # TODO don't do this if you destroyed the booking!
       booking_saved = booking.save
     end
     if flash[:error].blank? && waitlist
       # TODO test this path
+      # TODO don't do this if you destroyed the waitlist!
       waitlist_saved = waitlist.save
     end
 

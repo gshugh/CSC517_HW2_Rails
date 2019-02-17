@@ -134,7 +134,7 @@ class BookingsController < ApplicationController
 
     # Bookings edit page does double-duty (booking / waitlist)
     @booking, @waitlist = get_booking_and_waitlist_from_params(params)
-    update_booking_waitlist(@booking, @waitlist, params, booking_params)
+    update_booking_waitlist(@booking, @waitlist, booking_params)
 
   end
 
@@ -152,11 +152,25 @@ class BookingsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-      @booking = Booking.find(params[:id])
+
+      # TODO remove debug
+      puts "*******************************"
+      puts "set_booking METHOD"
+      puts "params"
+      puts params
+
+      @booking, @waitlist = get_booking_and_waitlist_from_params(params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
+
+      # TODO remove debug
+      puts "*******************************"
+      puts "booking_params METHOD"
+      puts "params"
+      puts params
+
       params.require(:booking).permit(
         :num_seats,
         :user_id,
