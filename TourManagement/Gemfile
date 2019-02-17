@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.4.0', require: false
 
 group :development, :test do
+  gem 'rspec-rails'
+#  gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -49,13 +51,12 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :production, :test, :development do
-  gem 'pg'
-end
+# group :production, :test, :development do
+#   gem 'pg'
+# end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'

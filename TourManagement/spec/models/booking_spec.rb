@@ -8,35 +8,35 @@
 # rspec-rails: https://github.com/rspec/rspec-rails
 # Shoulda-matchers: https://github.com/thoughtbot/shoulda-matchers
 # shoulda-callback-matchers: https://github.com/beatrichartz/shoulda-callback-matchers
-# factory_bot: https://github.com/thoughtbot/factory_bot
 
 require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
 
-  require 'spec_helper'
-
   describe "model" do
 
-    it "has a valid factory" do
-      expect(build(:booking)).to be_valid
-    end
+    it "should have a valid factory"
 
     # Lazily loaded to ensure it's only used when it's needed
     # RSpec tip: Try to avoid @instance_variables if possible. They're slow.
-    let(:booking) { build(:booking) }
+    let(:booking) { Booking.new }
 
-    describe "number of seat validations" do
-      it { expect(build(:booking, :one_seat)).to(
-          validate_numericality_of(:num_seats).is_greater_than_or_equal_to(0)) }
-      it { expect(build(:booking, :zero_seats)).to(
-          validate_numericality_of(:num_seats).is_greater_than_or_equal_to(0)) }
-      it { expect(build(:booking, :negative_seats)).not_to be_valid }
-      it { expect(build(:booking, :float_seats)).not_to be_valid }
+    context "with some number of seats" do
+      it "should be valid with 1 seat"
+      it "should be valid with 0 seats"
+      it "should be invalid with -1 seats"
+      it "should be invalid with 1.2 seats"
     end
 
-    it { should belong_to :user }
-    it { should belong_to :tour }
+    describe "associations" do
+      it { should belong_to :user }
+      it { should belong_to :tour }
+    end
+
+    context "tour1" do
+      it "should have 9 available seats"
+      it "should have 18 booked seats"
+    end
 
   end
 end
