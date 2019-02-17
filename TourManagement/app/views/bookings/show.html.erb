@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'booking_waitlist', booking: @booking, waitlist: @booking.waitlist_same_user_same_tour %>
+<!-- Render a common view between booking and waitlist -->
+<%= render 'booking_waitlist_show', booking: @booking, waitlist: @booking.waitlist_same_user_same_tour %>
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', bookings_path %>

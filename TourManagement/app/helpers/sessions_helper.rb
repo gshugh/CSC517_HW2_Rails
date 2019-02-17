@@ -146,10 +146,6 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
-  # def current_user_created_given_tour?(current_user)
-  #   current_user_listed_given_tour?(tour) && current_user_admin?
-  # end
-
   # Method to determine if the current user is allowed to create a tour
   def current_user_can_create_tour?
     current_user_admin? || current_user_agent?
@@ -211,6 +207,13 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
+  # Method to determine if the current user is allowed to modify the given booking
+  # They can do this if they were the one to create the booking
+  # or if they are an admin
+  def current_user_can_modify_given_booking?(booking)
+    current_user_admin? || (logged_in? && booking.user_id == current_user.id)
+  end
+
   #######################################################################
   # USER PERMISSIONS
   #######################################################################
@@ -219,6 +222,14 @@ module SessionsHelper
   # Only the admin of a site should be able to see a list of the registered users
   def current_user_can_see_all_users?
     current_user_admin?
+  end
+
+  # Method to determine if the current user is allowed to
+  #   modify login / password for the given user
+  # Only admins are ever allowed to modify user profiles
+  #   and even they cannot modify admin login / password
+  def current_user_can_modify_login_for_given_user?(user)
+    current_user_admin? && !user.admin?
   end
 
   #######################################################################

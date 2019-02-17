@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   resources :tours
   resources :users
 
-  # Supporting login
+  # Support login
   # Per https://www.railstutorial.org/book/basic_login
   # Route the incoming request (left) to controller action (right)
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get     '/login',     to: 'sessions#new'
+  post    '/login',     to: 'sessions#create'
+  delete  '/logout',    to: 'sessions#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

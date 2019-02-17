@@ -9,6 +9,6 @@
   <%= Booking.get_available_seats_for_tour(@tour) %>
 </p>
 
-<%= render 'form', booking: @booking %>
+<%= render 'form', form_model: @booking %>
 
 <%= link_to 'Back', bookings_path %>

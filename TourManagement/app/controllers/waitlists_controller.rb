@@ -1,37 +1,23 @@
 class WaitlistsController < ApplicationController
   before_action :set_waitlist, only: [:show, :edit, :update, :destroy]
 
-  # GET /waitlists
-  # GET /waitlists.json
-  def index
-    @waitlists = Waitlist.all
-  end
+  # https://stackoverflow.com/questions/1266623/how-do-i-call-a-method-in-application-helper-from-a-view
+  include ApplicationHelper
+
+  # You may notice that this controller LACKS some common methods
+  # That's because waitlists & bookings are so closely related
+  # Often, the user is routed to bookings to get things done
+  # This keeps us from having lots of duplicated code
 
   # GET /waitlists/1
   # GET /waitlists/1.json
   def show
   end
 
-  # GET /waitlists/new
-  def new
-    @waitlist = Waitlist.new
-  end
-
-  # GET /waitlists/1/edit
-  def edit
-
-    # Remember what tour we are working with and make this available to the view
-    # This way the view can pass the tour info along in links / form fields as needed
-    # This is to avoid bothering the user to enter the tour
-    @tour = @waitlist.tour
-
-  end
-
   # POST /waitlists
   # POST /waitlists.json
   def create
     @waitlist = Waitlist.new(waitlist_params)
-
     respond_to do |format|
       if @waitlist.save
         format.html { redirect_to @waitlist, notice: 'Waitlist was successfully created.' }
@@ -46,15 +32,11 @@ class WaitlistsController < ApplicationController
   # PATCH/PUT /waitlists/1
   # PATCH/PUT /waitlists/1.json
   def update
-    respond_to do |format|
-      if @waitlist.update(waitlist_params)
-        format.html { redirect_to @waitlist, notice: 'Waitlist was successfully updated.' }
-        format.json { render :show, status: :ok, location: @waitlist }
-      else
-        format.html { render :edit }
-        format.json { render json: @waitlist.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # Bookings edit page does double-duty (booking / waitlist)
+    @booking, @waitlist = get_booking_and_waitlist_from_params(params)
+    update_booking_waitlist(@booking, @waitlist, waitlist_params)
+
   end
 
   # DELETE /waitlists/1
@@ -62,12 +44,14 @@ class WaitlistsController < ApplicationController
   def destroy
     @waitlist.destroy
     respond_to do |format|
-      format.html { redirect_to waitlists_url, notice: 'Waitlist was successfully destroyed.' }
+      # Redirect to bookings index (this view does double duty between bookings & waitlists)
+      format.html { redirect_to bookings_url, notice: 'Waitlist was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_waitlist
       @waitlist = Waitlist.find(params[:id])
@@ -75,6 +59,15 @@ class WaitlistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def waitlist_params
-      params.require(:waitlist).permit(:num_seats, :user_id, :tour_id)
+      params.require(:waitlist).permit(
+        :num_seats,
+        :user_id,
+        :tour_id,
+        :strategy,
+        :booking_user_id,
+        :listing_user_id,
+        :waitlist_override
+      )
     end
+
 end

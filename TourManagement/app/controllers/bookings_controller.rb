@@ -1,19 +1,42 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
+  # https://stackoverflow.com/questions/1266623/how-do-i-call-a-method-in-application-helper-from-a-view
+  include ApplicationHelper
+
   # GET /bookings
   # GET /bookings.json
   def index
+    # We populate bookings AND waitlists so that we can show BOTH in the same table
+    # This will be a lot more sane for the user than having to click around
     if params['booking_user_id']
       @bookings = Booking.where(user_id: params['booking_user_id'].to_i)
+      @lonely_waitlists = Waitlist.where(user_id: params['booking_user_id'].to_i)
+      @page_title = "My Bookings"
     elsif params['listing_user_id']
       # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
       @bookings = Booking.joins(
         "INNER JOIN listings ON listings.tour_id = bookings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}"
       )
+      @lonely_waitlists = Waitlist.joins(
+        "INNER JOIN listings ON listings.tour_id = waitlists.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}"
+      )
+      @page_title = "Bookings for My Tours"
     else
       @bookings = Booking.all
+      @lonely_waitlists = Waitlist.all
+      @page_title = "All Bookings"
     end
+
+    # But there is a catch
+    # If a user has booked & waitlisted on the same tour,
+    #   these seats are shown in the same table row
+    # So for waitlists made available to the view,
+    #   we ONLY want to show those that don't have an associated booking
+    @lonely_waitlists = @lonely_waitlists.select do |waitlist|
+      waitlist.seats_booked_same_user_same_tour.zero?
+    end
+
   end
 
   # GET /bookings/1
@@ -36,10 +59,13 @@ class BookingsController < ApplicationController
   # GET /bookings/1/edit
   def edit
 
+    # Edit page does double-duty (booking / waitlist)
+    @booking, @waitlist = get_booking_and_waitlist_from_params(params)
+
     # Remember what tour we are working with and make this available to the view
     # This way the view can pass the tour info along in links / form fields as needed
     # This is to avoid bothering the user to enter the tour
-    @tour = @booking.tour
+    @tour = @booking ? @booking.tour : @waitlist.tour
 
   end
 
@@ -61,44 +87,22 @@ class BookingsController < ApplicationController
     params_waitlist.delete(:strategy)
 
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
-    # 1 - Book All Seats
-    # 2 - Book Available Seats, Waitlist Remaining Seats
-    # 3 - Waitlist All Seats
-    # http://ruby-doc.com/docs/ProgrammingRuby/html/tut_expressions.html#S5
-    # https://stackoverflow.com/questions/8252783/passing-error-messages-through-flash
-    case strategy
-    # 1 - Book All Seats
-    when 1
-      if num_seats < 1
-        flash[:error] = "Cannot book #{num_seats} seats"
-      elsif num_seats > num_seats_available
-        flash[:error] = "Cannot book #{num_seats} seats (only #{num_seats_available} seats available)"
-      else
+    if booking_strategy_okay?(strategy, num_seats, num_seats_available)
+      # Create booking / waitlist records
+      case strategy
+      # 1 - Book All Seats
+      when 1
         @booking = Booking.new(params_book)
-      end
-    # 2 - Book Available Seats, Waitlist Remaining Seats
-    when 2
-      if num_seats < 1
-        flash[:error] = "Cannot book #{num_seats} seats"
-      elsif num_seats <= num_seats_available
-        flash[:error] = "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
-      else
+      # 2 - Book Available Seats, Waitlist Remaining Seats
+      when 2
         params_book[:num_seats] = num_seats_available
         params_waitlist[:num_seats] = num_seats - num_seats_available
         @booking = Booking.new(params_book)
         @waitlist = Waitlist.new(params_waitlist)
-      end
-    # 3 - Waitlist All Seats
-    when 3
-      if num_seats < 1
-        flash[:error] = "Cannot waitlist #{num_seats} seats"
-      elsif num_seats <= num_seats_available
-        flash[:error] = "No need to waitlist #{num_seats} seats (there are #{num_seats_available} seats available)"
-      else
+      # 3 - Waitlist All Seats
+      when 3
         @waitlist = Waitlist.new(params_waitlist)
       end
-    else
-      flash[:error] = "Did not recognize book / waitlist strategy # #{strategy}"
     end
 
     # Attempt to save booking (if there is one) and waitlist (if there is one)
@@ -123,26 +127,28 @@ class BookingsController < ApplicationController
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # Bookings edit page does double-duty (booking / waitlist)
+    @booking, @waitlist = get_booking_and_waitlist_from_params(params)
+    update_booking_waitlist(@booking, @waitlist, booking_params)
+
   end
 
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
+    # Destroy booking
     @booking.destroy
+    # Destroy associated waitlist if it exists
+    if @waitlist
+      @waitlist.destroy
+    end
     respond_to do |format|
       format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
@@ -150,13 +156,23 @@ class BookingsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-      @booking = Booking.find(params[:id])
+      @booking, @waitlist = get_booking_and_waitlist_from_params(params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:num_seats, :user_id, :tour_id, :strategy, :booking_user_id, :listing_user_id)
+      params.require(:booking).permit(
+        :num_seats,
+        :user_id,
+        :tour_id,
+        :strategy,
+        :booking_user_id,
+        :listing_user_id,
+        :waitlist_override
+      )
     end
+
 end
