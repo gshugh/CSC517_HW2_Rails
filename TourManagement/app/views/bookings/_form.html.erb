@@ -25,9 +25,17 @@
   <div class="field">
     <%= form.label "# Seats to Book" %>
     <% if @booking %>
-      <%= form.number_field :num_seats, :value => @booking.num_seats + @booking.seats_waitlisted_same_user_same_tour %>
+      <% if @booking.num_seats %>
+        <%= form.number_field :num_seats, :value => @booking.num_seats + @booking.seats_waitlisted_same_user_same_tour %>
+      <% else %>
+        <%= form.number_field :num_seats %>
+      <% end %>
     <% else %>
-      <%= form.number_field :num_seats, :value => @waitlist.num_seats %>
+      <% if @waitlist.num_seats %>
+        <%= form.number_field :num_seats, :value => @waitlist.num_seats %>
+      <% else %>
+        <%= form.number_field :num_seats %>
+      <% end %>
     <% end %>
   </div>
 

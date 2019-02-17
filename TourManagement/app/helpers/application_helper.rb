@@ -29,6 +29,17 @@ module ApplicationHelper
   # http://ruby-doc.com/docs/ProgrammingRuby/html/tut_expressions.html#S5
   # https://stackoverflow.com/questions/8252783/passing-error-messages-through-flash
   def booking_strategy_okay?(strategy, num_seats_requested, num_seats_available)
+
+    # TODO remove debug
+    puts "*****************************"
+    puts "booking_strategy_okay?"
+    puts "strategy"
+    puts strategy
+    puts "num_seats_requested"
+    puts num_seats_requested
+    puts "num_seats_available"
+    puts num_seats_available
+
     strategy_okay = false
     case strategy
       # 1 - Book All Seats
@@ -68,22 +79,7 @@ module ApplicationHelper
   # This keeps all the smarts in one place
   def update_booking_waitlist(booking, waitlist, parameters, booking_parameters)
 
-    # TODO
-    puts "*******************"
-    puts "update_booking_waitlist"
-    puts "booking"
-    puts booking ? booking.id : "nil"
-    puts "waitlist"
-    puts waitlist ? waitlist.id : "nil"
-    puts "parameters"
-    puts parameters
-    puts "booking_parameters"
-    puts booking_parameters
-
-    # TODO break up this method
-
-    # TODO remove redirect from waitlists controller update method
-    # TODO remove extra route in routes.rb
+    # TODO run all automated tests before merging back to master
 
     # Get some basic info we use several places below
     tour_id = booking.tour.id
@@ -101,6 +97,20 @@ module ApplicationHelper
 
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
     if booking_strategy_okay?(booking_strategy, num_seats_requested, num_seats_available)
+
+      # TODO remove debug
+      puts "*********************"
+      puts "update_booking_waitlist"
+      puts "booking_strategy"
+      puts booking_strategy
+      puts "num_seats_requested"
+      puts num_seats_requested
+      puts "num_seats_available"
+      puts num_seats_available
+      puts "booking"
+      puts booking ? booking.id : "nil"
+      puts "waitlist"
+      puts waitlist ? waitlist.id : "nil"
 
       # Create booking / waitlist records
       case booking_strategy
@@ -121,6 +131,12 @@ module ApplicationHelper
         end
         if waitlist
           # TODO test this path
+          # TODO SPECIFIC case where this is not working correctly
+          # TODO waitlist ALL seats then edit to book ALL seats with a very low number
+          # TODO result is that you get the booking but keep the waitlist
+          # TODO but then if you go and do that same edit action again
+          # TODO it works so something funky is going on
+          # TODO and the difference is whether you have a booking at the start of edit (no = bug, yes = good behavior)
           waitlist.destroy
         end
         # 2 - Book Available Seats, Waitlist Remaining Seats

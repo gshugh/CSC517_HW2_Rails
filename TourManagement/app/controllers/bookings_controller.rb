@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
-  # Includes
+  # https://stackoverflow.com/questions/1266623/how-do-i-call-a-method-in-application-helper-from-a-view
   include ApplicationHelper
 
   # GET /bookings
@@ -83,8 +83,6 @@ class BookingsController < ApplicationController
     params_book.delete(:strategy)
     params_waitlist = booking_params.dup
     params_waitlist.delete(:strategy)
-
-    # TODO test all this again since I refactored
 
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
     if booking_strategy_okay?(strategy, num_seats, num_seats_available)

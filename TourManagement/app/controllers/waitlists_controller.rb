@@ -1,42 +1,23 @@
 class WaitlistsController < ApplicationController
   before_action :set_waitlist, only: [:show, :edit, :update, :destroy]
 
-  # Includes
+  # https://stackoverflow.com/questions/1266623/how-do-i-call-a-method-in-application-helper-from-a-view
   include ApplicationHelper
 
-  # TODO delete any actions that have no views!
-
-  # GET /waitlists
-  # GET /waitlists.json
-  def index
-    @waitlists = Waitlist.all
-  end
+  # You may notice that this controller LACKS some common methods
+  # That's because waitlists & bookings are so closely related
+  # Often, the user is routed to bookings to get things done
+  # This keeps us from having lots of duplicated code
 
   # GET /waitlists/1
   # GET /waitlists/1.json
   def show
   end
 
-  # GET /waitlists/new
-  def new
-    @waitlist = Waitlist.new
-  end
-
-  # GET /waitlists/1/edit
-  def edit
-
-    # Remember what tour we are working with and make this available to the view
-    # This way the view can pass the tour info along in links / form fields as needed
-    # This is to avoid bothering the user to enter the tour
-    @tour = @waitlist.tour
-
-  end
-
   # POST /waitlists
   # POST /waitlists.json
   def create
     @waitlist = Waitlist.new(waitlist_params)
-
     respond_to do |format|
       if @waitlist.save
         format.html { redirect_to @waitlist, notice: 'Waitlist was successfully created.' }

@@ -20,10 +20,6 @@ Rails.application.routes.draw do
   post    '/login',     to: 'sessions#create'
   delete  '/logout',    to: 'sessions#destroy'
 
-  # Support redirecting waitlist update to booking update
-  # to avoid duplicated code (booking update already has all the smarts)
-  get     '/reroute_waitlist_update', to: 'bookings#update'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Home page
