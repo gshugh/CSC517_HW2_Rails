@@ -15,6 +15,16 @@ class Waitlist < ApplicationRecord
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  # Method to get the number of waitlisted seats for the given tour
+  def self.get_waitlisted_seats_for_tour(tour)
+    num_waitlisted_seats = 0
+    waitlists_for_tour = Waitlist.where(tour_id: tour.id)
+    waitlists_for_tour.each do |waitlist|
+      num_waitlisted_seats += waitlist.num_seats
+    end
+    return num_waitlisted_seats
+  end
+
   # Method to get the booking created by this same user on this same tour
   # If no such booking, will return nil and we'll need to respond appropriately later on
   def booking_same_user_same_tour
