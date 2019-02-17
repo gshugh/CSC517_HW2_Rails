@@ -18,6 +18,7 @@ class User < ApplicationRecord
   # Define validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, presence: true
+  validates :password, presence: true, length: {in: 6..40}
 
 
   # Do NOT validate presence of boolean fields (admin / agent / customer)
