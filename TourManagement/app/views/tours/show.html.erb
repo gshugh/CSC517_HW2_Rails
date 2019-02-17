@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<!-- Display the basics -->
-<p>
-  <strong>Name:</strong>
+<!-- Tour name -->
+<h1>
   <%= @tour.name %>
-</p>
+</h1>
+
+<!-- Display the basics -->
 <p>
   <strong>Description:</strong>
   <%= @tour.description %>
@@ -38,8 +39,16 @@
   <%= @tour.num_seats %>
 </p>
 <p>
-  <strong># Available Seats:</strong>
+  <strong># Seats Booked:</strong>
+  <%= Booking.get_booked_seats_for_tour(@tour) %>
+</p>
+<p>
+  <strong># Seats Available:</strong>
   <%= Booking.get_available_seats_for_tour(@tour) %>
+</p>
+<p>
+  <strong># Seats Waitlisted:</strong>
+  <%= Waitlist.get_waitlisted_seats_for_tour(@tour) %>
 </p>
 <p>
   <strong>Agent:</strong>
