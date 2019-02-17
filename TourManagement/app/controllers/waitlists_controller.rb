@@ -33,8 +33,6 @@ class WaitlistsController < ApplicationController
   # PATCH/PUT /waitlists/1.json
   def update
 
-    # TODO test ability to cancel a lonely waitlist
-
     # Bookings edit page does double-duty (booking / waitlist)
     @booking, @waitlist = get_booking_and_waitlist_from_params(params)
     update_booking_waitlist(@booking, @waitlist, waitlist_params)
@@ -46,7 +44,8 @@ class WaitlistsController < ApplicationController
   def destroy
     @waitlist.destroy
     respond_to do |format|
-      format.html { redirect_to waitlists_url, notice: 'Waitlist was successfully destroyed.' }
+      # Redirect to bookings index (this view does double duty between bookings & waitlists)
+      format.html { redirect_to bookings_url, notice: 'Waitlist was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

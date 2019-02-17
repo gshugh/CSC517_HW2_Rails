@@ -37,14 +37,19 @@ class WaitlistsControllerTest < ActionDispatch::IntegrationTest
     # to account for extra parameters passed during redirect
     # (lazy approach - just be super flexible about where we redirect to)
     # https://api.rubyonrails.org/v5.2.2/classes/ActionDispatch/Assertions/ResponseAssertions.html
-    assert_redirected_to /http.*waitlists.*/
+    # Also, we redirect to bookings as bookings effectively handles both bookings and waitlists
+    assert_redirected_to /http.*bookings.*/
   end
 
   test "should destroy waitlist" do
     assert_difference('Waitlist.count', -1) do
       delete waitlist_url(@waitlist)
     end
-
-    assert_redirected_to waitlists_url
+    # We use a regex to describe where we expect to be redirected to
+    # to account for extra parameters passed during redirect
+    # (lazy approach - just be super flexible about where we redirect to)
+    # https://api.rubyonrails.org/v5.2.2/classes/ActionDispatch/Assertions/ResponseAssertions.html
+    # Also, we redirect to bookings as bookings effectively handles both bookings and waitlists
+    assert_redirected_to /http.*bookings.*/
   end
 end

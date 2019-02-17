@@ -28,11 +28,6 @@ class BookingsController < ApplicationController
       @page_title = "All Bookings"
     end
 
-    # TODO remove debug
-    puts "***********************"
-    puts "lonely_waitlists_before"
-    puts @lonely_waitlists.length
-
     # But there is a catch
     # If a user has booked & waitlisted on the same tour,
     #   these seats are shown in the same table row
@@ -41,13 +36,6 @@ class BookingsController < ApplicationController
     @lonely_waitlists = @lonely_waitlists.select do |waitlist|
       waitlist.seats_booked_same_user_same_tour.zero?
     end
-
-
-    # TODO remove debug
-    puts "***********************"
-    puts "lonely_waitlists_after"
-    puts @lonely_waitlists.length
-
 
   end
 
@@ -155,7 +143,12 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   # DELETE /bookings/1.json
   def destroy
+    # Destroy booking
     @booking.destroy
+    # Destroy associated waitlist if it exists
+    if @waitlist
+      @waitlist.destroy
+    end
     respond_to do |format|
       format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
@@ -164,37 +157,13 @@ class BookingsController < ApplicationController
 
   private
 
-    # TODO test ability to cancel a booking
-    # TODO test ability to cancel a booking/waitlist
-    # TODO Test editing a booking from bookings index view
-    # TODO Test editing a waitlist from bookings index view
-    # TODO Test editing a booking from bookings show view
-    # TODO Test editing a waitlist from waitlist show view
-    # TODO Test showing a booking from bookings edit view
-    # TODO Test showing a waitlist from waitlist edit view
-    # TODO run all automated tests
-
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-
-      # TODO remove debug
-      puts "*******************************"
-      puts "set_booking METHOD"
-      puts "params"
-      puts params
-
       @booking, @waitlist = get_booking_and_waitlist_from_params(params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-
-      # TODO remove debug
-      puts "*******************************"
-      puts "booking_params METHOD"
-      puts "params"
-      puts params
-
       params.require(:booking).permit(
         :num_seats,
         :user_id,

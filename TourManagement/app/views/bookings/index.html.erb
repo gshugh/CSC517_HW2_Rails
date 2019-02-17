@@ -29,7 +29,8 @@
         <td><%= link_to 'Show', booking %></td>
         <% if current_user_can_modify_given_booking?(booking) %>
           <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-          <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <!-- 'Cancel Booking' instead of 'Destroy' to make very clear to the user what they're doing -->
+          <td><%= link_to 'Cancel Booking', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -44,7 +45,8 @@
         <% if current_user_can_modify_given_booking?(waitlist) %>
           <!-- Send to booking edit page (double-duty page) -->
           <td><%= link_to 'Edit', edit_booking_path(waitlist, waitlist_override: true) %></td>
-          <td><%= link_to 'Destroy', waitlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <!-- 'Cancel Booking' instead of 'Destroy' to make very clear to the user what they're doing -->
+          <td><%= link_to 'Cancel Booking', waitlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

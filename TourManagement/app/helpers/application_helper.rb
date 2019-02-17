@@ -9,16 +9,6 @@ module ApplicationHelper
   #   (which may or may not have an associated booking)
   def get_booking_and_waitlist_from_params(parameters)
 
-    # TODO remove debug
-    puts "**************************"
-    puts "get_booking_and_waitlist_from_params"
-    puts "parameters"
-    puts parameters
-    puts "parameters[booking]"
-    puts parameters["booking"]
-    puts "parameters[waitlist]"
-    puts parameters["waitlist"]
-
     if parameters['waitlist_override'] || (parameters['waitlist'] && parameters['waitlist']['waitlist_override'])
       # Waitlist is whatever ID was passed in
       waitlist = Waitlist.find(parameters['id'].to_i)
@@ -31,13 +21,8 @@ module ApplicationHelper
       waitlist = booking.waitlist_same_user_same_tour
     end
 
-    # TODO remove debug
-    puts "booking"
-    puts booking ? booking.id : "nil"
-    puts "waitlist"
-    puts waitlist ? waitlist.id : "nil"
-
     return booking, waitlist
+
   end
 
   # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
@@ -47,16 +32,6 @@ module ApplicationHelper
   # http://ruby-doc.com/docs/ProgrammingRuby/html/tut_expressions.html#S5
   # https://stackoverflow.com/questions/8252783/passing-error-messages-through-flash
   def booking_strategy_okay?(strategy, num_seats_requested, num_seats_available)
-
-    # TODO remove debug
-    puts "*****************************"
-    puts "booking_strategy_okay?"
-    puts "strategy"
-    puts strategy
-    puts "num_seats_requested"
-    puts num_seats_requested
-    puts "num_seats_available"
-    puts num_seats_available
 
     strategy_okay = false
     case strategy
@@ -90,14 +65,14 @@ module ApplicationHelper
     else
       flash[:error] = "Did not recognize book / waitlist strategy # #{strategy}"
     end
+
     return strategy_okay
+
   end
 
   # A method to call from bookings#update or from waitlists#update
   # This keeps all the smarts in one place
   def update_booking_waitlist(booking, waitlist, record_parameters)
-
-    # TODO run all automated tests before merging back to master
 
     # Get some basic info we use several places below
     tour_id = record_parameters[:tour_id].to_i
@@ -119,20 +94,6 @@ module ApplicationHelper
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
     if booking_strategy_okay?(booking_strategy, num_seats_requested, num_seats_available)
 
-      # TODO remove debug
-      puts "*********************"
-      puts "update_booking_waitlist"
-      puts "booking_strategy"
-      puts booking_strategy
-      puts "num_seats_requested"
-      puts num_seats_requested
-      puts "num_seats_available"
-      puts num_seats_available
-      puts "booking"
-      puts booking ? booking.id : "nil"
-      puts "waitlist"
-      puts waitlist ? waitlist.id : "nil"
-
       # Create booking / waitlist records
       case booking_strategy
         # 1 - Book All Seats
@@ -144,10 +105,8 @@ module ApplicationHelper
         # We do not need a waitlist
         #   If there was a waitlist already, destroy it
         if booking
-          # TODO test this path
           booking.update(params_book)
         else
-          # TODO test this path
           booking = Booking.new(params_book)
         end
         if waitlist
@@ -168,10 +127,8 @@ module ApplicationHelper
         params_book[:num_seats] = num_seats_available
         params_waitlist[:num_seats] = num_seats_requested - num_seats_available
         if booking
-          # TODO test this path
           booking.update(params_book)
         else
-          # TODO test this path
           booking = Booking.new(params_book)
         end
         if waitlist
