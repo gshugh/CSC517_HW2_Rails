@@ -229,10 +229,12 @@ module SessionsHelper
 
   # Method to determine if the current user is allowed to
   #   modify login / password for the given user
-  # Only admins are ever allowed to modify user profiles
-  #   and even they cannot modify admin login / password
+  # Anyone can get to the user edit form
+  #   because anyone can sign in
+  # As far as editing an EXISTING user
+  #   we rely on other mechanisms to keep people from getting to that page
   def current_user_can_modify_login_for_given_user?(user)
-    current_user_admin? && !user.admin?
+    !user.admin?
   end
 
   #######################################################################
