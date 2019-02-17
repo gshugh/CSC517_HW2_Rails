@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <!-- Display tour name -->
+  <h2>
+    <%= @tour.name %>
+  </h2>
 
-  <div class="field">
-    <%= form.label :tour_id %>
-    <%= form.text_field :tour_id %>
-  </div>
+  <!-- Hidden fields, prepopulated with necessary data (user and tour) -->
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :tour_id, value: @tour.id %>
 
+  <!-- Submit -->
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
