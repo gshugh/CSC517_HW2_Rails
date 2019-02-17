@@ -12,35 +12,34 @@
     </div>
   <% end %>
 
-
+  <!-- Always show name and allow edits to name -->
+  <!-- (for users who were allowed to come to this page in the first place) -->
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
+  <!-- Admin login & password explicitly required to be non-modifiable -->
+  <!-- But still must be shown and submitted with form -->
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, :disabled => !current_user_can_modify_login_for_given_user?(@user) %>
+  </div>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, :disabled => !current_user_can_modify_login_for_given_user?(@user) %>
+  </div>
 
-  <% unless logged_in? && user.admin? && @user.id == 1%>
-    <div class="field">
-      <%= form.label :email %>
-      <%= form.text_field :email %>
-    </div>
-
-    <div class="field">
-      <%= form.label :password %>
-      <%= form.text_field :password %>
-    </div>
-
-    <div class="field">
-      <%= form.label :agent %>
-      <%= form.check_box :agent %>
-    </div>
-
-    <div class="field">
-      <%= form.label :customer %>
-      <%= form.check_box :customer %>
-    </div>
-
-    <% end %>
+  <!-- Always show name and allow edits to user role -->
+  <!-- (for users who were allowed to come to this page in the first place) -->
+  <div class="field">
+    <%= form.label :agent %>
+    <%= form.check_box :agent %>
+  </div>
+  <div class="field">
+    <%= form.label :customer %>
+    <%= form.check_box :customer %>
+  </div>
 
 
 <!--  <div class="field">-->
