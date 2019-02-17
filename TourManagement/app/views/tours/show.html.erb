@@ -80,6 +80,9 @@
   <% end %>
 <% end %>
 
+<!-- Protect against unpermitted users -->
+<%= link_to 'Bookmark This Tour!', new_bookmark_path(tour_id: @tour.id) %>
+
 <!-- Links -->
 <%= link_to 'Back', tours_path %>
 <% if current_user_can_book_given_tour?(@tour) %>

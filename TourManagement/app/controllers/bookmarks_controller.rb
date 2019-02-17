@@ -20,6 +20,8 @@ class BookmarksController < ApplicationController
 
   # GET /bookmarks/new
   def new
+    # Save tour so that the view may use it (otherwise user would have to select tour)
+    @tour = Tour.find(params['tour_id'])
     @bookmark = Bookmark.new
   end
 
