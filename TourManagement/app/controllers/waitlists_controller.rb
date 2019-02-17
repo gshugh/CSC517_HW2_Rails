@@ -49,18 +49,14 @@ class WaitlistsController < ApplicationController
   # PATCH/PUT /waitlists/1.json
   def update
 
-    # TODO can we end up here?
-    # TODO if so keep it dumb and re-route over to bookings edit?
+    # Edit page does double duty (booking / waitlisting)
+    # But we can still end up here if the user is editing a situation
+    #   where they have a waitlist and do NOT have a booking
+    # So, in this case, we just want to go over to the booking update
+    #   rather than have lots of duplicated code
+    #   (the booking update already has all the smarts)
+    redirect_to reroute_waitlist_update_path(@waitlist, waitlist_override: true)
 
-    respond_to do |format|
-      if @waitlist.update(waitlist_params)
-        format.html { redirect_to @waitlist, notice: 'Waitlist was successfully updated.' }
-        format.json { render :show, status: :ok, location: @waitlist }
-      else
-        format.html { render :edit }
-        format.json { render json: @waitlist.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /waitlists/1

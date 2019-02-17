@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  # TODO fix problem in executing this code when we have a waitlist and not a booking
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
@@ -148,10 +149,13 @@ class BookingsController < ApplicationController
     params_waitlist = booking_params.dup
     params_waitlist.delete(:strategy)
 
-    # TODO test literally every path below
-
     # Examine booking / waitlisting strategy and do some error checking to reject silly attempts
     if booking_strategy_okay?(strategy, num_seats_requested, num_seats_available)
+
+      # TODO remove debug
+      puts "**********************"
+      puts strategy
+
       # Create booking / waitlist records
       case strategy
       # 1 - Book All Seats
@@ -165,6 +169,7 @@ class BookingsController < ApplicationController
         if @booking
           @booking.update(params_book)
         else
+          # TODO test this path
           @booking = Booking.new(params_book)
         end
         if @waitlist
@@ -182,13 +187,17 @@ class BookingsController < ApplicationController
         params_book[:num_seats] = num_seats_available
         params_waitlist[:num_seats] = num_seats_requested - num_seats_available
         if @booking
+          # TODO test this path
           @booking.update(params_book)
         else
+          # TODO test this path
           @booking = Booking.new(params_book)
         end
         if @waitlist
+          # TODO test this path
           @waitlist.update(params_waitlist)
         else
+          # TODO test this path
           @waitlist = Waitlist.new(params_waitlist)
         end
       # 3 - Waitlist All Seats
@@ -200,11 +209,14 @@ class BookingsController < ApplicationController
         #   If there was a waitlist already, update it
         #   If there was not a waitlist already, create it
         if @booking
+          # TODO test this path
           @booking.destroy
         end
         if @waitlist
+          # TODO test this path
           @waitlist.update(params_waitlist)
         else
+          # TODO test this path
           @waitlist = Waitlist.new(params_waitlist)
         end
       end
@@ -212,21 +224,26 @@ class BookingsController < ApplicationController
 
     # Attempt to save booking (if there is one) and waitlist (if there is one)
     if flash[:error].blank? && @booking
+      # TODO test this path
       booking_saved = @booking.save
     end
     if flash[:error].blank? && @waitlist
+      # TODO test this path
       waitlist_saved = @waitlist.save
     end
 
     # Redirect based on what happened above
     respond_to do |format|
       if @booking && booking_saved
+        # TODO test this path
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :created, location: @booking }
       elsif @waitlist && waitlist_saved
+        # TODO test this path
         format.html { redirect_to @waitlist, notice: 'Waitlist was successfully updated.' }
         format.json { render :show, status: :created, location: @booking }
       else
+        # TODO test this path
         format.html { render :edit }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
@@ -252,6 +269,7 @@ class BookingsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])

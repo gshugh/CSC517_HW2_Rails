@@ -17,9 +17,10 @@ class StartAtsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create start" do
     assert_difference('StartAt.count') do
-      post start_ats_url, params: { start_at: { location_id: @start_at
-                                                              .location_id,
-                                             tour_id: @start_at.tour_id } }
+      post start_ats_url, params: { start_at: {
+        location_id: @start_at.location_id,
+        tour_id: @start_at.tour_id
+      } }
     end
 
     assert_redirected_to start_at_url(StartAt.last)
