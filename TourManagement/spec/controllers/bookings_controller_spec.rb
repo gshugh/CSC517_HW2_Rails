@@ -1,7 +1,61 @@
 require 'rails_helper'
 
 RSpec.describe BookingsController, type: :controller do
+  fixtures :bookings, :tours
 
+  describe "GET #index" do
+    it "populates an array of bookings" do
+      booking = [bookings(:one), bookings(:two)]
+      get :index
+      expect(assigns(:bookings)).to eq(booking)
+    end
+    it "renders the :index view" do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
+
+  describe "GET #show" do
+    it "assigns the requested booking to @booking" do
+      booking = bookings(:one)
+      get :show, params: { id: booking.id }
+      expect(assigns(:booking)).to eq(booking)
+    end
+    it "renders the :show template" do
+      get :show, params: { id: bookings(:one).id }
+      expect(response).to render_template :show
+    end
+  end
+
+  describe "GET #edit" do
+    it "renders the :edit template" do
+      get :edit, params: { id: bookings(:one).id }
+      expect(response).to render_template :edit
+    end
+  end
+
+  describe "GET #new" do
+    it "assigns a new Booking to @booking"
+    it "renders the :new template" do
+      get :new, params: { tour_id: tours(:one).id }
+      expect(response).to render_template :new
+    end
+  end
+
+  describe "POST #create" do
+    context "with valid attributes" do
+      it "saves the new booking in the database"
+      it "redirects to the home page"
+    end
+
+    context "with invalid attributes" do
+      it "does not save the new booking in the database"
+      it "re-renders the :new template"
+    end
+  end
+
+end
+=begin
   setup do
 
     @booking = bookings(:one)
@@ -15,11 +69,6 @@ RSpec.describe BookingsController, type: :controller do
     # Mimics params sent when logging in manually on the development application
     post login_path, params: { session: { email: @user.email, password: @user.password } }
 
-  end
-
-  test "should get index" do
-    get bookings_url
-    assert_response :success
   end
 
   test "should get new" do
@@ -67,3 +116,4 @@ RSpec.describe BookingsController, type: :controller do
   end
 
 end
+=end
