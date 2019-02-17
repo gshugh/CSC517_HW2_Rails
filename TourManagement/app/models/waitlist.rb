@@ -15,11 +15,16 @@ class Waitlist < ApplicationRecord
             presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  # Method to get all waitlists for the given tour
+  # Return these in order of creation
+  def self.get_waitlists_for_tour_first_come_first_served(tour)
+    Waitlist.where(tour_id: tour.id).order("created_at")
+  end
+
   # Method to get the number of waitlisted seats for the given tour
   def self.get_waitlisted_seats_for_tour(tour)
     num_waitlisted_seats = 0
-    waitlists_for_tour = Waitlist.where(tour_id: tour.id)
-    waitlists_for_tour.each do |waitlist|
+    get_waitlists_for_tour_first_come_first_served(tour).each do |waitlist|
       num_waitlisted_seats += waitlist.num_seats
     end
     return num_waitlisted_seats
