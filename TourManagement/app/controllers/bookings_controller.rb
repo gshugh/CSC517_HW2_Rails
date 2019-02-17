@@ -27,6 +27,12 @@ class BookingsController < ApplicationController
       @lonely_waitlists = Waitlist.all
       @page_title = "All Bookings"
     end
+
+    # TODO remove debug
+    puts "***********************"
+    puts "lonely_waitlists_before"
+    puts @lonely_waitlists.length
+
     # But there is a catch
     # If a user has booked & waitlisted on the same tour,
     #   these seats are shown in the same table row
@@ -35,6 +41,14 @@ class BookingsController < ApplicationController
     @lonely_waitlists = @lonely_waitlists.select do |waitlist|
       waitlist.seats_booked_same_user_same_tour.zero?
     end
+
+
+    # TODO remove debug
+    puts "***********************"
+    puts "lonely_waitlists_after"
+    puts @lonely_waitlists.length
+
+
   end
 
   # GET /bookings/1
@@ -149,6 +163,16 @@ class BookingsController < ApplicationController
   end
 
   private
+
+    # TODO test ability to cancel a booking
+    # TODO test ability to cancel a booking/waitlist
+    # TODO Test editing a booking from bookings index view
+    # TODO Test editing a waitlist from bookings index view
+    # TODO Test editing a booking from bookings show view
+    # TODO Test editing a waitlist from waitlist show view
+    # TODO Test showing a booking from bookings edit view
+    # TODO Test showing a waitlist from waitlist edit view
+    # TODO run all automated tests
 
     # Use callbacks to share common setup or constraints between actions.
     def set_booking

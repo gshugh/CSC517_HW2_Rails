@@ -175,10 +175,8 @@ module ApplicationHelper
           booking = Booking.new(params_book)
         end
         if waitlist
-          # TODO test this path
           waitlist.update(params_waitlist)
         else
-          # TODO test this path
           waitlist = Waitlist.new(params_waitlist)
         end
         # 3 - Waitlist All Seats
@@ -190,17 +188,14 @@ module ApplicationHelper
         #   If there was a waitlist already, update it
         #   If there was not a waitlist already, create it
         if booking
-          # TODO test this path
           # Destroy the record
           booking.destroy!
           # Make sure the variable is nil so you don't try to use it later
           booking = nil
         end
         if waitlist
-          # TODO test this path
           waitlist.update(params_waitlist)
         else
-          # TODO test this path
           waitlist = Waitlist.new(params_waitlist)
         end
       end
@@ -208,43 +203,28 @@ module ApplicationHelper
 
     # Attempt to save booking (if there is one) and waitlist (if there is one)
     if flash[:error].blank? && booking
-      # TODO test this path
-      # TODO don't do this if you destroyed the booking!
       booking_saved = booking.save
     end
     if flash[:error].blank? && waitlist
-      # TODO test this path
-      # TODO don't do this if you destroyed the waitlist!
       waitlist_saved = waitlist.save
     end
 
     # Redirect based on what happened above
     respond_to do |format|
       if booking && booking_saved
-        # TODO test this path
         format.html { redirect_to booking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :created, location: booking }
       elsif waitlist && waitlist_saved
-        # TODO test this path
         format.html { redirect_to waitlist, notice: 'Waitlist was successfully updated.' }
         format.json { render :show, status: :created, location: booking }
       else if booking
-        # TODO test this path
         format.html { redirect_to edit_booking_path(strategy: booking_strategy)}
         format.json { render json: booking.errors, status: :unprocessable_entity }
       else
-        # TODO test this path
         format.html { redirect_to edit_booking_path(strategy: booking_strategy, waitlist_override: true) }
         format.json { render json: booking.errors, status: :unprocessable_entity }
       end
     end
-
-    # TODO test booking number decrease
-    # TODO test booking number increase
-    # TODO test booking/waitlist number decrease
-    # TODO test booking/waitlist number increase
-    # TODO test waitlist number decrease
-    # TODO test waitlist number increase
 
     end
 

@@ -33,13 +33,7 @@ class WaitlistsController < ApplicationController
   # PATCH/PUT /waitlists/1.json
   def update
 
-    # TODO remove debug
-    puts "***************************"
-    puts "waitlists#update"
-    puts "params"
-    puts params
-    puts "waitlist_params"
-    puts waitlist_params
+    # TODO test ability to cancel a lonely waitlist
 
     # Bookings edit page does double-duty (booking / waitlist)
     @booking, @waitlist = get_booking_and_waitlist_from_params(params)
