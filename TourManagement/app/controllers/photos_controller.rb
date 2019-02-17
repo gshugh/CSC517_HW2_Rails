@@ -48,17 +48,26 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
+
+    # Attempt creation
     @photo = Photo.new(photo_params)
 
+    # Respond
     respond_to do |format|
       if @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
-        format.html { render :new }
+        # In case of errors make sure they go into flash
+        if @photo.errors.full_messages.length.positive?
+          flash[:error] = @photo.errors.full_messages.join(", ")
+        end
+        # Redirect
+        format.html { redirect_to new_photo_path(tour_id: @photo.tour.id) }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /photos/1
@@ -69,7 +78,7 @@ class PhotosController < ApplicationController
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
         format.json { render :show, status: :ok, location: @photo }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_photo_path(tour_id: @photo.tour.id) }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
@@ -87,6 +96,7 @@ class PhotosController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params[:id])
@@ -97,4 +107,5 @@ class PhotosController < ApplicationController
       # https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond
       params.require(:photo).permit(:name, :tour_id, :image)
     end
+
 end
