@@ -15,16 +15,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
     <!-- Application Title -->
     <h1 style="color: #cc0000;">Tour Management System</h1>
 
     <!-- Note current user's name -->
     <!-- Do this up at the top so that it remains in the same place regardless of the page-specific content -->
     <% if logged_in? %>
-      <h2 style="color: blue">
-        Welcome <%= current_user.user_type %>!  <%= current_user.name %>
+      <h2 style="color: blue">Welcome
+         <%= current_user.user_type %>,  <%= current_user.name %> !
       </h2>
+
     <% end %>
 
     <!-- https://stackoverflow.com/questions/9390778/best-practice-method-of-displaying-flash-messages -->

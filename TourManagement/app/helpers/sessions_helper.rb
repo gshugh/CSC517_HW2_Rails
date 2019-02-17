@@ -146,6 +146,10 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
+  # def current_user_created_given_tour?(current_user)
+  #   current_user_listed_given_tour?(tour) && current_user_admin?
+  # end
+
   # Method to determine if the current user is allowed to create a tour
   def current_user_can_create_tour?
     current_user_admin? || current_user_agent?
