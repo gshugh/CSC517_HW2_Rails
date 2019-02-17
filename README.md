@@ -73,4 +73,34 @@ How To:
         Click "Customer" if you wish to act as a customer
         Click "Create User"
         
+        Note: we have chosen to allow a new user to sign up, with onen email address, as:
+            An agent
+            A customer
+            Both agent & customer
+        
     # TODO add more "how to" sections
+
+Misc. Notes on Code Organization:
+
+    "Extra" Model:
+
+        Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
+        We have a "start_at" model that we ended up never really using.
+        Instead, we find the start location for a tour based on order of records stored in the "visits" model.
+        Time did not permit cleaning up this 'extra' code.
+        
+    "Extra" Views:
+    
+        We used scaffolding to start our application.
+        Many views are created by scaffolding.
+        Some of these views are never actually available to the user via a link.
+        Most of these 'extra' views are retained:
+            for time constraints
+            for future development on the application if needed
+            
+    Tour Operator Contact Info:
+    
+        Per Piazza, "...we have to create operator with some basic info?... Agent information should be fine."
+        This is a good idea and if we were starting over we likely would use agent profile information.
+        However we already had a field for adding custom operator contact info when creating a tour.
+        We have chosen to retain our custom contact info in the interest of flexibility.
