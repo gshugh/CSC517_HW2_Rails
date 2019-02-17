@@ -12,55 +12,88 @@
 # All team members now must remove any existing users and re-seed, or they may get problems like:
 # https://stackoverflow.com/questions/11037864/bcrypterrorsinvalidhash-when-trying-to-sign-in
 User.create(
-  email: "admin@admin.com",
-  name: "Admin",
-  password_digest: User.digest('password_1234'),
+  email: "john@john.com",
+  name: "John Adminsky",
+  password_digest: User.digest('john'),
   admin: true, agent: false, customer: false
 )
 case Rails.env
 when "development"
+
   # Load users
-  User.create(
-    email: "jason@hugh.com",
-    name: "Jason",
+  agent_1 = User.create(
+    email: "jason@jason.com",
+    name: "Jason Agenton",
     password_digest: User.digest('jason'),
     admin: false, agent: true, customer: false
   )
   User.create(
-    email: "george@hugh.com",
-    name: "George",
+    email: "george@george.com",
+    name: "George Customerov",
     password_digest: User.digest('george'),
     admin: false, agent: false, customer: true
   )
-  User.create(
-    email: "ann@leininger.com",
-    name: "Ann",
+  agent_2 = User.create(
+    email: "ann@ann.com",
+    name: "Ann Agenstomer",
     password_digest: User.digest('ann'),
     admin: false, agent: true, customer: true
   )
+
   # Load locations
-  Location.create(state: "NC", country: "USA")
-  Location.create(state: "SC", country: "USA")
-  Location.create(state: "GA", country: "USA")
+  location_1 = Location.create(state: "VA", country: "USA")
+  location_2 = Location.create(state: "NC", country: "USA")
+  location_3 = Location.create(state: "SC", country: "USA")
+  location_4 = Location.create(state: "GA", country: "USA")
+
   # Load tours
-  Tour.create(
-    name: "First Tour",
-    description: "First tour.",
+  tour_1 = Tour.create(
+    name: "BBQ Tour",
+    description: "Smoky Goodness",
     price_in_cents: 19999,
     deadline: DateTime.new(2019, 3, 2),
     start_date: DateTime.new(2019, 3, 3),
     end_date: DateTime.new(2019, 3, 10),
-    operator_contact: "First Tour Co",
+    operator_contact: "Acme Tour Co",
     num_seats: 100
   )
-  Tour.create(
-    name: "Second Tour",
-    description: "Second tour.",
+  tour_2 = Tour.create(
+    name: "History Tour",
+    description: "Very Informative",
     price_in_cents: 20100,
     deadline: DateTime.new(2020, 3, 2),
     start_date: DateTime.new(2020, 3, 3),
     end_date: DateTime.new(2020, 3, 10),
-    operator_contact: "First Tour Co",
+    operator_contact: "Widgets Inc",
     num_seats: 10
   )
+
+  # Give tours locations
+  Visit.create(
+    tour_id: tour_1.id,
+    location_id: location_1.id
+  )
+  Visit.create(
+    tour_id: tour_1.id,
+    location_id: location_2.id
+  )
+  Visit.create(
+    tour_id: tour_2.id,
+    location_id: location_3.id
+  )
+  Visit.create(
+    tour_id: tour_2.id,
+    location_id: location_4.id
+  )
+
+  # Give tours agents
+  Listing.create(
+    tour_id: tour_1.id,
+    user_id: agent_1.id
+  )
+  Listing.create(
+    tour_id: tour_2.id,
+    user_id: agent_2.id
+  )
+
 end
