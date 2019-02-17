@@ -11,8 +11,8 @@
   <%= @tour.description %>
 </p>
 <p>
-  <strong>Price in dollars:</strong>
-  <%= @tour.price_in_dollars %>
+  <strong>Price:</strong>
+  <%= number_to_currency(@tour.price_in_dollars) %>
 </p>
 <p>
   <strong>Booking Deadline:</strong>
