@@ -1,6 +1,9 @@
 class WaitlistsController < ApplicationController
   before_action :set_waitlist, only: [:show, :edit, :update, :destroy]
 
+  # Includes
+  include ApplicationHelper
+
   # TODO delete any actions that have no views!
 
   # GET /waitlists
@@ -49,13 +52,9 @@ class WaitlistsController < ApplicationController
   # PATCH/PUT /waitlists/1.json
   def update
 
-    # Edit page does double duty (booking / waitlisting)
-    # But we can still end up here if the user is editing a situation
-    #   where they have a waitlist and do NOT have a booking
-    # So, in this case, we just want to go over to the booking update
-    #   rather than have lots of duplicated code
-    #   (the booking update already has all the smarts)
-    redirect_to reroute_waitlist_update_path(@waitlist, waitlist_override: true)
+    # Bookings edit page does double-duty (booking / waitlist)
+    @booking, @waitlist = get_booking_and_waitlist_from_params(params)
+    update_booking_waitlist(@booking, @waitlist, params, waitlist_params)
 
   end
 
@@ -70,6 +69,7 @@ class WaitlistsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_waitlist
       @waitlist = Waitlist.find(params[:id])
@@ -77,6 +77,15 @@ class WaitlistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def waitlist_params
-      params.require(:waitlist).permit(:num_seats, :user_id, :tour_id)
+      params.require(:waitlist).permit(
+        :num_seats,
+        :user_id,
+        :tour_id,
+        :strategy,
+        :booking_user_id,
+        :listing_user_id,
+        :waitlist_override
+      )
     end
+
 end
