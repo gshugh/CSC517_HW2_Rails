@@ -162,7 +162,7 @@ module SessionsHelper
   # A tour in the future can always be modified by an admin
   # A tour in the future can be modified by an agent who has created the tour
   def current_user_can_modify_given_tour?(tour)
-    !tour.in_the_past &&
+    !tour.has_ended? &&
     (
       current_user_admin? ||
       (current_user_agent? && current_user_listed_given_tour?(tour))
@@ -180,7 +180,7 @@ module SessionsHelper
   #   the current user is allowed to book tours
   #   the tour's booking deadline has not elapsed
   def current_user_can_book_given_tour?(tour)
-      !tour.in_the_past && !tour.booking_deadline_has_passed && current_user_can_book_tours?
+      !tour.has_ended? && !tour.booking_deadline_has_passed? && current_user_can_book_tours?
   end
 
   #######################################################################
@@ -208,10 +208,13 @@ module SessionsHelper
   end
 
   # Method to determine if the current user is allowed to modify the given booking
-  # They can do this if they were the one to create the booking
-  # or if they are an admin
+  # They can do this if they were the one to create the booking or if they are an admin
+  # Further restriction: "Customer can cancel a tour before the tour start date"
+  # From this we infer that you cannot cancel a booking or waitlist on or after the tour start date
+  # From this we infer that you cannot modify a booking or waitlist on or after the tour start date
   def current_user_can_modify_given_booking?(booking)
-    current_user_admin? || (logged_in? && booking.user_id == current_user.id)
+    !booking.tour.has_started? &&
+    (current_user_admin? || (logged_in? && booking.user_id == current_user.id))
   end
 
   #######################################################################

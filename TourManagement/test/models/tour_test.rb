@@ -15,13 +15,13 @@ class TourTest < ActiveSupport::TestCase
   end
 
   test "test check for past tour" do
-    assert @tour_1.in_the_past
-    assert_not @tour_2.in_the_past
+    assert @tour_1.has_ended?
+    assert_not @tour_2.has_ended?
   end
 
   test "test check for deadline elapsed tour" do
-    assert @tour_1.booking_deadline_has_passed
-    assert_not @tour_2.booking_deadline_has_passed
+    assert @tour_1.booking_deadline_has_passed?
+    assert_not @tour_2.booking_deadline_has_passed?
   end
 
   test "test tour itinerary" do
