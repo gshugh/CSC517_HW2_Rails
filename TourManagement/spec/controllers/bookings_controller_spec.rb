@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BookingsController, type: :controller do
-  fixtures :bookings, :tours
+  fixtures :bookings, :tours, :users
 
   describe "GET #index" do
     it "populates an array of bookings" do
@@ -43,15 +43,39 @@ RSpec.describe BookingsController, type: :controller do
   end
 
   describe "POST #create" do
+    let(:params) { { booking: {
+        num_seats: 2,
+        tour_id: tours(:one).id,
+        user_id: users(:one).id,
+        strategy: 1}}}
     context "with valid attributes" do
-      it "saves the new booking in the database"
-      it "redirects to the home page"
+      it "saves the new booking in the database" do
+        previous_count = Booking.count
+        post :create, params: params
+        expect(Booking.count).to eq(previous_count+1)
+      end
+      it "redirects to the booking_url(Booking.last)"
     end
 
     context "with invalid attributes" do
-      it "does not save the new booking in the database"
+      it "does not save the new booking in the database" do
+        previous_count = Booking.count
+        params[:tour_id] = nil
+        post :create, params: params
+        expect(Booking.count).to eq(previous_count)
+      end
       it "re-renders the :new template"
     end
+  end
+
+  describe "PATCH/PUT #update" do
+    it "updates booking"
+    it "redirects to booking_url"
+  end
+
+  describe "DELETE #destroy" do
+    it "deletes the booking"
+    it "redirects to booking_url"
   end
 
 end
@@ -71,13 +95,6 @@ end
 
   end
 
-  test "should get new" do
-    # The bookings new view expects to be passed the tour we're currently working with,
-    #   so that the user doesn't have to select a tour
-    get new_booking_url(tour_id: @tour.id)
-    assert_response :success
-  end
-
   test "should create booking" do
     assert_difference('Booking.count') do
       post bookings_url, params: { booking: {
@@ -90,16 +107,6 @@ end
     end
 
     assert_redirected_to booking_url(Booking.last)
-  end
-
-  test "should show booking" do
-    get booking_url(@booking)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_booking_url(@booking)
-    assert_response :success
   end
 
   test "should update booking" do
