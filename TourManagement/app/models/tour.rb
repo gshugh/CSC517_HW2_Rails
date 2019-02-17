@@ -71,7 +71,7 @@ class Tour < ApplicationRecord
   # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled
-    return "Completed" if in_the_past
+    return "Completed" if has_ended?
     "In Future"
   end
 
@@ -85,14 +85,19 @@ class Tour < ApplicationRecord
     return itinerary_array.join("\n")
   end
 
-  # Method to determine whether the tour is in the past
+  # Method to determine whether the tour has started
+  def has_started?
+    Date.current >= start_date
+  end
+
+  # Method to determine whether the tour has ended
   # If it is not a cancelled tour, this should make the status "Completed"
-  def in_the_past
+  def has_ended?
     Date.current > end_date
   end
 
   # Method to determine whether the tour's booking deadline has passed
-  def booking_deadline_has_passed
+  def booking_deadline_has_passed?
     Date.current > deadline
   end
 
