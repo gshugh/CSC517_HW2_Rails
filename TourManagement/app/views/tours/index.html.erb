@@ -11,13 +11,14 @@
       <th>Name</th>
       <th>Itinerary</th>
       <th>Price ($)</th>
+      <th>Booking Deadline</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Status</th>
       <th># Seats</th>
       <th># Available</th>
       <th>Agent</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
     </thead>
 
@@ -27,6 +28,7 @@
         <td><%= tour.name %></td>
         <td><%= tour.itinerary %></td>
         <td><%= tour.price_in_dollars %></td>
+        <td><%= tour.deadline %></td>
         <td><%= tour.start_date %></td>
         <td><%= tour.end_date %></td>
         <td><%= tour.status_description %></td>
@@ -34,6 +36,11 @@
         <td><%= Booking.get_available_seats_for_tour(tour) %></td>
         <td><%= Listing.get_agent_name_for_tour(tour) %></td>
         <td><%= link_to 'Show', tour %></td>
+        <td>
+          <% if current_user_can_book_given_tour?(tour) %>
+            <%= link_to 'Book', new_booking_path(tour_id: tour.id) %>
+          <% end %>
+        </td>
         <td>
           <% if current_user_can_modify_given_tour?(tour) %>
             <%= link_to 'Edit', edit_tour_path(tour) %>

@@ -10,10 +10,9 @@ class WaitlistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_waitlist_url
-    assert_response :success
-  end
+  # Normally we'd have a "should get new" test here
+  # But for waitlists, there IS NO NEW VIEW
+  # Instead, you waitlist through the new booking view
 
   test "should create waitlist" do
     assert_difference('Waitlist.count') do

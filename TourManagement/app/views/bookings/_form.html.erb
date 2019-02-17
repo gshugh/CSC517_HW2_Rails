@@ -11,22 +11,33 @@
     </div>
   <% end %>
 
+  <!-- Do not allow the user to select the user -->
+  <!-- We should already know who the user is, from the sessions helper -->
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+
+  <!-- Do not allow the user to select the tour -->
+  <!-- We should already know what tour we are booking -->
+  <%= form.hidden_field :tour_id, :value => @tour.id %>
+
+  <!-- Select # seats to book -->
   <div class="field">
-    <%= form.label :num_seats %>
+    <%= form.label "# Seats to Book" %>
     <%= form.number_field :num_seats %>
   </div>
 
+  <!-- Select booking / waitlisting strategy -->
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label "Book or Waitlist?" %>
+    <%= form.select(:strategy, options_for_select([
+      ['Book All Seats', 1],
+      ['Book Available Seats, Waitlist Remaining Seats', 2],
+      ['Waitlist All Seats', 3]
+    ])) %>
   </div>
 
-  <div class="field">
-    <%= form.label :tour_id %>
-    <%= form.text_field :tour_id %>
-  </div>
-
+  <!-- Submit the form to create a new booking -->
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

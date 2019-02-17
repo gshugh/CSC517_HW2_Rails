@@ -12,9 +12,17 @@
     </div>
   <% end %>
 
+  <!-- Photo Name -->
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
+  </div>
+
+  <!-- Photo Selection -->
+  <!-- https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond -->
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
 
   <!-- Do not allow the user to select the tour -->

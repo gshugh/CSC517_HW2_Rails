@@ -41,7 +41,6 @@ class PhotosController < ApplicationController
     # Remember what tour we are working with and make this available to the view
     # This way the view can pass the tour info along in links / form fields as needed
     # This is to avoid bothering the user to enter the tour
-    #
     @tour = @photo.tour
 
   end
@@ -95,6 +94,7 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:name, :tour_id)
+      # https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond
+      params.require(:photo).permit(:name, :tour_id, :image)
     end
 end

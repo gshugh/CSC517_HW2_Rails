@@ -16,8 +16,8 @@
     <% @waitlists.each do |waitlist| %>
       <tr>
         <td><%= waitlist.num_seats %></td>
-        <td><%= waitlist.user %></td>
-        <td><%= waitlist.tour %></td>
+        <td><%= waitlist.user.name %></td>
+        <td><%= waitlist.tour.name %></td>
         <td><%= link_to 'Show', waitlist %></td>
         <td><%= link_to 'Edit', edit_waitlist_path(waitlist) %></td>
         <td><%= link_to 'Destroy', waitlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Waitlist', new_waitlist_path %>
+<!-- There is no link to create a new waitlist because you do that from tours show or index view -->

@@ -19,6 +19,11 @@ class TourTest < ActiveSupport::TestCase
     assert_not @tour_2.in_the_past
   end
 
+  test "test check for deadline elapsed tour" do
+    assert @tour_1.booking_deadline_has_passed
+    assert_not @tour_2.booking_deadline_has_passed
+  end
+
   test "test tour itinerary" do
     # First tour has just one location
     assert_equal "North Carolina, US", @tour_1.itinerary
