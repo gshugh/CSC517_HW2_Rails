@@ -23,7 +23,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
         end_date: @tour.end_date,
         # Change from auto-generated test: tour name has uniqueness constraint
         # so cannot just use name from fixture tour
-        name: "MyUniqueName",
+        # Removed uniqueness constraint from model, use tour_id instead
+#        name: "MyUniqueName",
+        name: @tour.name,
         num_seats: @tour.num_seats,
         operator_contact: @tour.operator_contact,
         price_in_dollars: @tour.price_in_dollars,
@@ -58,7 +60,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
       end_date: @tour.end_date,
       # Change from auto-generated test: tour name has uniqueness constraint
       # so cannot just use name from fixture tour
-      name: "MyNewUniqueName",
+      # Remove uniqueness constraint from model, use same name in test
+#      name: "MyNewUniqueName",
+      name: @tour.name,
       num_seats: @tour.num_seats,
       operator_contact: @tour.operator_contact,
       price_in_dollars: @tour.price_in_dollars,
