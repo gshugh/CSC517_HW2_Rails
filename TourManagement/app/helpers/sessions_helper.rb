@@ -227,6 +227,11 @@ module SessionsHelper
     current_user_admin?
   end
 
+  # Method to determine if the current user is allowed to see their own profile
+  def current_user_can_see_own_profile?
+    logged_in?
+  end
+
   # Method to determine if the current user is allowed to
   #   modify login / password for the given user
   # Anyone can get to the user edit form
