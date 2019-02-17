@@ -19,7 +19,7 @@
     <%= form.text_field :name %>
   </div>
 
-<<<<<<< Updated upstream
+
   <!-- Admin login & password explicitly required to be non-modifiable -->
   <!-- But still must be shown and submitted with form -->
   <div class="field">
@@ -41,40 +41,6 @@
     <%= form.label :customer %>
     <%= form.check_box :customer %>
   </div>
-=======
-  <!-- If not an admin, add ability to change their login credentials and password -->
-  <% unless logged_in? && user.admin? && @user.id == 1%>
-    <div class="field">
-      <%= form.label :email %>
-      <%= form.text_field :email %>
-    </div>
-
-    <div class="field">
-      <%= form.label :password %>
-      <%= form.text_field :password %>
-    </div>
-
-    <div class="field">
-      <%= form.label :agent %>
-      <%= form.check_box :agent %>
-    </div>
-
-    <div class="field">
-      <%= form.label :customer %>
-      <%= form.check_box :customer %>
-    </div>
-
-    <% end %>
->>>>>>> Stashed changes
-
-
-<!--  <div class="field">-->
-    <%#= form.label :admin %>
-    <%#= form.check_box :admin %>
-<!--  </div>-->
-
-
-
 
   <div class="actions">
     <%= form.submit %>
