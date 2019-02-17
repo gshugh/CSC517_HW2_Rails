@@ -61,11 +61,7 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
-    # TODO let any user see their own user account (so they have a path to delete it)
-    # TODO test user destroy from user index view
-    # TODO test user destroy from user show view
-    # TODO delete customer bookings when they are destroyed
-    # TODO test that enroll from waitlist happens after a customer with bookings is destroyed
+
   end
 
   private
