@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /users/1
@@ -59,6 +61,11 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+    # TODO let any user see their own user account (so they have a path to delete it)
+    # TODO test user destroy from user index view
+    # TODO test user destroy from user show view
+    # TODO delete customer bookings when they are destroyed
+    # TODO test that enroll from waitlist happens after a customer with bookings is destroyed
   end
 
   private
