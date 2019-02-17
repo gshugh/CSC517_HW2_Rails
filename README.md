@@ -15,9 +15,53 @@ Landing Page:
     The user can either login and gain more functionality or they can see only the list of all tours and reviews.
     We are using the same login page to redirect a user to same user dashboard, but this dashboard has been customized to show only the relevant links to the user.
 
+User Roles:
+    
+    Admin:
+    
+        An admin can do anything an agent can do.
+        An admin can do anything a customer can do.
+        An admin can do anything a logged-in user can do.
+        An admin can do anything a not-logged-in visitor can do.
+        An admin can see a list of all users.
+        An admin can see a list of all bookings.
+    
+    Agent:
+    
+        An agent can do anything a logged-in user can do.
+        An agent can do anything a not-logged-in visitor can do.
+        An agent can create locations.
+        An agent can create tours.
+        An agent can see a list of all locations.
+        An agent can see a list of their tours.
+        An agent can see a list of bookmarks for their tours.
+        An agent can see a list of bookings for their tours.
+        An agent can see a list of reviews for their tours.
+        
+    Customer:
+    
+        A customer can do anything a logged-in user can do.
+        A customer can do anything a not-logged-in visitor can do.
+        A customer can see a list of their bookmarks.
+        A customer can see a list of their reviews.
+        A customer can see a list of their bookings.
+        
+    Logged-In-User:
+    
+        A logged-in user can do anything a not-logged-in visitor can do.
+        A logged-in user can see their user profile.
+    
+    Not-Logged-In-Visitor:
+    
+        Anyone can see a list of all tours.
+        Anyone can see a list of all reviews.
+        Anyone can sign up for a new account.
+        Anyone can log in.
+
 How To:
 
     All of these instructions assume that you are starting from the landing page.
+    All of these instructions assume that your user role allows you to perform these functions.
     
     How To Sign Up:
         
@@ -28,3 +72,5 @@ How To:
         Click "Agent" if you wish to act as a tour agent
         Click "Customer" if you wish to act as a customer
         Click "Create User"
+        
+    # TODO add more "how to" sections
