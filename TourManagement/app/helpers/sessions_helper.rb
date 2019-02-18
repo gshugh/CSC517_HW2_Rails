@@ -93,7 +93,14 @@ module SessionsHelper
     current_user_admin? || current_user_agent?
   end
 
-  #######################################################################
+  # Method to determine if the current user can bookmarks a tour
+  # Customers can do this
+  # Admins also can (because admins can do pretty much anything)
+  def current_user_can_bookmark_tours?
+    current_user_admin? || current_user_customer?
+  end
+
+    #######################################################################
   # REVIEW PERMISSIONS
   #######################################################################
 
@@ -196,6 +203,12 @@ module SessionsHelper
   #   the tour's booking deadline has not elapsed
   def current_user_can_book_given_tour?(tour)
       !tour.has_ended? && !tour.booking_deadline_has_passed? && current_user_can_book_tours?
+  end
+
+  # Method to determine if the current user is allowed to bookmark the given
+  # tour.
+  def current_user_can_bookmark_given_tour?(tour)
+    current_user_can_bookmark_tours?
   end
 
   #######################################################################

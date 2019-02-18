@@ -6,10 +6,9 @@ class ReviewsController < ApplicationController
   def index
     if params['reviews_user']
       @reviews = Review.where(user_id: params['reviews_user'])
-      else
-
+    else
       @reviews = Review.all
-      end
+    end
   end
 
   # GET /reviews/1
