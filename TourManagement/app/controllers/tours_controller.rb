@@ -42,6 +42,12 @@ class ToursController < ApplicationController
       Location.find(matching_visit.location_id)
     end
 
+    # Get all guests associated with this tour so that the View may show them
+    # Guests are those that have booked (not just waitlisted) the tour
+    @guests = Booking.where(tour_id: @tour.id).map do |matching_booking|
+      User.find(matching_booking.user_id)
+    end.uniq
+
   end
 
   # GET /tours/new
