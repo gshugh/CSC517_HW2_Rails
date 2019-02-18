@@ -20,5 +20,13 @@
   <%= @user.user_type %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<!-- Any user go to the edit page for their profile -->
+<!-- If the user is admin, then they will not be allowed to modify login / password -->
+<!-- But that is enforced on the edit page itself -->
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+<!-- Any user (except an admin) may cancel their account -->
+<% unless @user.admin %>
+  <td><%= link_to 'Cancel Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+<!-- As always, a back link -->
 <%= link_to 'Back', users_path %>

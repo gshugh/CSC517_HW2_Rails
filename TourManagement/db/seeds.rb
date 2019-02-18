@@ -14,7 +14,7 @@
 User.create(
   email: "john@john.com",
   name: "John Adminsky",
-  password_digest: User.digest('john'),
+  password_digest: User.digest('john_password'),
   admin: true, agent: false, customer: false
 )
 case Rails.env
@@ -24,19 +24,19 @@ when "development"
   agent_1 = User.create(
     email: "jason@jason.com",
     name: "Jason Agenton",
-    password_digest: User.digest('jason'),
+    password_digest: User.digest('jason_password'),
     admin: false, agent: true, customer: false
   )
   User.create(
     email: "george@george.com",
     name: "George Customerov",
-    password_digest: User.digest('george'),
+    password_digest: User.digest('george_password'),
     admin: false, agent: false, customer: true
   )
   agent_2 = User.create(
     email: "ann@ann.com",
     name: "Ann Agenstomer",
-    password_digest: User.digest('ann'),
+    password_digest: User.digest('ann_password'),
     admin: false, agent: true, customer: true
   )
 
