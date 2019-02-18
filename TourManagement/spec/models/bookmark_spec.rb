@@ -5,23 +5,28 @@ RSpec.describe Bookmark, type: :model do
 
   describe "model" do
 
-    it "should have a valid factory"
+    # Don't need to test this. If we can't create this model all of these
+    # tests will fail.
+    # it "should have a valid factory"
 
     # Lazily loaded to ensure it's only used when it's needed
     # RSpec tip: Try to avoid @instance_variables if possible. They're slow.
-    let(:bookmark) { Bookmark.new }
+    # let(:bookmark) { Bookmark.new }
 
-    describe "creation" do
-      it "should be valid with a tour and a user"
-      it "should be invalid without a tour"
-      it "should be invalid without a user"
+    # Test that the indices exist. They're used all over the place so let's
+    # be sure.
+    describe 'indices' do
+      it { should have_db_column(:tour_id) }
+      it { should have_db_column(:user_id) }
     end
 
+    # Test that a bookmark is associated with a tour and a user.
     describe "associations" do
       it { should belong_to :user }
       it { should belong_to :tour }
     end
 
+    # Test that each user, tour pair is unique.
     describe "constraints" do
       it { should validate_uniqueness_of(:user_id).scoped_to(:tour_id) }
       it { should validate_uniqueness_of(:tour_id).scoped_to(:user_id) }
