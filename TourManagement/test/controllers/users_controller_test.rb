@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @admin = users(:one)
+    @user = users(:two)
   end
 
   test "should get index" do
@@ -10,7 +11,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
+  test "should get new user view" do
     get new_user_url
     assert_response :success
   end

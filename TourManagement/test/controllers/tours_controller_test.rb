@@ -86,4 +86,9 @@ class ToursControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to tours_url
   end
 
+  test "should get new bookmark view" do
+    get new_bookmark_url(tour_id: @tour.id)
+    assert_response :success
+  end
+
 end

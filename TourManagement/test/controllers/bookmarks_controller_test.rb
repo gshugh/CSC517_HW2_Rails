@@ -3,6 +3,7 @@ require 'test_helper'
 class BookmarksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @bookmark = bookmarks(:one)
+#    @tour = tours(:two)
   end
 
   test "should get index" do
@@ -10,17 +11,54 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_bookmark_url
-    assert_response :success
+  # This test has been moved to tours_controller_test.rb
+  # test "should get new bookmark view" do
+  #   get new_bookmark_url(tour_id: @tour.id)
+  #   assert_response :success
+  # end
+
+  # Use different bookmark to pass uniqueness criteria
+  test "should create unique bookmark" do
+    assert_difference('Bookmark.count') do
+      post bookmarks_url, params: {bookmark: {
+          tour_id: tours(:three).id,
+          user_id: users(:three).id
+      } }
+    end
+    assert_redirected_to bookmark_url(Bookmark.last)
   end
 
-  test "should create bookmark" do
+  # Use same tour, unique user
+  test "should create bookmark with same tour, unique user" do
     assert_difference('Bookmark.count') do
-      post bookmarks_url, params: { bookmark: { tour_id: @bookmark.tour_id, user_id: @bookmark.user_id } }
+      post bookmarks_url, params: {bookmark: {
+          tour_id: tours(:three).id,
+          user_id: users(:four).id
+      } }
     end
-
     assert_redirected_to bookmark_url(Bookmark.last)
+  end
+
+  # Use same user, unique tour
+  test "should create bookmark with same user, unique tour" do
+    assert_difference('Bookmark.count') do
+      post bookmarks_url, params: {bookmark: {
+          tour_id: tours(:one).id,
+          user_id: users(:two).id
+      } }
+    end
+    assert_redirected_to bookmark_url(Bookmark.last)
+  end
+
+  # Ensure that uniqueness constraint holds
+  test "should not create same bookmark" do
+    assert_no_difference('Bookmark.count') do
+      post bookmarks_url, params: { bookmark: {
+          tour_id: @bookmark.tour_id,
+          user_id: @bookmark.user_id
+      } }
+    end
+    assert_response :success
   end
 
   test "should show bookmark" do
@@ -28,13 +66,18 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_bookmark_url(@bookmark)
+  test "should get edit bookmark view" do
+    get edit_bookmark_url(@bookmark), params: { tour: {
+        name: "Test"
+    } }
     assert_response :success
   end
 
   test "should update bookmark" do
-    patch bookmark_url(@bookmark), params: { bookmark: { tour_id: @bookmark.tour_id, user_id: @bookmark.user_id } }
+    patch bookmark_url(@bookmark), params: { bookmark: {
+        tour_id: @bookmark.tour_id,
+        user_id: @bookmark.user_id
+    } }
     assert_redirected_to bookmark_url(@bookmark)
   end
 
