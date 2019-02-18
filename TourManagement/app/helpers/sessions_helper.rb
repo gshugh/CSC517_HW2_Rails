@@ -110,6 +110,13 @@ module SessionsHelper
     current_user_admin? || current_user_customer?
   end
 
+  # Method to determine if the current user is allowed to look at bookings of tours they have listed
+  # Agents need this ability
+  # Admins get it because they are special and can act as agents
+  def current_user_can_see_reviews_for_their_tours?
+    current_user_admin? || current_user_agent?
+  end
+
   # Method to determine if the current user is allowed to create a review
   def current_user_can_create_review?
     current_user_admin? || current_user_customer?
@@ -124,9 +131,8 @@ module SessionsHelper
   # A review can always be modified by an admin
   # A review can be modified by a customer who has created the review
   def current_user_can_modify_given_review?(review)
-    can_modify =
-      current_user_admin? ||
-      (current_user_customer? && current_user_created_given_review?(review))
+    current_user_admin? ||
+          (current_user_customer? && current_user_created_given_review?(review))
   end
 
   # Method to return a collection of the tours taken by the current user
@@ -268,7 +274,7 @@ module SessionsHelper
   # Because agents share a pool of possible tour locations
   # Admins get this privilege too of course
   def current_user_can_modify_locations?
-    return current_user_admin? || current_user_agent?
+    current_user_admin? || current_user_agent?
   end
 
 end
