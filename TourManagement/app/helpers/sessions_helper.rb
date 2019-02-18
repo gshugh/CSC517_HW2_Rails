@@ -100,7 +100,7 @@ module SessionsHelper
     current_user_admin? || current_user_customer?
   end
 
-    #######################################################################
+  #######################################################################
   # REVIEW PERMISSIONS
   #######################################################################
 
@@ -139,16 +139,14 @@ module SessionsHelper
   # A review can be modified by a customer who has created the review
   def current_user_can_modify_given_review?(review)
     current_user_admin? ||
-          (current_user_customer? && current_user_created_given_review?(review))
+    (current_user_customer? && current_user_created_given_review?(review))
   end
 
   # Method to return a collection of the tours taken by the current user
+  # Per Piazza,
+  # "can a customer only post reviews for tours that are completed and that they were booked on?... Yes."
   def tours_taken_by_current_user
-    Booking.where(user_id: current_user.id).map do |booking|
-      if booking.tour.has_started?
-        return booking.tour
-      end
-    end
+    Booking.where(user_id: current_user.id).map { |booking| Tour.find(booking.tour.id) }.select(&:has_ended?)
   end
 
   #######################################################################

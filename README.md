@@ -25,6 +25,7 @@ User Roles:
         An admin can do anything a not-logged-in visitor can do.
         An admin can see a list of all users.
         An admin can see a list of all bookings.
+        An admin cannot edit their user profile email or password.
     
     Agent:
     
@@ -50,6 +51,7 @@ User Roles:
     
         A logged-in user can do anything a not-logged-in visitor can do.
         A logged-in user can see their user profile.
+        A logged-in user can edit their user profile.
     
     Not-Logged-In-Visitor:
     
@@ -73,10 +75,22 @@ How To:
         Click "Customer" if you wish to act as a customer
         Click "Create User"
         
-        Note: we have chosen to allow a new user to sign up, with onen email address, as:
+        Note: we have chosen to allow a new user to sign up, with one email address, as:
             An agent
             A customer
             Both agent & customer
+    
+    How To Log In:
+    
+        Enter your email and password
+        Click "Log In"
+        
+    How To Edit Your User Profile:
+    
+        Click "Show My Profile"
+        Click "Edit Profile"
+        Make changes
+        Click "Update User"
         
     # TODO add more "how to" sections
 
@@ -100,7 +114,17 @@ Misc. Notes on Code Organization:
             
     Tour Operator Contact Info:
     
-        Per Piazza, "...we have to create operator with some basic info?... Agent information should be fine."
+        Per Piazza:
+            "...we have to create operator with some basic info?"
+            "Agent information should be fine."
         This is a good idea and if we were starting over we likely would use agent profile information.
         However we already had a field for adding custom operator contact info when creating a tour.
         We have chosen to retain our custom contact info in the interest of flexibility.
+        
+    Price Filtering:
+    
+        Per Piazza:
+            "...Is it acceptable to filter just by maximum price?"
+            "There are no restrictions on the way you would like to implement any functionality."
+        We offer price filtering by maximum price, but not by minimum price.
+        This is on the theory that cheaper is always better (all else being equal).
