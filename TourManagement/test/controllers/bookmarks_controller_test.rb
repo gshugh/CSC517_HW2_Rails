@@ -66,8 +66,10 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit bookmarks view" do
-    get edit_bookmark_url(@bookmark)
+  test "should get edit bookmark view" do
+    get edit_bookmark_url(@bookmark), params: { tour: {
+        name: "Test"
+    } }
     assert_response :success
   end
 
