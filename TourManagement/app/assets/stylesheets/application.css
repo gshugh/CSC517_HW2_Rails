@@ -35,7 +35,7 @@ table:not(.links) tbody > tr > td {
 }
 /* Make links and buttons look the same */
 /* To support "button_to" when we need the HTTP request to use the DELETE method */
-a, a:visited, input[type=submit] {
+:not(.links) a, a:visited, input[type=submit] {
     font: bold 14px Arial;
     text-decoration: none;
     background-color: #EEEEEE;
