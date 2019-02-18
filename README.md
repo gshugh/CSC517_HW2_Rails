@@ -64,6 +64,8 @@ How To:
 
     All of these instructions assume that you are starting from the landing page.
     All of these instructions assume that your user role allows you to perform these functions.
+    Some of these instructions have alternative ways to accomplish the same task.
+    It is not feasible to list all possible ways of accomplishing all possible tasks.
     
     How To Sign Up:
         
@@ -90,7 +92,54 @@ How To:
         Click "Show My Profile"
         Click "Edit Profile"
         Make changes
+            Note: Admins are not allowed to edit their email or password
         Click "Update User"
+        
+    How To Cancel Your Account
+    
+        Click "Show My Profile"
+        Click "Cancel Account"
+        Confirm your intention
+        
+    How To View a List of All Users
+    
+        Click "Show All Users"
+        
+    How To Create an Account for Someone Else
+    
+        Click "Show All Users"
+        Click "New User"
+        Follow instructions for ~~ How To Sign Up ~~
+    
+    How To View a List of All Tours
+    
+        Click "Show All Tours"
+        
+    How To View All Details / Photos / Reviews for a Tour
+    
+        Click "Show All Tours"
+        Click "Show" next to the tour of interest
+        
+    How To View a List of All Reviews
+        
+        Click "Show All Reviews"
+    
+    How To Delete a User
+    
+        Click "Show All Users"
+        Click "Cancel Account" next to the user of interest
+        Confirm intention
+        
+    How To Delete a Tour
+    
+        Click "Show All Tours"
+        Click "Destroy" next to the tour of interest
+        Confirm intention
+        
+    How to Delete a Review
+    
+        Click "Show All Reviews"
+        Click "Destroy" next to the review of interest
         
     # TODO add more "how to" sections
 
