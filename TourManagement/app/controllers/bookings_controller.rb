@@ -138,15 +138,6 @@ class BookingsController < ApplicationController
     @booking, @waitlist = get_booking_and_waitlist_from_params(params)
     update_booking_waitlist(@booking, @waitlist, booking_params)
 
-    # The code above will do a redirect, however
-    # "redirect_to is not meant to stop execution and return immediately,
-    # it sets redirection status/rendering,etc. and continues with further execution."
-    # https://github.com/rails/rails/issues/26363
-    # So, we can still do stuff here which is good
-    # We may have reduced the # of seats booked,
-    # in which case we want to enroll people from the waitlist for this tour
-    enroll_from_waitlist_as_needed
-
   end
 
   # DELETE /bookings/1
@@ -166,15 +157,6 @@ class BookingsController < ApplicationController
       format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
-
-    # The code above will do a redirect, however
-    # "redirect_to is not meant to stop execution and return immediately,
-    # it sets redirection status/rendering,etc. and continues with further execution."
-    # https://github.com/rails/rails/issues/26363
-    # So, we can still do stuff here which is good
-    # We may have reduced the # of seats booked,
-    # in which case we want to enroll people from the waitlist for this tour
-    enroll_from_waitlist_as_needed
 
   end
 
@@ -196,49 +178,6 @@ class BookingsController < ApplicationController
         :listing_user_id,
         :waitlist_override
       )
-    end
-
-    # Method to enroll people onto a tour from the tour's waitlist
-    # It's okay if there is no waitlist, this method determines that
-    def enroll_from_waitlist_as_needed
-
-      # Get tour
-      if @booking
-        tour = @booking.tour
-      else
-        tour = @waitlist.tour
-      end
-
-      # We can possibly enroll if there are available seats, and waitlisted seats
-      if Booking.get_available_seats_for_tour(tour).positive? && Waitlist.get_waitlisted_seats_for_tour(tour).positive?
-        Waitlist.get_waitlists_for_tour_first_come_first_served(tour).each do |waitlist|
-          # Since we are in a loop, re-check available seats each time
-          if waitlist.num_seats <= Booking.get_available_seats_for_tour(tour)
-            # We can book all of these seats
-            # We need a booking
-            #   If there was a booking already, update it
-            #   If there was not a booking already, create it
-            # We do not need a waitlist (destroy it)
-            associated_booking = waitlist.booking_same_user_same_tour
-            if associated_booking
-              already_booked = associated_booking.num_seats
-              associated_booking.update(
-                num_seats: already_booked + waitlist.num_seats
-              )
-            else
-              associated_booking = Booking.new(
-                num_seats: waitlist.num_seats,
-                user_id: waitlist.user_id,
-                tour_id: waitlist.tour_id
-              )
-            end
-            associated_booking.save
-            waitlist.destroy
-          end
-        end
-
-      end
-
     end
 
 end
