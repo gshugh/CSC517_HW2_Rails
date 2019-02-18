@@ -4,8 +4,14 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    if params['reviews_user']
-      @reviews = Review.where(user_id: params['reviews_user'])
+    # There are 3 ways to get here
+    # Show My Reviews / Show Reviews for My Tours / Show All Reviews
+    if params['reviewing_user_id']
+      @reviews = Review.where(user_id: params['reviewing_user_id'].to_i)
+    elsif params['listing_user_id']
+      @reviews = Review.joins("INNER JOIN listings ON
+                    reviews.tour_id = listings.tour_id AND
+                    listings.user_id = #{params['listing_user_id'].to_i}")
     else
       @reviews = Review.all
     end
