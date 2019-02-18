@@ -2,10 +2,12 @@
 ################################################################################
 # This file contains application code to help control displays.
 #
+# Fix lang attribute.
+# Fix punctation
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>TourManagement</title>
     <%= csrf_meta_tags %>
@@ -21,10 +23,11 @@
     <h1 style="color: #cc0000;">Tour Management System</h1>
 
     <!-- Note current user's name -->
-    <!-- Do this up at the top so that it remains in the same place regardless of the page-specific content -->
+    <!-- Do this up at the top so that it remains in the same place regardless
+         of the page-specific content. Fix punctuation. -->
     <% if logged_in? %>
       <h2 style="color: blue">Welcome
-         <%= current_user.user_type %>,  <%= current_user.name %> !
+         <%= current_user.user_type %>,  <%= current_user.name %>!
       </h2>
 
     <% end %>
@@ -88,6 +91,9 @@
       <% if current_user_can_see_all_reviews? %>
         <%= link_to "Show All Reviews", reviews_url %>
       <% end %>
+      <% if current_user_can_see_reviews_for_their_tours? %>
+        <%= link_to 'Show Reviews for My Tours', reviews_path(listing_user_id: current_user.id) %>
+      <% end %>
       <% if current_user_can_see_their_reviews? %>
         <%= link_to 'Show My Reviews', reviews_path(reviews_user: current_user) %>
       <% end %>
@@ -99,11 +105,11 @@
       <% if current_user_can_see_all_bookings? %>
         <%= link_to "Show All Bookings", bookings_url %>
       <% end %>
-      <% if current_user_can_see_their_bookings? %>
-        <%= link_to 'Show My Bookings', bookings_path(booking_user_id: current_user.id) %>
-      <% end %>
       <% if current_user_can_see_bookings_for_their_tours? %>
         <%= link_to 'Show Bookings for My Tours', bookings_path(listing_user_id: current_user.id) %>
+      <% end %>
+      <% if current_user_can_see_their_bookings? %>
+        <%= link_to 'Show My Bookings', bookings_path(booking_user_id: current_user.id) %>
       <% end %>
     </p>
 
