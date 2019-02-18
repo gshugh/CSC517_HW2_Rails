@@ -2,8 +2,8 @@ class Bookmark < ApplicationRecord
   belongs_to :user
   belongs_to :tour
 
-  validates :user, uniqueness: {scope: :tour}
-  validates :tour, uniqueness: {scope: :user}
+  validates :user_id, uniqueness: {scope: :tour_id}
+  validates :tour_id, uniqueness: {scope: :user_id}
 
   # # Method to get the bookmarks of the agent who created the given tour
   # def self.get_bookmarks_for_agent_for_tour(tour)
