@@ -22,7 +22,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
+  test "should get new reviews view" do
     get new_review_url
     assert_response :success
   end
