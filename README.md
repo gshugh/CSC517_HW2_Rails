@@ -5,7 +5,7 @@ Tour Management System
 Admin:
 
     Preconfigured admin username: john@john.com 
-    Preconfigured admin password: john
+    Preconfigured admin password: john_password
 
 Landing Page:
 
