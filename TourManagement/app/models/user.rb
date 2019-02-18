@@ -25,6 +25,9 @@ class User < ApplicationRecord
   # Seems to see false as not-present
   # We should make sure that unless a user has admin TRUE it cannot act as admin
   # That is, lack of value should be interpreted as FALSE by our application logic
+  # validates :admin
+  # validates :name
+  # validates :customer
 
   # Include ability to authenticate password
   # https://www.railstutorial.org/book/modeling_users#sec-creating_and_authenticating_a_user
