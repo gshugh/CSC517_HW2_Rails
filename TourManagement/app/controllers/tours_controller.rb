@@ -8,9 +8,8 @@ class ToursController < ApplicationController
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     if params['tour_creator']
       @tours = Tour.joins("INNER JOIN listings ON tours.id = listings.tour_id AND listings.user_id = #{params['tour_creator'].to_i}")
-      else
-
-    @tours = Tour.where(nil)
+    else
+      @tours = Tour.where(nil)
     end
 
     flash[:filters] = {}
