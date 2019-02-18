@@ -2,9 +2,11 @@ class SessionsController < ApplicationController
 
   # Content from https://www.railstutorial.org/book/basic_login
 
+  # GET /login
   def new
   end
 
+  # POST /login
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if log_in_user_with_password?(user, params[:session][:password])
@@ -18,6 +20,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # DELETE /logout
   def destroy
     log_out
     redirect_to root_url
