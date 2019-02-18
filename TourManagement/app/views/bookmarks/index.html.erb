@@ -2,16 +2,20 @@
 
 <h1>Bookmarks</h1>
 
-<table>
-  <thead>
+<% if @bookmarks.empty? %>
+  <%= render 'no_results' %>
+<% else %>
+
+  <table>
+    <thead>
     <tr>
       <th>User</th>
       <th>Tour</th>
       <th colspan="2"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr>
         <td><%= bookmark.user.name %></td>
@@ -20,9 +24,9 @@
         <td><%= button_to 'Destroy Bookmark', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+<% end %>
 
 <!-- NO LINK to new bookmark - bookmarks must be created from tour -->

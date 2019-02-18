@@ -33,13 +33,15 @@
 <br>
 
 <!-- Guests -->
-<p>
-  <strong>Guests:</strong>
-</p>
-<% @guests.each do |guest| %>
-  <li><%= guest.name %></li>
+<% unless @guests.empty? %>
+  <p>
+    <strong>Guests:</strong>
+  </p>
+  <% @guests.each do |guest| %>
+    <li><%= guest.name %></li>
+  <% end %>
+  <br>
 <% end %>
-<br>
 
 <!-- Display any photos that exist for this tour -->
 <% unless @photos.empty? %>

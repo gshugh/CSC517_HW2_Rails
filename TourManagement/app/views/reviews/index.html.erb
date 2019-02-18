@@ -2,7 +2,9 @@
 
 <h1>Reviews</h1>
 
-<% unless @reviews.empty? %>
+<% if @reviews.empty? %>
+  <%= render 'no_results' %>
+<% else %>
 
   <table>
     <thead>
@@ -32,10 +34,6 @@
     </tbody>
   </table>
 
-<% end %>
-
-<% if @reviews.empty? %>
-  No Reviews Yet
 <% end %>
 
 <br>
