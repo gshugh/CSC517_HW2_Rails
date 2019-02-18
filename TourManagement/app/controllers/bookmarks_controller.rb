@@ -7,11 +7,9 @@ class BookmarksController < ApplicationController
     if params['bookmarks_user']
       @bookmarks = Bookmark.where(user_id: params['bookmarks_user'])
     elsif params['listing_user']
-#      @listing = Listing.where(user_id: params['listing_user'])
-#      @bookmarks = Bookmark.where(tour_id: @listing.id)
-      @bookmarks = Bookmark.joins("INNER JOIN listings ON tours.id = listings.tour_id AND listings.user_id = #{params['listing_user'].to_i}")
-#      @tours = Tour.joins("INNER JOIN listings ON tours.id = listings
-# .tour_id AND listings.user_id = #{params['tour_creator'].to_i}")
+      @bookmarks = Bookmark.joins("INNER JOIN listings ON
+                    bookmarks.tour_id = listings.tour_id AND
+                    listings.user_id = #{params['listing_user'].to_i}")
     else
       @bookmarks = Bookmark.all
     end
