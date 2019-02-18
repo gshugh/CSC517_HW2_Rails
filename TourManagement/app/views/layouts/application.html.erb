@@ -143,9 +143,10 @@
           </td>
           <td>
             <% if logged_in? %>
-              <%= button_to "Log out", logout_path, method: :delete %>
+              <%= button_to "Log Out", logout_path, method: :delete %>
             <% else %>
-              <%= link_to "Log in", login_path %>
+              <%= link_to "Go To Login Page", login_path %>
+              <%= link_to "Sign up now!", new_user_url %>
             <% end %>
           </td>
         </tr>
