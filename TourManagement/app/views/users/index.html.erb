@@ -2,17 +2,21 @@
 
 <h1>Users</h1>
 
-<table>
-  <thead>
+<% if @users.empty? %>
+  <%= render 'no_results' %>
+<% else %>
+
+  <table>
+    <thead>
     <tr>
       <th>Email</th>
       <th>Name</th>
       <th>Type</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
@@ -25,8 +29,10 @@
         <% end %>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+<% end %>
 
 <br>
 

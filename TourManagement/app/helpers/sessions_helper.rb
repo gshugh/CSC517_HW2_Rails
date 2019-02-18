@@ -100,6 +100,13 @@ module SessionsHelper
     current_user_admin? || current_user_customer?
   end
 
+  # Method to determine if the current user is allowed to modify the given bookmark
+  # Admin can do this because they can do darn near anything
+  # The user who created the bookmark can do this
+  def current_user_can_modify_given_bookmark?(bookmark)
+    current_user_admin? || bookmark.user_id == current_user.read_attribute("id")
+  end
+
   #######################################################################
   # REVIEW PERMISSIONS
   #######################################################################

@@ -7,7 +7,10 @@
 
 <h1><%= @tour.name %> Photos</h1>
 
-<% unless @photos.empty? %>
+<% if @photos.empty? %>
+  <%= render 'no_results' %>
+<% else %>
+
   <table>
     <thead>
     <tr>
@@ -26,13 +29,8 @@
     <% end %>
     </tbody>
   </table>
-<% end %>
 
-<% if @photos.empty? %>
-  No Photos Yet
 <% end %>
-
-<br>
 
 <!-- Provide a link to add a photo specifically for this tour -->
 <%= link_to "New #{@tour.name} Photo", new_photo_path(tour_id: @tour.id) %>

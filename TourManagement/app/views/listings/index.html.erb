@@ -2,16 +2,20 @@
 
 <h1>Listings</h1>
 
-<table>
-  <thead>
+<% if @listings.empty? %>
+  <%= render 'no_results' %>
+<% else %>
+
+  <table>
+    <thead>
     <tr>
       <th>User</th>
       <th>Tour</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @listings.each do |listing| %>
       <tr>
         <td><%= listing.user %></td>
@@ -21,8 +25,10 @@
         <td><%= button_to 'Destroy Listing', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+<% end %>
 
 <br>
 

@@ -2,7 +2,9 @@
 
 <h1>Tours</h1>
 
-<% unless @tours.empty? %>
+<% if @tours.empty? %>
+  <%= render 'no_results' %>
+<% else %>
 
   <!-- Show the basics - not enough room to show everything here -->
   <table>
@@ -50,65 +52,61 @@
     </tbody>
   </table>
 
-<% end %>
+  <!-- Provide search filters -->
+  <h2>Filter Results</h2>
 
-<% if @tours.empty? %>
-  No Results
-<% end %>
+  <!-- Make sure to submit the form "local" so that it actually returns the updated HTML -->
+  <!-- https://guides.rubyonrails.org/form_helpers.html -->
+  <!-- https://m.patrikonrails.com/rails-5-1s-form-with-vs-old-form-helpers-3a5f72a8c78a -->
+  <!-- https://www.engineyard.com/blog/using_form_with-vs-form_for-vs-form_tag -->
+  <%= form_with model: @tour, local: true, method: "get" do |form| %>
 
-<!-- Provide search filters -->
-<h2>Filter Results</h2>
+    <!-- Select tour names including given string -->
+    <%= form.label "Tour Name Includes" %>
+    <%= form.text_field :tour_name, value: user_selected_tour_name %>
 
-<!-- Make sure to submit the form "local" so that it actually returns the updated HTML -->
-<!-- https://guides.rubyonrails.org/form_helpers.html -->
-<!-- https://m.patrikonrails.com/rails-5-1s-form-with-vs-old-form-helpers-3a5f72a8c78a -->
-<!-- https://www.engineyard.com/blog/using_form_with-vs-form_for-vs-form_tag -->
-<%= form_with model: @tour, local: true, method: "get" do |form| %>
-
-  <!-- Select tour names including given string -->
-  <%= form.label "Tour Name Includes" %>
-  <%= form.text_field :tour_name, value: user_selected_tour_name %>
-
-  <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
-  <%= form.label "Desired Location" %>
-  <%= form.select(:desired_location) do %>
-    <!-- The first option has a special value so that we can see if there is no desired location -->
-    <%= content_tag(:option, "", value: -1) %>
-    <% Location.all.each do |loc| -%>
-      <%= content_tag(
-              :option,
-              loc.user_friendly_description,
-              value: loc.id,
-              selected: user_selected_location?(loc)
-          ) %>
+    <!-- Drop down for selecting location: https://guides.rubyonrails.org/form_helpers.html -->
+    <%= form.label "Desired Location" %>
+    <%= form.select(:desired_location) do %>
+      <!-- The first option has a special value so that we can see if there is no desired location -->
+      <%= content_tag(:option, "", value: -1) %>
+      <% Location.all.each do |loc| -%>
+        <%= content_tag(
+                :option,
+                loc.user_friendly_description,
+                value: loc.id,
+                selected: user_selected_location?(loc)
+            ) %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <!-- Select maximum price -->
-  <%= form.label "Max Price ($)" %>
-  <%= form.number_field number_with_precision(:max_price_dollars, precision: 2),
-                        step: 0.01,
-                        value: user_selected_maximum_price
-  %>
+    <!-- Select maximum price -->
+    <%= form.label "Max Price ($)" %>
+    <%= form.number_field number_with_precision(:max_price_dollars, precision: 2),
+                          step: 0.01,
+                          value: user_selected_maximum_price
+    %>
 
-  <!-- Select earliest start date -->
-  <%= form.label "Earliest Start" %>
-  <%= form.date_field :earliest_start, value: user_selected_earliest_start %>
+    <!-- Select earliest start date -->
+    <%= form.label "Earliest Start" %>
+    <%= form.date_field :earliest_start, value: user_selected_earliest_start %>
 
-  <!-- Select latest end date -->
-  <%= form.label "Latest End" %>
-  <%= form.date_field :latest_end, value: user_selected_latest_end %>
+    <!-- Select latest end date -->
+    <%= form.label "Latest End" %>
+    <%= form.date_field :latest_end, value: user_selected_latest_end %>
 
-  <!-- Select minimum # available seats -->
-  <%= form.label "Min # Available Seats" %>
-  <%= form.number_field :min_seats, value: user_selected_min_seats %>
+    <!-- Select minimum # available seats -->
+    <%= form.label "Min # Available Seats" %>
+    <%= form.number_field :min_seats, value: user_selected_min_seats %>
 
-  <!-- Submit search filters -->
-  <div class="actions">
-    <%= form.submit "Search" %>
-  </div>
+    <!-- Submit search filters -->
+    <div class="actions">
+      <%= form.submit "Search" %>
+    </div>
 
-<%end %>
+  <%end %>
+
+<% end %>
 
 <% if current_user_can_create_tour? %>
   <br>

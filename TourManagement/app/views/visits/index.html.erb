@@ -2,16 +2,20 @@
 
 <h1>Visits</h1>
 
-<table>
-  <thead>
+<% if @visits.empty? %>
+  <%= render 'no_results' %>
+<% else %>
+
+  <table>
+    <thead>
     <tr>
       <th>Tour</th>
       <th>Location</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @visits.each do |visit| %>
       <tr>
         <td><%= visit.tour %></td>
@@ -21,8 +25,10 @@
         <td><%= button_to 'Destroy', visit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+<% end %>
 
 <br>
 
