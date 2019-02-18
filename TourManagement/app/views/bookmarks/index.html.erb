@@ -21,7 +21,9 @@
         <td><%= bookmark.user.name %></td>
         <td><%= bookmark.tour.name %></td>
         <td><%= link_to 'Show', bookmark %></td>
-        <td><%= button_to 'Destroy Bookmark', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user_can_modify_given_bookmark?(bookmark) %>
+          <td><%= button_to 'Delete Bookmark', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>
