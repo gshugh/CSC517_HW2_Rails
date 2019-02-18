@@ -18,7 +18,7 @@
         <td><%= start_at.location %></td>
         <td><%= link_to 'Show', start_at %></td>
         <td><%= link_to 'Edit', edit_start_at_path(start_at) %></td>
-        <td><%= link_to 'Destroy', start_at, method: :delete, data: { confirm:
+        <td><%= button_to 'Destroy', start_at, method: :delete, data: { confirm:
                                                                         'Are you sure?' } %></td>
       </tr>
     <% end %>

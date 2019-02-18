@@ -36,21 +36,15 @@
         <td><%= Booking.get_available_seats_for_tour(tour) %></td>
         <td><%= Listing.get_agent_name_for_tour(tour) %></td>
         <td><%= link_to 'Show', tour %></td>
-        <td>
-          <% if current_user_can_book_given_tour?(tour) %>
-            <%= link_to 'Book', new_booking_path(tour_id: tour.id) %>
-          <% end %>
-        </td>
-        <td>
-          <% if current_user_can_modify_given_tour?(tour) %>
-            <%= link_to 'Edit', edit_tour_path(tour) %>
-          <% end %>
-        </td>
-        <td>
-          <% if current_user_can_modify_given_tour?(tour) %>
-            <%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
+        <% if current_user_can_book_given_tour?(tour) %>
+          <td><%= link_to 'Book', new_booking_path(tour_id: tour.id) %></td>
+        <% end %>
+        <% if current_user_can_modify_given_tour?(tour) %>
+          <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
+        <% end %>
+        <% if current_user_can_modify_given_tour?(tour) %>
+          <td><%= button_to 'Delete Tour', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>

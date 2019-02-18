@@ -49,84 +49,108 @@
 
     <h2 style="color: green">Links:</h2>
 
-    <!-- USERS -->
-    <p>
-      <b>Users: </b>
-      <% if current_user_can_see_all_users? %>
-        <%= link_to "Show All Users", users_url %>
-      <% end %>
-      <% if current_user_can_see_own_profile? %>
-        <%= link_to 'Show My Profile', current_user %>
-      <% end %>
-    </p>
-
-    <!-- BOOKMARKS -->
-    <p>
-      <b> Bookmarks: </b>
-      <% if current_user_can_see_all_bookmarks? %>
-        <%= link_to 'Show All Bookmarks', bookmarks_path %>
-      <% end %>
-      <% if current_user_can_see_bookmarks_for_their_tours? %>
-        <%= link_to 'Show Bookmarks for My Tours', bookmarks_path(listing_user: current_user) %>
-      <% end %>
-      <% if current_user_can_see_their_bookmarks? %>
-        <%= link_to 'Show My Bookmarks', bookmarks_path(bookmarks_user: current_user) %>
-      <% end %>
-    </p>
-
-    <!-- TOURS -->
-    <p>
-      <b>Tours: </b>
-      <% if current_user_can_see_all_tours? %>
-        <%= link_to "Show All Tours", tours_url %>
-      <% end %>
-      <% if current_user_can_see_their_tours? %>
-        <%= link_to 'Show My Tours', tours_path(tour_creator: current_user) %>
-      <% end %>
-    </p>
-
-    <!-- REVIEWS -->
-    <p>
-      <b>Reviews: </b>
-      <% if current_user_can_see_all_reviews? %>
-        <%= link_to "Show All Reviews", reviews_url %>
-      <% end %>
-      <% if current_user_can_see_reviews_for_their_tours? %>
-        <%= link_to 'Show Reviews for My Tours', reviews_path(listing_user_id: current_user.id) %>
-      <% end %>
-      <% if current_user_can_see_their_reviews? %>
-        <%= link_to 'Show My Reviews', reviews_path(reviewing_user_id: current_user) %>
-      <% end %>
-    </p>
-
-    <!-- BOOKINGS -->
-    <p>
-      <b>Bookings: </b>
-      <% if current_user_can_see_all_bookings? %>
-        <%= link_to "Show All Bookings", bookings_url %>
-      <% end %>
-      <% if current_user_can_see_bookings_for_their_tours? %>
-        <%= link_to 'Show Bookings for My Tours', bookings_path(listing_user_id: current_user.id) %>
-      <% end %>
-      <% if current_user_can_see_their_bookings? %>
-        <%= link_to 'Show My Bookings', bookings_path(booking_user_id: current_user.id) %>
-      <% end %>
-    </p>
-
-    <!-- LOCATIONS -->
-    <p>
-      <b>Locations: </b>
-      <% if current_user_can_see_all_locations? %>
-        <%= link_to "Show All Locations", locations_url %>
-      <% end %>
-    </p>
-
-    <!-- Log In / Log Out -->
-    <% if logged_in? %>
-      <%= link_to "Log out", logout_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log in", login_path %>
-    <% end %>
+    <table class="links">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Users
+          </td>
+          <td>
+            <% if current_user_can_see_all_users? %>
+              <%= link_to "Show All Users", users_url %>
+            <% end %>
+            <% if current_user_can_see_own_profile? %>
+              <%= link_to 'Show My Profile', current_user %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Bookmarks
+          </td>
+          <td>
+            <% if current_user_can_see_all_bookmarks? %>
+              <%= link_to 'Show All Bookmarks', bookmarks_path %>
+            <% end %>
+            <% if current_user_can_see_bookmarks_for_their_tours? %>
+              <%= link_to 'Show Bookmarks for My Tours', bookmarks_path(listing_user: current_user) %>
+            <% end %>
+            <% if current_user_can_see_their_bookmarks? %>
+              <%= link_to 'Show My Bookmarks', bookmarks_path(bookmarks_user: current_user) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Tours
+          </td>
+          <td>
+            <% if current_user_can_see_all_tours? %>
+              <%= link_to "Show All Tours", tours_url %>
+            <% end %>
+            <% if current_user_can_see_their_tours? %>
+              <%= link_to 'Show My Tours', tours_path(tour_creator: current_user) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Reviews
+          </td>
+          <td>
+            <% if current_user_can_see_all_reviews? %>
+              <%= link_to "Show All Reviews", reviews_url %>
+            <% end %>
+            <% if current_user_can_see_reviews_for_their_tours? %>
+              <%= link_to 'Show Reviews for My Tours', reviews_path(listing_user_id: current_user.id) %>
+            <% end %>
+            <% if current_user_can_see_their_reviews? %>
+              <%= link_to 'Show My Reviews', reviews_path(reviewing_user_id: current_user) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Bookings
+          </td>
+          <td>
+            <% if current_user_can_see_all_bookings? %>
+              <%= link_to "Show All Bookings", bookings_url %>
+            <% end %>
+            <% if current_user_can_see_bookings_for_their_tours? %>
+              <%= link_to 'Show Bookings for My Tours', bookings_path(listing_user_id: current_user.id) %>
+            <% end %>
+            <% if current_user_can_see_their_bookings? %>
+              <%= link_to 'Show My Bookings', bookings_path(booking_user_id: current_user.id) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Locations
+          </td>
+          <td>
+            <% if current_user_can_see_all_locations? %>
+              <%= link_to "Show All Locations", locations_url %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Log In / Log Out
+          </td>
+          <td>
+            <% if logged_in? %>
+              <%= button_to "Log out", logout_path, method: :delete %>
+            <% else %>
+              <%= link_to "Log in", login_path %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <!-- Debug per https://www.railstutorial.org/book/sign_up -->
     <%= debug(params) if Rails.env.development? %>
