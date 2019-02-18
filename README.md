@@ -140,10 +140,11 @@ How To:
     
         Click "Show All Reviews"
         Click "Destroy" next to the review of interest
+        Confirm intention
         
     # TODO add more "how to" sections
 
-Misc. Notes on Code Organization:
+Other Notes:
 
     "Extra" Model:
 

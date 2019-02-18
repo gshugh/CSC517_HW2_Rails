@@ -26,7 +26,7 @@
         <td><%= link_to 'Show', location %></td>
         <% if current_user_can_modify_locations? %>
           <td><%= link_to 'Edit', edit_location_path(location) %></td>
-          <td><%= link_to 'Destroy', location, method: :delete, data: {
+          <td><%= button_to 'Destroy Location', location, method: :delete, data: {
               confirm: 'Are you sure?'
           } %></td>
         <% end %>

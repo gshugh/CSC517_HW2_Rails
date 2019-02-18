@@ -26,7 +26,7 @@
 <%= link_to 'Edit Profile', edit_user_path(@user) %>
 <!-- Any user (except an admin) may cancel their account -->
 <% unless @user.admin %>
-  <td><%= link_to 'Cancel Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= button_to 'Cancel Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
 <!-- As always, a back link -->
 <%= link_to 'Back', users_path %>
