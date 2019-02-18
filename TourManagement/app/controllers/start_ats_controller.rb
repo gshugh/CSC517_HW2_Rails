@@ -58,10 +58,11 @@ updated.' }
   # DELETE /starts/1
   # DELETE /starts/1.json
   def destroy
+    # Did not think about / update redirect logic here
+    # It is not expected that a start_at will ever be destroyed by a user
     @start_at.destroy
     respond_to do |format|
-      format.html { redirect_to start_ats_url, notice: 'StartAt was
-successfully destroyed.' }
+      format.html { redirect_to start_ats_url, notice: 'StartAt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

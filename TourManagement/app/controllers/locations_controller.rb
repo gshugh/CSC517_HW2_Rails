@@ -54,11 +54,22 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
+
+    # Destroy location
     @location.destroy
+
+    # Respond
+    # TODO test all paths!
+    success_notice = 'Location was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
+      if current_user_can_see_all_locations?
+        format.html { redirect_to locations_url, notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
+
   end
 
   private

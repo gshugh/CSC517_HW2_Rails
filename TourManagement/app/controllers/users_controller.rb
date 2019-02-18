@@ -62,15 +62,22 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+
+    # Destroy user
     @user.destroy
+
+    # Respond
+    # TODO test all paths!
+    success_notice = 'User was successfully destroyed.'
     respond_to do |format|
       if current_user_can_see_all_users?
-        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to users_url, notice: success_notice }
       else
-        format.html { redirect_to login_path, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }
     end
+
   end
 
   private

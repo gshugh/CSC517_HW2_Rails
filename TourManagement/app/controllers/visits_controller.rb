@@ -54,6 +54,8 @@ class VisitsController < ApplicationController
   # DELETE /visits/1
   # DELETE /visits/1.json
   def destroy
+    # Did not think about / update redirect logic here
+    # It is not expected that a visit will ever be destroyed by a user
     @visit.destroy
     respond_to do |format|
       format.html { redirect_to visits_url, notice: 'Visit was successfully destroyed.' }

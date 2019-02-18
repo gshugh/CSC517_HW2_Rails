@@ -70,14 +70,30 @@ class ReviewsController < ApplicationController
     end
   end
 
+
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+
+    # Destroy review
     @review.destroy
+
+    # Respond
+    # TODO test all paths!
+    success_notice = 'Review was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      if current_user_can_see_all_reviews?
+        format.html { redirect_to reviews_url, notice: success_notice }
+      elsif current_user_can_see_reviews_for_their_tours?
+        format.html { redirect_to reviews_path(listing_user_id: current_user.id), notice: success_notice }
+      elsif current_user_can_see_their_reviews?
+        format.html { redirect_to reviews_path(reviewing_user_id: current_user.id), notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
+
   end
 
   private
