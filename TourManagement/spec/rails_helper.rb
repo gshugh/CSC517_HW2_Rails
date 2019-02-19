@@ -31,6 +31,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  config.render_views
   # See database_cleaner.rb about config.use_transactional_fixtures
   # config.use_transactional_fixtures = true
 
