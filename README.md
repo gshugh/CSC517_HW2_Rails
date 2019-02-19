@@ -111,7 +111,7 @@ How To (Read Me First!):
 
 How To (USERS):
     
-    How to sign up:
+    How to sign up
         
         Click "Sign up now!"
         Enter a name
@@ -126,7 +126,7 @@ How To (USERS):
             A customer
             Both agent & customer
     
-    How to log in:
+    How to log in
     
         Enter your email and password
         Click "Log In"
@@ -162,6 +162,24 @@ How To (USERS):
         Follow instructions for ~~ How To Sign Up ~~
 
 How To (BOOKMARKS):
+
+    How to view a list of all bookmarks
+        Click "Show All Bookmarks"
+
+    How to view a list of bookmarks of tours that you created
+        Click "Show Bookmarks for My Tours"
+        
+    How to see which tours you have bookmarked
+        Click "Show My Bookmarks"
+        
+    How to bookmark a tour
+        Follow instructions for ~~ How to view all details / photos / reviews for a particular tour ~~
+        Click "Bookmark"
+        Click "Create Bookmark"
+        
+    How to delete a bookmark
+        Click "Show My Bookmarks"
+        Click "Delete Bookmark" next to the bookmark of interest
 
 How To (TOURS):
 
