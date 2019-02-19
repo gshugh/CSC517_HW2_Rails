@@ -1,3 +1,8 @@
+################################################################################
+# A bookmark is a set of tours selected (bookmarked) by users.
+#
+# Rubify code.
+
 class Bookmark < ApplicationRecord
   belongs_to :user
   belongs_to :tour

@@ -102,6 +102,8 @@ class BookingsController < ApplicationController
       # 3 - Waitlist All Seats
       when 3
         @waitlist = Waitlist.new(params_waitlist)
+      else
+        # type code here
       end
     end
 

@@ -1,3 +1,10 @@
+################################################################################
+# A tour is a series of locations that are visited between a start_date and
+# end_date. Tours are created by agents/admins and bookmarked by
+# admins/customers.
+#
+# Rubify code.
+
 class Tour < ApplicationRecord
 
   # Support all of the "through" relationships
@@ -82,7 +89,7 @@ class Tour < ApplicationRecord
       itinerary_array << location.user_friendly_description
     end
     # Join with newlines to conserve horizontal space onscreen
-    return itinerary_array.join("\n")
+    itinerary_array.join("\n")
   end
 
   # Method to determine whether the tour has started
@@ -103,7 +110,7 @@ class Tour < ApplicationRecord
 
   # Methods to deal with currency
   def price_in_dollars
-    price_in_cents/100.0 if !price_in_cents.nil?
+    price_in_cents/100.0 unless price_in_cents.nil?
   end
   def price_in_dollars=(val)
     self.price_in_cents = (val.to_f * 100).to_int
