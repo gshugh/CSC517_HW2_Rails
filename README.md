@@ -201,23 +201,23 @@ How To (TOURS):
     How to view all details for a particular tour
         Click "Show All Tours"
         Click "Show" next to the tour of interest
-        *Included in this view*
-        <li>Description</li>
-        <li>Price</li>
-        <li>Booking Deadline</li>
-        <li>Start Date</li>
-        <li>End Date</li>
-        <li>Agent</li>
-        <li>Operator Contact</li>
-        <li>Status (In Future / Completed / Cancelled)</li>
-        <li># Seats</li>
-        <li># Seats Booked</li>
-        <li># Seats Available</li>
-        <li># Seats Waitlisted</li>
-        <li>Itinerary (locations, with starting location first)</li>
-        <li>Guests (customers who have booked the tour)</li>
-        <li>Photos</li>
-        <li>Reviews</li>
+        * Included in this view:
+        * Description
+        * Price
+        * Booking Deadline
+        * Start Date
+        * End Date
+        * Agent
+        * Operator Contact
+        * Status (In Future / Completed / Cancelled)
+        * # Seats
+        * # Seats Booked
+        * # Seats Available
+        * # Seats Waitlisted
+        * Itinerary (locations, with starting location first)
+        * Guests (customers who have booked the tour)
+        * Photos
+        * Reviews
 
     How to list a tour
         
