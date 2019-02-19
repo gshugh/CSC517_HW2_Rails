@@ -87,7 +87,13 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+
+    # Destroy photo
     @photo.destroy
+
+    # Respond
+    # There is only one path because
+    # any user who can destroy photos can also see a list of all photos for the tour
     respond_to do |format|
       # Make sure to pass along the tour ID in EVERY link that brings you to the photos index
       format.html { redirect_to photos_path(tour_id: @photo.tour.id), notice: 'Photo was successfully destroyed.' }

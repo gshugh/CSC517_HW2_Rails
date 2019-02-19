@@ -24,10 +24,16 @@
 
 </p>
 
-<!-- What you booked -->
-<p>
+<!-- User name -->
+<% if booking %>
+  <%= booking.user_name %>:
+<% else %>
+  <%= waitlist.user_name %>:
+<% end %>
 
-  You have booked
+<!-- What the user booked -->
+<li>
+   has booked
   <% if booking %>
     <%= booking.num_seats %>
   <% else %>
@@ -35,13 +41,13 @@
   <% end %>
   seats.
 
-</p>
+</li>
 
 <!-- What you waitlisted -->
-<p>
+<li>
 
   <!-- Seats you waitlisted -->
-  You have waitlisted
+   has waitlisted
   <% if waitlist %>
     <%= waitlist.num_seats %>
   <% else %>
@@ -49,4 +55,4 @@
   <% end %>
   seats.
 
-</p>
+</li>

@@ -6,8 +6,8 @@ class ToursController < ApplicationController
   def index
     # Support filtering tours according to user desires
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
-    if params['tour_creator']
-      @tours = Tour.joins("INNER JOIN listings ON tours.id = listings.tour_id AND listings.user_id = #{params['tour_creator'].to_i}")
+    if params['listing_user_id']
+      @tours = Tour.joins("INNER JOIN listings ON tours.id = listings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}")
     else
       @tours = Tour.where(nil)
     end
@@ -163,11 +163,22 @@ class ToursController < ApplicationController
   # DELETE /tours/1
   # DELETE /tours/1.json
   def destroy
+
+    # Destroy tour
     @tour.destroy
+
+    # Respond
+    success_notice = 'Tour was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to tours_url, notice: 'Tour was successfully destroyed.' }
+      # Current logic when this code was written is that everyone can see all reviews
+      if current_user_can_see_all_tours?
+        format.html { redirect_to tours_url, notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
+
   end
 
   private

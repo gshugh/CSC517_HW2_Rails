@@ -54,6 +54,8 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
+    # Did not think about / update redirect logic here
+    # It is not expected that a listing will ever be destroyed by a user
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }

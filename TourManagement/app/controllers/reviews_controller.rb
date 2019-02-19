@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    # There are 3 ways to get here
+    # There are 3 ways to get to the index view
     # Show My Reviews / Show Reviews for My Tours / Show All Reviews
     if params['reviewing_user_id']
       @reviews = Review.where(user_id: params['reviewing_user_id'].to_i)
@@ -70,14 +70,26 @@ class ReviewsController < ApplicationController
     end
   end
 
+
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+
+    # Destroy review
     @review.destroy
+
+    # Respond
+    success_notice = 'Review was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      # Current logic when this code was written is that everyone can see all reviews
+      if current_user_can_see_all_reviews?
+        format.html { redirect_to reviews_url, notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
+
   end
 
   private

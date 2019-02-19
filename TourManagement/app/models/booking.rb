@@ -62,6 +62,11 @@ class Booking < ApplicationRecord
     return waitlist_same_user_same_tour ? waitlist_same_user_same_tour.num_seats : 0
   end
 
+  # Method to get the name of the user who made this booking
+  def user_name
+    return User.find(user_id).name
+  end
+
   # Method to enroll people onto a tour from the tour's waitlist
   # It's okay if there is no waitlist, this method determines that
   def enroll_from_waitlist_as_needed

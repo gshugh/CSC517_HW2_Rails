@@ -64,11 +64,25 @@ class BookmarksController < ApplicationController
   # DELETE /bookmarks/1
   # DELETE /bookmarks/1.json
   def destroy
+
+    # Destroy bookmark
     @bookmark.destroy
+
+    # Respond
+    success_notice = 'Bookmark was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.' }
+      if current_user_can_see_all_bookmarks?
+        format.html { redirect_to bookmarks_url, notice: success_notice }
+      elsif current_user_can_see_bookmarks_for_their_tours?
+        format.html { redirect_to bookmarks_path(listing_user_id: current_user.id), notice: success_notice }
+      elsif current_user_can_see_their_bookmarks?
+        format.html { redirect_to bookmarks_path(bookmarks_user: current_user.id), notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
+
   end
 
   private

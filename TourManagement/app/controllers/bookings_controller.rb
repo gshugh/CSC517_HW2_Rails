@@ -153,8 +153,17 @@ class BookingsController < ApplicationController
     end
 
     # Respond
+    success_notice = 'Booking was successfully destroyed.'
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      if current_user_can_see_all_bookings?
+        format.html { redirect_to bookings_url, notice: success_notice }
+      elsif current_user_can_see_bookings_for_their_tours?
+        format.html { redirect_to bookings_path(listing_user_id: current_user.id), notice: success_notice }
+      elsif current_user_can_see_their_bookings?
+        format.html { redirect_to bookings_path(booking_user_id: current_user.id), notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
 

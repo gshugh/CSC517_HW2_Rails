@@ -42,12 +42,25 @@ class WaitlistsController < ApplicationController
   # DELETE /waitlists/1
   # DELETE /waitlists/1.json
   def destroy
+
+    # Destroy waitlist
     @waitlist.destroy
+
+    # Respond
+    success_notice = 'Waitlist was successfully destroyed.'
     respond_to do |format|
-      # Redirect to bookings index (this view does double duty between bookings & waitlists)
-      format.html { redirect_to bookings_url, notice: 'Waitlist was successfully destroyed.' }
+      if current_user_can_see_all_bookings?
+        format.html { redirect_to bookings_url, notice: success_notice }
+      elsif current_user_can_see_bookings_for_their_tours?
+        format.html { redirect_to bookings_path(listing_user_id: current_user.id), notice: success_notice }
+      elsif current_user_can_see_their_bookings?
+        format.html { redirect_to bookings_path(booking_user_id: current_user.id), notice: success_notice }
+      else
+        format.html { redirect_to login_path, notice: success_notice }
+      end
       format.json { head :no_content }
     end
+
   end
 
   private
