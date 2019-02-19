@@ -21,6 +21,7 @@ two:
   # Create password digest
   # https://www.railstutorial.org/book/basic_login
   password_digest: <%= User.digest('password') %>
+  password: password
 
 three:
   email: dummy_3@dummy.com
@@ -31,6 +32,7 @@ three:
   # Create password digest
   # https://www.railstutorial.org/book/basic_login
   password_digest: <%= User.digest('password') %>
+  password: password
 
 four:
   email: dummy_4@dummy.com
@@ -41,3 +43,4 @@ four:
   # Create password digest
   # https://www.railstutorial.org/book/basic_login
   password_digest: <%= User.digest('password') %>
+  password: password

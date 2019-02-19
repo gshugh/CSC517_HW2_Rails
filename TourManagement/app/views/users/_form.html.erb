@@ -19,9 +19,7 @@
     <%= form.text_field :name %>
   </div>
 
-
-  <!-- Admin login & password explicitly required to be non-modifiable -->
-  <!-- But still must be shown and submitted with form -->
+  <!-- May not be allowed to modify login & password -->
   <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email, :disabled => !current_user_can_modify_login_for_given_user?(@user) %>
