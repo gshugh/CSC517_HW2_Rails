@@ -26,7 +26,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         # so cannot just use name from fixture user
         email: "my_unique_email@whatever.com",
         name: @user.name,
-        password: @user.password
+        # We have to explicitly pass this and not get from fixture
+        # because passwords are encrypted (comes out of fixture as 'nil')
+        password: "test_password"
       } }
     end
 
