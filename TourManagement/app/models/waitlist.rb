@@ -30,6 +30,11 @@ class Waitlist < ApplicationRecord
     return num_waitlisted_seats
   end
 
+  # Method to determine if the given user has waitlisted seats on the given tour
+  def self.given_user_waitlisted_given_tour?(user, tour)
+    get_waitlists_for_tour_first_come_first_served(tour).any? { |waitlist| waitlist.user_id == user.id }
+  end
+
   # Method to get the booking created by this same user on this same tour
   # If no such booking, will return nil and we'll need to respond appropriately later on
   def booking_same_user_same_tour

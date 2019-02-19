@@ -50,6 +50,11 @@ class Booking < ApplicationRecord
     return tour.num_seats - num_booked_seats
   end
 
+  # Method to determine if the given user has booked seats on the given tour
+  def self.given_user_booked_given_tour?(user, tour)
+    Booking.where(tour_id: tour.id).any? { |booking| booking.user_id == user.id }
+  end
+
   # Method to get the waitlist created by this same user on this same tour
   # If no such waitlist, will return nil and we'll need to respond appropriately later on
   def waitlist_same_user_same_tour

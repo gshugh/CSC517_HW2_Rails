@@ -212,8 +212,13 @@ module SessionsHelper
   # A tour in the future can be booked if:
   #   the current user is allowed to book tours
   #   the tour's booking deadline has not elapsed
+  #   the current user doesn't already have a booking / waitlist for the tour
   def current_user_can_book_given_tour?(tour)
-      !tour.has_ended? && !tour.booking_deadline_has_passed? && current_user_can_book_tours?
+    !tour.has_ended? &&
+    !tour.booking_deadline_has_passed? &&
+    current_user_can_book_tours? &&
+    !Booking.given_user_booked_given_tour?(current_user, tour) &&
+    !Waitlist.given_user_waitlisted_given_tour?(current_user, tour)
   end
 
   #######################################################################
