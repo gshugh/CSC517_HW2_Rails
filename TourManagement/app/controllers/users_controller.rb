@@ -72,7 +72,6 @@ class UsersController < ApplicationController
       if current_user_can_see_all_users?
         format.html { redirect_to users_url, notice: success_notice }
       else
-        # TODO test this path
         format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }

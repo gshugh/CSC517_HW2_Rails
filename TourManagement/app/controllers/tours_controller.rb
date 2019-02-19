@@ -170,13 +170,10 @@ class ToursController < ApplicationController
     # Respond
     success_notice = 'Tour was successfully destroyed.'
     respond_to do |format|
+      # Current logic when this code was written is that everyone can see all reviews
       if current_user_can_see_all_tours?
         format.html { redirect_to tours_url, notice: success_notice }
-      elsif current_user_can_see_their_tours?
-        # TODO test this path
-        format.html { redirect_to tours_path(listing_user_id: current_user.id), notice: success_notice }
       else
-        # TODO test this path
         format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }
