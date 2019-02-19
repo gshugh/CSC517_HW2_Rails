@@ -8,8 +8,10 @@ class ToursController < ApplicationController
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
     if params['listing_user_id']
       @tours = Tour.joins("INNER JOIN listings ON tours.id = listings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}")
+      @page_title = "My Tours"
     else
       @tours = Tour.where(nil)
+      @page_title = "All Tours"
     end
 
     flash[:filters] = {}
