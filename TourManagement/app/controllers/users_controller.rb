@@ -25,16 +25,18 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
 
+    # Create user record
     @user = User.new(user_params)
 
+    # Respond
     respond_to do |format|
       if @user.save
         if logged_in?
           # If you created a new user when already logged in, you're an admin
-          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.html { redirect_to @user, notice: 'User account was successfully created.' }
         else
           # If you created a new user when not logged in, you must be signing up
-          format.html { redirect_to login_path, notice: 'User was successfully created.  Please Log In.' }
+          format.html { redirect_to login_path, notice: 'User account was successfully created.  Please Log In.' }
         end
         format.json { render :show, status: :created, location: @user }
       else

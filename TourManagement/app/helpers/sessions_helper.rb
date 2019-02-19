@@ -278,15 +278,6 @@ module SessionsHelper
     logged_in?
   end
 
-  # Method to determine if the current user is allowed to modify login / password for the given user
-  # Anyone can get to the user edit form because anyone can sign in
-  # Admin login & password explicitly required to be non-modifiable
-  # We went a step further and said no user may change login & password
-  # With password encryption this would be a hassle to support
-  def current_user_can_modify_login_for_given_user?(user)
-    false
-  end
-
   #######################################################################
   # LOCATION PERMISSIONS
   #######################################################################
