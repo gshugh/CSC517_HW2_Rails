@@ -102,12 +102,14 @@ User Roles:
         Anyone can sign up for a new account.
         Anyone can log in.
 
-How To:
+How To (Read Me First!):
 
     All of these instructions assume that you are starting from the landing page.
     All of these instructions assume that your user role allows you to perform these functions.
     Some of these instructions have alternative ways to accomplish the same task.
     It is not feasible to list all possible ways of accomplishing all possible tasks.
+
+How To (USERS):
     
     How to sign up:
         
@@ -158,7 +160,11 @@ How To:
         Click "Show All Users"
         Click "New User"
         Follow instructions for ~~ How To Sign Up ~~
-    
+
+How To (BOOKMARKS):
+
+How To (TOURS):
+
     How to view a list of all tours
     
         Click "Show All Tours"
@@ -167,16 +173,7 @@ How To:
     
         Click "Show All Tours"
         Click "Show" next to the tour of interest
-        
-    How To view a list of all reviews
-        
-        Click "Show All Reviews"
-               
-    How to delete a review
-    
-        Click "Show All Reviews"
-        Click "Delete Review" next to the review of interest
-        
+
     How to list a tour
         
         Click "Show All Tours"
@@ -218,10 +215,12 @@ How To:
         Click "Edit" next to the tour of interest
         Click "Edit Photos"
         Click "Delete Photo" next to the photo of interest
+
+How To (REVIEWS):
+
+    How To view a list of all reviews
         
-    How to show bookings for the tours you have created
-    
-        Click "Show Bookings for My Tours"
+        Click "Show All Reviews"
         
     How to view reviews for tours you have created
     
@@ -234,5 +233,16 @@ How To:
     How to view reviews you have created
     
         Click "Show My Reviews"
+               
+    How to delete a review
     
-    # TODO add more "how to" sections
+        Click "Show All Reviews"
+        Click "Delete Review" next to the review of interest
+
+How To (BOOKINGS / WAITLISTS):
+
+    How to show bookings for the tours you have created
+    
+        Click "Show Bookings for My Tours"
+
+How To (LOCATIONS):
