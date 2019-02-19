@@ -48,8 +48,16 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    # Users are not allowed to modify login and password
+    # Only name, agent boolean, and customer boolean
+    update_name_success = @user.update_attribute(:name, user_params['name'])
+    update_agent_success = @user.update_attribute(:agent, user_params['agent'].to_i)
+    update_customer_success = @user.update_attribute(:customer, user_params['customer'].to_i)
+
+    # Now proceed
     respond_to do |format|
-      if @user.update(user_params)
+      if update_name_success && update_agent_success && update_customer_success
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -57,6 +65,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /users/1

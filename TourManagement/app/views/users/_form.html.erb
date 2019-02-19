@@ -20,13 +20,10 @@
   </div>
 
   <!-- May not be allowed to modify login & password -->
+  <!-- Also, they can't even see password, so don't bother including in form -->
   <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email, :disabled => !current_user_can_modify_login_for_given_user?(@user) %>
-  </div>
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password, :disabled => !current_user_can_modify_login_for_given_user?(@user) %>
   </div>
 
   <!-- Always show name and allow edits to user role -->
