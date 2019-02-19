@@ -7,13 +7,6 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     @tour = tours(:one)
     @user = users(:one)
 
-    # Log in a user (gotta have a logged-in user to associate with any new bookings)
-    # But cannot use session helper from outside of the controller
-    # https://stackoverflow.com/questions/39465941/how-to-use-session-in-the-test-controller-in-rails-5?rq=1
-    # So, this is kind of a hack to fake a logged-in user
-    # Mimics params sent when logging in manually on the development application
-    post login_path, params: { session: { email: @user.email, password: @user.password } }
-
   end
 
   test "should get index" do
@@ -69,7 +62,6 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Booking.count', -1) do
       delete booking_url(@booking)
     end
-
     assert_redirected_to bookings_url
   end
 end

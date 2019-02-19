@@ -144,13 +144,15 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1.json
   def destroy
 
-    # Destroy booking
-    @booking.destroy
-
     # Destroy associated waitlist if it exists
+    # Do this first so that the destroy of the booking does not trigger
+    # a rollover of waitlist seats to the booking
     if @waitlist
       @waitlist.destroy
     end
+
+    # Destroy booking
+    @booking.destroy
 
     # Respond
     success_notice = 'Booking was successfully destroyed.'

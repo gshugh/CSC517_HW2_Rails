@@ -48,6 +48,7 @@
         <td>0</td>
         <td><%= waitlist.num_seats %></td>
         <td><%= waitlist.tour.start_date %></td>
+        <td><%= waitlist.tour.end_date %></td>
         <td><%= link_to 'Show Tour', waitlist.tour %></td>
         <td><%= link_to 'Show Booking', waitlist %></td>
         <% if current_user_can_modify_given_booking?(waitlist) %>

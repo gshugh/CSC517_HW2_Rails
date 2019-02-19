@@ -26,7 +26,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         # so cannot just use name from fixture user
         email: "my_unique_email@whatever.com",
         name: @user.name,
-        password_digest: User.digest(@user.password)
+        password: @user.password
       } }
     end
 
@@ -48,11 +48,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       admin: @user.admin,
       agent: @user.agent,
       customer: @user.customer,
-      # Change from auto-generated test: user email has uniqueness constraint
-      # so cannot just use name from fixture user
-      email: "my_new_unique_email@whatever.com",
-      name: @user.name,
-      password_digest: User.digest(@user.password)
+      name: "John Q. Public"
+      # No user allowed to change their email address or password
     } }
     assert_redirected_to user_url(@user)
   end

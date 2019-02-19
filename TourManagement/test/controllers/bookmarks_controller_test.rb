@@ -66,12 +66,8 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit bookmark view" do
-    get edit_bookmark_url(@bookmark), params: { tour: {
-        name: "Test"
-    } }
-    assert_response :success
-  end
+  # Edit is not supported for bookmarks
+  # The only edit is delete
 
   test "should update bookmark" do
     patch bookmark_url(@bookmark), params: { bookmark: {
