@@ -46,7 +46,8 @@ class Tour < ApplicationRecord
   # https://guides.rubyonrails.org/active_record_querying.html#scopes
 
   # https://www.scimedsolutions.com/articles/74-arel-part-i-case-insensitive-searches-with-partial-matching
-  scope :tour_name, ->(tour_name) { where("name like ?", "%" + tour_name + "%") }
+  # https://stackoverflow.com/questions/2876789/how-can-i-search-case-insensitive-in-a-column-using-like-wildcard
+  scope :tour_name, ->(tour_name) { where("LOWER(name) like LOWER(?)", "%" + tour_name + "%") }
 
   # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
   scope :desired_location, ->(desired_loc_id) {
