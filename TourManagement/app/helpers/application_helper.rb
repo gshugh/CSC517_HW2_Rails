@@ -155,6 +155,8 @@ module ApplicationHelper
         else
           waitlist = Waitlist.new(params_waitlist)
         end
+      else
+        nil
       end
     end
 

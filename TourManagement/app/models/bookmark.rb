@@ -1,3 +1,9 @@
+################################################################################
+# A bookmark is a set of tours selected (bookmarked) by users.
+#
+# Rubify code.
+# Move logic from index controller to here.
+
 class Bookmark < ApplicationRecord
   belongs_to :user
   belongs_to :tour
@@ -5,18 +11,11 @@ class Bookmark < ApplicationRecord
   validates :user_id, uniqueness: {scope: :tour_id}
   validates :tour_id, uniqueness: {scope: :user_id}
 
-  # # Method to get the bookmarks of the agent who created the given tour
-  # def self.get_bookmarks_for_agent_for_tour(tour)
-  #   if current_user_listed_given_tour?(tour)
-  #
-  #   matching_bookmarks = Bookmark.find_by(tour_id: tour.id)
-  #   return matching_bookmarks
-  #   # if matching_bookmarks
-  #   #   matching_user_id = matching_listing.read_attribute("user_id")
-  #   #   return matching_user_id
-  #   # else
-  #   #   return nil
-  #   # end
-  #   end
-  # end
+  def self.find_user_bookmarks(params)
+    return self.users(params['bookmarks_user']) if params['bookmarks_user']
+    return self.joins("INNER JOIN listings ON
+                    bookmarks.tour_id = listings.tour_id AND
+                    listings.user_id = #{params['listing_user'].to_i}") if params['listing_user']
+    return self.all
+  end
 end

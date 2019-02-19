@@ -4,18 +4,8 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    if params['bookmarks_user']
-      @bookmarks = Bookmark.where(user_id: params['bookmarks_user'])
-      @page_title = "My Bookmarks"
-    elsif params['listing_user']
-      @bookmarks = Bookmark.joins("INNER JOIN listings ON
-                    bookmarks.tour_id = listings.tour_id AND
-                    listings.user_id = #{params['listing_user'].to_i}")
-      @page_title = "Bookings for My Tours"
-    else
-      @bookmarks = Bookmark.all
-      @page_title = "All Bookmarks"
-    end
+    @bookmarks = Bookmark.find_user_bookmarks(params)
+    set_page_title
   end
 
   # GET /bookmarks/1
@@ -89,7 +79,14 @@ class BookmarksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  def set_page_title
+    @page_title = "My Bookmarks" if params['bookmarks_user']
+    @page_title = "Bookings for My Tours" if params['listing_user']
+    @page_title = "All Bookmarks"
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_bookmark
       @bookmark = Bookmark.find(params[:id])
     end

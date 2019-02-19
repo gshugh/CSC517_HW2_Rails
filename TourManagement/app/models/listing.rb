@@ -1,3 +1,7 @@
+################################################################################
+# A listing records the agent/admin that created a tour.
+#
+
 class Listing < ApplicationRecord
 
   # Establish relationships

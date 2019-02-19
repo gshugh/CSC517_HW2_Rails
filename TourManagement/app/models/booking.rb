@@ -3,6 +3,7 @@
 # user.
 #
 # The number of seats must be a non-negative integer.
+# Rubify code.
 
 class Booking < ApplicationRecord
 
@@ -47,7 +48,7 @@ class Booking < ApplicationRecord
   # Method to get the number of available seats for the given tour
   def self.get_available_seats_for_tour(tour)
     num_booked_seats = Booking.get_booked_seats_for_tour(tour)
-    return tour.num_seats - num_booked_seats
+    tour.num_seats - num_booked_seats
   end
 
   # Method to determine if the given user has booked seats on the given tour
@@ -58,13 +59,13 @@ class Booking < ApplicationRecord
   # Method to get the waitlist created by this same user on this same tour
   # If no such waitlist, will return nil and we'll need to respond appropriately later on
   def waitlist_same_user_same_tour
-    return Waitlist.where(user_id: user_id).find_by(tour_id: tour_id)
+    Waitlist.where(user_id: user_id).find_by(tour_id: tour_id)
   end
 
   # Method to get the # seats waitlisted by this same user on this same tour
   # If no such waitlist, will return zero
   def seats_waitlisted_same_user_same_tour
-    return waitlist_same_user_same_tour ? waitlist_same_user_same_tour.num_seats : 0
+    waitlist_same_user_same_tour ? waitlist_same_user_same_tour.num_seats : 0
   end
 
   # Method to get the name of the user who made this booking

@@ -5,8 +5,8 @@ RSpec.describe Bookmark, type: :model do
 
   describe "model" do
 
-    # Don't need to test this. If we can't create this model all of these
-    # tests will fail.
+    # Don't need to test for a valid factory. If we can't create this model
+    # all of these tests will fail.
     # it "should have a valid factory"
 
     # Lazily loaded to ensure it's only used when it's needed
@@ -30,6 +30,14 @@ RSpec.describe Bookmark, type: :model do
     describe "constraints" do
       it { should validate_uniqueness_of(:user_id).scoped_to(:tour_id) }
       it { should validate_uniqueness_of(:tour_id).scoped_to(:user_id) }
+    end
+
+    # Test that the model returns the correct bookmarks depending on the type
+    # of user
+    describe "find bookmarks" do
+      it "should find all bookmarks for admin"
+      it "should find listing bookmarks for agent"
+      it "should find personal bookmarks for customer"
     end
 
   end

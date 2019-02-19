@@ -1,3 +1,7 @@
+################################################################################
+# A photo is an image that belongs to a tour.
+#
+
 class Photo < ApplicationRecord
 
   # Relationships
