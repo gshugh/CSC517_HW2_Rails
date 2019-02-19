@@ -96,6 +96,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
@@ -105,4 +106,5 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:subject, :content, :user_id, :tour_id)
     end
+
 end

@@ -138,7 +138,8 @@ module SessionsHelper
   end
 
   # Method to determine if the current user is allowed to create a review
-  def current_user_can_create_review?
+  # Admins and customers can do this
+  def current_user_can_create_reviews?
     current_user_admin? || current_user_customer?
   end
 
@@ -160,6 +161,13 @@ module SessionsHelper
   # "can a customer only post reviews for tours that are completed and that they were booked on?... Yes."
   def tours_taken_by_current_user
     Booking.where(user_id: current_user.id).map { |booking| Tour.find(booking.tour.id) }.select(&:has_ended?)
+  end
+
+  # Method to return a collection of the tours taken by the given user
+  # Per Piazza,
+  # "can a customer only post reviews for tours that are completed and that they were booked on?... Yes."
+  def tours_taken_by_given_user_id(user_id)
+    Booking.where(user_id: user_id).map { |booking| Tour.find(booking.tour.id) }.select(&:has_ended?)
   end
 
   #######################################################################
