@@ -23,22 +23,6 @@ Miscellaneous Notes:
         Your listings: deleted (if you're an agent/admin)
         Your bookmarks: deleted
         Your waitlists: deleted
-    
-    "Extra" Model:
-
-        Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
-        We have a "start_at" model that we ended up never really using.
-        Instead, we find the start location for a tour based on order of records stored in the "visits" model.
-        Time did not permit cleaning up this 'extra' code.
-        
-    "Extra" Views:
-    
-        We used scaffolding to start our application.
-        Many views are created by scaffolding.
-        Some of these views are never actually available to the user via a link.
-        Most of these 'extra' views are retained:
-            for time constraints
-            for future development on the application if needed
             
     Tour Operator Contact Info:
     
@@ -57,9 +41,34 @@ Miscellaneous Notes:
         We offer price filtering by maximum price, but not by minimum price.
         This is on the theory that cheaper is always better (all else being equal).
     
-    Waitlist Size:
+    Booking / Waitlisting:
     
         There is no maximum value for the waitlist size.
+        
+        Instead of forcing the user to go through extra steps when "some, but not enough, seats are available",
+        we show the user how many seats are available and allow them to select among the following options:
+        "Book All Seats" / "Book Available Seats, Waitlist Remaining Seats" / "Waitlist All Seats".
+        If the user selects an inappropriate option given the number of available seats,
+        then they are instructed as to what went wrong.
+        
+        As noted in the requirements, if a customer cancels or reduces a booking, or if a customer cancels their account,
+        waitlisted customers are enrolled in applicable tours.
+
+    "Extra" Model:
+
+        Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
+        We have a "start_at" model that we ended up never really using.
+        Instead, we find the start location for a tour based on order of records stored in the "visits" model.
+        Time did not permit cleaning up this 'extra' code.
+        
+    "Extra" Views:
+    
+        We used scaffolding to start our application.
+        Many views are created by scaffolding.
+        Some of these views are never actually available to the user via a link.
+        Most of these 'extra' views are retained:
+            for time constraints
+            for future development on the application if needed
 
 User Roles:
     
@@ -224,7 +233,8 @@ How To (TOURS):
         
         Click "Show All Tours"
         Click "New Tour"
-        Enter details and submit
+        Enter details in all provided fields
+        Click "Create Tour"
         
     How to edit / update a tour
     
@@ -297,12 +307,41 @@ How To (REVIEWS):
 
 How To (BOOKINGS / WAITLISTS):
 
-    How to show bookings for the tours you have created
+    How to view all bookings / waitlistings
+        
+        Click "Show All Bookings"
+
+    How to view bookings / waitlistings for the tours you have created
     
         Click "Show Bookings for My Tours"
+        
+    How to view bookings / waitlistings that you have created
+    
+        Click "Show My Bookings"
         
     How to view bookings for a particular tour
         
         See ~~ How to view all details for a particular tour ~~
+        
+    How to book / waitlist a tour
+    
+        Click "Show All Tours"
+        Click "Book" next to the tour of interest
+        Enter the number of seats you wish to book
+        Select an option from "Book or waitlist?"
+        Click "Create Booking"
+        
+    How to cancel a booking entirely
+    
+        Click "Show My Bookings"
+        Click "Cancel Booking" next to the booking of interest
+        Confirm your intention
+    
+    How to cancel a few seats from a booking done previously (or otherwise edit a booking)
+    
+        Click "Show My Bookings"
+        Click "Edit Booking" next to the booking of interest
+        Make the desired changes
+        Click "Update Booking"
 
 How To (LOCATIONS):
