@@ -6,12 +6,12 @@ RSpec.describe LocationsController, type: :controller do
   describe "GET #index" do
     it "populates an array of locations" do
       location = [locations(:one), locations(:two)]
-      locations
+      get :index#locations
       expect(assigns(:locations)).to eq(location)
     end
     it "renders the :index view" do
-      locations
-      expect(response).to render_template 'locations/index'
+      get :index
+      expect(response).to render_template :index
     end
   end
 
@@ -35,45 +35,72 @@ RSpec.describe LocationsController, type: :controller do
   end
 
   describe "GET #new" do
-    it "assigns a new Location to @location"
+    it "assigns a new Location to @location" do
+      get :new
+      expect(assigns(:location)).to_not eq nil
+      expect(assigns(:location)).to be_a_new(Location)
+    end
     it "renders the :new template" do
-      get :new, params: { tour_id: tours(:one).id }
+      get :new
       expect(response).to render_template :new
     end
   end
 
   describe "POST #create" do
-    let(:params) { { location: {
+    let(:valid_params) { { location: {
         state: "New State",
         country: "USA",
     }}}
-    context "with valid attributes" do
-      it "saves the new location in the database" do
-        previous_count = Location.count
-        post :create, params: params
-        expect(Location.count).to eq(previous_count+1)
-      end
-      it "redirects to the location_url(Location.last)"
+    let(:invalid_params) { { location: {
+        state: "",
+        country: "USA",
+    }}}
+    it "saves valid location and redirects to location_url" do
+      previous_count = Location.count
+      post :create, params: valid_params
+      expect(Location.count).to eq(previous_count+1)
+      expect(response).to redirect_to location_url(Location.last)
     end
 
-    context "with invalid attributes" do
-      it "does not save the new location in the database" do
-        previous_count = Location.count
-        params[:tour_id] = nil
-        post :create, params: params
-        expect(Location.count).to eq(previous_count)
-      end
-      it "re-renders the :new template"
+    it "rejects invalid location and renders the new view" do
+      previous_count = Location.count
+      post :create, params: invalid_params
+      expect(Location.count).to eq(previous_count)
+      expect(response).to render_template :new
     end
   end
 
   describe "PATCH/PUT #update" do
-    it "updates location"
-    it "redirects to location_url"
+    let(:invalid_params) { { location: {
+        state: locations(:one).state,
+        country: "",
+    }}}
+    context "with valid location" do
+      it "updates and redirects" do
+        patch :update, params: {"id"=>locations(:one).id,
+                                "location"=>{state: "New State",
+                                             country: locations(:one).country}}
+        expect(response).to redirect_to("/locations/#{locations(:one).id}")
+      end
+    end
+    context "with invalid location" do
+      it "does not update, and re-renders the form" do
+        patch :update, params: {"id"=>locations(:one).id,
+                                "location"=>{state: "",
+                                             country: locations(:one).country}}
+        expect(response).to render_template :edit
+      end
+    end
   end
 
   describe "DELETE #destroy" do
-    it "deletes the location"
+    it "deletes the location" do
+      @location = Location.last
+      previous_count = Location.count
+      delete :destroy, params: { id: locations(:two).id }
+      expect(Location.count).to eq(previous_count-1)
+#      expect(response).to render_template :index
+    end
     it "redirects to location_url"
   end
 
