@@ -56,6 +56,10 @@ Miscellaneous Notes:
             "There are no restrictions on the way you would like to implement any functionality."
         We offer price filtering by maximum price, but not by minimum price.
         This is on the theory that cheaper is always better (all else being equal).
+    
+    Waitlist Size:
+    
+        There is no maximum value for the waitlist size.
 
 User Roles:
     
@@ -173,7 +177,7 @@ How To (BOOKMARKS):
         Click "Show My Bookmarks"
         
     How to bookmark a tour
-        Follow instructions for ~~ How to view all details / photos / reviews for a particular tour ~~
+        Follow instructions for ~~ How to view all details for a particular tour ~~
         Click "Bookmark"
         Click "Create Bookmark"
         
@@ -184,13 +188,36 @@ How To (BOOKMARKS):
 How To (TOURS):
 
     How to view a list of all tours
-    
         Click "Show All Tours"
         
-    How to view all details / photos / reviews for a particular tour
-    
+    How to view a list of tours that you created
+        Click "Show My Tours"
+        
+    How to search tours using filters
+        Click "Show All Tours"
+        Enter filter criteria under "Filter Results"
+        Click "Search"
+        
+    How to view all details for a particular tour
         Click "Show All Tours"
         Click "Show" next to the tour of interest
+        *Included in this view*
+        <li>Description</li>
+        <li>Price</li>
+        <li>Booking Deadline</li>
+        <li>Start Date</li>
+        <li>End Date</li>
+        <li>Agent</li>
+        <li>Operator Contact</li>
+        <li>Status (In Future / Completed / Cancelled)</li>
+        <li># Seats</li>
+        <li># Seats Booked</li>
+        <li># Seats Available</li>
+        <li># Seats Waitlisted</li>
+        <li>Itinerary (locations, with starting location first)</li>
+        <li>Guests (customers who have booked the tour)</li>
+        <li>Photos</li>
+        <li>Reviews</li>
 
     How to list a tour
         
@@ -246,7 +273,7 @@ How To (REVIEWS):
         
     How to view reviews for a particular tour
         
-        See ~~ How to view all details / photos / reviews for a particular tour ~~
+        See ~~ How to view all details for a particular tour ~~
     
     How to view reviews you have created
     
