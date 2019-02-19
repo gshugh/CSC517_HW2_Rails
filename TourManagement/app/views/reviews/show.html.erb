@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h1>
+  Review
+</h1>
+
 <p>
   <strong>Subject:</strong>
   <%= @review.subject %>
@@ -22,4 +26,5 @@
 
 <% if current_user_can_modify_given_review?(@review) %>
   <%= link_to 'Edit', edit_review_path(@review) %>
+  <%= button_to 'Delete', @review, method: :delete, data: {confirm:'Are you sure?'} %>
 <% end %>
