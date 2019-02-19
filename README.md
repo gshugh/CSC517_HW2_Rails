@@ -129,22 +129,52 @@ How To:
         Click "Show All Users"
         Click "Cancel Account" next to the user of interest
         Confirm intention
-        
-    How To Delete a Tour
-    
-        Click "Show All Tours"
-        Click "Destroy" next to the tour of interest
-        Confirm intention
-        
+               
     How to Delete a Review
     
         Click "Show All Reviews"
         Click "Destroy" next to the review of interest
-        Confirm intention
+        
+    How to Show fields of all reviews
+    
+        Do login
+        Click on "Show all reviews"
+        
+    How to list a tour
+        
+        Click on "Show all Tours/Show my Tours"
+        Click "New Tour"
+        Enter Details and submit
+        
+    How to "Edit/update/delete/cancel" tours
+    
+        Click on "Show my tours"
+        Click on "Edit" button or "Destroy" button to delete a tour (which show only for the tours that the user has created) 
+        
+    How to add pictures to tours
+        
+        Click on all tours
+        Click on edit whichever tour you want to add photos to
+        Click Add picture and follow the prompts
+        
+    How to delete pictures from tours
+        
+        Click on all tours
+        Click on edit whichever tour you want to delete photos from
+        Click Edit photos
+        Click on destroy to delete the photo
+        
+    How to show bookings for tours of a current user
+    
+        Click on "Show Bookings for My Tours"
+        
+    How to view reviews of a tour(can only post reviews after the tour has ended)
+        
+        Click on "Show all reviews"/"Show all reviews for my tours"
         
     # TODO add more "how to" sections
 
-Other Notes:
+Misc. Notes on Code Organization:
 
     "Extra" Model:
 
