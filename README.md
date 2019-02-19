@@ -15,6 +15,48 @@ Landing Page:
     The user can either login and gain more functionality or they can see only the list of all tours and reviews.
     We are using the same login page to redirect a user to same user dashboard, but this dashboard has been customized to show only the relevant links to the user.
 
+Miscellaneous Notes:
+
+    When you delete your account, the following info gets deleted:
+        Your bookings: deleted
+        Your review: deleted
+        Your listings: deleted (if you're an agent/admin)
+        Your bookmarks: deleted
+        Your waitlists: deleted
+    
+    "Extra" Model:
+
+        Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
+        We have a "start_at" model that we ended up never really using.
+        Instead, we find the start location for a tour based on order of records stored in the "visits" model.
+        Time did not permit cleaning up this 'extra' code.
+        
+    "Extra" Views:
+    
+        We used scaffolding to start our application.
+        Many views are created by scaffolding.
+        Some of these views are never actually available to the user via a link.
+        Most of these 'extra' views are retained:
+            for time constraints
+            for future development on the application if needed
+            
+    Tour Operator Contact Info:
+    
+        Per Piazza:
+            "...we have to create operator with some basic info?"
+            "Agent information should be fine."
+        This is a good idea and if we were starting over we likely would use agent profile information.
+        However we already had a field for adding custom operator contact info when creating a tour.
+        We have chosen to retain our custom contact info in the interest of flexibility.
+        
+    Price Filtering:
+    
+        Per Piazza:
+            "...Is it acceptable to filter just by maximum price?"
+            "There are no restrictions on the way you would like to implement any functionality."
+        We offer price filtering by maximum price, but not by minimum price.
+        This is on the theory that cheaper is always better (all else being equal).
+
 User Roles:
     
     Admin:
@@ -67,7 +109,7 @@ How To:
     Some of these instructions have alternative ways to accomplish the same task.
     It is not feasible to list all possible ways of accomplishing all possible tasks.
     
-    How To Sign Up:
+    How to sign up:
         
         Click "Sign up now!"
         Enter a name
@@ -82,137 +124,115 @@ How To:
             A customer
             Both agent & customer
     
-    How To Log In:
+    How to log in:
     
         Enter your email and password
         Click "Log In"
         
-    How To Edit Your User Profile:
+    How to edit your user profile:
     
         Click "Show My Profile"
         Click "Edit Profile"
         Make changes
-            Note: Admins are not allowed to edit their email or password
+            Note: No users are allowed to edit their email or password
         Click "Update User"
         
-    How To Cancel Your Account
+    How to cancel your account
     
         Click "Show My Profile"
         Click "Cancel Account"
         Confirm your intention
+    
+    How To cancel another user's account
+    
+        Click "Show All Users"
+        Click "Cancel Account" next to the user of interest
+        Confirm intention
         
-    How To View a List of All Users
+    How to view a list of all users
     
         Click "Show All Users"
         
-    How To Create an Account for Someone Else
+    How to create an account for someone else
     
         Click "Show All Users"
         Click "New User"
         Follow instructions for ~~ How To Sign Up ~~
     
-    How To View a List of All Tours
+    How to view a list of all tours
     
         Click "Show All Tours"
         
-    How To View All Details / Photos / Reviews for a Tour
+    How to view all details / photos / reviews for a particular tour
     
         Click "Show All Tours"
         Click "Show" next to the tour of interest
         
-    How To View a List of All Reviews
+    How To view a list of all reviews
         
         Click "Show All Reviews"
-    
-    How To Delete a User
-    
-        Click "Show All Users"
-        Click "Cancel Account" next to the user of interest
-        Confirm intention
                
-    How to Delete a Review
+    How to delete a review
     
         Click "Show All Reviews"
-        Click "Destroy" next to the review of interest
-        
-    How to Show fields of all reviews
-    
-        Do login
-        Click on "Show all reviews"
+        Click "Delete Review" next to the review of interest
         
     How to list a tour
         
-        Click on "Show all Tours/Show my Tours"
+        Click "Show All Tours"
         Click "New Tour"
-        Enter Details and submit
+        Enter details and submit
         
-    How to "Edit/update/delete/cancel" tours
+    How to edit / update a tour
     
-        Click on "Show my tours"
-        Click on "Edit" button or "Destroy" button to delete a tour (which show only for the tours that the user has created) 
+        Click "Show All Tours"
+        Click "Edit" next to the tour of interest
+        Make the desired changes
+        Click "Update Tour"
+    
+    How to cancel a tour
+    
+        Click "Show All Tours"
+        Click "Edit" next to the tour of interest
+        Click "Cancelled"
+        Click "Update Tour"
+
+    How to delete a tour
+    
+        Click "Show my tours"
+        Click "Delete Tour" next to the tour of interest
         
     How to add pictures to tours
         
-        Click on all tours
-        Click on edit whichever tour you want to add photos to
-        Click Add picture and follow the prompts
+        Click "Show All Tours"
+        Click "Edit" next to the tour of interest
+        Click "Edit Photos"
+        Click "New [tour name] Photo"
+        Enter a name for the photo
+        Choose a file for the photo
+        Click "Create Photo"
         
     How to delete pictures from tours
         
-        Click on all tours
-        Click on edit whichever tour you want to delete photos from
-        Click Edit photos
-        Click on destroy to delete the photo
+        Click "Show All Tours"
+        Click "Edit" next to the tour of interest
+        Click "Edit Photos"
+        Click "Delete Photo" next to the photo of interest
         
-    How to show bookings for tours of a current user
+    How to show bookings for the tours you have created
     
-        Click on "Show Bookings for My Tours"
+        Click "Show Bookings for My Tours"
         
-    How to view reviews of a tour(can only post reviews after the tour has ended)
+    How to view reviews for tours you have created
+    
+        Click "Show Review for My Tours"
         
-        Click on "Show all reviews"/"Show all reviews for my tours"
+    How to view reviews for a particular tour
         
+        See ~~ How to view all details / photos / reviews for a particular tour ~~
+    
+    How to view reviews you have created
+    
+        Click "Show My Reviews"
     
     # TODO add more "how to" sections
-
-Misc. Notes on Code Organization:
-
-    When you delete your account, the following info gets deleted:
-        Your bookings: deleted
-        Your review: deleted
-        Your listings: deleted (if you're an agent/admin)
-        Your bookmarks: deleted
-        Your waitlists: deleted
-    
-    "Extra" Model:
-
-        Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
-        We have a "start_at" model that we ended up never really using.
-        Instead, we find the start location for a tour based on order of records stored in the "visits" model.
-        Time did not permit cleaning up this 'extra' code.
-        
-    "Extra" Views:
-    
-        We used scaffolding to start our application.
-        Many views are created by scaffolding.
-        Some of these views are never actually available to the user via a link.
-        Most of these 'extra' views are retained:
-            for time constraints
-            for future development on the application if needed
-            
-    Tour Operator Contact Info:
-    
-        Per Piazza:
-            "...we have to create operator with some basic info?"
-            "Agent information should be fine."
-        This is a good idea and if we were starting over we likely would use agent profile information.
-        However we already had a field for adding custom operator contact info when creating a tour.
-        We have chosen to retain our custom contact info in the interest of flexibility.
-        
-    Price Filtering:
-    
-        Per Piazza:
-            "...Is it acceptable to filter just by maximum price?"
-            "There are no restrictions on the way you would like to implement any functionality."
-        We offer price filtering by maximum price, but not by minimum price.
-        This is on the theory that cheaper is always better (all else being equal).
