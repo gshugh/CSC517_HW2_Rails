@@ -184,6 +184,7 @@ How To (BOOKMARKS):
     How to delete a bookmark
         Click "Show My Bookmarks"
         Click "Delete Bookmark" next to the bookmark of interest
+        Confirm your intention
 
 How To (TOURS):
 
@@ -243,6 +244,7 @@ How To (TOURS):
     
         Click "Show my tours"
         Click "Delete Tour" next to the tour of interest
+        Confirm your intention
         
     How to add pictures to tours
         
@@ -260,6 +262,7 @@ How To (TOURS):
         Click "Edit" next to the tour of interest
         Click "Edit Photos"
         Click "Delete Photo" next to the photo of interest
+        Confirm your intention
 
 How To (REVIEWS):
 
@@ -271,23 +274,35 @@ How To (REVIEWS):
     
         Click "Show Review for My Tours"
         
+    How to view reviews you have created
+    
+        Click "Show My Reviews"
+        
     How to view reviews for a particular tour
         
         See ~~ How to view all details for a particular tour ~~
     
-    How to view reviews you have created
+    How to edit a review
     
-        Click "Show My Reviews"
-               
+        Click "Show All Reviews"
+        Click "Edit" next to the review of interest
+        Make the desired changes
+        Click "Update Review"
+
     How to delete a review
     
         Click "Show All Reviews"
         Click "Delete Review" next to the review of interest
+        Confirm your intention
 
 How To (BOOKINGS / WAITLISTS):
 
     How to show bookings for the tours you have created
     
         Click "Show Bookings for My Tours"
+        
+    How to view bookings for a particular tour
+        
+        See ~~ How to view all details for a particular tour ~~
 
 How To (LOCATIONS):
