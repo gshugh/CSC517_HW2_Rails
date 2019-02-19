@@ -172,10 +172,18 @@ How To:
         
         Click on "Show all reviews"/"Show all reviews for my tours"
         
+    
     # TODO add more "how to" sections
 
 Misc. Notes on Code Organization:
 
+    When you delete your account, the following info gets deleted:
+        Your bookings: deleted
+        Your review: deleted
+        Your listings: deleted (if you're an agent/admin)
+        Your bookmarks: deleted
+        Your waitlists: deleted
+    
     "Extra" Model:
 
         Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
