@@ -100,10 +100,10 @@ module SessionsHelper
     current_user_admin? || current_user_customer?
   end
 
-  # Method to determine if the current user is allowed to bookmark the given
-  # tour.
+  # Method to determine if the current user is allowed to bookmark the given tour
+  # Doesn't make sense to bookmark a tour that has already ended
   def current_user_can_bookmark_given_tour?(tour)
-    current_user_can_bookmark_tours?
+    current_user_can_bookmark_tours? && !tour.has_ended?
   end
 
   # Method to determine if the current user is allowed to modify the given bookmark

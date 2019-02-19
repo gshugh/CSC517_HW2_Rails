@@ -39,8 +39,6 @@ class WaitlistsController < ApplicationController
 
   end
 
-  # TODO work on redirect logic
-
   # DELETE /waitlists/1
   # DELETE /waitlists/1.json
   def destroy
@@ -49,16 +47,19 @@ class WaitlistsController < ApplicationController
     @waitlist.destroy
 
     # Respond
-    # TODO test all paths!
     success_notice = 'Waitlist was successfully destroyed.'
     respond_to do |format|
       if current_user_can_see_all_bookings?
+        # TODO test this path
         format.html { redirect_to bookings_url, notice: success_notice }
       elsif current_user_can_see_bookings_for_their_tours?
+        # TODO test this path
         format.html { redirect_to bookings_path(listing_user_id: current_user.id), notice: success_notice }
       elsif current_user_can_see_their_bookings?
+        # TODO test this path
         format.html { redirect_to bookings_path(booking_user_id: current_user.id), notice: success_notice }
       else
+        # TODO test this path
         format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }

@@ -42,4 +42,9 @@ class Waitlist < ApplicationRecord
     return booking_same_user_same_tour ? booking_same_user_same_tour.num_seats : 0
   end
 
+  # Method to get the name of the user who made this waitlisting
+  def user_name
+    return User.find(user_id).name
+  end
+
 end

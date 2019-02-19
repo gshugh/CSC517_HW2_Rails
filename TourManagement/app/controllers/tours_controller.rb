@@ -168,23 +168,20 @@ class ToursController < ApplicationController
     @tour.destroy
 
     # Respond
-    # TODO test all paths!
     success_notice = 'Tour was successfully destroyed.'
     respond_to do |format|
       if current_user_can_see_all_tours?
         format.html { redirect_to tours_url, notice: success_notice }
       elsif current_user_can_see_their_tours?
+        # TODO test this path
         format.html { redirect_to tours_path(listing_user_id: current_user.id), notice: success_notice }
       else
+        # TODO test this path
         format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }
     end
 
-    respond_to do |format|
-      format.html { redirect_to tours_url, notice: 'Tour was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    # There are 3 ways to get here
+    # There are 3 ways to get to the index view
     # Show My Reviews / Show Reviews for My Tours / Show All Reviews
     if params['reviewing_user_id']
       @reviews = Review.where(user_id: params['reviewing_user_id'].to_i)
@@ -79,16 +79,18 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     # Respond
-    # TODO test all paths!
     success_notice = 'Review was successfully destroyed.'
     respond_to do |format|
       if current_user_can_see_all_reviews?
         format.html { redirect_to reviews_url, notice: success_notice }
       elsif current_user_can_see_reviews_for_their_tours?
+        # TODO test this path
         format.html { redirect_to reviews_path(listing_user_id: current_user.id), notice: success_notice }
       elsif current_user_can_see_their_reviews?
+        # TODO test this path
         format.html { redirect_to reviews_path(reviewing_user_id: current_user.id), notice: success_notice }
       else
+        # TODO test this path
         format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }
