@@ -21,6 +21,5 @@
 </p>
 
 <% if current_user_can_modify_given_review?(@review) %>
-  <%= link_to 'Edit', edit_review_path(@review) %> |
+  <%= link_to 'Edit', edit_review_path(@review) %>
 <% end %>
-<%= link_to 'Back', reviews_path %>

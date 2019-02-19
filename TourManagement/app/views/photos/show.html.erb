@@ -19,8 +19,4 @@
 <% end %>
 
 <!-- Links -->
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-
-<!-- Make sure to pass along the tour ID in EVERY link that brings you to the photos index -->
-<!-- Here, we are showing a specific photo so we can just grab the tour ID from that photo -->
-<%= link_to 'Back', photos_path(tour_id: @photo.tour.id) %>
+<%= link_to 'Edit', edit_photo_path(@photo) %>

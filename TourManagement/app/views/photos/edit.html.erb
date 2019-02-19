@@ -2,8 +2,4 @@
 
 <%= render 'form', photo: @photo %>
 
-<%= link_to 'Show', @photo %> |
-
-<!-- Make sure to pass along the tour ID in EVERY link that brings you to the photos index -->
-<!-- Here, we are editing a specific photo so we can just grab the tour ID from that photo -->
-<%= link_to 'Back', photos_path(tour_id: @photo.tour.id) %>
+<%= link_to 'Show', @photo %>

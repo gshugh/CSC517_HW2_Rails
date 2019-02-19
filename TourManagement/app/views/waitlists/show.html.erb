@@ -4,5 +4,4 @@
 <%= render 'booking_waitlist_show', booking: @waitlist.booking_same_user_same_tour, waitlist: @waitlist %>
 
 <!-- Send to booking edit page (double-duty page) -->
-<%= link_to 'Edit', edit_booking_path(@waitlist, waitlist_override: true) %> |
-<%= link_to 'Back', waitlists_path %>
+<%= link_to 'Edit', edit_booking_path(@waitlist, waitlist_override: true) %>

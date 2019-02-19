@@ -28,5 +28,3 @@
 <% unless @user.admin %>
   <td><%= button_to 'Cancel Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
-<!-- As always, a back link -->
-<%= link_to 'Back', users_path %>

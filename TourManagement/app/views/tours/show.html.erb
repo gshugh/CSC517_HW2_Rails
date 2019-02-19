@@ -62,14 +62,13 @@
 <!-- Links -->
 <!-- Protect against unpermitted users -->
 <% if current_user_can_bookmark_given_tour?(@tour) %>
-  <%= link_to 'Bookmark This Tour', new_bookmark_path(tour_id: @tour.id) %> |
+  <%= link_to 'Bookmark This Tour', new_bookmark_path(tour_id: @tour.id) %>
 <% end %>
-<%= link_to 'Back', tours_path %> |
 <% if current_user_can_book_given_tour?(@tour) %>
-  <%= link_to 'Book', new_booking_path(tour_id: @tour.id) %> |
+  <%= link_to 'Book', new_booking_path(tour_id: @tour.id) %>
 <% end %>
 <% if current_user_can_modify_given_tour?(@tour) %>
-  <%= link_to 'Edit', edit_tour_path(@tour) %> |
+  <%= link_to 'Edit', edit_tour_path(@tour) %>
 <% end %>
 <% if current_user_can_create_tour? %>
   <%= link_to 'New', new_tour_path %>
