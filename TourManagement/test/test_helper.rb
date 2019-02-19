@@ -20,8 +20,12 @@ class ActiveSupport::TestCase
     # https://stackoverflow.com/questions/39465941/how-to-use-session-in-the-test-controller-in-rails-5?rq=1
     # So, this is kind of a hack to fake a logged-in user
     # Mimics params sent when logging in manually on the development application
-    post '/login', params: { session: { email: "john@john.com", password: "john_password" } }
+    if self.respond_to? :post
+      post '/login', params: { session: { email: "john@john.com", password: "john_password" } }
+    end
   end
+
+  rescue Exception # ignore
 
   # Add more helper methods to be used by all tests here...
 end
