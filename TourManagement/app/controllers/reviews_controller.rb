@@ -8,12 +8,15 @@ class ReviewsController < ApplicationController
     # Show My Reviews / Show Reviews for My Tours / Show All Reviews
     if params['reviewing_user_id']
       @reviews = Review.where(user_id: params['reviewing_user_id'].to_i)
+      @page_title = "My Reviews"
     elsif params['listing_user_id']
       @reviews = Review.joins("INNER JOIN listings ON
                     reviews.tour_id = listings.tour_id AND
                     listings.user_id = #{params['listing_user_id'].to_i}")
+      @page_title = "Reviews for My Tours"
     else
       @reviews = Review.all
+      @page_title = "All Reviews"
     end
   end
 

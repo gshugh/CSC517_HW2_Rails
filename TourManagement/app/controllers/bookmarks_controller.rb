@@ -6,12 +6,15 @@ class BookmarksController < ApplicationController
   def index
     if params['bookmarks_user']
       @bookmarks = Bookmark.where(user_id: params['bookmarks_user'])
+      @page_title = "My Bookmarks"
     elsif params['listing_user']
       @bookmarks = Bookmark.joins("INNER JOIN listings ON
                     bookmarks.tour_id = listings.tour_id AND
                     listings.user_id = #{params['listing_user'].to_i}")
+      @page_title = "Bookings for My Tours"
     else
       @bookmarks = Bookmark.all
+      @page_title = "All Bookmarks"
     end
   end
 
