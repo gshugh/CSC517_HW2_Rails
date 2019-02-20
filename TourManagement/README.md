@@ -12,21 +12,34 @@ Admin:
 
 Landing Page:
 
-    We assume that the user lands on the landing page, where he/she can then login
-    and accomplish the tasks.
+    The app assumes that all visitors start on the same page, where
+    visitors can browse tours or create an account in order to bookmark 
+    tours, book tours, etc.
     
-    That is, we assume that the user will never type a URL like ".../photos"
-    into their web browser.
-    
-    Every user has the same login page which is also the landing page.
-    
-    The user can either login and gain more functionality or they can see only
-    the list of all tours and reviews.
-    
-    We are using the same login page to redirect a user to same user dashboard,
-    but this dashboard has been customized to show only the relevant links to
-    the user.
+    Tacit in that assumptionis that the user will never type a URL like 
+    ".../photos" into their web browser.
 
+App Interactions
+
+    Users interact with the app depending on their role. There are currently 
+    four roles, each with an increasing ability to perform functions. The 
+    four roles are visitors, customers, agents, and admins.
+    
+    Visitors are users of the system who have not logged into the system. 
+    They are limited to browsing tours, browsing reviews, and creating an 
+    account.
+
+    Customers are users of the system who have registered with the system (as
+    a customer) and have logged into the system. In addition to browsing 
+    tours and reviews, customers can bookmark tours of interest, review tours
+    that have completed, and book tours.
+    
+    Agents are users of the system who have registered with the system 
+    (as an agent) and have logged into the system. similar to 
+    customers except they registered as an agent. Admins is a unique, 
+    preconfigured user that can perform all of the tasks that the other users
+    can perform.
+    
 User Roles:
     
     Visitor:
@@ -34,40 +47,36 @@ User Roles:
         * can see a list of all tours.
         * can see a list of all reviews.
         * can sign up for a new account.
-[](        Anyone can log in.)
 
     Logged-In-User:
     
-        Can do anything a not-logged-in visitor can do.
-        Can see their user profile.
-        Can edit their user profile.
+        * can do anything a visitor can do.
+        * can see their user profile.
+        * an edit their user profile.
     
     Customer:
     
-        Can do anything a logged-in user can do.
-        Can see a list of their bookmarks.
-        Can see a list of their reviews.
-        Can see a list of their bookings.
+        * can do anything a logged-in user can do.
+        * can see a list of their bookmarks.
+        * can see a list of their reviews.
+        * can see a list of their bookings.
         
     Agent:
     
-        Can do anything a logged-in user can do.
-        Can create locations.
-        Can create tours.
-        Can see a list of all locations.
-        Can see a list of their tours.
-        Can see a list of bookmarks for their tours.
-        Can see a list of bookings for their tours.
-        Can see a list of reviews for their tours.
+        * can do anything a logged-in user can do.
+        * can create locations.
+        * can create tours.
+        * can see a list of all locations.
+        * can see a list of their tours.
+        * can see a list of bookmarks for their tours.
+        * can see a list of bookings for their tours.
+        * can see a list of reviews for their tours.
         
     Admin:
     
-        can do anything a logged-in user can do.
-        can do anything a customer can do.
-        An admin can do anything an agent can do.
-        An admin can see a list of all users.
-        An admin can see a list of all bookings.
-        An admin cannot edit their user profile email or password.
+        * can do anything a customer can do, except edit their email or password.
+        * can do anything an agent can do, except edit their email or password.
+        * can see a list of all users. can see a list of all bookings.
     
 How To (Read Me First!):
 
