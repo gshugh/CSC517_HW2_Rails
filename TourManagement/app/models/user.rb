@@ -1,3 +1,11 @@
+################################################################################
+# A user is a registered entity that interacts with the app. There are
+# currently 3 types of users; admin, agent, and customer.
+#
+# Ensure that the e-mail address is case insensitive, i.e.
+# george@george.com == George@george.com
+# Rubify code.
+
 class User < ApplicationRecord
 
   # Define straightforward one-to-many relationship with reviews
@@ -16,7 +24,10 @@ class User < ApplicationRecord
   has_many :tours, through: :waitlists, dependent: :destroy
 
   # Define validations
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, uniqueness: {case_sensitive: false},
+                                                 format: {
+                    with: URI::MailTo::EMAIL_REGEXP,
+                    message: "addresses should be of the form xx@xx.xx" }
   validates :name, presence: true
   validates :password, presence: true, length: { in: 6..40 }
 
@@ -52,7 +63,7 @@ class User < ApplicationRecord
     if customer
       user_types << "Customer"
     end
-    return user_types.join(" / ")
+    user_types.join(" / ")
   end
 
 end
