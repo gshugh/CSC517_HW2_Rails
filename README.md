@@ -88,6 +88,9 @@ Miscellaneous Notes:
              - All the user's reviews
              - All the user's waitlists
              
+        3. What happens if the admin deletes their account?     
+        Ans: Admin account cannot be deleted.
+             
              
 User Roles:
     
