@@ -345,3 +345,20 @@ How To (BOOKINGS / WAITLISTS):
         Click "Update Booking"
 
 How To (LOCATIONS):
+
+    How to view all locations
+    
+        Click "Show All Locations"
+    
+    How to edit a location
+    
+        Click "Show All Locations"
+        Click "Edit" next to the location of interest
+        Make the desired changes
+        Click "Update Location"
+    
+    How to delete a location
+    
+        Click "Show All Locations"
+        Click "Destroy Location" next to location of interest
+        Confirm your intention
