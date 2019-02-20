@@ -16,7 +16,8 @@ class User < ApplicationRecord
   has_many :tours, through: :waitlists, dependent: :destroy
 
   # Define validations
-  validates :email, presence: true, uniqueness: true, format: {
+  validates :email, presence: true, uniqueness: {case_sensitive: false},
+                                                 format: {
                     with: URI::MailTo::EMAIL_REGEXP,
                     message: "addresses should be of the form xx@xx.xx" }
   validates :name, presence: true
