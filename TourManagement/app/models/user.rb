@@ -1,3 +1,11 @@
+################################################################################
+# A user is a registered entity that interacts with the app. There are
+# currently 3 types of users; admin, agent, and customer.
+#
+# Ensure that the e-mail address is case insensitive, i.e.
+# george@george.com == George@george.com
+# Rubify code.
+
 class User < ApplicationRecord
 
   # Define straightforward one-to-many relationship with reviews
@@ -55,7 +63,7 @@ class User < ApplicationRecord
     if customer
       user_types << "Customer"
     end
-    return user_types.join(" / ")
+    user_types.join(" / ")
   end
 
 end
