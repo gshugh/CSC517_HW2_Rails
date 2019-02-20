@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = Bookmark.find_user_bookmarks(params)
-    set_page_title
+    @page_title = set_page_title
   end
 
   # GET /bookmarks/1
@@ -81,9 +81,9 @@ class BookmarksController < ApplicationController
   private
 
   def set_page_title
-    @page_title = "My Bookmarks" if params['bookmarks_user']
-    @page_title = "Bookings for My Tours" if params['listing_user']
-    @page_title = "All Bookmarks"
+    return "My Bookmarks" if params['bookmarks_user']
+    return "Bookings for My Tours" if params['listing_user']
+    "All Bookmarks"
   end
 
   # Use callbacks to share common setup or constraints between actions.
