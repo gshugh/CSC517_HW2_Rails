@@ -50,10 +50,18 @@ Miscellaneous Notes:
         As noted in the requirements, if a customer cancels or reduces a booking, or if a customer cancels their account,
         waitlisted customers are enrolled in applicable tours.
 
+    Enforcement of User Roles:
+    
+        As noted in ~~ User Roles ~~ different types of users have different privileges.
+        Because there is often more than one way to access a given feature,
+        we centralized the logic related to user roles and privileges.
+        This logic can be found in app/helpers/sessions_helper.rb
+
     Locations:
     
-        Locations are case sensitive. So, "NC, USA" is treated differently than
-        "nc, USA". Be careful when adding a new location.
+        Locations are case sensitive.
+        So, "NC, USA" is treated differently than "nc, USA".
+        Be careful when adding a new location.
         
     "Extra" Model:
 
@@ -70,13 +78,6 @@ Miscellaneous Notes:
         Most of these 'extra' views are retained:
             for time constraints
             for future development on the application if needed
-            
-    Enforcement of User Roles:
-    
-        As noted in ~~ User Roles ~~ different types of users have different privileges.
-        Because there is often more than one way to access a given feature,
-        we centralized the logic related to user roles and privileges.
-        This logic can be found in app/helpers/sessions_helper.rb
             
     Record Deletion FAQs:
      
