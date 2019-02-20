@@ -82,7 +82,7 @@ class BookmarksController < ApplicationController
 
   def set_page_title
     return "My Bookmarks" if params['bookmarks_user']
-    return "Bookings for My Tours" if params['listing_user']
+    return "Bookmarks for My Tours" if params['listing_user']
     "All Bookmarks"
   end
 
