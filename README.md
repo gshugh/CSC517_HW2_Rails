@@ -69,7 +69,26 @@ Miscellaneous Notes:
         Most of these 'extra' views are retained:
             for time constraints
             for future development on the application if needed
-
+            
+     FAQs:
+        1. What will happen if admin/agent deletes a tour booked by several people?
+        Ans: In this case the following information will be deleted:
+             - All their bookmarks for their tour(s)
+             - All the bookings for their tour(s)
+             - All the reviews for their tour(s)
+             - All posted pictures for their tour(s)
+             - All waitlists for their tour(s)
+             - All the corressponding visits for their tour(s)
+             - All the listings for their tour(s)
+        
+        2. What will happen if user who has booked the tour deletes their account?
+        Ans: In this case the following information will be deleted:
+             - All the user's bookmarks
+             - All the user's bookings
+             - All the user's reviews
+             - All the user's waitlists
+             
+             
 User Roles:
     
     Admin:
