@@ -7,36 +7,8 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    # We populate bookings AND waitlists so that we can show BOTH in the same table
-    # This will be a lot more sane for the user than having to click around
-    if params['booking_user_id']
-      @bookings = Booking.where(user_id: params['booking_user_id'].to_i)
-      @lonely_waitlists = Waitlist.where(user_id: params['booking_user_id'].to_i)
-      @page_title = "My Bookings"
-    elsif params['listing_user_id']
-      # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
-      @bookings = Booking.joins(
-        "INNER JOIN listings ON listings.tour_id = bookings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}"
-      )
-      @lonely_waitlists = Waitlist.joins(
-        "INNER JOIN listings ON listings.tour_id = waitlists.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}"
-      )
-      @page_title = "Bookings for My Tours"
-    else
-      @bookings = Booking.all
-      @lonely_waitlists = Waitlist.all
-      @page_title = "All Bookings"
-    end
-
-    # But there is a catch
-    # If a user has booked & waitlisted on the same tour,
-    #   these seats are shown in the same table row
-    # So for waitlists made available to the view,
-    #   we ONLY want to show those that don't have an associated booking
-    @lonely_waitlists = @lonely_waitlists.select do |waitlist|
-      waitlist.seats_booked_same_user_same_tour.zero?
-    end
-
+    @bookings, @lonely_waitlists = Booking.get_bookings_and_waitlists(params)
+    set_page_title
   end
 
   # GET /bookings/1
@@ -191,6 +163,17 @@ class BookingsController < ApplicationController
         :listing_user_id,
         :waitlist_override
       )
+    end
+
+    # Produce a helpful title for the page to be used in the view
+    def set_page_title
+      if params['booking_user_id']
+        @page_title = "My Bookings"
+      elsif params['listing_user_id']
+        @page_title = "Bookings for My Tours"
+      else
+        @page_title = "All Bookings"
+      end
     end
 
 end
