@@ -12,7 +12,7 @@ class Bookmark < ApplicationRecord
   validates :tour_id, uniqueness: {scope: :user_id}
 
   def self.find_user_bookmarks(params)
-    return self.users(params['bookmarks_user']) if params['bookmarks_user']
+    return self.where(user_id: params['bookmarks_user']) if params['bookmarks_user']
     return self.joins("INNER JOIN listings ON
                     bookmarks.tour_id = listings.tour_id AND
                     listings.user_id = #{params['listing_user'].to_i}") if params['listing_user']
