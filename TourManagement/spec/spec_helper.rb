@@ -86,4 +86,10 @@ RSpec.configure do |config|
   # particularly slow.
   config.profile_examples = 10
 =end
+
+  # Ensure redirects in test mode go to localhost:
+  config.before(:each) do
+    @request.host = "localhost:3000"
+  end
+
 end
