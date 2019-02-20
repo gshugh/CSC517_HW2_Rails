@@ -3,7 +3,8 @@ Homework 2 (Ruby on Rails)
 Tour Management System
 
 Web Application deployment:
-https://young-fortress-53892.herokuapp.com/
+
+    https://young-fortress-53892.herokuapp.com/
 
 Admin:
 
