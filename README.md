@@ -78,21 +78,14 @@ Miscellaneous Notes:
         3. What will happen if a user deletes their account?
         Ans: In this case the following information will be deleted:
              - User's bookings / waitlistings
+                - If this frees up tour seats, other customers may be enrolled
+                - As noted in ~~ Booking / Waitlisting ~~
              - User's reviews
              - User's tour listings
              - User's bookmarks
-             - User's bookmarks
         
-        2. What will happen if user who has booked the tour deletes their account?
-        Ans: In this case the following information will be deleted:
-             - All the user's bookmarks
-             - All the user's bookings
-             - All the user's reviews
-             - All the user's waitlists
-             
-        3. What happens if the admin deletes their account?     
+        4. What happens if the admin deletes their account?     
         Ans: Admin account cannot be deleted.
-             
              
 User Roles:
     
