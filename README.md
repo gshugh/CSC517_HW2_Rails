@@ -315,6 +315,19 @@ How To (REVIEWS):
         Select a tour among those listed (those you have booked and which have ended)
         Enter a subject and content
         Click "Create Review"
+        
+    How to create a review (practical testing tips)
+        As noted in the requirements,
+        "Only future tours can be booked for... [customers may] Submit a review for a tour that that customer has already taken"
+        Piazza further clarifies that "already taken" means that the tour has already ended.
+        So, how to create a review in a practical time frame for testing?
+        We have found that the following strategy works:
+        - Create a tour that takes place in the future
+        - Book a seat on this tour
+        - Use DB tools to alter the tour dates such that it is a past tour
+        - Create a review for the tour
+        Alternatively, you could test tour creation and booking one day, and reviews the next
+        - In this strategy, make the tour just one day in duration
 
     How to view a list of all reviews
         
