@@ -16,13 +16,6 @@ Landing Page:
     We are using the same login page to redirect a user to same user dashboard, but this dashboard has been customized to show only the relevant links to the user.
 
 Miscellaneous Notes:
-
-    When you delete your account, the following info gets deleted:
-        Your bookings: deleted
-        Your review: deleted
-        Your listings: deleted (if you're an agent/admin)
-        Your bookmarks: deleted
-        Your waitlists: deleted
             
     Tour Operator Contact Info:
     
@@ -70,7 +63,8 @@ Miscellaneous Notes:
             for time constraints
             for future development on the application if needed
             
-     FAQs:
+     Record Deletion FAQs:
+     
         1. What will happen if admin/agent deletes a tour booked by several people?
         Ans: In this case the following information will be deleted:
              - All their bookmarks for their tour(s)
@@ -80,17 +74,18 @@ Miscellaneous Notes:
              - All waitlists for their tour(s)
              - All the corressponding visits for their tour(s)
              - All the listings for their tour(s)
-        
-        2. What will happen if user who has booked the tour deletes their account?
+             
+        3. What will happen if a user deletes their account?
         Ans: In this case the following information will be deleted:
-             - All the user's bookmarks
-             - All the user's bookings
-             - All the user's reviews
-             - All the user's waitlists
-             
-        3. What happens if the admin deletes their account?     
+             - User's bookings / waitlistings
+                - If this frees up tour seats, other customers may be enrolled
+                - As noted in ~~ Booking / Waitlisting ~~
+             - User's reviews
+             - User's tour listings
+             - User's bookmarks
+        
+        4. What happens if the admin deletes their account?     
         Ans: Admin account cannot be deleted.
-             
              
 User Roles:
     
@@ -299,9 +294,13 @@ How To (TOURS):
 How To (REVIEWS):
 
     How to create a review
-        You cannot create a review unless you have booked it. Also, you can can only create a review once the tour has ended.
+        Click "Show My Reviews"
+        Click "New Review"
+        Select a tour among those listed (those you have booked and which have ended)
+        Enter a subject and content
+        Click "Create Review"
 
-    How To view a list of all reviews
+    How to view a list of all reviews
         
         Click "Show All Reviews"
         
