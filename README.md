@@ -2,6 +2,9 @@
 Homework 2 (Ruby on Rails)
 Tour Management System
 
+Web Application deployment:
+https://young-fortress-53892.herokuapp.com/
+
 Admin:
 
     Preconfigured admin username: john@john.com 
@@ -80,7 +83,7 @@ Miscellaneous Notes:
              - All the corressponding visits for their tour(s)
              - All the listings for their tour(s)
              
-        3. What will happen if a user deletes their account?
+        2. What will happen if a user deletes their account?
         Ans: In this case the following information will be deleted:
              - User's bookings / waitlistings
                 - If this frees up tour seats, other customers may be enrolled
@@ -89,7 +92,7 @@ Miscellaneous Notes:
              - User's tour listings
              - User's bookmarks
         
-        4. What happens if the admin deletes their account?     
+        3. What happens if the admin deletes their account?     
         Ans: Admin account cannot be deleted.
              
 User Roles:
