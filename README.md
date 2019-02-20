@@ -298,6 +298,9 @@ How To (TOURS):
 
 How To (REVIEWS):
 
+    How to create a review
+        You cannot create a review unless you have booked it. Also, you can can only create a review once the tour has ended.
+
     How To view a list of all reviews
         
         Click "Show All Reviews"
