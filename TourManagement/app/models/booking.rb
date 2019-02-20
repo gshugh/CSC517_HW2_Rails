@@ -35,6 +35,39 @@ class Booking < ApplicationRecord
     @@currently_enrolling ||= false
   end
 
+  # Get collections (bookings, waitlists) depending on why the user is visiting the reviews index page
+  def self.get_bookings_and_waitlists(params)
+    # We populate bookings AND waitlists so that we can show BOTH in the same table
+    # This will be a lot more sane for the user than having to click around
+    if params['booking_user_id']
+      bookings = Booking.where(user_id: params['booking_user_id'].to_i)
+      lonely_waitlists = Waitlist.where(user_id: params['booking_user_id'].to_i)
+    elsif params['listing_user_id']
+      # https://guides.rubyonrails.org/active_record_querying.html#joining-tables
+      bookings = Booking.joins(
+        "INNER JOIN listings ON listings.tour_id = bookings.tour_id AND
+        listings.user_id = #{params['listing_user_id'].to_i}"
+      )
+      lonely_waitlists = Waitlist.joins(
+        "INNER JOIN listings ON listings.tour_id = waitlists.tour_id AND
+        listings.user_id = #{params['listing_user_id'].to_i}"
+      )
+    else
+      bookings = Booking.all
+      lonely_waitlists = Waitlist.all
+    end
+    # But there is a catch
+    # If a user has booked & waitlisted on the same tour,
+    #   these seats are shown in the same table row
+    # So for waitlists made available to the view,
+    #   we ONLY want to show those that don't have an associated booking
+    lonely_waitlists = lonely_waitlists.select do |waitlist|
+      waitlist.seats_booked_same_user_same_tour.zero?
+    end
+    # Return
+    return [bookings, lonely_waitlists]
+  end
+
   # Method to get the number of booked seats for the given tour
   def self.get_booked_seats_for_tour(tour)
     num_booked_seats = 0

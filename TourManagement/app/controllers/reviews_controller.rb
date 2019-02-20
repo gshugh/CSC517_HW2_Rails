@@ -4,20 +4,6 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    # There are 3 ways to get to the index view
-    # Show My Reviews / Show Reviews for My Tours / Show All Reviews
-    if params['reviewing_user_id']
-      @reviews = Review.where(user_id: params['reviewing_user_id'].to_i)
-      @page_title = "My Reviews"
-    elsif params['listing_user_id']
-      @reviews = Review.joins("INNER JOIN listings ON
-                    reviews.tour_id = listings.tour_id AND
-                    listings.user_id = #{params['listing_user_id'].to_i}")
-      @page_title = "Reviews for My Tours"
-    else
-      @reviews = Review.all
-      @page_title = "All Reviews"
-    end
     @reviews = Review.get_reviews(params)
     set_page_title
   end
@@ -111,9 +97,13 @@ class ReviewsController < ApplicationController
 
     # Produce a helpful title for the page to be used in the view
     def set_page_title
-      @page_title = "My Reviews" if params['reviewing_user_id']
-      @page_title = "Reviews for My Tours" if params['listing_user_id']
-      @page_title = "All Reviews"
+      if params['reviewing_user_id']
+        @page_title = "My Reviews"
+      elsif params['listing_user_id']
+        @page_title = "Reviews for My Tours"
+      else
+        @page_title = "All Reviews"
+      end
     end
 
 end
