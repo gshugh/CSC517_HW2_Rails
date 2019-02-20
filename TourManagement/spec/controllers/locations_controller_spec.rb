@@ -94,14 +94,13 @@ RSpec.describe LocationsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "deletes the location" do
+    it "deletes the location and redirects to location_url" do
       @location = Location.last
       previous_count = Location.count
       delete :destroy, params: { id: locations(:two).id }
       expect(Location.count).to eq(previous_count-1)
-#      expect(response).to render_template :index
+      expect(response).to redirect_to locations_url
     end
-    it "redirects to location_url"
   end
 
 end

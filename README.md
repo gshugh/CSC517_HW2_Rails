@@ -88,6 +88,9 @@ Miscellaneous Notes:
              - All the user's reviews
              - All the user's waitlists
              
+        3. What happens if the admin deletes their account?     
+        Ans: Admin account cannot be deleted.
+             
              
 User Roles:
     
@@ -294,6 +297,9 @@ How To (TOURS):
         Confirm your intention
 
 How To (REVIEWS):
+
+    How to create a review
+        You cannot create a review unless you have booked it. Also, you can can only create a review once the tour has ended.
 
     How To view a list of all reviews
         
