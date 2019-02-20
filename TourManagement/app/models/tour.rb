@@ -31,8 +31,8 @@ class Tour < ApplicationRecord
   validates :description, presence: true
   validates :price_in_cents, presence: true
   validates :deadline, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :start_date, presence: true, date: {before_or_equal_to: :end_date}
+  validates :end_date, presence: true, date: {after_or_equal_to: :start_date}
   validates :operator_contact, presence: true
   validates :num_seats,
             presence: true,

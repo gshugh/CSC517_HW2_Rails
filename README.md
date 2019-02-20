@@ -19,6 +19,24 @@ Landing Page:
     We are using the same login page to redirect a user to same user dashboard, but this dashboard has been customized to show only the relevant links to the user.
 
 Miscellaneous Notes:
+
+    Testing:
+    
+        RSpec
+        
+            Tests can be found in 'spec/controllers' and 'spec/models' directories.
+            We have chosen to focus our RSpec testing on the locations controller and the bookmark model.
+            The goal here was to pick one controller and one model, and test them deeply.
+            
+        Minitest
+        
+            Tests can be found in 'test/controllers' and 'test/models' directories.
+            We have chosen NOT to focus our Minitest testing.
+            Instead, we test a broader set of controllers and models in a slightly more shallow way.
+            Controller results:
+                80 tests, 108 assertions, 0 failures, 0 errors, 0 skips
+            Model results:
+                14 tests, 38 assertions, 0 failures, 0 errors, 0 skips
             
     Tour Operator Contact Info:
     
@@ -50,10 +68,18 @@ Miscellaneous Notes:
         As noted in the requirements, if a customer cancels or reduces a booking, or if a customer cancels their account,
         waitlisted customers are enrolled in applicable tours.
 
+    Enforcement of User Roles:
+    
+        As noted in ~~ User Roles ~~ different types of users have different privileges.
+        Because there is often more than one way to access a given feature,
+        we centralized the logic related to user roles and privileges.
+        This logic can be found in app/helpers/sessions_helper.rb
+
     Locations:
     
-        Locations are case sensitive. So, "NC, USA" is treated differently than
-        "nc, USA". Be careful when adding a new location.
+        Locations are case sensitive.
+        So, "NC, USA" is treated differently than "nc, USA".
+        Be careful when adding a new location.
         
     "Extra" Model:
 
@@ -71,7 +97,7 @@ Miscellaneous Notes:
             for time constraints
             for future development on the application if needed
             
-     Record Deletion FAQs:
+    Record Deletion FAQs:
      
         1. What will happen if admin/agent deletes a tour booked by several people?
         Ans: In this case the following information will be deleted:
@@ -307,6 +333,19 @@ How To (REVIEWS):
         Select a tour among those listed (those you have booked and which have ended)
         Enter a subject and content
         Click "Create Review"
+        
+    How to create a review (practical testing tips)
+        As noted in the requirements,
+        "Only future tours can be booked for... [customers may] Submit a review for a tour that that customer has already taken"
+        Piazza further clarifies that "already taken" means that the tour has already ended.
+        So, how to create a review in a practical time frame for testing?
+        We have found that the following strategy works:
+        - Create a tour that takes place in the future
+        - Book a seat on this tour
+        - Use DB tools to alter the tour dates such that it is a past tour
+        - Create a review for the tour
+        Alternatively, you could test tour creation and booking one day, and reviews the next
+        - In this strategy, make the tour just one day in duration
 
     How to view a list of all reviews
         
