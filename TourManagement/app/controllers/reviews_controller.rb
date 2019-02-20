@@ -18,6 +18,8 @@ class ReviewsController < ApplicationController
       @reviews = Review.all
       @page_title = "All Reviews"
     end
+    @reviews = Review.get_reviews(params)
+    set_page_title
   end
 
   # GET /reviews/1
@@ -105,6 +107,13 @@ class ReviewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       params.require(:review).permit(:subject, :content, :user_id, :tour_id)
+    end
+
+    # Produce a helpful title for the page to be used in the view
+    def set_page_title
+      @page_title = "My Reviews" if params['reviewing_user_id']
+      @page_title = "Reviews for My Tours" if params['listing_user_id']
+      @page_title = "All Reviews"
     end
 
 end
