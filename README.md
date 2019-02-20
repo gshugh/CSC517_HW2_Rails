@@ -47,6 +47,11 @@ Miscellaneous Notes:
         As noted in the requirements, if a customer cancels or reduces a booking, or if a customer cancels their account,
         waitlisted customers are enrolled in applicable tours.
 
+    Locations:
+    
+        Locations are case sensitive. So, "NC, USA" is treated differently than
+        "nc, USA". Be careful when adding a new location.
+        
     "Extra" Model:
 
         Our E/R Diagram can be found at doc/CSC517_HW02_EntityRelationshipDiagram.png
