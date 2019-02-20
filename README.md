@@ -19,6 +19,24 @@ Landing Page:
     We are using the same login page to redirect a user to same user dashboard, but this dashboard has been customized to show only the relevant links to the user.
 
 Miscellaneous Notes:
+
+    Testing:
+    
+        RSpec
+        
+            Tests can be found in 'spec/controllers' and 'spec/models' directories.
+            We have chosen to focus our RSpec testing on the locations controller and the bookmark model.
+            The goal here was to pick one controller and one model, and test them deeply.
+            
+        Minitest
+        
+            Tests can be found in 'test/controllers' and 'test/models' directories.
+            We have chosen NOT to focus our Minitest testing.
+            Instead, we test a broader set of controllers and models in a slightly more shallow way.
+            Controller results:
+                80 tests, 108 assertions, 0 failures, 0 errors, 0 skips
+            Model results:
+                14 tests, 38 assertions, 0 failures, 0 errors, 0 skips
             
     Tour Operator Contact Info:
     
