@@ -76,6 +76,21 @@ class Tour < ApplicationRecord
     select { |tour| Booking.get_available_seats_for_tour(tour) >= min_seats.to_i }
   }
 
+  # Get a collection of tours depending on why the user is visiting the tours index page
+  def self.get_tours(params)
+    # Support filtering tours according to user desires
+    # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+    if params['listing_user_id']
+      tours = Tour.joins(
+        "INNER JOIN listings ON tours.id = listings.tour_id AND
+        listings.user_id = #{params['listing_user_id'].to_i}"
+      )
+    else
+      tours = Tour.all
+    end
+    return tours
+  end
+
   # Produce a description of the tour status (to show onscreen)
   def status_description
     return "Cancelled" if cancelled

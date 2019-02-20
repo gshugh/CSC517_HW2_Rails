@@ -4,16 +4,12 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
+
+    # Get tours
+    @tours = Tour.get_tours(params)
+
     # Support filtering tours according to user desires
     # https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
-    if params['listing_user_id']
-      @tours = Tour.joins("INNER JOIN listings ON tours.id = listings.tour_id AND listings.user_id = #{params['listing_user_id'].to_i}")
-      @page_title = "My Tours"
-    else
-      @tours = Tour.where(nil)
-      @page_title = "All Tours"
-    end
-
     flash[:filters] = {}
     filtering_params(params).each do |key, value|
       # Filter the tours by this criteria IF a "real" value was provided for the filter
@@ -24,6 +20,9 @@ class ToursController < ApplicationController
       # so that we can still show the user what they filtered by
       flash[:filters][key] = value
     end
+
+    # Set page title
+    set_page_title
 
 
   end
@@ -311,6 +310,15 @@ class ToursController < ApplicationController
     # https://stackoverflow.com/questions/5661466/test-if-string-is-a-number-in-ruby-on-rails
     def is_number?(string)
       true if Float(string) rescue false
+    end
+
+    # Produce a helpful title for the page to be used in the view
+    def set_page_title
+      if params['listing_user_id']
+        @page_title = "My Tours"
+      else
+        @page_title = "All Tours"
+      end
     end
 
 end
