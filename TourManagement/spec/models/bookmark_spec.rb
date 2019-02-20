@@ -34,10 +34,22 @@ RSpec.describe Bookmark, type: :model do
 
     # Test that the model returns the correct bookmarks depending on the type
     # of user
-    describe "find bookmarks" do
-      it "should find all bookmarks for admin"
-      it "should find listing bookmarks for agent"
-      it "should find personal bookmarks for customer"
+    describe "find_user_bookmark method" do
+      it "should find all bookmarks for admin" do
+        expected_array = [bookmarks(:one), bookmarks(:two), bookmarks(:three)]
+        expect(Bookmark.find_user_bookmarks('admin_user'=>users(:one).id))
+            .to match_array(expected_array)
+      end
+      it "should find listing bookmarks for agent" do
+        expected_array = [bookmarks(:two), bookmarks(:three)]
+        expect(Bookmark.find_user_bookmarks('listing_user'=>users(:two).id))
+            .to match_array(expected_array)
+      end
+      it "should find personal bookmarks for customer" do
+        expected_array = [bookmarks(:three)]
+        expect(Bookmark.find_user_bookmarks('bookmarks_user'=>users(:three).id))
+            .to match_array(expected_array)
+      end
     end
 
   end

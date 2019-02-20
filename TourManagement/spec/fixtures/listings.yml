@@ -5,9 +5,5 @@ one:
   tour: one
 
 two:
-  user: one
-  tour: two
-
-three:
-  user: three
+  user: two
   tour: two
