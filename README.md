@@ -155,13 +155,13 @@ Miscellaneous Notes:
         1. What happens if admin/agent deletes a tour booked by several people?
         
             The following information will be deleted:
-             - All their bookmarks for their tour(s)
-             - All the bookings for their tour(s)
-             - All the reviews for their tour(s)
-             - All posted pictures for their tour(s)
-             - All waitlists for their tour(s)
-             - All the corressponding visits for their tour(s)
-             - All the listings for their tour(s)
+             - All the bookmarks for the tour
+             - All the bookings for the tour
+             - All the reviews for the tour
+             - All posted pictures for the tour
+             - All waitlists for the tour
+             - All the corressponding visits for the tour
+             - All the listings for the tour
              
         2. What happens if a user deletes their account?
         
