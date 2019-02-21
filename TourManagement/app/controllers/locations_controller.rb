@@ -63,8 +63,6 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if current_user_can_see_all_locations?
         format.html { redirect_to locations_url, notice: success_notice }
-      else
-        format.html { redirect_to login_path, notice: success_notice }
       end
       format.json { head :no_content }
     end

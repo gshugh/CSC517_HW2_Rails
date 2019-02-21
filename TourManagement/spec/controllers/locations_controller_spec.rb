@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LocationsController, type: :controller do
-  fixtures :locations
+  fixtures :locations, :users
 
   describe "GET #index" do
     it "populates an array of locations" do
@@ -94,12 +94,25 @@ RSpec.describe LocationsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "deletes the location and redirects to location_url" do
-      @location = Location.last
-      previous_count = Location.count
-      delete :destroy, params: { id: locations(:two).id }
-      expect(Location.count).to eq(previous_count-1)
-      expect(response).to redirect_to locations_url
+    context "for admins" do
+      it "deletes the location and redirects to location_url" do
+        session[:user_id] = users(:one).id
+        @location = Location.last
+        previous_count = Location.count
+        delete :destroy, params: { id: locations(:two).id }
+        expect(Location.count).to eq(previous_count-1)
+        expect(response).to redirect_to locations_url
+      end
+    end
+    context "for agents" do
+      it "deletes the location and redirects to location_url" do
+        session[:user_id] = users(:two).id
+        @location = Location.last
+        previous_count = Location.count
+        delete :destroy, params: { id: locations(:two).id }
+        expect(Location.count).to eq(previous_count-1)
+        expect(response).to redirect_to locations_url
+      end
     end
   end
 
