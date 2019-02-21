@@ -24,9 +24,19 @@ Miscellaneous Notes:
     
         RSpec
         
-            Tests can be found in 'spec/controllers' and 'spec/models' directories.
-            We have chosen to focus our RSpec testing on the locations controller and the bookmark model.
-            The goal here was to pick one controller and one model, and test them deeply.
+            Per the requirements:
+                Thoroughly test one model and one controller (prefer RSpec 
+                testing framework).  Tests should cover all functions and 
+                handle all test cases, including edge cases.
+            
+            We chose RSpec testing of the locations controller and the 
+            bookmarks model. RSpec specifications can be found in 
+            'spec/controllers' and 'spec/models' directories, respectively. 
+            We used the 'simplecov' gem to assess the coverage of the modules.
+            Contoller results:
+                12 examples, 0 failures, 12 passed, 97% coverage
+            Model results:
+                9 examples, 0 failures, 9 passed, 100% coverage 
             
         Minitest
         
