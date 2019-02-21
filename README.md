@@ -259,20 +259,25 @@ How To (USERS):
 How To (BOOKMARKS):
 
     How to view a list of all bookmarks
+    
         [] Click "Show All Bookmarks"
 
     How to view a list of bookmarks of tours that you created
+    
         [] Click "Show Bookmarks for My Tours"
         
     How to see which tours you have bookmarked
+    
         [] Click "Show My Bookmarks"
         
     How to bookmark a tour
+    
         [] Follow instructions for ~~ How to view all details for a particular tour ~~
         [] Click "Bookmark"
         [] Click "Create Bookmark"
         
     How to delete a bookmark
+    
         [] Click "Show My Bookmarks"
         [] Click "Delete Bookmark" next to the bookmark of interest
         [] Confirm your intention
@@ -280,17 +285,21 @@ How To (BOOKMARKS):
 How To (TOURS):
 
     How to view a list of all tours
+    
         [] Click "Show All Tours"
         
     How to view a list of tours that you created
+    
         [] Click "Show My Tours"
         
     How to search tours using filters
+    
         [] Click "Show All Tours"
         [] Enter filter criteria under "Filter Results"
         [] Click "Search"
         
     How to view all details for a particular tour
+    
         [] Click "Show All Tours"
         [] Click "Show" next to the tour of interest
         * Included in this view:
@@ -359,6 +368,7 @@ How To (TOURS):
 How To (REVIEWS):
 
     How to create a review
+    
         [] Click "Show My Reviews"
         [] Click "New Review"
         [] Select a tour among those listed (those you have booked and which have ended)
@@ -366,6 +376,7 @@ How To (REVIEWS):
         [] Click "Create Review"
         
     How to create a review (practical testing tips)
+    
         As noted in the requirements,
         "Only future tours can be booked for... [customers may] Submit a review for a tour that that customer has already taken"
         Piazza further clarifies that "already taken" means that the tour has already ended.
