@@ -12,12 +12,40 @@ Admin:
 
 Landing Page:
 
-    We assume that the user lands on the landing page, where he/she can then login and accomplish the tasks.
-    That is, we assume that the user will never type a URL like ".../photos" into their web browser.
-    Every user has the same login page which is also the landing page.
-    The user can either login and gain more functionality or they can see only the list of all tours and reviews.
-    We are using the same login page to redirect a user to same user dashboard, but this dashboard has been customized to show only the relevant links to the user.
+    The app assumes that all visitors start on the same page, where
+    visitors can browse tours or create an account in order to bookmark 
+    tours, book tours, etc.
+    
+    Tacit in this assumption is that the user will never type a URL like 
+    ".../photos" into their web browser.
 
+App Interactions
+
+    Users interact with the app depending on their role. There are currently 
+    four roles, each with an increasing ability to perform functions. The 
+    four roles are visitors, customers, agents, and admins.
+    
+    Visitors are users of the system who have not logged into the system. 
+    They are limited to browsing tours, browsing reviews, and creating an 
+    account.
+
+    Customers are users of the system who have registered with the system (as
+    a customer) and have logged into the system. In addition to browsing 
+    tours and reviews, customers can bookmark tours of interest, review tours
+    that have completed, and book tours.
+    
+    Agents are users of the system who have registered with the system 
+    (as an agent) and have logged into the system. Agents are able to 
+    create tours, create locations, and can examine aggregate statistics 
+    about the tours they have created (bookmarks, bookings, reviews, etc).
+    
+    The admin is a unique, preconfigured user that can perform all of the tasks
+    that the other users can perform. The admin cannot change his password or
+    username, but uniquely can create new users (customers or agents).
+
+    Details about the roles of the different users and the steps required
+    to perform diffeent tasks are outlined below.
+        
 Miscellaneous Notes:
 
     Testing:
