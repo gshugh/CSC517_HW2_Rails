@@ -153,7 +153,8 @@ Miscellaneous Notes:
     Record Deletion FAQs:
      
         1. What happens if admin/agent deletes a tour booked by several people?
-        Ans: In this case the following information will be deleted:
+        
+            The following information will be deleted:
              - All their bookmarks for their tour(s)
              - All the bookings for their tour(s)
              - All the reviews for their tour(s)
@@ -163,16 +164,19 @@ Miscellaneous Notes:
              - All the listings for their tour(s)
              
         2. What happens if a user deletes their account?
-        Ans: In this case the following information will be deleted:
+        
+            The following information will be deleted:
              - User's bookings / waitlistings
                 - If this frees up tour seats, other customers may be enrolled
                 - As noted in ~~ Booking / Waitlisting ~~
              - User's reviews
-             - User's tour listings
              - User's bookmarks
+             
+            The following information will NOT be deleted:
+             - Tours that the user created
         
         3. What happens if the admin deletes their own account?
-        Ans: Admin account cannot be deleted.
+            Trick question: Admin account cannot be deleted!
              
 User Roles:
     
@@ -268,7 +272,6 @@ How To (USERS):
     
         [] Click "Show My Profile"
         [] Click "Cancel Account"
-        [] Confirm your intention
     
     How To cancel another user's account
     
@@ -446,7 +449,6 @@ How To (REVIEWS):
     
         [] Click "Show All Reviews"
         [] Click "Delete Review" next to the review of interest
-        [] Confirm your intention
 
 How To (BOOKINGS / WAITLISTS):
 
@@ -510,3 +512,22 @@ How To (LOCATIONS):
     
         [] Click "Show All Locations"
         [] Click "Destroy Location" next to location of interest
+
+Small Known Bugs
+
+    Every software organization releases software with a few small known bugs (nothing is perfect)!
+    Rather than hoping nobody will notice, here we openly state the few small bugs of which we are aware.
+    
+    1. Repeated Tour in Tour Index View
+    
+        If you create a tour which visits the same location multiple times,
+        then you "Show All Tours" and filter by desired location,
+        you will see the same tour listed multiple times.
+    
+    2. Inappropriate Tour Booking Deadline
+    
+        It is possible to create a tour whose booking deadline is after the tour's start date.
+    
+    3. No confirmation required to delete records
+    
+        It is possible to delete a record (tour, review, etc.) without having to answer an "Are you sure?" prompt.
