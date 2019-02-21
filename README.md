@@ -62,7 +62,7 @@ Miscellaneous Notes:
             RSpec specifications can be found in 'spec/controllers' and 'spec/models' directories, respectively. 
             We used the 'simplecov' gem to assess the coverage of the modules.
             Contoller results:
-                12 examples, 0 failures, 12 passed, 97% coverage
+                13 examples, 0 failures, 13 passed, 100% coverage
             Model results:
                 9 examples, 0 failures, 9 passed, 100% coverage 
             
