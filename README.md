@@ -149,85 +149,85 @@ Miscellaneous Notes:
             for time constraints
             for future development on the application if needed
             
-    Record Deletion FAQs:
+Record Deletion FAQs:
+
+    Here we discuss side effects of deleting certain kinds of records through the web application.
+    We only discuss records that are visible to the user (tours, reviews, etc).
+    We do not explicitly discuss other records that may exist "in the background" to support the application.
+
+    1. What happens when a USER is deleted?
     
-        Here we discuss side effects of deleting certain kinds of records through the web application.
-        We only discuss records that are visible to the user (tours, reviews, etc).
-        We do not explicitly discuss other records that may exist "in the background" to support the application.
+        The following information is deleted:
+        
+            * Bookmarks created by the user
+            * Reviews created by the user
+            * Bookings spots created by the user
+                If this frees up tour spots, 
+                other customers may be enrolled as noted in ~~ Booking / Waitlisting ~~
+            * Waitlist spots created by the user
+            
+        The following information is NOT deleted:
+        
+            * Tours created by the user
+                such tours will no longer have an agent listed for them
+            * Photos created by the user
+            * Locations created by the user
     
-        1. What happens when a USER is deleted?
-        
-            The following information is deleted:
+    2. What happens when an ADMIN USER is deleted?
+    
+        Trick question: Admin account cannot be deleted!
+    
+    3. What happens when a BOOKMARK is deleted?
+    
+        No other information is deleted as a side effect of deleting a bookmark.
+    
+    4. What happens when a TOUR is deleted?
+    
+        The following information is deleted:
             
-                * Bookmarks created by the user
-                * Reviews created by the user
-                * Bookings spots created by the user
-                    If this frees up tour spots, 
-                    other customers may be enrolled as noted in ~~ Booking / Waitlisting ~~
-                * Waitlist spots created by the user
-                
-            The following information is NOT deleted:
+            * Bookmarks for the tour
+            * Reviews of the tour
+            * Booking / Waitlists spots for the tour
+            * Photos of the tour
             
-                * Tours created by the user
-                    such tours will no longer have an agent listed for them
-                * Photos created by the user
-                * Locations created by the user
+        The following information is NOT deleted:
         
-        2. What happens when an ADMIN USER is deleted?
-        
-            Trick question: Admin account cannot be deleted!
-        
-        3. What happens when a BOOKMARK is deleted?
-        
-            No other information is deleted as a side effect of deleting a bookmark.
-        
-        4. What happens when a TOUR is deleted?
-        
-            The following information is deleted:
-                
-                * Bookmarks for the tour
-                * Reviews of the tour
-                * Booking / Waitlists spots for the tour
-                * Photos of the tour
-                
-            The following information is NOT deleted:
+            * Locations visited by the tour
+    
+    5. What happens when a REVIEW is deleted?
+    
+        No other information is deleted as a side effect of deleting a review.
             
-                * Locations visited by the tour
+        Specifically, the following information is NOT deleted:
         
-        5. What happens when a REVIEW is deleted?
-        
-            No other information is deleted as a side effect of deleting a review.
-                
-            Specifically, the following information is NOT deleted:
+            * Bookmarks created by the same user for the same tour
+            * Booking / Waitlist spots created by the same user for the same tour
+    
+    6. What happens when a BOOKING is deleted?
+    
+        Please see ~~ Booking / Waitlisting ~~ for a full explanation.
             
-                * Bookmarks created by the same user for the same tour
-                * Booking / Waitlist spots created by the same user for the same tour
+        The following information is NOT deleted:
         
-        6. What happens when a BOOKING is deleted?
-        
-            Please see ~~ Booking / Waitlisting ~~ for a full explanation.
-                
-            The following information is NOT deleted:
+            * Bookmarks created by the same user for the same tour
+            * Reviews created by the same user for the same tour
+    
+    7. What happens when a WAITLIST spot is deleted?
+    
+        No other information is deleted as a side effect of deleting a waitlist spot.
+    
+    8. What happens when a LOCATION is deleted?
+    
+        No other information is deleted as a side effect of deleting a location.
             
-                * Bookmarks created by the same user for the same tour
-                * Reviews created by the same user for the same tour
+        Specifically, the following information is NOT deleted:
         
-        7. What happens when a WAITLIST spot is deleted?
-        
-            No other information is deleted as a side effect of deleting a waitlist spot.
-        
-        8. What happens when a LOCATION is deleted?
-        
-            No other information is deleted as a side effect of deleting a location.
-                
-            Specifically, the following information is NOT deleted:
-            
-                * Tours that visit this location
-                    (tour itinerary will no longer include this location)
-        
-        9. What happens when a PHOTO is deleted?
-        
-            No other information is deleted as a side effect of deleting a photo.
+            * Tours that visit this location
+                (tour itinerary will no longer include this location)
+    
+    9. What happens when a PHOTO is deleted?
+    
+        No other information is deleted as a side effect of deleting a photo.
         
 User Roles:
     
