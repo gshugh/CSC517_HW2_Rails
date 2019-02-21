@@ -108,17 +108,16 @@ Miscellaneous Notes:
     
         There is no maximum value for the waitlist size.
         
-        Instead of forcing the user to go through extra steps when "some, but
-        not enough, seats are available", we show the user how many seats are
-        available and allow them to select among the following options: "Book
-        All Seats" / "Book Available Seats, Waitlist Remaining Seats" /
-        "Waitlist All Seats".
-        If the user selects an inappropriate option given the number of
-        available seats, then they are instructed as to what went wrong.
+        Instead of forcing the user to go through extra steps when
+        "some, but not enough, seats are available", 
+        we show the user how many seats areavailable and allow them to select among the following:
+        "Book All Seats" / "Book Available Seats, Waitlist Remaining Seats" / "Waitlist All Seats".
+        If the user selects an inappropriate option given the number of available seats,
+        then they are instructed as to what went wrong.
         
-        As noted in the requirements, if a customer cancels or reduces a
-        booking, or if a customer cancels their account, waitlisted customers
-        are enrolled in applicable tours.
+        As noted in the requirements, if a customer cancels or reduces a booking,
+        or if a customer cancels their account,
+        waitlisted customers are enrolled in applicable tours.
 
     Enforcement of User Roles:
     
@@ -151,33 +150,85 @@ Miscellaneous Notes:
             for future development on the application if needed
             
     Record Deletion FAQs:
-     
-        1. What happens if admin/agent deletes a tour booked by several people?
+    
+        Here we discuss side effects of deleting certain kinds of records through the web application.
+        We only discuss records that are visible to the user (tours, reviews, etc).
+        We do not explicitly discuss other records that may exist "in the background" to support the application.
+    
+        1. What happens when a USER is deleted?
         
-            The following information will be deleted:
-             - All the bookmarks for the tour
-             - All the bookings for the tour
-             - All the reviews for the tour
-             - All posted pictures for the tour
-             - All waitlists for the tour
-             - All the corressponding visits for the tour
-             - All the listings for the tour
-             
-        2. What happens if a user deletes their account?
+            The following information is deleted:
+            
+                * Bookmarks created by the user
+                * Reviews created by the user
+                * Bookings spots created by the user
+                    If this frees up tour spots, 
+                    other customers may be enrolled as noted in ~~ Booking / Waitlisting ~~
+                * Waitlist spots created by the user
+                
+            The following information is NOT deleted:
+            
+                * Tours created by the user
+                    such tours will no longer have an agent listed for them
+                * Photos created by the user
+                * Locations created by the user
         
-            The following information will be deleted:
-             - User's bookings / waitlistings
-                - If this frees up tour seats, other customers may be enrolled
-                - As noted in ~~ Booking / Waitlisting ~~
-             - User's reviews
-             - User's bookmarks
-             
-            The following information will NOT be deleted:
-             - Tours that the user created
+        2. What happens when an ADMIN USER is deleted?
         
-        3. What happens if the admin deletes their own account?
             Trick question: Admin account cannot be deleted!
-             
+        
+        3. What happens when a BOOKMARK is deleted?
+        
+            No other information is deleted as a side effect of deleting a bookmark.
+        
+        4. What happens when a TOUR is deleted?
+        
+            The following information is deleted:
+                
+                * Bookmarks for the tour
+                * Reviews of the tour
+                * Booking / Waitlists spots for the tour
+                * Photos of the tour
+                
+            The following information is NOT deleted:
+            
+                * Locations visited by the tour
+        
+        5. What happens when a REVIEW is deleted?
+        
+            No other information is deleted as a side effect of deleting a review.
+                
+            Specifically, the following information is NOT deleted:
+            
+                * Bookmarks created by the same user for the same tour
+                * Booking / Waitlist spots created by the same user for the same tour
+        
+        6. What happens when a BOOKING is deleted?
+        
+            Please see ~~ Booking / Waitlisting ~~ for a full explanation.
+                
+            The following information is NOT deleted:
+            
+                * Bookmarks created by the same user for the same tour
+                * Reviews created by the same user for the same tour
+        
+        7. What happens when a WAITLIST spot is deleted?
+        
+            No other information is deleted as a side effect of deleting a waitlist spot.
+        
+        8. What happens when a LOCATION is deleted?
+        
+            No other information is deleted as a side effect of deleting a location.
+                
+            Specifically, the following information is NOT deleted:
+            
+                * Tours that visit this location
+                    (tour itinerary will no longer include this location)
+        
+        9. What happens when a PHOTO is deleted?
+        
+            No other information is deleted as a side effect of deleting a photo.
+        
 User Roles:
     
     Visitor:
@@ -376,6 +427,7 @@ How To (BOOKMARKS):
         [] Follow instructions for ~~ How to view all details for a particular tour ~~
         [] Click "Bookmark"
         [] Click "Create Bookmark"
+            This step is easy to forget so be careful to include it!
         
     How to view a list of all bookmarks
     
@@ -531,3 +583,17 @@ Small Known Bugs
     3. No confirmation required to delete records
     
         It is possible to delete a record (tour, review, etc.) without having to answer an "Are you sure?" prompt.
+        
+    4. Broken photo links
+    
+        It is possible that a photo uploaded by one user may not be visible to another user.
+        
+    5. Ease of forgetting "Create Bookmark" step
+    
+        See ~~ How to bookmark a tour ~~
+        The "Create Bookmark" step at the end of the process is easy to forget.
+        
+    6. User with no special role
+    
+        It is possible to create a user who is neither an agent nor a customer.
+        Such a user can do very little that is useful.
