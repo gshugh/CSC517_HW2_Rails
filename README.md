@@ -9,6 +9,10 @@ Admin:
 
     Preconfigured admin username: john@john.com 
     Preconfigured admin password: john_password
+    
+Testing:
+
+    Please see the various "how to" instructions.
 
 Landing Page:
 
@@ -121,7 +125,7 @@ Miscellaneous Notes:
 
     Enforcement of User Roles:
     
-        As noted in ~~ User Roles ~~ different types of users have different
+        As noted in "User Roles" different types of users have different
         privileges.
         Because there is often more than one way to access a given feature,
         we centralized the logic related to user roles and privileges.
@@ -163,7 +167,7 @@ Record Deletion FAQs:
             * Reviews created by the user
             * Bookings spots created by the user
                 If this frees up tour spots, 
-                other customers may be enrolled as noted in ~~ Booking / Waitlisting ~~
+                other customers may be enrolled as noted in "Booking / Waitlisting"
             * Waitlist spots created by the user
             
         The following information is NOT deleted:
@@ -205,7 +209,7 @@ Record Deletion FAQs:
     
     6. What happens when a BOOKING is deleted?
     
-        Please see ~~ Booking / Waitlisting ~~ for a full explanation.
+        Please see "Booking / Waitlisting" for a full explanation.
             
         The following information is NOT deleted:
         
@@ -278,14 +282,10 @@ User Roles:
         
 How To (Read Me First!):
 
-    * All of these instructions assume that you are starting from the landing
-      page.
-    * All of these instructions assume that your user role allows you to perform
-      these functions.
-    * Some of these instructions have alternative ways to accomplish the same
-      task.
-    * It is not feasible to list all possible ways of accomplishing all possible
-      tasks.
+    * All of these instructions assume that you are starting from the landing page.
+    * All of these instructions assume that your user role allows you to perform these functions.
+    * Some of these instructions have alternative ways to accomplish the same task.
+    * It is not feasible to list all possible ways of accomplishing all possible tasks.
 
 How To (USERS):
     
@@ -326,6 +326,14 @@ How To (USERS):
     
     How To cancel another user's account
     
+        Before testing this task:
+        
+            You will not be able to cancel another user's account,
+            if there is no other user.
+            If this is the case, please first see "How to create an account for someone else".
+    
+        How to perform this task:
+        
         [] Click "Show All Users"
         [] Click "Cancel Account" next to the user of interest
         
@@ -337,11 +345,19 @@ How To (USERS):
     
         [] Click "Show All Users"
         [] Click "New User"
-        [] Follow instructions for ~~ How To Sign Up ~~
+        [] Follow instructions for "How To Sign Up"
 
 How To (TOURS):
 
     How to create a tour
+
+        Before testing this task:
+        
+            You will not be able to create a tour,
+            if there are no locations in the system.
+            If this is the case, please first see "How to create a location".
+    
+        How to perform this task:
         
         [] Click "Show All Tours"
         [] Click "New Tour"
@@ -349,21 +365,64 @@ How To (TOURS):
         [] Click "Create Tour"
         
     How to view a list of all tours
+
+        Before testing this task:
+        
+            You will not be able to view a list of all tours,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+    
+        How to perform this task:
     
         [] Click "Show All Tours"
         
     How to view a list of tours that you created
+
+        Before testing this task:
+        
+            You will not be able to view a list of tours that you created,
+            if you have not created any tours.
+            If this is the case, please first see "How to create a tour".
+    
+        How to perform this task:
     
         [] Click "Show My Tours"
         
     How to search tours using filters
+
+        Before testing this task:
+        
+            You will not be able to search tours using filters,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
     
+        How to perform this task:
+        
         [] Click "Show All Tours"
         [] Enter filter criteria under "Filter Results"
         [] Click "Search"
         
     How to view all details for a particular tour
+
+        Before testing this task:
+        
+            You will not be able to view all details for a particular tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to see guests (customers who have booked the tour),
+            if no customers have booked the tour.
+            If this is the case, please first see "How to book / waitlist a tour".
+            
+            You will not be able to see photos, if there are no photos for the tour.
+            If this is the case, please first see "How to add photos to tours".
+            
+            You will not be able to see reviews, if there are no reviews for the tour.
+            If this is the case, please first see "How to create a review",
+            as well as "How to create a review (practical testing tips)".
     
+        How to perform this task:
+        
         [] Click "Show All Tours"
         [] Click "Show" next to the tour of interest
             Note: Included in this view:
@@ -385,25 +444,75 @@ How To (TOURS):
                 * Reviews
 
     How to edit / update a tour
+
+        Before testing this task:
+        
+            You will not be able to edit / update a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to edit / update a tour, if the tour is completed,
+            per the requirement "an agent can not edit a completed tour".
+            If this is the case, please first see "How to create a tour".
     
+        How to perform this task:
+        
         [] Click "Show All Tours"
         [] Click "Edit" next to the tour of interest
         [] Make the desired changes
         [] Click "Update Tour"
     
     How to cancel a tour
+
+        Before testing this task:
+        
+            You will not be able to cancel a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to cancel a tour, if the tour is completed,
+            per the requirement "an agent can not edit a completed tour".
+            If this is the case, please first see "How to create a tour".
     
+        How to perform this task:
+        
         [] Click "Show All Tours"
         [] Click "Edit" next to the tour of interest
         [] Click "Cancelled"
         [] Click "Update Tour"
 
     How to delete a tour
+
+        Before testing this task:
+        
+            You will not be able to delete a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to delete a tour,
+            if the tour is completed,
+            per the requirement "an agent can not edit a completed tour".
+            If this is the case, please first see "How to create a tour".
     
+        How to perform this task:
+        
         [] Click "Show my tours"
         [] Click "Delete Tour" next to the tour of interest
         
     How to add photos to tours
+
+        Before testing this task:
+        
+            You will not be able to add photos to a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to add photos to a tour,
+            if the tour is completed,
+            per the requirement "an agent can not edit a completed tour".
+            If this is the case, please first see "How to create a tour".
+    
+        How to perform this task:
         
         [] Click "Show All Tours"
         [] Click "Edit" next to the tour of interest
@@ -414,6 +523,23 @@ How To (TOURS):
         [] Click "Create Photo"
         
     How to delete photos from tours
+
+        Before testing this task:
+        
+            You will not be able to delete photos from a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to delete photos from a tour,
+            if the tour is completed,
+            per the requirement "an agent can not edit a completed tour".
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to delete photos from a tour,
+            if the tour has no photos.
+            If this is the case, please first see "How to add photos to tours".
+    
+        How to perform this task:
         
         [] Click "Show All Tours"
         [] Click "Edit" next to the tour of interest
@@ -423,33 +549,83 @@ How To (TOURS):
 How To (BOOKMARKS):
 
     How to bookmark a tour
+
+        Before testing this task:
+        
+            You will not be able to bookmark a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
     
-        [] Follow instructions for ~~ How to view all details for a particular tour ~~
+        How to perform this task:
+        
+        [] Follow instructions for "How to view all details for a particular tour"
         [] Click "Bookmark"
         [] Click "Create Bookmark"
             This step is easy to forget so be careful to include it!
         
     How to view a list of all bookmarks
+
+        Before testing this task:
+        
+            You will not be able to view a list of all bookmarks,
+            if there are no bookmarks in the system.
+            If this is the case, please first see "How to bookmark a tour".
     
+        How to perform this task:
+        
         [] Click "Show All Bookmarks"
 
     How to view a list of bookmarks of tours that you created
+
+        Before testing this task:
+        
+            You will not be able to view a list of bookmarks of tours that you created,
+            if you have not created any tours.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to view a list of bookmarks of tours that you created,
+            if none of your tours have been bookmarked.
+            If this is the case, please first see "How to bookmark a tour".
     
+        How to perform this task:
+        
         [] Click "Show Bookmarks for My Tours"
         
     How to see which tours you have bookmarked
+
+        Before testing this task:
+        
+            You will not be able to see which tours you have bookmarked,
+            if you have not bookmarked any tours.
+            If this is the case, please first see "How to bookmark a tour".
     
+        How to perform this task:
+        
         [] Click "Show My Bookmarks"
         
     How to delete a bookmark
+
+        Before testing this task:
+        
+            You will not be able to delete a bookmark,
+            if there are no bookmarks in the system.
+            If this is the case, please first see "How to bookmark a tour".
     
+        How to perform this task:
+        
         [] Click "Show My Bookmarks"
         [] Click "Delete Bookmark" next to the bookmark of interest
 
 How To (REVIEWS):
 
     How to create a review
+
+        Before testing this task:
+        
+            See "How to create a review (practical testing tips)".
     
+        How to perform this task:
+        
         [] Click "Show My Reviews"
         [] Click "New Review"
         [] Select a tour among those listed (those you have booked and which
@@ -470,42 +646,94 @@ How To (REVIEWS):
             - Book a seat on this tour
             - Use DB tools to alter the tour dates such that it is a past tour
             - Create a review for the tour
-        Alternatively, you could test tour creation and booking one day, and
-        reviews the next
+        Alternatively, you could test tour creation and booking one day,
+        and reviews the next.
             - In this strategy, make the tour just one day in duration
 
     How to view a list of all reviews
+
+        Before testing this task:
+        
+            You will not be able to view a list of all reviews,
+            if there are no reviews in the system.
+            If this is the case, please first see "How to create a review".
+    
+        How to perform this task:
         
         [] Click "Show All Reviews"
         
     How to view reviews for tours you have created
+
+        Before testing this task:
+        
+            You will not be able to view reviews for tours you have created,
+            if you have not created any tours.
+            If this is the case, please first see "How to create a tour".
+            
+            You will not be able to view reviews for tours you have created,
+            if nobody has review your tours.
+            If this is the case, please first see "How to create a review".
     
+        How to perform this task:
+        
         [] Click "Show Review for My Tours"
         
     How to view reviews you have created
+
+        Before testing this task:
+        
+            You will not be able to view reviews you have created,
+            if you have not created any reviews.
+            If this is the case, please first see "How to create a review".
     
+        How to perform this task:
+        
         [] Click "Show My Reviews"
         
     How to view reviews for a particular tour
         
-        See ~~ How to view all details for a particular tour ~~
+        See "How to view all details for a particular tour"
     
     How to edit a review
+
+        Before testing this task:
+        
+            You will not be able to edit a review,
+            if there are no reviews in the system.
+            If this is the case, please first see "How to create a review".
     
+        How to perform this task:
+        
         [] Click "Show All Reviews"
         [] Click "Edit" next to the review of interest
         [] Make the desired changes
         [] Click "Update Review"
 
     How to delete a review
+
+        Before testing this task:
+        
+            You will not be able to delete a review,
+            if there are no reviews in the system.
+            If this is the case, please first see "How to create a review".
     
+        How to perform this task:
+        
         [] Click "Show All Reviews"
         [] Click "Delete Review" next to the review of interest
 
 How To (BOOKINGS / WAITLISTS):
 
     How to book / waitlist a tour
+
+        Before testing this task:
+        
+            You will not be able to book / waitlist a tour,
+            if there are no tours in the system.
+            If this is the case, please first see "How to create a tour".
     
+        How to perform this task:
+        
         [] Click "Show All Tours"
         [] Click "Book" next to the tour of interest
         [] Enter the number of seats you wish to book
@@ -513,28 +741,72 @@ How To (BOOKINGS / WAITLISTS):
         [] Click "Create Booking"
         
     How to view all bookings / waitlistings
+
+        Before testing this task:
+        
+            You will not be able to view all bookings / waitlistings,
+            if there are no bookings / waitlistings in the system.
+            If this is the case, please first see "How to book / waitlist a tour".
+    
+        How to perform this task:
         
         [] Click "Show All Bookings"
 
     How to view bookings / waitlistings for the tours you have created
     
+        Before testing this task:
+        
+            You will not be able to view bookings / waitlistings for the tours you have created,
+            if you have not created any tours.
+            If this is the case, please first see "How to create a tour".
+        
+            You will not be able to view bookings / waitlistings for the tours you have created,
+            if nobody has booked / waitlisted your tours.
+            If this is the case, please first see "How to book / waitlist a tour".
+    
+        How to perform this task:
+        
         [] Click "Show Bookings for My Tours"
         
     How to view bookings / waitlistings that you have created
+
+        Before testing this task:
+        
+            You will not be able to view bookings / waitlistings that you have created,
+            if you have not created any bookings / waitlistings.
+            If this is the case, please first see "How to book / waitlist a tour".
     
+        How to perform this task:
+        
         [] Click "Show My Bookings"
         
     How to view bookings for a particular tour
         
-        See ~~ How to view all details for a particular tour ~~
+        See "How to view all details for a particular tour"
         
     How to cancel all seats from a booking
+
+        Before testing this task:
+        
+            You will not be able to cancel all seats from a booking,
+            if you have not created any bookings / waitlistings.
+            If this is the case, please first see "How to book / waitlist a tour".
     
+        How to perform this task:
+        
         [] Click "Show My Bookings"
         [] Click "Cancel Booking" next to the booking of interest
     
-    How to cancel a few seats from a booking (edit a booking)
+    How to cancel a few seats from a booking (or otherwise edit a booking)
+
+        Before testing this task:
+        
+            You will not be able to cancel a few seats from a booking (or otherwise edit a booking),
+            if you have not created any bookings / waitlistings.
+            If this is the case, please first see "How to book / waitlist a tour".
     
+        How to perform this task:
+        
         [] Click "Show My Bookings"
         [] Click "Edit Booking" next to the booking of interest
         [] Make the desired changes
@@ -550,18 +822,42 @@ How To (LOCATIONS):
         [] Click "Create Location"
         
     How to view all locations
+
+        Before testing this task:
+        
+            You will not be able to view all locations,
+            if there are no locations in the system.
+            If this is the case, please first see "How to create a location".
     
+        How to perform this task:
+        
         [] Click "Show All Locations"
     
     How to edit a location
+
+        Before testing this task:
+        
+            You will not be able to edit a location,
+            if there are no locations in the system.
+            If this is the case, please first see "How to create a location".
     
+        How to perform this task:
+        
         [] Click "Show All Locations"
         [] Click "Edit" next to the location of interest
         [] Make the desired changes
         [] Click "Update Location"
     
     How to delete a location
+
+        Before testing this task:
+        
+            You will not be able to delete a location,
+            if there are no locations in the system.
+            If this is the case, please first see "How to create a location".
     
+        How to perform this task:
+        
         [] Click "Show All Locations"
         [] Click "Destroy Location" next to location of interest
 
@@ -590,7 +886,7 @@ Small Known Bugs
         
     5. Ease of forgetting "Create Bookmark" step
     
-        See ~~ How to bookmark a tour ~~
+        See "How to bookmark a tour"
         The "Create Bookmark" step at the end of the process is easy to forget.
         
     6. User with no special role
