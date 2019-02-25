@@ -30,7 +30,7 @@ https://young-fortress-53892.herokuapp.com/
     dashboard, but this dashboard has been customized to show only the relevant
     links to the user.
     
-### App Interactions
+### App Interactions:
 
     Users interact with the app depending on their role. There are currently 
     four roles, each with an increasing ability to perform functions. The 
