@@ -1,22 +1,23 @@
+# Tour Management System
 **CSC517_HW02
-Homework 2 (Ruby on Rails)
-Tour Management System**
+Homework 2 (Ruby on Rails)**
 
-**Web Application deployment:**
+
+### Web Application deployment:
 https://young-fortress-53892.herokuapp.com/
 
-**Admin:**
+### Admin:
 
     Preconfigured admin username: john@john.com 
     Preconfigured admin password: john_password
     
 **NOTE: To find a list of known bugs, please look at the end of this Readme document.**  
     
-**Testing:**
+### Testing:
 
     To accomplish the various tasks in this application please see the various "how to" instructions.
 
-**Landing Page:**
+### Landing Page:
 
 
     The app assumes that all visitors start on the same page.
@@ -29,7 +30,7 @@ https://young-fortress-53892.herokuapp.com/
     dashboard, but this dashboard has been customized to show only the relevant
     links to the user.
     
-**App Interactions**
+### App Interactions
 
     Users interact with the app depending on their role. There are currently 
     four roles, each with an increasing ability to perform functions. The 
@@ -56,7 +57,7 @@ https://young-fortress-53892.herokuapp.com/
     Details about the roles of the different users and the steps required
     to perform diffeent tasks are outlined below.
 
-**Miscellaneous Notes:**
+### Miscellaneous Notes:
 
     Testing:
     
@@ -155,7 +156,7 @@ https://young-fortress-53892.herokuapp.com/
             for time constraints
             for future development on the application if needed
             
-**Record Deletion FAQs:**
+### Record Deletion FAQs:
 
     Here we discuss side effects of deleting certain kinds of records through the web application.
     We only discuss records that are visible to the user (tours, reviews, etc).
@@ -235,7 +236,7 @@ https://young-fortress-53892.herokuapp.com/
     
         No other information is deleted as a side effect of deleting a photo.
         
-**User Roles:**
+### User Roles:
     
     Visitor:
     
@@ -282,14 +283,14 @@ https://young-fortress-53892.herokuapp.com/
         * can see a list of all users.
         * can see a list of all bookings.
         
-**How To (Read Me First!):**
+### How To (Read Me First!):
 
     * All of these instructions assume that you are starting from the landing page.
     * All of these instructions assume that your user role allows you to perform these functions.
     * Some of these instructions have alternative ways to accomplish the same task.
     * It is not feasible to list all possible ways of accomplishing all possible tasks.
 
-**How To (USERS):**
+### How To (USERS):
     
     How to sign up
         
@@ -349,7 +350,7 @@ https://young-fortress-53892.herokuapp.com/
         [] Click "New User"
         [] Follow instructions for "How To Sign Up"
 
-**How To (TOURS):**
+### How To (TOURS):
 
     How to create a tour
 
@@ -548,7 +549,7 @@ https://young-fortress-53892.herokuapp.com/
         [] Click "Edit Photos"
         [] Click "Delete Photo" next to the name of the photo of interest
 
-**How To (BOOKMARKS):**
+### How To (BOOKMARKS):
 
     How to bookmark a tour
 
@@ -618,7 +619,7 @@ https://young-fortress-53892.herokuapp.com/
         [] Click "Show My Bookmarks"
         [] Click "Delete Bookmark" next to the bookmark of interest
 
-**How To (REVIEWS):**
+### How To (REVIEWS):
 
     How to create a review
 
@@ -724,7 +725,7 @@ https://young-fortress-53892.herokuapp.com/
         [] Click "Show All Reviews"
         [] Click "Delete Review" next to the review of interest
 
-**How To (BOOKINGS / WAITLISTS):**
+### How To (BOOKINGS / WAITLISTS):
 
     How to book / waitlist a tour
 
@@ -814,7 +815,7 @@ https://young-fortress-53892.herokuapp.com/
         [] Make the desired changes
         [] Click "Update Booking"
 
-**How To (LOCATIONS):**
+### How To (LOCATIONS):
 
     How to create a location
         
@@ -863,7 +864,7 @@ https://young-fortress-53892.herokuapp.com/
         [] Click "Show All Locations"
         [] Click "Destroy Location" next to location of interest
 
-**Small Known Bugs:**
+### Small Known Bugs:
 
     Every software organization releases software with a few small known bugs (nothing is perfect)!
     Rather than hoping nobody will notice, here we openly state the few small bugs of which we are aware.
