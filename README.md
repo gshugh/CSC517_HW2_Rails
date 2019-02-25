@@ -56,185 +56,6 @@ https://young-fortress-53892.herokuapp.com/
 
     Details about the roles of the different users and the steps required
     to perform diffeent tasks are outlined below.
-
-### Miscellaneous Notes:
-
-    Testing:
-    
-        RSpec
-        
-            Per the requirements:
-                Thoroughly test one model and one controller (prefer RSpec
-                testing framework). Tests should cover all functions and handle
-                all test cases, including edge cases.
-            
-            We chose RSpec testing of the locations controller and the bookmarks
-            model. RSpec specifications can be found in 'spec/controllers' and
-            'spec/models' directories, respectively. We used the 'simplecov' gem
-            to assess the coverage of the modules.
-            Contoller results:
-                13 examples, 0 failures, 13 passed, 100% coverage
-            Model results:
-                9 examples, 0 failures, 9 passed, 100% coverage 
-            
-        Minitest
-        
-            Tests can be found in 'test/controllers' and 'test/models'
-            directories.
-            We have chosen NOT to focus our Minitest testing.
-            Instead, we test a broader set of controllers and models in a
-            slightly more shallow way.
-            Controller results:
-                80 tests, 108 assertions, 0 failures, 0 errors, 0 skips
-            Model results:
-                14 tests, 38 assertions, 0 failures, 0 errors, 0 skips
-            
-    Tour Operator Contact Info:
-    
-        Per Piazza:
-            "...we have to create operator with some basic info?"
-            "Agent information should be fine."
-        This is a good idea and if we were starting over we likely would use
-        agent profile information.
-        However we already had a field for adding custom operator contact info
-        when creating a tour.
-        We have chosen to retain our custom contact info in the interest of
-        flexibility.
-        
-    Price Filtering:
-    
-        Per Piazza:
-            "...Is it acceptable to filter just by maximum price?"
-            "There are no restrictions on the way you would like to implement
-            any functionality."
-        We offer price filtering by maximum price, but not by minimum price.
-        This is on the theory that cheaper is always better (all else being
-        equal).
-    
-    Booking / Waitlisting:
-    
-        There is no maximum value for the waitlist size.
-        
-        Instead of forcing the user to go through extra steps when
-        "some, but not enough, seats are available", 
-        we show the user how many seats areavailable and allow them to select among the following:
-        "Book All Seats" / "Book Available Seats, Waitlist Remaining Seats" / "Waitlist All Seats".
-        If the user selects an inappropriate option given the number of available seats,
-        then they are instructed as to what went wrong.
-        
-        As noted in the requirements, if a customer cancels or reduces a booking,
-        or if a customer cancels their account,
-        waitlisted customers are enrolled in applicable tours.
-
-    Enforcement of User Roles:
-    
-        As noted in "User Roles" different types of users have different
-        privileges.
-        Because there is often more than one way to access a given feature,
-        we centralized the logic related to user roles and privileges.
-        This logic can be found in app/helpers/sessions_helper.rb
-
-    Locations:
-    
-        Locations are case sensitive. So, "NC, USA" is treated differently than
-        "nc, USA". Be careful when adding a new location.
-        
-    "Extra" Model:
-
-        Our E/R Diagram can be found at
-        doc/CSC517_HW02_EntityRelationshipDiagram.png
-        We have a "start_at" model that we ended up never really using.
-        Instead, we find the start location for a tour based on order of records
-        stored in the "visits" model.
-        Time did not permit cleaning up this 'extra' code.
-        
-    "Extra" Views:
-    
-        We used scaffolding to start our application, which creates many views.
-        Some of these views are never actually available to the user via a link.
-        Most of these 'extra' views are retained:
-            for time constraints
-            for future development on the application if needed
-            
-### Record Deletion FAQs:
-
-    Here we discuss side effects of deleting certain kinds of records through the web application.
-    We only discuss records that are visible to the user (tours, reviews, etc).
-    We do not explicitly discuss other records that may exist "in the background" to support the application.
-
-    1. What happens when a USER is deleted?
-    
-        The following information is deleted:
-        
-            * Bookmarks created by the user
-            * Reviews created by the user
-            * Bookings spots created by the user
-                If this frees up tour spots, 
-                other customers may be enrolled as noted in "Booking / Waitlisting"
-            * Waitlist spots created by the user
-            
-        The following information is NOT deleted:
-        
-            * Tours created by the user
-                such tours will no longer have an agent listed for them
-            * Photos created by the user
-            * Locations created by the user
-    
-    2. What happens when an ADMIN USER is deleted?
-    
-        Trick question: Admin account cannot be deleted!
-    
-    3. What happens when a BOOKMARK is deleted?
-    
-        No other information is deleted as a side effect of deleting a bookmark.
-    
-    4. What happens when a TOUR is deleted?
-    
-        The following information is deleted:
-            
-            * Bookmarks for the tour
-            * Reviews of the tour
-            * Booking / Waitlists spots for the tour
-            * Photos of the tour
-            
-        The following information is NOT deleted:
-        
-            * Locations visited by the tour
-    
-    5. What happens when a REVIEW is deleted?
-    
-        No other information is deleted as a side effect of deleting a review.
-            
-        Specifically, the following information is NOT deleted:
-        
-            * Bookmarks created by the same user for the same tour
-            * Booking / Waitlist spots created by the same user for the same tour
-    
-    6. What happens when a BOOKING is deleted?
-    
-        Please see "Booking / Waitlisting" for a full explanation.
-            
-        The following information is NOT deleted:
-        
-            * Bookmarks created by the same user for the same tour
-            * Reviews created by the same user for the same tour
-    
-    7. What happens when a WAITLIST spot is deleted?
-    
-        No other information is deleted as a side effect of deleting a waitlist spot.
-    
-    8. What happens when a LOCATION is deleted?
-    
-        No other information is deleted as a side effect of deleting a location.
-            
-        Specifically, the following information is NOT deleted:
-        
-            * Tours that visit this location
-                (tour itinerary will no longer include this location)
-    
-    9. What happens when a PHOTO is deleted?
-    
-        No other information is deleted as a side effect of deleting a photo.
         
 ### User Roles:
     
@@ -864,6 +685,185 @@ https://young-fortress-53892.herokuapp.com/
         [] Click "Show All Locations"
         [] Click "Destroy Location" next to location of interest
 
+### Miscellaneous Notes:
+
+    Testing:
+    
+        RSpec
+        
+            Per the requirements:
+                Thoroughly test one model and one controller (prefer RSpec
+                testing framework). Tests should cover all functions and handle
+                all test cases, including edge cases.
+            
+            We chose RSpec testing of the locations controller and the bookmarks
+            model. RSpec specifications can be found in 'spec/controllers' and
+            'spec/models' directories, respectively. We used the 'simplecov' gem
+            to assess the coverage of the modules.
+            Contoller results:
+                13 examples, 0 failures, 13 passed, 100% coverage
+            Model results:
+                9 examples, 0 failures, 9 passed, 100% coverage 
+            
+        Minitest
+        
+            Tests can be found in 'test/controllers' and 'test/models'
+            directories.
+            We have chosen NOT to focus our Minitest testing.
+            Instead, we test a broader set of controllers and models in a
+            slightly more shallow way.
+            Controller results:
+                80 tests, 108 assertions, 0 failures, 0 errors, 0 skips
+            Model results:
+                14 tests, 38 assertions, 0 failures, 0 errors, 0 skips
+            
+    Tour Operator Contact Info:
+    
+        Per Piazza:
+            "...we have to create operator with some basic info?"
+            "Agent information should be fine."
+        This is a good idea and if we were starting over we likely would use
+        agent profile information.
+        However we already had a field for adding custom operator contact info
+        when creating a tour.
+        We have chosen to retain our custom contact info in the interest of
+        flexibility.
+        
+    Price Filtering:
+    
+        Per Piazza:
+            "...Is it acceptable to filter just by maximum price?"
+            "There are no restrictions on the way you would like to implement
+            any functionality."
+        We offer price filtering by maximum price, but not by minimum price.
+        This is on the theory that cheaper is always better (all else being
+        equal).
+    
+    Booking / Waitlisting:
+    
+        There is no maximum value for the waitlist size.
+        
+        Instead of forcing the user to go through extra steps when
+        "some, but not enough, seats are available", 
+        we show the user how many seats areavailable and allow them to select among the following:
+        "Book All Seats" / "Book Available Seats, Waitlist Remaining Seats" / "Waitlist All Seats".
+        If the user selects an inappropriate option given the number of available seats,
+        then they are instructed as to what went wrong.
+        
+        As noted in the requirements, if a customer cancels or reduces a booking,
+        or if a customer cancels their account,
+        waitlisted customers are enrolled in applicable tours.
+
+    Enforcement of User Roles:
+    
+        As noted in "User Roles" different types of users have different
+        privileges.
+        Because there is often more than one way to access a given feature,
+        we centralized the logic related to user roles and privileges.
+        This logic can be found in app/helpers/sessions_helper.rb
+
+    Locations:
+    
+        Locations are case sensitive. So, "NC, USA" is treated differently than
+        "nc, USA". Be careful when adding a new location.
+        
+    "Extra" Model:
+
+        Our E/R Diagram can be found at
+        doc/CSC517_HW02_EntityRelationshipDiagram.png
+        We have a "start_at" model that we ended up never really using.
+        Instead, we find the start location for a tour based on order of records
+        stored in the "visits" model.
+        Time did not permit cleaning up this 'extra' code.
+        
+    "Extra" Views:
+    
+        We used scaffolding to start our application, which creates many views.
+        Some of these views are never actually available to the user via a link.
+        Most of these 'extra' views are retained:
+            for time constraints
+            for future development on the application if needed
+            
+### Record Deletion FAQs:
+
+    Here we discuss side effects of deleting certain kinds of records through the web application.
+    We only discuss records that are visible to the user (tours, reviews, etc).
+    We do not explicitly discuss other records that may exist "in the background" to support the application.
+
+    1. What happens when a USER is deleted?
+    
+        The following information is deleted:
+        
+            * Bookmarks created by the user
+            * Reviews created by the user
+            * Bookings spots created by the user
+                If this frees up tour spots, 
+                other customers may be enrolled as noted in "Booking / Waitlisting"
+            * Waitlist spots created by the user
+            
+        The following information is NOT deleted:
+        
+            * Tours created by the user
+                such tours will no longer have an agent listed for them
+            * Photos created by the user
+            * Locations created by the user
+    
+    2. What happens when an ADMIN USER is deleted?
+    
+        Trick question: Admin account cannot be deleted!
+    
+    3. What happens when a BOOKMARK is deleted?
+    
+        No other information is deleted as a side effect of deleting a bookmark.
+    
+    4. What happens when a TOUR is deleted?
+    
+        The following information is deleted:
+            
+            * Bookmarks for the tour
+            * Reviews of the tour
+            * Booking / Waitlists spots for the tour
+            * Photos of the tour
+            
+        The following information is NOT deleted:
+        
+            * Locations visited by the tour
+    
+    5. What happens when a REVIEW is deleted?
+    
+        No other information is deleted as a side effect of deleting a review.
+            
+        Specifically, the following information is NOT deleted:
+        
+            * Bookmarks created by the same user for the same tour
+            * Booking / Waitlist spots created by the same user for the same tour
+    
+    6. What happens when a BOOKING is deleted?
+    
+        Please see "Booking / Waitlisting" for a full explanation.
+            
+        The following information is NOT deleted:
+        
+            * Bookmarks created by the same user for the same tour
+            * Reviews created by the same user for the same tour
+    
+    7. What happens when a WAITLIST spot is deleted?
+    
+        No other information is deleted as a side effect of deleting a waitlist spot.
+    
+    8. What happens when a LOCATION is deleted?
+    
+        No other information is deleted as a side effect of deleting a location.
+            
+        Specifically, the following information is NOT deleted:
+        
+            * Tours that visit this location
+                (tour itinerary will no longer include this location)
+    
+    9. What happens when a PHOTO is deleted?
+    
+        No other information is deleted as a side effect of deleting a photo.
+        
 ### Small Known Bugs:
 
     Every software organization releases software with a few small known bugs (nothing is perfect)!
